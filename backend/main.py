@@ -1,0 +1,73 @@
+﻿"""
+SkillTwin FastAPI Main Application Entrypoint
+"""
+import logging
+from contextlib import asynccontextmanager
+from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
+
+from backend.config import settings
+from backend.db.init_db import init_db
+from backend.routers.auth import router as auth_router
+from backend.routers.profile import router as profile_router
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+)
+logger = logging.getLogger("skilltwin.app")
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Application startup and shutdown lifecycle handler."""
+    logger.info("Starting SkillTwin Backend Service...")
+    # Initialize database tables
+    try:
+        await init_db()
+        logger.info("Database initialized successfully.")
+    except Exception as e:
+        logger.warning(f"Database auto-init notice: {e}")
+    
+    yield
+    
+    logger.info("Shutting down SkillTwin Backend Service.")
+
+
+app = FastAPI(
+    title="SkillTwin Adaptive Cognitive Twin API",
+    description="Adaptive Learning Intelligence Platform powered by BKT, DAG Path Planning, and Grounded Gemini Explanations.",
+    version="1.0.0",
+    lifespan=lifespan
+)
+
+# CORS Middleware configuration
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=settings.CORS_ORIGINS,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Mount Routers
+app.include_router(auth_router)
+app.include_router(profile_router)
+
+
+@app.get("/", tags=["Health"])
+async def root():
+    """Service status and meta endpoint."""
+    return {
+        "service": "SkillTwin Backend API",
+        "version": settings.APP_VERSION,
+        "status": "operational",
+        "docs": "/docs",
+        "contract": "/shared/schema.md"
+    }
+
+
+@app.get("/health", tags=["Health"])
+async def health_check():
+    """Liveness probe."""
+    return {"status": "healthy"}

@@ -1,5 +1,6 @@
-# Environment Variables
+﻿# Environment Variables
 .env
+.env.*
 .env*.local
 .env.development.local
 .env.test.local
@@ -31,6 +32,16 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+
+# Testing & Cache
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Local Databases
+*.db
+*.sqlite
+*.sqlite3
 
 # Node / Frontend
 node_modules/

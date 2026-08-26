@@ -1,4 +1,47 @@
-version: '3.8'
+﻿version: "3.8"
 
 services:
-  # Services will be configured in subsequent steps
+  postgres:
+    image: postgres:16-alpine
+    container_name: skilltwin-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: skilltwin
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgrespassword
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d skilltwin"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    container_name: skilltwin-backend
+    restart: unless-stopped
+    environment:
+      - ENVIRONMENT=development
+      - PORT=8000
+      - DATABASE_URL=postgresql+asyncpg://postgres:postgrespassword@postgres:5432/skilltwin
+      - SYNC_DATABASE_URL=postgresql://postgres:postgrespassword@postgres:5432/skilltwin
+      - SECRET_KEY=skilltwin-super-secret-development-key-change-in-production-2026
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    ports:
+      - "8000:8000"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    volumes:
+      - ./backend:/app/backend
+      - ./data:/app/data
+      - ./shared:/app/shared
+
+volumes:
+  postgres_data:
+    driver: local
