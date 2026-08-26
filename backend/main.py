@@ -1,4 +1,4 @@
-﻿"""
+"""
 SkillTwin FastAPI Main Application Entrypoint
 """
 import logging
@@ -10,6 +10,11 @@ from backend.config import settings
 from backend.db.init_db import init_db
 from backend.routers.auth import router as auth_router
 from backend.routers.profile import router as profile_router
+from backend.routers.skills import router as skills_router
+from backend.routers.paths import router as paths_router
+from backend.routers.assessments import router as assessments_router
+from backend.routers.progress import router as progress_router
+from backend.routers.recommendations import router as recommendations_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -53,6 +58,11 @@ app.add_middleware(
 # Mount Routers
 app.include_router(auth_router)
 app.include_router(profile_router)
+app.include_router(skills_router)
+app.include_router(paths_router)
+app.include_router(assessments_router)
+app.include_router(progress_router)
+app.include_router(recommendations_router)
 
 
 @app.get("/", tags=["Health"])

@@ -1,4 +1,4 @@
-﻿"""
+"""
 Integration Tests for FastAPI Auth & Profile Endpoints
 """
 import pytest
@@ -19,16 +19,15 @@ async def override_get_db():
         yield session
 
 
-app.dependency_overrides[get_db] = override_get_db
-
-
 @pytest.fixture(autouse=True)
 async def prepare_database():
+    app.dependency_overrides[get_db] = override_get_db
     async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     yield
     async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
+    app.dependency_overrides.clear()
 
 
 @pytest.mark.asyncio

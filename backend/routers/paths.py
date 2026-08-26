@@ -1,0 +1,102 @@
+"""
+Learning Path Planning & Local Path Repair Route Controllers
+Handles /learning-path/generate (POST) and /adapt-path (POST).
+Strictly adheres to /shared/schema.md Sections 3.4 and 3.6.
+"""
+from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.ext.asyncio import AsyncSession
+
+from backend.db.session import get_db
+from backend.db.models import User
+from backend.auth.dependencies import get_current_user
+from backend.schemas.planner import (
+    LearningPathGenerateRequest,
+    LearningPathResponse
+)
+from backend.schemas.repair import (
+    PathAdaptRequest,
+    PathRepairDiff
+)
+from backend.services.planner_service import PlannerService
+from backend.services.repair_service import RepairService
+
+router = APIRouter(tags=["Learning Path & Repair"])
+
+
+@router.post(
+    "/learning-path/generate",
+    response_model=LearningPathResponse,
+    status_code=status.HTTP_201_CREATED,
+    summary="Generate personalized topological learning path",
+    description="Generates an ordered curriculum sequence respecting prerequisite DAG topological constraints, prior mastery, and study time budgets."
+)
+async def generate_path(
+    payload: LearningPathGenerateRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    # Enforce multi-tenant user isolation
+    effective_user_id = current_user.id
+    if payload.user_id and payload.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Cannot generate learning paths on behalf of another user"
+        )
+
+    try:
+        return await PlannerService.generate_learning_path(
+            db=db,
+            user_id=effective_user_id,
+            goal_title=payload.goal_title,
+            target_skill_ids=payload.target_skill_ids,
+            weekly_hours_budget=payload.weekly_hours_budget or 10
+        )
+    except ValueError as ve:
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail=str(ve)
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Path generation failed: {str(e)}"
+        )
+
+
+@router.post(
+    "/adapt-path",
+    response_model=PathRepairDiff,
+    status_code=status.HTTP_200_OK,
+    summary="Execute localized learning path repair",
+    description="Adapts only the affected subgraph of a curriculum roadmap following new learner evidence, minimizing touched nodes."
+)
+async def adapt_path(
+    payload: PathAdaptRequest,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    # Enforce multi-tenant user isolation
+    effective_user_id = current_user.id
+    if payload.user_id and payload.user_id != current_user.id:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="Cannot adapt learning paths belonging to another user"
+        )
+
+    try:
+        return await RepairService.adapt_learning_path(
+            db=db,
+            user_id=effective_user_id,
+            path_id=payload.path_id,
+            trigger_skill_id=payload.trigger_skill_id,
+            trigger_event=payload.reason or "manual_repair"
+        )
+    except ValueError as ve:
+        err_msg = str(ve)
+        status_code = status.HTTP_404_NOT_FOUND if "not found" in err_msg.lower() else status.HTTP_400_BAD_REQUEST
+        raise HTTPException(status_code=status_code, detail=err_msg)
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Path adaptation failed: {str(e)}"
+        )
