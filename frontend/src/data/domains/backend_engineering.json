@@ -1,0 +1,110 @@
+{
+  "domain": "backend_engineering",
+  "name": "Backend Engineering & Distributed Systems",
+  "description": "Comprehensive curriculum covering networking, database internals, async architectures, microservices, and distributed consensus.",
+  "target_roles": ["Backend Engineer", "Systems Architect", "Cloud & Platform Engineer"],
+  "skills": [
+    { "id": "http_basics", "name": "HTTP/1.1 & HTTP/2 Protocols", "domain": "backend_engineering", "description": "Methods, status codes, headers, chunked transfer, and multiplexing.", "difficulty": "beginner", "estimated_duration_minutes": 45, "resource_ids": ["res_http_01"] },
+    { "id": "tcp_ip_sockets", "name": "TCP/IP Sockets & Three-Way Handshake", "domain": "backend_engineering", "description": "Transport layer fundamentals, socket connections, SYN/ACK, and buffer management.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_tcp_01"] },
+    { "id": "dns_resolution", "name": "DNS & Name Resolution", "domain": "backend_engineering", "description": "Recursive vs authoritative resolvers, A/AAAA/CNAME records, and TTL caching.", "difficulty": "beginner", "estimated_duration_minutes": 30, "resource_ids": ["res_dns_01"] },
+    { "id": "tls_encryption", "name": "TLS/HTTPS & Certificate Validation", "domain": "backend_engineering", "description": "Symmetric vs asymmetric keys, certificates, ALPN, and TLS session resumption.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_tls_01"] },
+    { "id": "restful_api_design", "name": "RESTful API Architecture", "domain": "backend_engineering", "description": "Resource-oriented routing, idempotency, HATEOAS, and JSON schema versioning.", "difficulty": "beginner", "estimated_duration_minutes": 45, "resource_ids": ["res_rest_01"] },
+
+    { "id": "threads_and_processes", "name": "OS Threads & Process Memory Models", "domain": "backend_engineering", "description": "Context switching, memory heap vs stack, and concurrency primitives.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_threads_01"] },
+    { "id": "async_await_event_loop", "name": "Non-blocking Async I/O & Event Loops", "domain": "backend_engineering", "description": "Reactor pattern, epoll/kqueue, promises, and cooperative multitasking.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_async_01"] },
+    { "id": "race_conditions_locks", "name": "Race Conditions & Mutex Locks", "domain": "backend_engineering", "description": "Critical sections, deadlocks, semaphores, and lock-free CAS operations.", "difficulty": "advanced", "estimated_duration_minutes": 75, "resource_ids": ["res_locks_01"] },
+
+    { "id": "relational_data_modeling", "name": "Relational Schema Design & Normalization", "domain": "backend_engineering", "description": "1NF through 3NF, foreign key integrity, and denormalization trade-offs.", "difficulty": "beginner", "estimated_duration_minutes": 50, "resource_ids": ["res_dbmodel_01"] },
+    { "id": "sql_query_optimization", "name": "SQL Execution Plans & Query Tuning", "domain": "backend_engineering", "description": "EXPLAIN ANALYZE, join strategies (nested loop, hash, merge), and indexing.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_sqlopt_01"] },
+    { "id": "indexing_b_trees", "name": "B-Tree & LSM-Tree Indexes", "domain": "backend_engineering", "description": "Composite indexes, covering indexes, page fill factors, and write amplification.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_indexes_01"] },
+    { "id": "acid_transactions", "name": "ACID Transactions & Isolation Levels", "domain": "backend_engineering", "description": "Read Committed, Repeatable Read, Serializable, MVCC, and write skew.", "difficulty": "advanced", "estimated_duration_minutes": 75, "resource_ids": ["res_acid_01"] },
+    { "id": "connection_pooling", "name": "Database Connection Pools & Sizing", "domain": "backend_engineering", "description": "HikariCP/pgbouncer, max connections, keep-alives, and pool starvation.", "difficulty": "intermediate", "estimated_duration_minutes": 40, "resource_ids": ["res_pool_01"] },
+
+    { "id": "redis_key_value", "name": "Redis In-Memory Data Structures", "domain": "backend_engineering", "description": "Strings, Hashes, Sorted Sets, HyperLogLogs, and Redis persistence (RDB/AOF).", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_redis_01"] },
+    { "id": "caching_patterns", "name": "Caching Patterns & Cache Invalidation", "domain": "backend_engineering", "description": "Cache-Aside, Write-Through, Write-Behind, TTLs, and stampede prevention.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_caching_01"] },
+    { "id": "rate_limiting_algorithms", "name": "Rate Limiting & Throttling", "domain": "backend_engineering", "description": "Token bucket, Leaky bucket, Fixed window, and Sliding window counters.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_ratelimit_01"] },
+
+    { "id": "jwt_token_auth", "name": "JWT Token Authentication & Cryptographic Signing", "domain": "backend_engineering", "description": "HMAC vs RSA/ECDSA signing, refresh token rotation, and claims validation.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_jwt_01"] },
+    { "id": "oauth2_oidc", "name": "OAuth 2.0 & OpenID Connect Flows", "domain": "backend_engineering", "description": "Authorization code flow with PKCE, client credentials, and ID tokens.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_oauth_01"] },
+    { "id": "rbac_permissions", "name": "Role-Based & Attribute-Based Access Control", "domain": "backend_engineering", "description": "RBAC vs ABAC, policy enforcement points, and fine-grained authorization.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_rbac_01"] },
+
+    { "id": "message_queues_rabbitmq", "name": "Message Queues & AMQP (RabbitMQ)", "domain": "backend_engineering", "description": "Exchanges, queues, routing keys, acknowledgements, and dead-letter exchanges.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_rabbitmq_01"] },
+    { "id": "event_streaming_kafka", "name": "Distributed Event Streaming with Kafka", "domain": "backend_engineering", "description": "Partitions, consumer groups, offset commits, log compaction, and replication.", "difficulty": "advanced", "estimated_duration_minutes": 90, "resource_ids": ["res_kafka_01"] },
+    { "id": "idempotent_consumers", "name": "Idempotent Consumers & Outbox Pattern", "domain": "backend_engineering", "description": "Transactional outbox, deduplication keys, and exactly-once processing semantics.", "difficulty": "advanced", "estimated_duration_minutes": 60, "resource_ids": ["res_outbox_01"] },
+
+    { "id": "grpc_and_protobuf", "name": "gRPC & Protocol Buffers", "domain": "backend_engineering", "description": "Binary serialization, HTTP/2 multiplexing, unary & streaming RPCs.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_grpc_01"] },
+    { "id": "graphql_schema_design", "name": "GraphQL APIs & DataLoader N+1 Solvers", "domain": "backend_engineering", "description": "Queries, mutations, subscriptions, batching with DataLoader, and caching.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_graphql_01"] },
+    { "id": "api_gateway_routing", "name": "API Gateways & Reverse Proxies (Nginx/Envoy)", "domain": "backend_engineering", "description": "SSL termination, upstream load balancing, path rewriting, and CORS management.", "difficulty": "intermediate", "estimated_duration_minutes": 50, "resource_ids": ["res_gateway_01"] },
+
+    { "id": "docker_containerization", "name": "Docker Containerization & Multi-Stage Builds", "domain": "backend_engineering", "description": "Dockerfile optimization, layers, cgroups/namespaces, and minimal base images.", "difficulty": "beginner", "estimated_duration_minutes": 45, "resource_ids": ["res_docker_01"] },
+    { "id": "docker_compose_workflows", "name": "Multi-Service Orchestration with Docker Compose", "domain": "backend_engineering", "description": "Service definitions, internal networks, volumes, and health checks.", "difficulty": "beginner", "estimated_duration_minutes": 40, "resource_ids": ["res_compose_01"] },
+    { "id": "kubernetes_basics", "name": "Kubernetes Pods, Services & Deployments", "domain": "backend_engineering", "description": "Control plane, replica sets, cluster IPs, ingress controllers, and config maps.", "difficulty": "intermediate", "estimated_duration_minutes": 75, "resource_ids": ["res_k8s_01"] },
+    { "id": "ci_cd_pipelines", "name": "Automated CI/CD Workflows", "domain": "backend_engineering", "description": "Automated testing, linting, semantic versioning, container registry publishing.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_cicd_01"] },
+
+    { "id": "structured_logging", "name": "Structured JSON Logging & Correlation IDs", "domain": "backend_engineering", "description": "Context propagation, trace IDs, log aggregation, and log levels.", "difficulty": "beginner", "estimated_duration_minutes": 35, "resource_ids": ["res_logging_01"] },
+    { "id": "prometheus_metrics", "name": "Application Metrics with Prometheus", "domain": "backend_engineering", "description": "Counters, Gauges, Histograms, Summaries, and alerting rules.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_metrics_01"] },
+    { "id": "distributed_tracing_otel", "name": "Distributed Tracing with OpenTelemetry", "domain": "backend_engineering", "description": "Spans, context propagation, Jaeger collectors, and latency analysis.", "difficulty": "intermediate", "estimated_duration_minutes": 60, "resource_ids": ["res_tracing_01"] },
+    { "id": "circuit_breakers", "name": "Circuit Breakers & Fault Tolerance", "domain": "backend_engineering", "description": "Closed/Open/Half-Open states, fallbacks, bulkhead isolation, and timeouts.", "difficulty": "intermediate", "estimated_duration_minutes": 45, "resource_ids": ["res_circuit_01"] },
+
+    { "id": "cap_theorem_tradeoffs", "name": "CAP Theorem & PACELC Trade-Offs", "domain": "backend_engineering", "description": "Consistency vs Availability vs Partition tolerance in distributed data stores.", "difficulty": "intermediate", "estimated_duration_minutes": 50, "resource_ids": ["res_cap_01"] },
+    { "id": "database_sharding", "name": "Database Sharding & Consistent Hashing", "domain": "backend_engineering", "description": "Range vs hash sharding, virtual nodes, cross-shard queries, and rebalancing.", "difficulty": "advanced", "estimated_duration_minutes": 80, "resource_ids": ["res_sharding_01"] },
+    { "id": "distributed_transactions_saga", "name": "Saga Pattern & Distributed Transactions", "domain": "backend_engineering", "description": "Choreography vs Orchestration, compensating transactions, and 2PC comparison.", "difficulty": "advanced", "estimated_duration_minutes": 90, "resource_ids": ["res_saga_01"] },
+    { "id": "raft_consensus_basics", "name": "Raft Distributed Consensus & Leader Election", "domain": "backend_engineering", "description": "Leader election, log replication, heartbeats, term counters, and split vote resolution.", "difficulty": "advanced", "estimated_duration_minutes": 90, "resource_ids": ["res_raft_01"] },
+
+    { "id": "websocket_bidirectional", "name": "WebSockets & Real-Time Communication", "domain": "backend_engineering", "description": "Handshake upgrade, framing, heartbeats, and scaling websocket state with Redis pub/sub.", "difficulty": "intermediate", "estimated_duration_minutes": 50, "resource_ids": ["res_ws_01"] },
+    { "id": "blob_storage_s3", "name": "Object Storage & Presigned URLs (S3/MinIO)", "domain": "backend_engineering", "description": "Direct-to-S3 client uploads, presigned URLs, multipart uploads, and lifecycle policies.", "difficulty": "beginner", "estimated_duration_minutes": 40, "resource_ids": ["res_s3_01"] },
+    { "id": "distributed_locks_redlock", "name": "Distributed Locking with Redlock", "domain": "backend_engineering", "description": "Clock drift, lease fencing tokens, and Redis single vs multi-node locks.", "difficulty": "advanced", "estimated_duration_minutes": 60, "resource_ids": ["res_redlock_01"] }
+  ],
+  "dependencies": [
+    { "source_skill_id": "tcp_ip_sockets", "target_skill_id": "http_basics", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "dns_resolution", "target_skill_id": "tls_encryption", "dependency_type": "recommended", "weight": 0.7 },
+    { "source_skill_id": "http_basics", "target_skill_id": "tls_encryption", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "http_basics", "target_skill_id": "restful_api_design", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "threads_and_processes", "target_skill_id": "async_await_event_loop", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "threads_and_processes", "target_skill_id": "race_conditions_locks", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "relational_data_modeling", "target_skill_id": "sql_query_optimization", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "sql_query_optimization", "target_skill_id": "indexing_b_trees", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "relational_data_modeling", "target_skill_id": "acid_transactions", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "sql_query_optimization", "target_skill_id": "connection_pooling", "dependency_type": "recommended", "weight": 0.8 },
+
+    { "source_skill_id": "restful_api_design", "target_skill_id": "redis_key_value", "dependency_type": "recommended", "weight": 0.8 },
+    { "source_skill_id": "redis_key_value", "target_skill_id": "caching_patterns", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "restful_api_design", "target_skill_id": "rate_limiting_algorithms", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "redis_key_value", "target_skill_id": "rate_limiting_algorithms", "dependency_type": "recommended", "weight": 0.9 },
+
+    { "source_skill_id": "restful_api_design", "target_skill_id": "jwt_token_auth", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "jwt_token_auth", "target_skill_id": "oauth2_oidc", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "jwt_token_auth", "target_skill_id": "rbac_permissions", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "async_await_event_loop", "target_skill_id": "message_queues_rabbitmq", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "message_queues_rabbitmq", "target_skill_id": "event_streaming_kafka", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "event_streaming_kafka", "target_skill_id": "idempotent_consumers", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "restful_api_design", "target_skill_id": "grpc_and_protobuf", "dependency_type": "recommended", "weight": 0.9 },
+    { "source_skill_id": "restful_api_design", "target_skill_id": "graphql_schema_design", "dependency_type": "recommended", "weight": 0.8 },
+    { "source_skill_id": "restful_api_design", "target_skill_id": "api_gateway_routing", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "restful_api_design", "target_skill_id": "docker_containerization", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "docker_containerization", "target_skill_id": "docker_compose_workflows", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "docker_compose_workflows", "target_skill_id": "kubernetes_basics", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "docker_containerization", "target_skill_id": "ci_cd_pipelines", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "restful_api_design", "target_skill_id": "structured_logging", "dependency_type": "recommended", "weight": 0.8 },
+    { "source_skill_id": "structured_logging", "target_skill_id": "prometheus_metrics", "dependency_type": "recommended", "weight": 0.8 },
+    { "source_skill_id": "structured_logging", "target_skill_id": "distributed_tracing_otel", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "api_gateway_routing", "target_skill_id": "circuit_breakers", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "acid_transactions", "target_skill_id": "cap_theorem_tradeoffs", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "sql_query_optimization", "target_skill_id": "database_sharding", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "cap_theorem_tradeoffs", "target_skill_id": "database_sharding", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "event_streaming_kafka", "target_skill_id": "distributed_transactions_saga", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "cap_theorem_tradeoffs", "target_skill_id": "raft_consensus_basics", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+
+    { "source_skill_id": "http_basics", "target_skill_id": "websocket_bidirectional", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "restful_api_design", "target_skill_id": "blob_storage_s3", "dependency_type": "recommended", "weight": 0.8 },
+    { "source_skill_id": "redis_key_value", "target_skill_id": "distributed_locks_redlock", "dependency_type": "hard_prerequisite", "weight": 1.0 },
+    { "source_skill_id": "race_conditions_locks", "target_skill_id": "distributed_locks_redlock", "dependency_type": "hard_prerequisite", "weight": 1.0 }
+  ]
+}

@@ -1,4 +1,4 @@
-﻿"""
+"""
 SkillTwin Backend Configuration Settings
 Loads configuration from environment variables or .env file.
 """
@@ -45,7 +45,14 @@ class Settings(BaseSettings):
     GEMINI_MODEL: str = "gemini-2.5-flash"
 
     # CORS
-    CORS_ORIGINS: List[str] = ["http://localhost:3000", "http://127.0.0.1:3000", "*"]
+    CORS_ORIGINS: List[str] = [
+        "http://localhost:3000",
+        "http://127.0.0.1:3000",
+        "http://localhost:3001",
+        "http://127.0.0.1:3001",
+        "http://localhost:5173",
+        "http://127.0.0.1:5173"
+    ]
 
     # Domain Graph Paths
     DEFAULT_GRAPH_DOMAIN: str = "backend_engineering"
