@@ -1,0 +1,942 @@
+{
+  "domain": "backend_engineering",
+  "domain_name": "Backend Engineering & Distributed Systems",
+  "skills": [
+    {
+      "id": "be_linux_cli",
+      "name": "Linux Fundamentals & Command Line Tools",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Linux Fundamentals & Command Line Tools in Backend Engineering & Distributed Systems.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_be_linux_cli_01",
+        "res_be_linux_cli_02",
+        "res_be_linux_cli_03"
+      ]
+    },
+    {
+      "id": "be_process_threads",
+      "name": "Operating System Processes & Multithreading",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Operating System Processes & Multithreading in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_process_threads_01",
+        "res_be_process_threads_02",
+        "res_be_process_threads_03"
+      ]
+    },
+    {
+      "id": "be_memory_io",
+      "name": "Memory Management & File I/O Models",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Memory Management & File I/O Models in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_memory_io_01",
+        "res_be_memory_io_02",
+        "res_be_memory_io_03"
+      ]
+    },
+    {
+      "id": "be_networking_tcp_ip",
+      "name": "Computer Networking: TCP/IP & DNS",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Computer Networking: TCP/IP & DNS in Backend Engineering & Distributed Systems.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_be_networking_tcp_ip_01",
+        "res_be_networking_tcp_ip_02",
+        "res_be_networking_tcp_ip_03"
+      ]
+    },
+    {
+      "id": "be_http_https_protocol",
+      "name": "HTTP/1.1 & HTTP/2 Protocols & TLS",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for HTTP/1.1 & HTTP/2 Protocols & TLS in Backend Engineering & Distributed Systems.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_be_http_https_protocol_01",
+        "res_be_http_https_protocol_02",
+        "res_be_http_https_protocol_03"
+      ]
+    },
+    {
+      "id": "be_rest_api_design",
+      "name": "RESTful API Design & OpenAPI / Swagger",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for RESTful API Design & OpenAPI / Swagger in Backend Engineering & Distributed Systems.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_rest_api_design_01",
+        "res_be_rest_api_design_02",
+        "res_be_rest_api_design_03"
+      ]
+    },
+    {
+      "id": "be_websockets_grpc",
+      "name": "Real-Time WebSockets & gRPC Protocols",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Real-Time WebSockets & gRPC Protocols in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_websockets_grpc_01",
+        "res_be_websockets_grpc_02",
+        "res_be_websockets_grpc_03"
+      ]
+    },
+    {
+      "id": "be_python_backend_async",
+      "name": "Asynchronous Programming in Python (asyncio)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Asynchronous Programming in Python (asyncio) in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_python_backend_async_01",
+        "res_be_python_backend_async_02",
+        "res_be_python_backend_async_03"
+      ]
+    },
+    {
+      "id": "be_fastapi_framework",
+      "name": "FastAPI Framework & ASGI Architecture",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for FastAPI Framework & ASGI Architecture in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_fastapi_framework_01",
+        "res_be_fastapi_framework_02",
+        "res_be_fastapi_framework_03"
+      ]
+    },
+    {
+      "id": "be_pydantic_validation",
+      "name": "Data Modeling & Validation with Pydantic v2",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Data Modeling & Validation with Pydantic v2 in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_be_pydantic_validation_01",
+        "res_be_pydantic_validation_02",
+        "res_be_pydantic_validation_03"
+      ]
+    },
+    {
+      "id": "be_sql_relational_modeling",
+      "name": "Relational Database Modeling & Normalization",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Relational Database Modeling & Normalization in Backend Engineering & Distributed Systems.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_sql_relational_modeling_01",
+        "res_be_sql_relational_modeling_02",
+        "res_be_sql_relational_modeling_03"
+      ]
+    },
+    {
+      "id": "be_sql_queries_joins",
+      "name": "Advanced SQL Queries, Subqueries & Joins",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Advanced SQL Queries, Subqueries & Joins in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_sql_queries_joins_01",
+        "res_be_sql_queries_joins_02",
+        "res_be_sql_queries_joins_03"
+      ]
+    },
+    {
+      "id": "be_indexing_query_opt",
+      "name": "Database Indexing (B-Tree, Hash) & Query Optimization",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Database Indexing (B-Tree, Hash) & Query Optimization in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_indexing_query_opt_01",
+        "res_be_indexing_query_opt_02",
+        "res_be_indexing_query_opt_03"
+      ]
+    },
+    {
+      "id": "be_transactions_acid",
+      "name": "Database Transactions, ACID Guarantees & Isolation Levels",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Database Transactions, ACID Guarantees & Isolation Levels in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_transactions_acid_01",
+        "res_be_transactions_acid_02",
+        "res_be_transactions_acid_03"
+      ]
+    },
+    {
+      "id": "be_sqlalchemy_orm",
+      "name": "SQLAlchemy 2.0 ORM & Async Engine",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for SQLAlchemy 2.0 ORM & Async Engine in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_sqlalchemy_orm_01",
+        "res_be_sqlalchemy_orm_02",
+        "res_be_sqlalchemy_orm_03"
+      ]
+    },
+    {
+      "id": "be_database_migrations_alembic",
+      "name": "Database Schema Migrations with Alembic",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Database Schema Migrations with Alembic in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_be_database_migrations_alembic_01",
+        "res_be_database_migrations_alembic_02",
+        "res_be_database_migrations_alembic_03"
+      ]
+    },
+    {
+      "id": "be_nosql_document_stores",
+      "name": "NoSQL Document Databases (MongoDB)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for NoSQL Document Databases (MongoDB) in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_nosql_document_stores_01",
+        "res_be_nosql_document_stores_02",
+        "res_be_nosql_document_stores_03"
+      ]
+    },
+    {
+      "id": "be_caching_strategies",
+      "name": "Caching Strategies (Cache-Aside, Write-Through)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Caching Strategies (Cache-Aside, Write-Through) in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_be_caching_strategies_01",
+        "res_be_caching_strategies_02",
+        "res_be_caching_strategies_03"
+      ]
+    },
+    {
+      "id": "be_redis_in_memory_cache",
+      "name": "Redis In-Memory Data Store & TTL Expiry",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Redis In-Memory Data Store & TTL Expiry in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_redis_in_memory_cache_01",
+        "res_be_redis_in_memory_cache_02",
+        "res_be_redis_in_memory_cache_03"
+      ]
+    },
+    {
+      "id": "be_cdn_edge_caching",
+      "name": "Content Delivery Networks & Edge Caching",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Content Delivery Networks & Edge Caching in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_be_cdn_edge_caching_01",
+        "res_be_cdn_edge_caching_02",
+        "res_be_cdn_edge_caching_03"
+      ]
+    },
+    {
+      "id": "be_hashing_encryption",
+      "name": "Cryptography: Password Hashing (Bcrypt) & Salting",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Cryptography: Password Hashing (Bcrypt) & Salting in Backend Engineering & Distributed Systems.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_be_hashing_encryption_01",
+        "res_be_hashing_encryption_02",
+        "res_be_hashing_encryption_03"
+      ]
+    },
+    {
+      "id": "be_jwt_stateless_auth",
+      "name": "Stateless Authentication with JWT Tokens",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Stateless Authentication with JWT Tokens in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_jwt_stateless_auth_01",
+        "res_be_jwt_stateless_auth_02",
+        "res_be_jwt_stateless_auth_03"
+      ]
+    },
+    {
+      "id": "be_oauth2_oidc",
+      "name": "OAuth2 & OpenID Connect Protocols",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for OAuth2 & OpenID Connect Protocols in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_oauth2_oidc_01",
+        "res_be_oauth2_oidc_02",
+        "res_be_oauth2_oidc_03"
+      ]
+    },
+    {
+      "id": "be_api_security_rate_limiting",
+      "name": "API Security: Rate Limiting & OWASP Top 10",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for API Security: Rate Limiting & OWASP Top 10 in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_api_security_rate_limiting_01",
+        "res_be_api_security_rate_limiting_02",
+        "res_be_api_security_rate_limiting_03"
+      ]
+    },
+    {
+      "id": "be_message_broker_fundamentals",
+      "name": "Message Queuing & Broker Fundamentals",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Message Queuing & Broker Fundamentals in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_be_message_broker_fundamentals_01",
+        "res_be_message_broker_fundamentals_02",
+        "res_be_message_broker_fundamentals_03"
+      ]
+    },
+    {
+      "id": "be_rabbitmq_task_queues",
+      "name": "RabbitMQ Task Queues & AMQP Protocol",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for RabbitMQ Task Queues & AMQP Protocol in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_rabbitmq_task_queues_01",
+        "res_be_rabbitmq_task_queues_02",
+        "res_be_rabbitmq_task_queues_03"
+      ]
+    },
+    {
+      "id": "be_kafka_event_streaming",
+      "name": "Apache Kafka Distributed Event Streaming",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Apache Kafka Distributed Event Streaming in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 70,
+      "resource_ids": [
+        "res_be_kafka_event_streaming_01",
+        "res_be_kafka_event_streaming_02",
+        "res_be_kafka_event_streaming_03"
+      ]
+    },
+    {
+      "id": "be_background_workers_celery",
+      "name": "Distributed Background Tasks with Celery",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Distributed Background Tasks with Celery in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_background_workers_celery_01",
+        "res_be_background_workers_celery_02",
+        "res_be_background_workers_celery_03"
+      ]
+    },
+    {
+      "id": "be_docker_containerization",
+      "name": "Docker Containerization & Image Optimization",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Docker Containerization & Image Optimization in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_docker_containerization_01",
+        "res_be_docker_containerization_02",
+        "res_be_docker_containerization_03"
+      ]
+    },
+    {
+      "id": "be_docker_compose_multi_service",
+      "name": "Docker Compose Multi-Container Orchestration",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Docker Compose Multi-Container Orchestration in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_docker_compose_multi_service_01",
+        "res_be_docker_compose_multi_service_02",
+        "res_be_docker_compose_multi_service_03"
+      ]
+    },
+    {
+      "id": "be_ci_cd_pipelines",
+      "name": "CI/CD Automation with GitHub Actions",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for CI/CD Automation with GitHub Actions in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_be_ci_cd_pipelines_01",
+        "res_be_ci_cd_pipelines_02",
+        "res_be_ci_cd_pipelines_03"
+      ]
+    },
+    {
+      "id": "be_kubernetes_basics",
+      "name": "Kubernetes Pods, Deployments & Services",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Kubernetes Pods, Deployments & Services in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 75,
+      "resource_ids": [
+        "res_be_kubernetes_basics_01",
+        "res_be_kubernetes_basics_02",
+        "res_be_kubernetes_basics_03"
+      ]
+    },
+    {
+      "id": "be_cloud_infrastructure_aws_gcp",
+      "name": "Cloud Infrastructure Fundamentals (Compute, VPC, S3)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Cloud Infrastructure Fundamentals (Compute, VPC, S3) in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_cloud_infrastructure_aws_gcp_01",
+        "res_be_cloud_infrastructure_aws_gcp_02",
+        "res_be_cloud_infrastructure_aws_gcp_03"
+      ]
+    },
+    {
+      "id": "be_structured_logging",
+      "name": "Structured Logging (JSON) & Log Aggregation",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Structured Logging (JSON) & Log Aggregation in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_be_structured_logging_01",
+        "res_be_structured_logging_02",
+        "res_be_structured_logging_03"
+      ]
+    },
+    {
+      "id": "be_metrics_prometheus_grafana",
+      "name": "Metrics Instrumentation with Prometheus & Grafana",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Metrics Instrumentation with Prometheus & Grafana in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_metrics_prometheus_grafana_01",
+        "res_be_metrics_prometheus_grafana_02",
+        "res_be_metrics_prometheus_grafana_03"
+      ]
+    },
+    {
+      "id": "be_distributed_tracing_opentelemetry",
+      "name": "Distributed Tracing with OpenTelemetry & Jaeger",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Distributed Tracing with OpenTelemetry & Jaeger in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_distributed_tracing_opentelemetry_01",
+        "res_be_distributed_tracing_opentelemetry_02",
+        "res_be_distributed_tracing_opentelemetry_03"
+      ]
+    },
+    {
+      "id": "be_resilience_circuit_breakers",
+      "name": "Resilience Patterns: Circuit Breakers & Retries",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Resilience Patterns: Circuit Breakers & Retries in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_resilience_circuit_breakers_01",
+        "res_be_resilience_circuit_breakers_02",
+        "res_be_resilience_circuit_breakers_03"
+      ]
+    },
+    {
+      "id": "be_microservices_architecture",
+      "name": "Microservices Design Principles & Boundaries",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Microservices Design Principles & Boundaries in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_microservices_architecture_01",
+        "res_be_microservices_architecture_02",
+        "res_be_microservices_architecture_03"
+      ]
+    },
+    {
+      "id": "be_api_gateway_load_balancing",
+      "name": "API Gateway & Layer 7 Load Balancing (Nginx, Envoy)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for API Gateway & Layer 7 Load Balancing (Nginx, Envoy) in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_be_api_gateway_load_balancing_01",
+        "res_be_api_gateway_load_balancing_02",
+        "res_be_api_gateway_load_balancing_03"
+      ]
+    },
+    {
+      "id": "be_service_discovery",
+      "name": "Service Discovery & Health Checking (Consul/K8s)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Service Discovery & Health Checking (Consul/K8s) in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_be_service_discovery_01",
+        "res_be_service_discovery_02",
+        "res_be_service_discovery_03"
+      ]
+    },
+    {
+      "id": "be_database_sharding_replication",
+      "name": "Database Read Replication & Sharding Strategies",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Database Read Replication & Sharding Strategies in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 70,
+      "resource_ids": [
+        "res_be_database_sharding_replication_01",
+        "res_be_database_sharding_replication_02",
+        "res_be_database_sharding_replication_03"
+      ]
+    },
+    {
+      "id": "be_event_driven_architecture",
+      "name": "Event-Driven Architecture & Event Sourcing (CQRS)",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Event-Driven Architecture & Event Sourcing (CQRS) in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 75,
+      "resource_ids": [
+        "res_be_event_driven_architecture_01",
+        "res_be_event_driven_architecture_02",
+        "res_be_event_driven_architecture_03"
+      ]
+    },
+    {
+      "id": "be_distributed_transactions_saga",
+      "name": "Distributed Transactions & SAGA Pattern",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Distributed Transactions & SAGA Pattern in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 75,
+      "resource_ids": [
+        "res_be_distributed_transactions_saga_01",
+        "res_be_distributed_transactions_saga_02",
+        "res_be_distributed_transactions_saga_03"
+      ]
+    },
+    {
+      "id": "be_system_design_scalability",
+      "name": "High-Throughput System Design & Scalability Patterns",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for High-Throughput System Design & Scalability Patterns in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 90,
+      "resource_ids": [
+        "res_be_system_design_scalability_01",
+        "res_be_system_design_scalability_02",
+        "res_be_system_design_scalability_03"
+      ]
+    },
+    {
+      "id": "be_production_incident_management",
+      "name": "Production Incident Response & Post-Mortems",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Production Incident Response & Post-Mortems in Backend Engineering & Distributed Systems.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_be_production_incident_management_01",
+        "res_be_production_incident_management_02",
+        "res_be_production_incident_management_03"
+      ]
+    },
+    {
+      "id": "be_capstone_distributed_system",
+      "name": "Capstone: Production Distributed Backend System",
+      "domain": "backend_engineering",
+      "description": "Comprehensive competency and implementation guidelines for Capstone: Production Distributed Backend System in Backend Engineering & Distributed Systems.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 120,
+      "resource_ids": [
+        "res_be_capstone_distributed_system_01",
+        "res_be_capstone_distributed_system_02",
+        "res_be_capstone_distributed_system_03"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "source_skill_id": "be_linux_cli",
+      "target_skill_id": "be_process_threads",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_process_threads",
+      "target_skill_id": "be_memory_io",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_networking_tcp_ip",
+      "target_skill_id": "be_http_https_protocol",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_http_https_protocol",
+      "target_skill_id": "be_rest_api_design",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_http_https_protocol",
+      "target_skill_id": "be_websockets_grpc",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_process_threads",
+      "target_skill_id": "be_python_backend_async",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_rest_api_design",
+      "target_skill_id": "be_fastapi_framework",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_python_backend_async",
+      "target_skill_id": "be_fastapi_framework",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_fastapi_framework",
+      "target_skill_id": "be_pydantic_validation",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_sql_relational_modeling",
+      "target_skill_id": "be_sql_queries_joins",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_sql_queries_joins",
+      "target_skill_id": "be_indexing_query_opt",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_sql_queries_joins",
+      "target_skill_id": "be_transactions_acid",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_transactions_acid",
+      "target_skill_id": "be_sqlalchemy_orm",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_pydantic_validation",
+      "target_skill_id": "be_sqlalchemy_orm",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_sqlalchemy_orm",
+      "target_skill_id": "be_database_migrations_alembic",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_rest_api_design",
+      "target_skill_id": "be_nosql_document_stores",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_rest_api_design",
+      "target_skill_id": "be_caching_strategies",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_caching_strategies",
+      "target_skill_id": "be_redis_in_memory_cache",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_caching_strategies",
+      "target_skill_id": "be_cdn_edge_caching",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_hashing_encryption",
+      "target_skill_id": "be_jwt_stateless_auth",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_fastapi_framework",
+      "target_skill_id": "be_jwt_stateless_auth",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_jwt_stateless_auth",
+      "target_skill_id": "be_oauth2_oidc",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_jwt_stateless_auth",
+      "target_skill_id": "be_api_security_rate_limiting",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_process_threads",
+      "target_skill_id": "be_message_broker_fundamentals",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_message_broker_fundamentals",
+      "target_skill_id": "be_rabbitmq_task_queues",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_message_broker_fundamentals",
+      "target_skill_id": "be_kafka_event_streaming",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_rabbitmq_task_queues",
+      "target_skill_id": "be_background_workers_celery",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_redis_in_memory_cache",
+      "target_skill_id": "be_background_workers_celery",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_linux_cli",
+      "target_skill_id": "be_docker_containerization",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_docker_containerization",
+      "target_skill_id": "be_docker_compose_multi_service",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_redis_in_memory_cache",
+      "target_skill_id": "be_docker_compose_multi_service",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_docker_containerization",
+      "target_skill_id": "be_ci_cd_pipelines",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_docker_compose_multi_service",
+      "target_skill_id": "be_kubernetes_basics",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_docker_containerization",
+      "target_skill_id": "be_cloud_infrastructure_aws_gcp",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_fastapi_framework",
+      "target_skill_id": "be_structured_logging",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_fastapi_framework",
+      "target_skill_id": "be_metrics_prometheus_grafana",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_structured_logging",
+      "target_skill_id": "be_distributed_tracing_opentelemetry",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_distributed_tracing_opentelemetry",
+      "target_skill_id": "be_resilience_circuit_breakers",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_rest_api_design",
+      "target_skill_id": "be_microservices_architecture",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_docker_compose_multi_service",
+      "target_skill_id": "be_microservices_architecture",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_microservices_architecture",
+      "target_skill_id": "be_api_gateway_load_balancing",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_api_gateway_load_balancing",
+      "target_skill_id": "be_service_discovery",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_indexing_query_opt",
+      "target_skill_id": "be_database_sharding_replication",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_transactions_acid",
+      "target_skill_id": "be_database_sharding_replication",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_kafka_event_streaming",
+      "target_skill_id": "be_event_driven_architecture",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_microservices_architecture",
+      "target_skill_id": "be_event_driven_architecture",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_event_driven_architecture",
+      "target_skill_id": "be_distributed_transactions_saga",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_transactions_acid",
+      "target_skill_id": "be_distributed_transactions_saga",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_database_sharding_replication",
+      "target_skill_id": "be_system_design_scalability",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_event_driven_architecture",
+      "target_skill_id": "be_system_design_scalability",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_api_gateway_load_balancing",
+      "target_skill_id": "be_system_design_scalability",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_metrics_prometheus_grafana",
+      "target_skill_id": "be_production_incident_management",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_structured_logging",
+      "target_skill_id": "be_production_incident_management",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_system_design_scalability",
+      "target_skill_id": "be_capstone_distributed_system",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_resilience_circuit_breakers",
+      "target_skill_id": "be_capstone_distributed_system",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "be_ci_cd_pipelines",
+      "target_skill_id": "be_capstone_distributed_system",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    }
+  ]
+}

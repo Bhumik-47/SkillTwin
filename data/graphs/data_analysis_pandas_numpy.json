@@ -1,0 +1,1479 @@
+{
+  "domain": "data_analysis_pandas_numpy",
+  "domain_name": "Data Analysis with Pandas & NumPy",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "da_numpy_arrays",
+      "name": "NumPy Arrays & Data Types",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for NumPy Arrays & Data Types in Data Analysis with Pandas & NumPy.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 35,
+      "resource_ids": [
+        "res_da_numpy_arrays_01",
+        "res_da_numpy_arrays_02",
+        "res_da_numpy_arrays_03"
+      ]
+    },
+    {
+      "id": "da_numpy_operations",
+      "name": "NumPy Vectorized Math Operations",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for NumPy Vectorized Math Operations in Data Analysis with Pandas & NumPy.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_da_numpy_operations_01",
+        "res_da_numpy_operations_02",
+        "res_da_numpy_operations_03"
+      ]
+    },
+    {
+      "id": "da_numpy_broadcasting",
+      "name": "Array Slicing & Broadcasting",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Array Slicing & Broadcasting in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_numpy_broadcasting_01",
+        "res_da_numpy_broadcasting_02",
+        "res_da_numpy_broadcasting_03"
+      ]
+    },
+    {
+      "id": "da_pandas_series",
+      "name": "Pandas Series Structure & Indexing",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Pandas Series Structure & Indexing in Data Analysis with Pandas & NumPy.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 35,
+      "resource_ids": [
+        "res_da_pandas_series_01",
+        "res_da_pandas_series_02",
+        "res_da_pandas_series_03"
+      ]
+    },
+    {
+      "id": "da_pandas_dataframes",
+      "name": "Pandas DataFrames & Ingestion (CSV/JSON)",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Pandas DataFrames & Ingestion (CSV/JSON) in Data Analysis with Pandas & NumPy.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_pandas_dataframes_01",
+        "res_da_pandas_dataframes_02",
+        "res_da_pandas_dataframes_03"
+      ]
+    },
+    {
+      "id": "da_data_inspection",
+      "name": "Data Exploration (info, describe, head)",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Data Exploration (info, describe, head) in Data Analysis with Pandas & NumPy.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 30,
+      "resource_ids": [
+        "res_da_data_inspection_01",
+        "res_da_data_inspection_02",
+        "res_da_data_inspection_03"
+      ]
+    },
+    {
+      "id": "da_indexing_filtering",
+      "name": "DataFrame Boolean Indexing & loc/iloc",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for DataFrame Boolean Indexing & loc/iloc in Data Analysis with Pandas & NumPy.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_indexing_filtering_01",
+        "res_da_indexing_filtering_02",
+        "res_da_indexing_filtering_03"
+      ]
+    },
+    {
+      "id": "da_missing_data",
+      "name": "Handling Missing Values (fillna/dropna)",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Handling Missing Values (fillna/dropna) in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_da_missing_data_01",
+        "res_da_missing_data_02",
+        "res_da_missing_data_03"
+      ]
+    },
+    {
+      "id": "da_data_cleaning",
+      "name": "Data Type Casting & String Manipulation",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Data Type Casting & String Manipulation in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_data_cleaning_01",
+        "res_da_data_cleaning_02",
+        "res_da_data_cleaning_03"
+      ]
+    },
+    {
+      "id": "da_groupby_aggregations",
+      "name": "GroupBy Operations & Split-Apply-Combine",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for GroupBy Operations & Split-Apply-Combine in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_da_groupby_aggregations_01",
+        "res_da_groupby_aggregations_02",
+        "res_da_groupby_aggregations_03"
+      ]
+    },
+    {
+      "id": "da_merging_joining",
+      "name": "DataFrame Merging, Joining & Concat",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for DataFrame Merging, Joining & Concat in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_da_merging_joining_01",
+        "res_da_merging_joining_02",
+        "res_da_merging_joining_03"
+      ]
+    },
+    {
+      "id": "da_reshaping_pivoting",
+      "name": "Reshaping Data: Pivot Tables & Melt",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Reshaping Data: Pivot Tables & Melt in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_reshaping_pivoting_01",
+        "res_da_reshaping_pivoting_02",
+        "res_da_reshaping_pivoting_03"
+      ]
+    },
+    {
+      "id": "da_time_series",
+      "name": "Time Series Analysis & Date Range Resampling",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Time Series Analysis & Date Range Resampling in Data Analysis with Pandas & NumPy.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_da_time_series_01",
+        "res_da_time_series_02",
+        "res_da_time_series_03"
+      ]
+    },
+    {
+      "id": "da_visualization_matplotlib",
+      "name": "Data Visualization with Matplotlib",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Data Visualization with Matplotlib in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_visualization_matplotlib_01",
+        "res_da_visualization_matplotlib_02",
+        "res_da_visualization_matplotlib_03"
+      ]
+    },
+    {
+      "id": "da_visualization_seaborn",
+      "name": "Statistical Visualization with Seaborn",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for Statistical Visualization with Seaborn in Data Analysis with Pandas & NumPy.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_da_visualization_seaborn_01",
+        "res_da_visualization_seaborn_02",
+        "res_da_visualization_seaborn_03"
+      ]
+    },
+    {
+      "id": "da_eda_case_study",
+      "name": "End-to-End Exploratory Data Analysis Case Study",
+      "domain": "data_analysis_pandas_numpy",
+      "description": "Comprehensive competency and implementation guidelines for End-to-End Exploratory Data Analysis Case Study in Data Analysis with Pandas & NumPy.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 90,
+      "resource_ids": [
+        "res_da_eda_case_study_01",
+        "res_da_eda_case_study_02",
+        "res_da_eda_case_study_03"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "source_skill_id": "da_numpy_arrays",
+      "target_skill_id": "da_numpy_operations",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_numpy_operations",
+      "target_skill_id": "da_numpy_broadcasting",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_numpy_arrays",
+      "target_skill_id": "da_pandas_series",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_pandas_series",
+      "target_skill_id": "da_pandas_dataframes",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_pandas_dataframes",
+      "target_skill_id": "da_data_inspection",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_pandas_dataframes",
+      "target_skill_id": "da_indexing_filtering",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_indexing_filtering",
+      "target_skill_id": "da_missing_data",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_missing_data",
+      "target_skill_id": "da_data_cleaning",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_indexing_filtering",
+      "target_skill_id": "da_groupby_aggregations",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_pandas_dataframes",
+      "target_skill_id": "da_merging_joining",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_groupby_aggregations",
+      "target_skill_id": "da_reshaping_pivoting",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_merging_joining",
+      "target_skill_id": "da_reshaping_pivoting",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_groupby_aggregations",
+      "target_skill_id": "da_time_series",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_pandas_dataframes",
+      "target_skill_id": "da_visualization_matplotlib",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_visualization_matplotlib",
+      "target_skill_id": "da_visualization_seaborn",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_data_cleaning",
+      "target_skill_id": "da_eda_case_study",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_groupby_aggregations",
+      "target_skill_id": "da_eda_case_study",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "da_visualization_seaborn",
+      "target_skill_id": "da_eda_case_study",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    }
+  ],
+  "resources": [
+    {
+      "id": "res_da_numpy_arrays_01",
+      "skill_id": "da_numpy_arrays",
+      "title": "NumPy Arrays & Data Types Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_arrays/res_da_numpy_arrays_01",
+      "duration_minutes": 17,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering NumPy Arrays & Data Types Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of NumPy Arrays & Data Types?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of NumPy Arrays & Data Types Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_arrays_02",
+      "skill_id": "da_numpy_arrays",
+      "title": "NumPy Arrays & Data Types Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_arrays/res_da_numpy_arrays_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering NumPy Arrays & Data Types Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of NumPy Arrays & Data Types in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of NumPy Arrays & Data Types Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_arrays_03",
+      "skill_id": "da_numpy_arrays",
+      "title": "NumPy Arrays & Data Types Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_arrays/res_da_numpy_arrays_03",
+      "duration_minutes": 35,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering NumPy Arrays & Data Types Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for NumPy Arrays & Data Types, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of NumPy Arrays & Data Types Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_operations_01",
+      "skill_id": "da_numpy_operations",
+      "title": "NumPy Vectorized Math Operations Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_operations/res_da_numpy_operations_01",
+      "duration_minutes": 20,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering NumPy Vectorized Math Operations Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of NumPy Vectorized Math Operations?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of NumPy Vectorized Math Operations Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_operations_02",
+      "skill_id": "da_numpy_operations",
+      "title": "NumPy Vectorized Math Operations Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_operations/res_da_numpy_operations_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering NumPy Vectorized Math Operations Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of NumPy Vectorized Math Operations in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of NumPy Vectorized Math Operations Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_operations_03",
+      "skill_id": "da_numpy_operations",
+      "title": "NumPy Vectorized Math Operations Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_operations/res_da_numpy_operations_03",
+      "duration_minutes": 40,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering NumPy Vectorized Math Operations Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for NumPy Vectorized Math Operations, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of NumPy Vectorized Math Operations Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_broadcasting_01",
+      "skill_id": "da_numpy_broadcasting",
+      "title": "Array Slicing & Broadcasting Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_broadcasting/res_da_numpy_broadcasting_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Array Slicing & Broadcasting Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Array Slicing & Broadcasting?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Array Slicing & Broadcasting Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_broadcasting_02",
+      "skill_id": "da_numpy_broadcasting",
+      "title": "Array Slicing & Broadcasting Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_broadcasting/res_da_numpy_broadcasting_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Array Slicing & Broadcasting Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Array Slicing & Broadcasting in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Array Slicing & Broadcasting Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_numpy_broadcasting_03",
+      "skill_id": "da_numpy_broadcasting",
+      "title": "Array Slicing & Broadcasting Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_numpy_broadcasting/res_da_numpy_broadcasting_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Array Slicing & Broadcasting Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Array Slicing & Broadcasting, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Array Slicing & Broadcasting Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_pandas_series_01",
+      "skill_id": "da_pandas_series",
+      "title": "Pandas Series Structure & Indexing Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_pandas_series/res_da_pandas_series_01",
+      "duration_minutes": 17,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Pandas Series Structure & Indexing Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Pandas Series Structure & Indexing?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Pandas Series Structure & Indexing Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_pandas_series_02",
+      "skill_id": "da_pandas_series",
+      "title": "Pandas Series Structure & Indexing Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_pandas_series/res_da_pandas_series_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Pandas Series Structure & Indexing Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Pandas Series Structure & Indexing in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Pandas Series Structure & Indexing Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_pandas_series_03",
+      "skill_id": "da_pandas_series",
+      "title": "Pandas Series Structure & Indexing Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_pandas_series/res_da_pandas_series_03",
+      "duration_minutes": 35,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Pandas Series Structure & Indexing Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Pandas Series Structure & Indexing, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Pandas Series Structure & Indexing Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_pandas_dataframes_01",
+      "skill_id": "da_pandas_dataframes",
+      "title": "Pandas DataFrames & Ingestion (CSV/JSON) Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_pandas_dataframes/res_da_pandas_dataframes_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Pandas DataFrames & Ingestion (CSV/JSON) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Pandas DataFrames & Ingestion (CSV/JSON)?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Pandas DataFrames & Ingestion (CSV/JSON) Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_pandas_dataframes_02",
+      "skill_id": "da_pandas_dataframes",
+      "title": "Pandas DataFrames & Ingestion (CSV/JSON) Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_pandas_dataframes/res_da_pandas_dataframes_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Pandas DataFrames & Ingestion (CSV/JSON) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Pandas DataFrames & Ingestion (CSV/JSON) in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Pandas DataFrames & Ingestion (CSV/JSON) Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_pandas_dataframes_03",
+      "skill_id": "da_pandas_dataframes",
+      "title": "Pandas DataFrames & Ingestion (CSV/JSON) Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_pandas_dataframes/res_da_pandas_dataframes_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Pandas DataFrames & Ingestion (CSV/JSON) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Pandas DataFrames & Ingestion (CSV/JSON), what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Pandas DataFrames & Ingestion (CSV/JSON) Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_data_inspection_01",
+      "skill_id": "da_data_inspection",
+      "title": "Data Exploration (info, describe, head) Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_data_inspection/res_da_data_inspection_01",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Data Exploration (info, describe, head) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Data Exploration (info, describe, head)?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Exploration (info, describe, head) Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_data_inspection_02",
+      "skill_id": "da_data_inspection",
+      "title": "Data Exploration (info, describe, head) Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_data_inspection/res_da_data_inspection_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Data Exploration (info, describe, head) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Data Exploration (info, describe, head) in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Exploration (info, describe, head) Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_data_inspection_03",
+      "skill_id": "da_data_inspection",
+      "title": "Data Exploration (info, describe, head) Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_data_inspection/res_da_data_inspection_03",
+      "duration_minutes": 30,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Data Exploration (info, describe, head) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Data Exploration (info, describe, head), what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Exploration (info, describe, head) Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_indexing_filtering_01",
+      "skill_id": "da_indexing_filtering",
+      "title": "DataFrame Boolean Indexing & loc/iloc Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_indexing_filtering/res_da_indexing_filtering_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering DataFrame Boolean Indexing & loc/iloc Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of DataFrame Boolean Indexing & loc/iloc?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DataFrame Boolean Indexing & loc/iloc Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_indexing_filtering_02",
+      "skill_id": "da_indexing_filtering",
+      "title": "DataFrame Boolean Indexing & loc/iloc Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_indexing_filtering/res_da_indexing_filtering_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering DataFrame Boolean Indexing & loc/iloc Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of DataFrame Boolean Indexing & loc/iloc in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DataFrame Boolean Indexing & loc/iloc Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_indexing_filtering_03",
+      "skill_id": "da_indexing_filtering",
+      "title": "DataFrame Boolean Indexing & loc/iloc Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_indexing_filtering/res_da_indexing_filtering_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering DataFrame Boolean Indexing & loc/iloc Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for DataFrame Boolean Indexing & loc/iloc, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DataFrame Boolean Indexing & loc/iloc Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_missing_data_01",
+      "skill_id": "da_missing_data",
+      "title": "Handling Missing Values (fillna/dropna) Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_missing_data/res_da_missing_data_01",
+      "duration_minutes": 20,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Handling Missing Values (fillna/dropna) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Handling Missing Values (fillna/dropna)?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Handling Missing Values (fillna/dropna) Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_missing_data_02",
+      "skill_id": "da_missing_data",
+      "title": "Handling Missing Values (fillna/dropna) Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_missing_data/res_da_missing_data_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Handling Missing Values (fillna/dropna) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Handling Missing Values (fillna/dropna) in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Handling Missing Values (fillna/dropna) Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_missing_data_03",
+      "skill_id": "da_missing_data",
+      "title": "Handling Missing Values (fillna/dropna) Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_missing_data/res_da_missing_data_03",
+      "duration_minutes": 40,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Handling Missing Values (fillna/dropna) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Handling Missing Values (fillna/dropna), what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Handling Missing Values (fillna/dropna) Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_data_cleaning_01",
+      "skill_id": "da_data_cleaning",
+      "title": "Data Type Casting & String Manipulation Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_data_cleaning/res_da_data_cleaning_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Data Type Casting & String Manipulation Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Data Type Casting & String Manipulation?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Type Casting & String Manipulation Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_data_cleaning_02",
+      "skill_id": "da_data_cleaning",
+      "title": "Data Type Casting & String Manipulation Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_data_cleaning/res_da_data_cleaning_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Data Type Casting & String Manipulation Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Data Type Casting & String Manipulation in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Type Casting & String Manipulation Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_data_cleaning_03",
+      "skill_id": "da_data_cleaning",
+      "title": "Data Type Casting & String Manipulation Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_data_cleaning/res_da_data_cleaning_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Data Type Casting & String Manipulation Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Data Type Casting & String Manipulation, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Type Casting & String Manipulation Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_groupby_aggregations_01",
+      "skill_id": "da_groupby_aggregations",
+      "title": "GroupBy Operations & Split-Apply-Combine Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_groupby_aggregations/res_da_groupby_aggregations_01",
+      "duration_minutes": 27,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering GroupBy Operations & Split-Apply-Combine Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of GroupBy Operations & Split-Apply-Combine?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of GroupBy Operations & Split-Apply-Combine Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_groupby_aggregations_02",
+      "skill_id": "da_groupby_aggregations",
+      "title": "GroupBy Operations & Split-Apply-Combine Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_groupby_aggregations/res_da_groupby_aggregations_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering GroupBy Operations & Split-Apply-Combine Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of GroupBy Operations & Split-Apply-Combine in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of GroupBy Operations & Split-Apply-Combine Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_groupby_aggregations_03",
+      "skill_id": "da_groupby_aggregations",
+      "title": "GroupBy Operations & Split-Apply-Combine Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_groupby_aggregations/res_da_groupby_aggregations_03",
+      "duration_minutes": 55,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering GroupBy Operations & Split-Apply-Combine Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for GroupBy Operations & Split-Apply-Combine, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of GroupBy Operations & Split-Apply-Combine Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_merging_joining_01",
+      "skill_id": "da_merging_joining",
+      "title": "DataFrame Merging, Joining & Concat Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_merging_joining/res_da_merging_joining_01",
+      "duration_minutes": 25,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering DataFrame Merging, Joining & Concat Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of DataFrame Merging, Joining & Concat?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DataFrame Merging, Joining & Concat Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_merging_joining_02",
+      "skill_id": "da_merging_joining",
+      "title": "DataFrame Merging, Joining & Concat Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_merging_joining/res_da_merging_joining_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering DataFrame Merging, Joining & Concat Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of DataFrame Merging, Joining & Concat in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DataFrame Merging, Joining & Concat Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_merging_joining_03",
+      "skill_id": "da_merging_joining",
+      "title": "DataFrame Merging, Joining & Concat Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_merging_joining/res_da_merging_joining_03",
+      "duration_minutes": 50,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering DataFrame Merging, Joining & Concat Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for DataFrame Merging, Joining & Concat, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DataFrame Merging, Joining & Concat Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_reshaping_pivoting_01",
+      "skill_id": "da_reshaping_pivoting",
+      "title": "Reshaping Data: Pivot Tables & Melt Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_reshaping_pivoting/res_da_reshaping_pivoting_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Reshaping Data: Pivot Tables & Melt Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Reshaping Data: Pivot Tables & Melt?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Reshaping Data: Pivot Tables & Melt Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_reshaping_pivoting_02",
+      "skill_id": "da_reshaping_pivoting",
+      "title": "Reshaping Data: Pivot Tables & Melt Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_reshaping_pivoting/res_da_reshaping_pivoting_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Reshaping Data: Pivot Tables & Melt Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Reshaping Data: Pivot Tables & Melt in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Reshaping Data: Pivot Tables & Melt Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_reshaping_pivoting_03",
+      "skill_id": "da_reshaping_pivoting",
+      "title": "Reshaping Data: Pivot Tables & Melt Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_reshaping_pivoting/res_da_reshaping_pivoting_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Reshaping Data: Pivot Tables & Melt Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Reshaping Data: Pivot Tables & Melt, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Reshaping Data: Pivot Tables & Melt Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_time_series_01",
+      "skill_id": "da_time_series",
+      "title": "Time Series Analysis & Date Range Resampling Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_time_series/res_da_time_series_01",
+      "duration_minutes": 27,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Time Series Analysis & Date Range Resampling Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Time Series Analysis & Date Range Resampling?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Time Series Analysis & Date Range Resampling Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_time_series_02",
+      "skill_id": "da_time_series",
+      "title": "Time Series Analysis & Date Range Resampling Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_time_series/res_da_time_series_02",
+      "duration_minutes": 15,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Time Series Analysis & Date Range Resampling Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Time Series Analysis & Date Range Resampling in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Time Series Analysis & Date Range Resampling Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_time_series_03",
+      "skill_id": "da_time_series",
+      "title": "Time Series Analysis & Date Range Resampling Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_time_series/res_da_time_series_03",
+      "duration_minutes": 55,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Time Series Analysis & Date Range Resampling Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Time Series Analysis & Date Range Resampling, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Time Series Analysis & Date Range Resampling Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_visualization_matplotlib_01",
+      "skill_id": "da_visualization_matplotlib",
+      "title": "Data Visualization with Matplotlib Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_visualization_matplotlib/res_da_visualization_matplotlib_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Data Visualization with Matplotlib Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Data Visualization with Matplotlib?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Visualization with Matplotlib Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_visualization_matplotlib_02",
+      "skill_id": "da_visualization_matplotlib",
+      "title": "Data Visualization with Matplotlib Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_visualization_matplotlib/res_da_visualization_matplotlib_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Data Visualization with Matplotlib Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Data Visualization with Matplotlib in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Visualization with Matplotlib Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_visualization_matplotlib_03",
+      "skill_id": "da_visualization_matplotlib",
+      "title": "Data Visualization with Matplotlib Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_visualization_matplotlib/res_da_visualization_matplotlib_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Data Visualization with Matplotlib Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Data Visualization with Matplotlib, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Data Visualization with Matplotlib Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_visualization_seaborn_01",
+      "skill_id": "da_visualization_seaborn",
+      "title": "Statistical Visualization with Seaborn Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_visualization_seaborn/res_da_visualization_seaborn_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Statistical Visualization with Seaborn Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Statistical Visualization with Seaborn?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Statistical Visualization with Seaborn Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_visualization_seaborn_02",
+      "skill_id": "da_visualization_seaborn",
+      "title": "Statistical Visualization with Seaborn Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_visualization_seaborn/res_da_visualization_seaborn_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Statistical Visualization with Seaborn Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Statistical Visualization with Seaborn in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Statistical Visualization with Seaborn Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_visualization_seaborn_03",
+      "skill_id": "da_visualization_seaborn",
+      "title": "Statistical Visualization with Seaborn Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_visualization_seaborn/res_da_visualization_seaborn_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Statistical Visualization with Seaborn Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Statistical Visualization with Seaborn, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Statistical Visualization with Seaborn Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_da_eda_case_study_01",
+      "skill_id": "da_eda_case_study",
+      "title": "End-to-End Exploratory Data Analysis Case Study Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/da_eda_case_study/res_da_eda_case_study_01",
+      "duration_minutes": 45,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering End-to-End Exploratory Data Analysis Case Study Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of End-to-End Exploratory Data Analysis Case Study?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of End-to-End Exploratory Data Analysis Case Study Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_da_eda_case_study_02",
+      "skill_id": "da_eda_case_study",
+      "title": "End-to-End Exploratory Data Analysis Case Study Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/da_eda_case_study/res_da_eda_case_study_02",
+      "duration_minutes": 15,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering End-to-End Exploratory Data Analysis Case Study Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of End-to-End Exploratory Data Analysis Case Study in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of End-to-End Exploratory Data Analysis Case Study Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_da_eda_case_study_03",
+      "skill_id": "da_eda_case_study",
+      "title": "End-to-End Exploratory Data Analysis Case Study Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/da_eda_case_study/res_da_eda_case_study_03",
+      "duration_minutes": 90,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering End-to-End Exploratory Data Analysis Case Study Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for End-to-End Exploratory Data Analysis Case Study, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of End-to-End Exploratory Data Analysis Case Study Hands-on Coding Project."
+        }
+      }
+    }
+  ]
+}
