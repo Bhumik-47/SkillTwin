@@ -1,0 +1,158 @@
+{
+  "questions": [
+    {
+      "id": "q_http_01",
+      "skill_id": "http_basics",
+      "prompt": "Which HTTP status code should a server return when a request creates a new resource successfully?",
+      "options": [
+        { "id": "a", "text": "200 OK", "is_correct": false, "explanation": "200 OK is for standard successful responses without resource creation." },
+        { "id": "b", "text": "201 Created", "is_correct": true, "explanation": "201 Created indicates the request succeeded and a new resource was created, typically including a Location header." },
+        { "id": "c", "text": "204 No Content", "is_correct": false, "explanation": "204 No Content is for actions that succeed but produce no response body." },
+        { "id": "d", "text": "301 Moved Permanently", "is_correct": false, "explanation": "301 is a redirection status code." }
+      ]
+    },
+    {
+      "id": "q_rest_01",
+      "skill_id": "restful_api_design",
+      "prompt": "According to REST semantics, which HTTP method must be idempotent?",
+      "options": [
+        { "id": "a", "text": "POST", "is_correct": false, "explanation": "POST is typically non-idempotent because repeated calls create multiple resources." },
+        { "id": "b", "text": "PUT", "is_correct": true, "explanation": "PUT is strictly idempotent: making multiple identical PUT requests produces the exact same server state as a single request." },
+        { "id": "c", "text": "PATCH", "is_correct": false, "explanation": "PATCH can be non-idempotent depending on the delta instruction." },
+        { "id": "d", "text": "CONNECT", "is_correct": false, "explanation": "CONNECT is used to establish tunnel connections." }
+      ]
+    },
+    {
+      "id": "q_sql_01",
+      "skill_id": "sql_query_optimization",
+      "prompt": "Why can an index on (last_name, first_name) NOT be used efficiently for the query `WHERE first_name = 'Alex'`?",
+      "options": [
+        { "id": "a", "text": "Because B-Trees store data in descending order only.", "is_correct": false, "explanation": "B-Trees support bidirectional scans." },
+        { "id": "b", "text": "Due to the Leftmost Prefix Rule in composite B-Tree indexes.", "is_correct": true, "explanation": "Composite indexes can only be searched starting from the leftmost column (last_name). Filtering only on the second column forces a full scan of the index." },
+        { "id": "c", "text": "Because string comparisons cannot use B-Trees.", "is_correct": false, "explanation": "B-Trees are optimized for string ordering." },
+        { "id": "d", "text": "Because first_name is a reserved SQL keyword.", "is_correct": false, "explanation": "first_name is a standard identifier." }
+      ]
+    },
+    {
+      "id": "q_acid_01",
+      "skill_id": "acid_transactions",
+      "prompt": "Which isolation level prevents Dirty Reads and Non-Repeatable Reads, but may still permit Phantom Reads in standard SQL-92?",
+      "options": [
+        { "id": "a", "text": "Read Uncommitted", "is_correct": false, "explanation": "Allows dirty reads." },
+        { "id": "b", "text": "Read Committed", "is_correct": false, "explanation": "Allows non-repeatable reads." },
+        { "id": "c", "text": "Repeatable Read", "is_correct": true, "explanation": "Repeatable Read guarantees rows read cannot change during transaction, but new inserted rows (phantoms) may appear without range locks." },
+        { "id": "d", "text": "Serializable", "is_correct": false, "explanation": "Serializable prevents all anomalies including phantoms." }
+      ]
+    },
+    {
+      "id": "q_redis_01",
+      "skill_id": "redis_key_value",
+      "prompt": "Which Redis data structure is optimal for maintaining a real-time leaderboard sorted by user scores with O(log N) insertion?",
+      "options": [
+        { "id": "a", "text": "Redis Hashes (HSET)", "is_correct": false, "explanation": "Hashes store field-value pairs without ordering." },
+        { "id": "b", "text": "Redis Sorted Sets (ZSET)", "is_correct": true, "explanation": "Sorted Sets store elements ordered by score using skip lists and hash tables, supporting O(log N) updates and range queries." },
+        { "id": "c", "text": "Redis Lists (LPUSH)", "is_correct": false, "explanation": "Lists are ordered by insertion time, not score values." },
+        { "id": "d", "text": "Redis HyperLogLog", "is_correct": false, "explanation": "HyperLogLog estimates cardinality of unique items." }
+      ]
+    },
+    {
+      "id": "q_caching_01",
+      "skill_id": "caching_patterns",
+      "prompt": "In the Cache-Aside (Lazy Loading) pattern, what happens when a read misses the cache?",
+      "options": [
+        { "id": "a", "text": "The database writes to the cache directly.", "is_correct": false, "explanation": "The DB is unaware of the application cache." },
+        { "id": "b", "text": "The application reads from the DB, writes the result to cache, and returns it.", "is_correct": true, "explanation": "In Cache-Aside, the application queries the cache first. On a miss, it fetches from the primary DB, populates the cache, and serves the client." },
+        { "id": "c", "text": "The client retries after 500ms.", "is_correct": false, "explanation": "The client receives the response synchronously from DB." },
+        { "id": "d", "text": "A background queue asynchronously refreshes all keys.", "is_correct": false, "explanation": "That describes Refresh-Ahead caching." }
+      ]
+    },
+    {
+      "id": "q_jwt_01",
+      "skill_id": "jwt_token_auth",
+      "prompt": "What is the primary vulnerability of storing sensitive JWT access tokens in browser `localStorage`?",
+      "options": [
+        { "id": "a", "text": "Cross-Site Request Forgery (CSRF)", "is_correct": false, "explanation": "CSRF affects automatic cookie transmission, not manual Authorization headers." },
+        { "id": "b", "text": "Cross-Site Scripting (XSS) token exfiltration", "is_correct": true, "explanation": "Any injected JavaScript can access window.localStorage and exfiltrate the JWT. HttpOnly cookies protect against script access." },
+        { "id": "c", "text": "DNS Poisoning", "is_correct": false, "explanation": "DNS poisoning is an infra network attack." },
+        { "id": "d", "text": "SQL Injection", "is_correct": false, "explanation": "Local storage does not execute SQL." }
+      ]
+    },
+    {
+      "id": "q_kafka_01",
+      "skill_id": "event_streaming_kafka",
+      "prompt": "In Apache Kafka, what determines the maximum number of active consumers in a single consumer group that can process messages concurrently?",
+      "options": [
+        { "id": "a", "text": "The number of broker nodes in the cluster.", "is_correct": false, "explanation": "Brokers host topics, but consumer parallelism is tied to partitions." },
+        { "id": "b", "text": "The number of topic partitions.", "is_correct": true, "explanation": "Each partition is consumed by exactly one consumer in a consumer group at any time. Extra consumers remain idle." },
+        { "id": "c", "text": "The total size of the message log in GB.", "is_correct": false, "explanation": "Log size does not limit consumer allocation." },
+        { "id": "d", "text": "The ZooKeeper / KRaft quorum size.", "is_correct": false, "explanation": "The quorum manages metadata, not partition consumption limits." }
+      ]
+    },
+    {
+      "id": "q_py_ctrl_01",
+      "skill_id": "control_flow",
+      "prompt": "What will be the output of `bool([]) or (5 and 0)` in Python?",
+      "options": [
+        { "id": "a", "text": "True", "is_correct": false, "explanation": "bool([]) is False, and (5 and 0) evaluates to 0." },
+        { "id": "b", "text": "0", "is_correct": true, "explanation": "bool([]) is False. In Python `False or X` returns X. `5 and 0` evaluates to 0 because 0 is falsy." },
+        { "id": "c", "text": "False", "is_correct": false, "explanation": "The expression returns the falsy value 0 itself." },
+        { "id": "d", "text": "None", "is_correct": false, "explanation": "None is not returned." }
+      ]
+    },
+    {
+      "id": "q_py_func_01",
+      "skill_id": "functions_and_scopes",
+      "prompt": "What happens when using a mutable default argument like `def add_item(item, target_list=[])` in Python?",
+      "options": [
+        { "id": "a", "text": "A new list is instantiated on every function call.", "is_correct": false, "explanation": "Default argument expressions are evaluated once when the function is defined." },
+        { "id": "b", "text": "The same list object persists across subsequent calls, causing unexpected mutations.", "is_correct": true, "explanation": "Python evaluates default parameters at definition time. Mutating target_list modifies the single shared object across all invocations." },
+        { "id": "c", "text": "Python raises a TypeError at runtime.", "is_correct": false, "explanation": "Mutable defaults are valid syntax." },
+        { "id": "d", "text": "The list becomes read-only.", "is_correct": false, "explanation": "Lists remain mutable." }
+      ]
+    },
+    {
+      "id": "q_web_flex_01",
+      "skill_id": "css_flexbox",
+      "prompt": "In CSS Flexbox, what does `justify-content: space-between` do?",
+      "options": [
+        { "id": "a", "text": "Distributes items evenly along the cross axis.", "is_correct": false, "explanation": "The cross axis is aligned with align-content / align-items." },
+        { "id": "b", "text": "Places first item at start, last at end, with equal space between remaining items along main axis.", "is_correct": true, "explanation": "space-between anchors the extremities and divides available space evenly between interior items." },
+        { "id": "c", "text": "Adds equal margin before the first and after the last item.", "is_correct": false, "explanation": "That describes space-around or space-evenly." },
+        { "id": "d", "text": "Wraps overflowing items onto a new line.", "is_correct": false, "explanation": "Wrapping is controlled by flex-wrap." }
+      ]
+    },
+    {
+      "id": "q_web_async_01",
+      "skill_id": "promises_async_await",
+      "prompt": "When does code following an `await` expression resume execution?",
+      "options": [
+        { "id": "a", "text": "Synchronously in the same call stack turn.", "is_correct": false, "explanation": "Await always yields control back to the event loop." },
+        { "id": "b", "text": "In the microtask queue after the awaited Promise resolves.", "is_correct": true, "explanation": "Promise settlements schedule the continuation into the microtask queue, which drains before macrotasks (timers/I/O)." },
+        { "id": "c", "text": "In a separate OS worker thread.", "is_correct": false, "explanation": "JavaScript execution is single-threaded." },
+        { "id": "d", "text": "After requestAnimationFrame.", "is_correct": false, "explanation": "Microtasks run immediately after the current script turn." }
+      ]
+    },
+    {
+      "id": "q_np_broad_01",
+      "skill_id": "numpy_broadcasting_vectorization",
+      "prompt": "Can a NumPy array of shape (4, 1) be broadcast with an array of shape (1, 3)? What is the resulting shape?",
+      "options": [
+        { "id": "a", "text": "No, ValueError is raised because dimensions do not match.", "is_correct": false, "explanation": "Dimensions with length 1 are stretched to match." },
+        { "id": "b", "text": "Yes, compatible; resulting shape is (4, 3).", "is_correct": true, "explanation": "Both trailing dimensions match rules (1 matches 3 -> 3, 4 matches 1 -> 4), resulting in a (4, 3) broadcast grid." },
+        { "id": "c", "text": "Yes, resulting shape is (12, 1).", "is_correct": false, "explanation": "Shapes are not flattened." },
+        { "id": "d", "text": "Yes, resulting shape is (1, 1).", "is_correct": false, "explanation": "Broadcasting expands dimensions, not shrinks them." }
+      ]
+    },
+    {
+      "id": "q_pd_loc_01",
+      "skill_id": "pandas_loc_iloc_selection",
+      "prompt": "In Pandas, what is the key difference between `df.loc[]` and `df.iloc[]`?",
+      "options": [
+        { "id": "a", "text": ".loc is for rows only, .iloc is for columns only.", "is_correct": false, "explanation": "Both accept row and column indexers." },
+        { "id": "b", "text": ".loc is label-based (inclusive of slice end), while .iloc is integer position-based (exclusive of slice end).", "is_correct": true, "explanation": ".loc uses index/column labels and includes endpoint; .iloc uses 0-based integer positions and obeys standard Python exclusive slice rules." },
+        { "id": "c", "text": ".iloc supports boolean masks while .loc does not.", "is_correct": false, "explanation": "Both support boolean indexing." },
+        { "id": "d", "text": ".loc creates a deep copy, .iloc creates a view.", "is_correct": false, "explanation": "View/copy depends on memory layout, not accessor." }
+      ]
+    }
+  ]
+}
