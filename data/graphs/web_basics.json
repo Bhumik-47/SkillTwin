@@ -1,0 +1,1485 @@
+{
+  "domain": "web_basics",
+  "domain_name": "Web Basics: HTML, CSS & JavaScript",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "web_html_semantics",
+      "name": "Semantic HTML5 Structure & a11y",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Semantic HTML5 Structure & a11y in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 30,
+      "resource_ids": [
+        "res_web_html_semantics_01",
+        "res_web_html_semantics_02",
+        "res_web_html_semantics_03"
+      ]
+    },
+    {
+      "id": "web_html_forms",
+      "name": "HTML5 Forms & Client Validation",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for HTML5 Forms & Client Validation in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 35,
+      "resource_ids": [
+        "res_web_html_forms_01",
+        "res_web_html_forms_02",
+        "res_web_html_forms_03"
+      ]
+    },
+    {
+      "id": "web_css_box_model",
+      "name": "CSS Box Model, Spacing & Sizing",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for CSS Box Model, Spacing & Sizing in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_web_css_box_model_01",
+        "res_web_css_box_model_02",
+        "res_web_css_box_model_03"
+      ]
+    },
+    {
+      "id": "web_css_flexbox",
+      "name": "CSS Flexbox Layout Design",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for CSS Flexbox Layout Design in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_web_css_flexbox_01",
+        "res_web_css_flexbox_02",
+        "res_web_css_flexbox_03"
+      ]
+    },
+    {
+      "id": "web_css_grid",
+      "name": "CSS Grid Systems & Two-Dimensional Layouts",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for CSS Grid Systems & Two-Dimensional Layouts in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_web_css_grid_01",
+        "res_web_css_grid_02",
+        "res_web_css_grid_03"
+      ]
+    },
+    {
+      "id": "web_css_responsive",
+      "name": "Responsive Design & Media Queries",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Responsive Design & Media Queries in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_web_css_responsive_01",
+        "res_web_css_responsive_02",
+        "res_web_css_responsive_03"
+      ]
+    },
+    {
+      "id": "web_css_variables_animations",
+      "name": "Modern CSS: Variables & Animations",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Modern CSS: Variables & Animations in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_web_css_variables_animations_01",
+        "res_web_css_variables_animations_02",
+        "res_web_css_variables_animations_03"
+      ]
+    },
+    {
+      "id": "web_js_syntax_types",
+      "name": "Modern JS (ES6+): Syntax, Scope & Types",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Modern JS (ES6+): Syntax, Scope & Types in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_web_js_syntax_types_01",
+        "res_web_js_syntax_types_02",
+        "res_web_js_syntax_types_03"
+      ]
+    },
+    {
+      "id": "web_js_functions_arrow",
+      "name": "JS Functions, Arrow Syntax & Closures",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for JS Functions, Arrow Syntax & Closures in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_web_js_functions_arrow_01",
+        "res_web_js_functions_arrow_02",
+        "res_web_js_functions_arrow_03"
+      ]
+    },
+    {
+      "id": "web_js_arrays_objects",
+      "name": "Array Methods (map/filter) & Destructuring",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Array Methods (map/filter) & Destructuring in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_web_js_arrays_objects_01",
+        "res_web_js_arrays_objects_02",
+        "res_web_js_arrays_objects_03"
+      ]
+    },
+    {
+      "id": "web_dom_manipulation",
+      "name": "DOM Tree Traversal & Manipulation",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for DOM Tree Traversal & Manipulation in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_web_dom_manipulation_01",
+        "res_web_dom_manipulation_02",
+        "res_web_dom_manipulation_03"
+      ]
+    },
+    {
+      "id": "web_event_handling",
+      "name": "Event Listeners & Event Delegation",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Event Listeners & Event Delegation in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_web_event_handling_01",
+        "res_web_event_handling_02",
+        "res_web_event_handling_03"
+      ]
+    },
+    {
+      "id": "web_async_promises",
+      "name": "Asynchronous JS: Promises & async/await",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Asynchronous JS: Promises & async/await in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_web_async_promises_01",
+        "res_web_async_promises_02",
+        "res_web_async_promises_03"
+      ]
+    },
+    {
+      "id": "web_fetch_api",
+      "name": "Fetch API & REST API Integration",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Fetch API & REST API Integration in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_web_fetch_api_01",
+        "res_web_fetch_api_02",
+        "res_web_fetch_api_03"
+      ]
+    },
+    {
+      "id": "web_browser_storage",
+      "name": "Browser Storage: LocalStorage & Cookies",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Browser Storage: LocalStorage & Cookies in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 35,
+      "resource_ids": [
+        "res_web_browser_storage_01",
+        "res_web_browser_storage_02",
+        "res_web_browser_storage_03"
+      ]
+    },
+    {
+      "id": "web_security_basics",
+      "name": "Web Security: CORS, XSS & CSRF Defense",
+      "domain": "web_basics",
+      "description": "Comprehensive competency and implementation guidelines for Web Security: CORS, XSS & CSRF Defense in Web Basics: HTML, CSS & JavaScript.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_web_security_basics_01",
+        "res_web_security_basics_02",
+        "res_web_security_basics_03"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "source_skill_id": "web_html_semantics",
+      "target_skill_id": "web_html_forms",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_html_semantics",
+      "target_skill_id": "web_css_box_model",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_css_box_model",
+      "target_skill_id": "web_css_flexbox",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_css_box_model",
+      "target_skill_id": "web_css_grid",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_css_flexbox",
+      "target_skill_id": "web_css_responsive",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_css_grid",
+      "target_skill_id": "web_css_responsive",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_css_responsive",
+      "target_skill_id": "web_css_variables_animations",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_html_semantics",
+      "target_skill_id": "web_js_syntax_types",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_js_syntax_types",
+      "target_skill_id": "web_js_functions_arrow",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_js_functions_arrow",
+      "target_skill_id": "web_js_arrays_objects",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_js_arrays_objects",
+      "target_skill_id": "web_dom_manipulation",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_css_box_model",
+      "target_skill_id": "web_dom_manipulation",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_dom_manipulation",
+      "target_skill_id": "web_event_handling",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_js_functions_arrow",
+      "target_skill_id": "web_async_promises",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_async_promises",
+      "target_skill_id": "web_fetch_api",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_event_handling",
+      "target_skill_id": "web_fetch_api",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_js_arrays_objects",
+      "target_skill_id": "web_browser_storage",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_fetch_api",
+      "target_skill_id": "web_security_basics",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "web_browser_storage",
+      "target_skill_id": "web_security_basics",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    }
+  ],
+  "resources": [
+    {
+      "id": "res_web_html_semantics_01",
+      "skill_id": "web_html_semantics",
+      "title": "Semantic HTML5 Structure & a11y Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_html_semantics/res_web_html_semantics_01",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Semantic HTML5 Structure & a11y Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Semantic HTML5 Structure & a11y?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Semantic HTML5 Structure & a11y Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_html_semantics_02",
+      "skill_id": "web_html_semantics",
+      "title": "Semantic HTML5 Structure & a11y Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_html_semantics/res_web_html_semantics_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Semantic HTML5 Structure & a11y Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Semantic HTML5 Structure & a11y in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Semantic HTML5 Structure & a11y Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_html_semantics_03",
+      "skill_id": "web_html_semantics",
+      "title": "Semantic HTML5 Structure & a11y Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_html_semantics/res_web_html_semantics_03",
+      "duration_minutes": 30,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Semantic HTML5 Structure & a11y Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Semantic HTML5 Structure & a11y, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Semantic HTML5 Structure & a11y Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_html_forms_01",
+      "skill_id": "web_html_forms",
+      "title": "HTML5 Forms & Client Validation Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_html_forms/res_web_html_forms_01",
+      "duration_minutes": 17,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering HTML5 Forms & Client Validation Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of HTML5 Forms & Client Validation?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of HTML5 Forms & Client Validation Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_html_forms_02",
+      "skill_id": "web_html_forms",
+      "title": "HTML5 Forms & Client Validation Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_html_forms/res_web_html_forms_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering HTML5 Forms & Client Validation Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of HTML5 Forms & Client Validation in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of HTML5 Forms & Client Validation Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_html_forms_03",
+      "skill_id": "web_html_forms",
+      "title": "HTML5 Forms & Client Validation Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_html_forms/res_web_html_forms_03",
+      "duration_minutes": 35,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering HTML5 Forms & Client Validation Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for HTML5 Forms & Client Validation, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of HTML5 Forms & Client Validation Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_box_model_01",
+      "skill_id": "web_css_box_model",
+      "title": "CSS Box Model, Spacing & Sizing Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_css_box_model/res_web_css_box_model_01",
+      "duration_minutes": 20,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering CSS Box Model, Spacing & Sizing Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of CSS Box Model, Spacing & Sizing?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Box Model, Spacing & Sizing Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_box_model_02",
+      "skill_id": "web_css_box_model",
+      "title": "CSS Box Model, Spacing & Sizing Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_css_box_model/res_web_css_box_model_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering CSS Box Model, Spacing & Sizing Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of CSS Box Model, Spacing & Sizing in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Box Model, Spacing & Sizing Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_box_model_03",
+      "skill_id": "web_css_box_model",
+      "title": "CSS Box Model, Spacing & Sizing Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_css_box_model/res_web_css_box_model_03",
+      "duration_minutes": 40,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering CSS Box Model, Spacing & Sizing Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for CSS Box Model, Spacing & Sizing, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Box Model, Spacing & Sizing Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_flexbox_01",
+      "skill_id": "web_css_flexbox",
+      "title": "CSS Flexbox Layout Design Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_css_flexbox/res_web_css_flexbox_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering CSS Flexbox Layout Design Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of CSS Flexbox Layout Design?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Flexbox Layout Design Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_flexbox_02",
+      "skill_id": "web_css_flexbox",
+      "title": "CSS Flexbox Layout Design Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_css_flexbox/res_web_css_flexbox_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering CSS Flexbox Layout Design Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of CSS Flexbox Layout Design in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Flexbox Layout Design Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_flexbox_03",
+      "skill_id": "web_css_flexbox",
+      "title": "CSS Flexbox Layout Design Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_css_flexbox/res_web_css_flexbox_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering CSS Flexbox Layout Design Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for CSS Flexbox Layout Design, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Flexbox Layout Design Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_grid_01",
+      "skill_id": "web_css_grid",
+      "title": "CSS Grid Systems & Two-Dimensional Layouts Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_css_grid/res_web_css_grid_01",
+      "duration_minutes": 25,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering CSS Grid Systems & Two-Dimensional Layouts Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of CSS Grid Systems & Two-Dimensional Layouts?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Grid Systems & Two-Dimensional Layouts Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_grid_02",
+      "skill_id": "web_css_grid",
+      "title": "CSS Grid Systems & Two-Dimensional Layouts Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_css_grid/res_web_css_grid_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering CSS Grid Systems & Two-Dimensional Layouts Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of CSS Grid Systems & Two-Dimensional Layouts in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Grid Systems & Two-Dimensional Layouts Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_grid_03",
+      "skill_id": "web_css_grid",
+      "title": "CSS Grid Systems & Two-Dimensional Layouts Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_css_grid/res_web_css_grid_03",
+      "duration_minutes": 50,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering CSS Grid Systems & Two-Dimensional Layouts Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for CSS Grid Systems & Two-Dimensional Layouts, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of CSS Grid Systems & Two-Dimensional Layouts Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_responsive_01",
+      "skill_id": "web_css_responsive",
+      "title": "Responsive Design & Media Queries Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_css_responsive/res_web_css_responsive_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Responsive Design & Media Queries Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Responsive Design & Media Queries?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Responsive Design & Media Queries Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_responsive_02",
+      "skill_id": "web_css_responsive",
+      "title": "Responsive Design & Media Queries Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_css_responsive/res_web_css_responsive_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Responsive Design & Media Queries Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Responsive Design & Media Queries in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Responsive Design & Media Queries Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_responsive_03",
+      "skill_id": "web_css_responsive",
+      "title": "Responsive Design & Media Queries Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_css_responsive/res_web_css_responsive_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Responsive Design & Media Queries Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Responsive Design & Media Queries, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Responsive Design & Media Queries Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_variables_animations_01",
+      "skill_id": "web_css_variables_animations",
+      "title": "Modern CSS: Variables & Animations Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_css_variables_animations/res_web_css_variables_animations_01",
+      "duration_minutes": 20,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Modern CSS: Variables & Animations Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Modern CSS: Variables & Animations?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modern CSS: Variables & Animations Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_variables_animations_02",
+      "skill_id": "web_css_variables_animations",
+      "title": "Modern CSS: Variables & Animations Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_css_variables_animations/res_web_css_variables_animations_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Modern CSS: Variables & Animations Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Modern CSS: Variables & Animations in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modern CSS: Variables & Animations Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_css_variables_animations_03",
+      "skill_id": "web_css_variables_animations",
+      "title": "Modern CSS: Variables & Animations Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_css_variables_animations/res_web_css_variables_animations_03",
+      "duration_minutes": 40,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Modern CSS: Variables & Animations Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Modern CSS: Variables & Animations, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modern CSS: Variables & Animations Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_syntax_types_01",
+      "skill_id": "web_js_syntax_types",
+      "title": "Modern JS (ES6+): Syntax, Scope & Types Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_js_syntax_types/res_web_js_syntax_types_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Modern JS (ES6+): Syntax, Scope & Types Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Modern JS (ES6+): Syntax, Scope & Types?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modern JS (ES6+): Syntax, Scope & Types Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_syntax_types_02",
+      "skill_id": "web_js_syntax_types",
+      "title": "Modern JS (ES6+): Syntax, Scope & Types Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_js_syntax_types/res_web_js_syntax_types_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Modern JS (ES6+): Syntax, Scope & Types Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Modern JS (ES6+): Syntax, Scope & Types in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modern JS (ES6+): Syntax, Scope & Types Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_syntax_types_03",
+      "skill_id": "web_js_syntax_types",
+      "title": "Modern JS (ES6+): Syntax, Scope & Types Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_js_syntax_types/res_web_js_syntax_types_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Modern JS (ES6+): Syntax, Scope & Types Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Modern JS (ES6+): Syntax, Scope & Types, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modern JS (ES6+): Syntax, Scope & Types Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_functions_arrow_01",
+      "skill_id": "web_js_functions_arrow",
+      "title": "JS Functions, Arrow Syntax & Closures Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_js_functions_arrow/res_web_js_functions_arrow_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering JS Functions, Arrow Syntax & Closures Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of JS Functions, Arrow Syntax & Closures?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of JS Functions, Arrow Syntax & Closures Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_functions_arrow_02",
+      "skill_id": "web_js_functions_arrow",
+      "title": "JS Functions, Arrow Syntax & Closures Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_js_functions_arrow/res_web_js_functions_arrow_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering JS Functions, Arrow Syntax & Closures Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of JS Functions, Arrow Syntax & Closures in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of JS Functions, Arrow Syntax & Closures Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_functions_arrow_03",
+      "skill_id": "web_js_functions_arrow",
+      "title": "JS Functions, Arrow Syntax & Closures Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_js_functions_arrow/res_web_js_functions_arrow_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering JS Functions, Arrow Syntax & Closures Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for JS Functions, Arrow Syntax & Closures, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of JS Functions, Arrow Syntax & Closures Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_arrays_objects_01",
+      "skill_id": "web_js_arrays_objects",
+      "title": "Array Methods (map/filter) & Destructuring Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_js_arrays_objects/res_web_js_arrays_objects_01",
+      "duration_minutes": 25,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Array Methods (map/filter) & Destructuring Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Array Methods (map/filter) & Destructuring?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Array Methods (map/filter) & Destructuring Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_arrays_objects_02",
+      "skill_id": "web_js_arrays_objects",
+      "title": "Array Methods (map/filter) & Destructuring Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_js_arrays_objects/res_web_js_arrays_objects_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Array Methods (map/filter) & Destructuring Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Array Methods (map/filter) & Destructuring in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Array Methods (map/filter) & Destructuring Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_js_arrays_objects_03",
+      "skill_id": "web_js_arrays_objects",
+      "title": "Array Methods (map/filter) & Destructuring Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_js_arrays_objects/res_web_js_arrays_objects_03",
+      "duration_minutes": 50,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Array Methods (map/filter) & Destructuring Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Array Methods (map/filter) & Destructuring, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Array Methods (map/filter) & Destructuring Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_dom_manipulation_01",
+      "skill_id": "web_dom_manipulation",
+      "title": "DOM Tree Traversal & Manipulation Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_dom_manipulation/res_web_dom_manipulation_01",
+      "duration_minutes": 25,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering DOM Tree Traversal & Manipulation Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of DOM Tree Traversal & Manipulation?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DOM Tree Traversal & Manipulation Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_dom_manipulation_02",
+      "skill_id": "web_dom_manipulation",
+      "title": "DOM Tree Traversal & Manipulation Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_dom_manipulation/res_web_dom_manipulation_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering DOM Tree Traversal & Manipulation Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of DOM Tree Traversal & Manipulation in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DOM Tree Traversal & Manipulation Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_dom_manipulation_03",
+      "skill_id": "web_dom_manipulation",
+      "title": "DOM Tree Traversal & Manipulation Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_dom_manipulation/res_web_dom_manipulation_03",
+      "duration_minutes": 50,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering DOM Tree Traversal & Manipulation Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for DOM Tree Traversal & Manipulation, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of DOM Tree Traversal & Manipulation Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_event_handling_01",
+      "skill_id": "web_event_handling",
+      "title": "Event Listeners & Event Delegation Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_event_handling/res_web_event_handling_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Event Listeners & Event Delegation Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Event Listeners & Event Delegation?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Event Listeners & Event Delegation Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_event_handling_02",
+      "skill_id": "web_event_handling",
+      "title": "Event Listeners & Event Delegation Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_event_handling/res_web_event_handling_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Event Listeners & Event Delegation Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Event Listeners & Event Delegation in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Event Listeners & Event Delegation Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_event_handling_03",
+      "skill_id": "web_event_handling",
+      "title": "Event Listeners & Event Delegation Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_event_handling/res_web_event_handling_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Event Listeners & Event Delegation Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Event Listeners & Event Delegation, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Event Listeners & Event Delegation Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_async_promises_01",
+      "skill_id": "web_async_promises",
+      "title": "Asynchronous JS: Promises & async/await Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_async_promises/res_web_async_promises_01",
+      "duration_minutes": 27,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Asynchronous JS: Promises & async/await Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Asynchronous JS: Promises & async/await?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Asynchronous JS: Promises & async/await Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_async_promises_02",
+      "skill_id": "web_async_promises",
+      "title": "Asynchronous JS: Promises & async/await Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_async_promises/res_web_async_promises_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Asynchronous JS: Promises & async/await Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Asynchronous JS: Promises & async/await in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Asynchronous JS: Promises & async/await Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_async_promises_03",
+      "skill_id": "web_async_promises",
+      "title": "Asynchronous JS: Promises & async/await Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_async_promises/res_web_async_promises_03",
+      "duration_minutes": 55,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Asynchronous JS: Promises & async/await Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Asynchronous JS: Promises & async/await, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Asynchronous JS: Promises & async/await Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_fetch_api_01",
+      "skill_id": "web_fetch_api",
+      "title": "Fetch API & REST API Integration Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_fetch_api/res_web_fetch_api_01",
+      "duration_minutes": 25,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Fetch API & REST API Integration Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Fetch API & REST API Integration?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Fetch API & REST API Integration Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_fetch_api_02",
+      "skill_id": "web_fetch_api",
+      "title": "Fetch API & REST API Integration Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_fetch_api/res_web_fetch_api_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Fetch API & REST API Integration Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Fetch API & REST API Integration in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Fetch API & REST API Integration Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_fetch_api_03",
+      "skill_id": "web_fetch_api",
+      "title": "Fetch API & REST API Integration Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_fetch_api/res_web_fetch_api_03",
+      "duration_minutes": 50,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Fetch API & REST API Integration Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Fetch API & REST API Integration, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Fetch API & REST API Integration Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_browser_storage_01",
+      "skill_id": "web_browser_storage",
+      "title": "Browser Storage: LocalStorage & Cookies Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_browser_storage/res_web_browser_storage_01",
+      "duration_minutes": 17,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Browser Storage: LocalStorage & Cookies Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Browser Storage: LocalStorage & Cookies?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Browser Storage: LocalStorage & Cookies Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_browser_storage_02",
+      "skill_id": "web_browser_storage",
+      "title": "Browser Storage: LocalStorage & Cookies Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_browser_storage/res_web_browser_storage_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Browser Storage: LocalStorage & Cookies Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Browser Storage: LocalStorage & Cookies in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Browser Storage: LocalStorage & Cookies Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_browser_storage_03",
+      "skill_id": "web_browser_storage",
+      "title": "Browser Storage: LocalStorage & Cookies Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_browser_storage/res_web_browser_storage_03",
+      "duration_minutes": 35,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Browser Storage: LocalStorage & Cookies Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Browser Storage: LocalStorage & Cookies, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Browser Storage: LocalStorage & Cookies Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_web_security_basics_01",
+      "skill_id": "web_security_basics",
+      "title": "Web Security: CORS, XSS & CSRF Defense Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/web_security_basics/res_web_security_basics_01",
+      "duration_minutes": 25,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Web Security: CORS, XSS & CSRF Defense Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Web Security: CORS, XSS & CSRF Defense?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Web Security: CORS, XSS & CSRF Defense Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_web_security_basics_02",
+      "skill_id": "web_security_basics",
+      "title": "Web Security: CORS, XSS & CSRF Defense Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/web_security_basics/res_web_security_basics_02",
+      "duration_minutes": 15,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Web Security: CORS, XSS & CSRF Defense Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Web Security: CORS, XSS & CSRF Defense in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Web Security: CORS, XSS & CSRF Defense Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_web_security_basics_03",
+      "skill_id": "web_security_basics",
+      "title": "Web Security: CORS, XSS & CSRF Defense Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/web_security_basics/res_web_security_basics_03",
+      "duration_minutes": 50,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Web Security: CORS, XSS & CSRF Defense Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Web Security: CORS, XSS & CSRF Defense, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Web Security: CORS, XSS & CSRF Defense Hands-on Coding Project."
+        }
+      }
+    }
+  ]
+}

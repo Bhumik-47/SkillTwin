@@ -1,14 +1,14 @@
-﻿"""
+"""
 Integration Tests for FastAPI Auth & Profile Endpoints
 """
 import pytest
+import pytest_asyncio
 from httpx import AsyncClient, ASGITransport
 from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
 
 from backend.main import app
 from backend.db.session import Base, get_db
 
-# In-memory database for testing
 TEST_DATABASE_URL = "sqlite+aiosqlite:///:memory:"
 test_engine = create_async_engine(TEST_DATABASE_URL, echo=False)
 TestSessionLocal = async_sessionmaker(test_engine, class_=AsyncSession, expire_on_commit=False)
@@ -19,16 +19,15 @@ async def override_get_db():
         yield session
 
 
-app.dependency_overrides[get_db] = override_get_db
-
-
-@pytest.fixture(autouse=True)
+@pytest_asyncio.fixture(autouse=True)
 async def prepare_database():
+    app.dependency_overrides[get_db] = override_get_db
     async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     yield
     async with test_engine.begin() as conn:
         await conn.run_sync(Base.metadata.drop_all)
+    app.dependency_overrides.pop(get_db, None)
 
 
 @pytest.mark.asyncio

@@ -1,0 +1,3314 @@
+[
+  {
+    "id": "res_be_linux_cli_01",
+    "skill_id": "be_linux_cli",
+    "title": "Linux Fundamentals & Command Line Tools Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_linux_cli/res_be_linux_cli_01",
+    "duration_minutes": 20,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Linux Fundamentals & Command Line Tools Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Linux Fundamentals & Command Line Tools?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Linux Fundamentals & Command Line Tools Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_linux_cli_02",
+    "skill_id": "be_linux_cli",
+    "title": "Linux Fundamentals & Command Line Tools Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_linux_cli/res_be_linux_cli_02",
+    "duration_minutes": 15,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Linux Fundamentals & Command Line Tools Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Linux Fundamentals & Command Line Tools in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Linux Fundamentals & Command Line Tools Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_linux_cli_03",
+    "skill_id": "be_linux_cli",
+    "title": "Linux Fundamentals & Command Line Tools Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_linux_cli/res_be_linux_cli_03",
+    "duration_minutes": 40,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Linux Fundamentals & Command Line Tools Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Linux Fundamentals & Command Line Tools, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Linux Fundamentals & Command Line Tools Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_process_threads_01",
+    "skill_id": "be_process_threads",
+    "title": "Operating System Processes & Multithreading Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_process_threads/res_be_process_threads_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Operating System Processes & Multithreading Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Operating System Processes & Multithreading?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Operating System Processes & Multithreading Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_process_threads_02",
+    "skill_id": "be_process_threads",
+    "title": "Operating System Processes & Multithreading Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_process_threads/res_be_process_threads_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Operating System Processes & Multithreading Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Operating System Processes & Multithreading in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Operating System Processes & Multithreading Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_process_threads_03",
+    "skill_id": "be_process_threads",
+    "title": "Operating System Processes & Multithreading Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_process_threads/res_be_process_threads_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Operating System Processes & Multithreading Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Operating System Processes & Multithreading, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Operating System Processes & Multithreading Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_memory_io_01",
+    "skill_id": "be_memory_io",
+    "title": "Memory Management & File I/O Models Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_memory_io/res_be_memory_io_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Memory Management & File I/O Models Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Memory Management & File I/O Models?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Memory Management & File I/O Models Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_memory_io_02",
+    "skill_id": "be_memory_io",
+    "title": "Memory Management & File I/O Models Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_memory_io/res_be_memory_io_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Memory Management & File I/O Models Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Memory Management & File I/O Models in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Memory Management & File I/O Models Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_memory_io_03",
+    "skill_id": "be_memory_io",
+    "title": "Memory Management & File I/O Models Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_memory_io/res_be_memory_io_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Memory Management & File I/O Models Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Memory Management & File I/O Models, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Memory Management & File I/O Models Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_networking_tcp_ip_01",
+    "skill_id": "be_networking_tcp_ip",
+    "title": "Computer Networking: TCP/IP & DNS Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_networking_tcp_ip/res_be_networking_tcp_ip_01",
+    "duration_minutes": 22,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Computer Networking: TCP/IP & DNS Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Computer Networking: TCP/IP & DNS?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Computer Networking: TCP/IP & DNS Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_networking_tcp_ip_02",
+    "skill_id": "be_networking_tcp_ip",
+    "title": "Computer Networking: TCP/IP & DNS Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_networking_tcp_ip/res_be_networking_tcp_ip_02",
+    "duration_minutes": 15,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Computer Networking: TCP/IP & DNS Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Computer Networking: TCP/IP & DNS in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Computer Networking: TCP/IP & DNS Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_networking_tcp_ip_03",
+    "skill_id": "be_networking_tcp_ip",
+    "title": "Computer Networking: TCP/IP & DNS Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_networking_tcp_ip/res_be_networking_tcp_ip_03",
+    "duration_minutes": 45,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Computer Networking: TCP/IP & DNS Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Computer Networking: TCP/IP & DNS, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Computer Networking: TCP/IP & DNS Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_http_https_protocol_01",
+    "skill_id": "be_http_https_protocol",
+    "title": "HTTP/1.1 & HTTP/2 Protocols & TLS Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_http_https_protocol/res_be_http_https_protocol_01",
+    "duration_minutes": 22,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering HTTP/1.1 & HTTP/2 Protocols & TLS Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of HTTP/1.1 & HTTP/2 Protocols & TLS?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of HTTP/1.1 & HTTP/2 Protocols & TLS Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_http_https_protocol_02",
+    "skill_id": "be_http_https_protocol",
+    "title": "HTTP/1.1 & HTTP/2 Protocols & TLS Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_http_https_protocol/res_be_http_https_protocol_02",
+    "duration_minutes": 15,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering HTTP/1.1 & HTTP/2 Protocols & TLS Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of HTTP/1.1 & HTTP/2 Protocols & TLS in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of HTTP/1.1 & HTTP/2 Protocols & TLS Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_http_https_protocol_03",
+    "skill_id": "be_http_https_protocol",
+    "title": "HTTP/1.1 & HTTP/2 Protocols & TLS Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_http_https_protocol/res_be_http_https_protocol_03",
+    "duration_minutes": 45,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering HTTP/1.1 & HTTP/2 Protocols & TLS Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for HTTP/1.1 & HTTP/2 Protocols & TLS, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of HTTP/1.1 & HTTP/2 Protocols & TLS Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_rest_api_design_01",
+    "skill_id": "be_rest_api_design",
+    "title": "RESTful API Design & OpenAPI / Swagger Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_rest_api_design/res_be_rest_api_design_01",
+    "duration_minutes": 25,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering RESTful API Design & OpenAPI / Swagger Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of RESTful API Design & OpenAPI / Swagger?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of RESTful API Design & OpenAPI / Swagger Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_rest_api_design_02",
+    "skill_id": "be_rest_api_design",
+    "title": "RESTful API Design & OpenAPI / Swagger Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_rest_api_design/res_be_rest_api_design_02",
+    "duration_minutes": 15,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering RESTful API Design & OpenAPI / Swagger Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of RESTful API Design & OpenAPI / Swagger in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of RESTful API Design & OpenAPI / Swagger Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_rest_api_design_03",
+    "skill_id": "be_rest_api_design",
+    "title": "RESTful API Design & OpenAPI / Swagger Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_rest_api_design/res_be_rest_api_design_03",
+    "duration_minutes": 50,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering RESTful API Design & OpenAPI / Swagger Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for RESTful API Design & OpenAPI / Swagger, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of RESTful API Design & OpenAPI / Swagger Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_websockets_grpc_01",
+    "skill_id": "be_websockets_grpc",
+    "title": "Real-Time WebSockets & gRPC Protocols Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_websockets_grpc/res_be_websockets_grpc_01",
+    "duration_minutes": 30,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Real-Time WebSockets & gRPC Protocols Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Real-Time WebSockets & gRPC Protocols?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Real-Time WebSockets & gRPC Protocols Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_websockets_grpc_02",
+    "skill_id": "be_websockets_grpc",
+    "title": "Real-Time WebSockets & gRPC Protocols Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_websockets_grpc/res_be_websockets_grpc_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Real-Time WebSockets & gRPC Protocols Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Real-Time WebSockets & gRPC Protocols in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Real-Time WebSockets & gRPC Protocols Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_websockets_grpc_03",
+    "skill_id": "be_websockets_grpc",
+    "title": "Real-Time WebSockets & gRPC Protocols Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_websockets_grpc/res_be_websockets_grpc_03",
+    "duration_minutes": 60,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Real-Time WebSockets & gRPC Protocols Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Real-Time WebSockets & gRPC Protocols, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Real-Time WebSockets & gRPC Protocols Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_python_backend_async_01",
+    "skill_id": "be_python_backend_async",
+    "title": "Asynchronous Programming in Python (asyncio) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_python_backend_async/res_be_python_backend_async_01",
+    "duration_minutes": 27,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Asynchronous Programming in Python (asyncio) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Asynchronous Programming in Python (asyncio)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Asynchronous Programming in Python (asyncio) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_python_backend_async_02",
+    "skill_id": "be_python_backend_async",
+    "title": "Asynchronous Programming in Python (asyncio) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_python_backend_async/res_be_python_backend_async_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Asynchronous Programming in Python (asyncio) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Asynchronous Programming in Python (asyncio) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Asynchronous Programming in Python (asyncio) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_python_backend_async_03",
+    "skill_id": "be_python_backend_async",
+    "title": "Asynchronous Programming in Python (asyncio) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_python_backend_async/res_be_python_backend_async_03",
+    "duration_minutes": 55,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Asynchronous Programming in Python (asyncio) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Asynchronous Programming in Python (asyncio), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Asynchronous Programming in Python (asyncio) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_fastapi_framework_01",
+    "skill_id": "be_fastapi_framework",
+    "title": "FastAPI Framework & ASGI Architecture Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_fastapi_framework/res_be_fastapi_framework_01",
+    "duration_minutes": 30,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering FastAPI Framework & ASGI Architecture Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of FastAPI Framework & ASGI Architecture?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of FastAPI Framework & ASGI Architecture Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_fastapi_framework_02",
+    "skill_id": "be_fastapi_framework",
+    "title": "FastAPI Framework & ASGI Architecture Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_fastapi_framework/res_be_fastapi_framework_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering FastAPI Framework & ASGI Architecture Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of FastAPI Framework & ASGI Architecture in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of FastAPI Framework & ASGI Architecture Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_fastapi_framework_03",
+    "skill_id": "be_fastapi_framework",
+    "title": "FastAPI Framework & ASGI Architecture Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_fastapi_framework/res_be_fastapi_framework_03",
+    "duration_minutes": 60,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering FastAPI Framework & ASGI Architecture Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for FastAPI Framework & ASGI Architecture, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of FastAPI Framework & ASGI Architecture Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_pydantic_validation_01",
+    "skill_id": "be_pydantic_validation",
+    "title": "Data Modeling & Validation with Pydantic v2 Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_pydantic_validation/res_be_pydantic_validation_01",
+    "duration_minutes": 20,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Data Modeling & Validation with Pydantic v2 Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Data Modeling & Validation with Pydantic v2?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Data Modeling & Validation with Pydantic v2 Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_pydantic_validation_02",
+    "skill_id": "be_pydantic_validation",
+    "title": "Data Modeling & Validation with Pydantic v2 Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_pydantic_validation/res_be_pydantic_validation_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Data Modeling & Validation with Pydantic v2 Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Data Modeling & Validation with Pydantic v2 in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Data Modeling & Validation with Pydantic v2 Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_pydantic_validation_03",
+    "skill_id": "be_pydantic_validation",
+    "title": "Data Modeling & Validation with Pydantic v2 Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_pydantic_validation/res_be_pydantic_validation_03",
+    "duration_minutes": 40,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Data Modeling & Validation with Pydantic v2 Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Data Modeling & Validation with Pydantic v2, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Data Modeling & Validation with Pydantic v2 Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_sql_relational_modeling_01",
+    "skill_id": "be_sql_relational_modeling",
+    "title": "Relational Database Modeling & Normalization Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_sql_relational_modeling/res_be_sql_relational_modeling_01",
+    "duration_minutes": 25,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Relational Database Modeling & Normalization Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Relational Database Modeling & Normalization?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Relational Database Modeling & Normalization Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_sql_relational_modeling_02",
+    "skill_id": "be_sql_relational_modeling",
+    "title": "Relational Database Modeling & Normalization Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_sql_relational_modeling/res_be_sql_relational_modeling_02",
+    "duration_minutes": 15,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Relational Database Modeling & Normalization Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Relational Database Modeling & Normalization in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Relational Database Modeling & Normalization Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_sql_relational_modeling_03",
+    "skill_id": "be_sql_relational_modeling",
+    "title": "Relational Database Modeling & Normalization Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_sql_relational_modeling/res_be_sql_relational_modeling_03",
+    "duration_minutes": 50,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Relational Database Modeling & Normalization Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Relational Database Modeling & Normalization, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Relational Database Modeling & Normalization Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_sql_queries_joins_01",
+    "skill_id": "be_sql_queries_joins",
+    "title": "Advanced SQL Queries, Subqueries & Joins Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_sql_queries_joins/res_be_sql_queries_joins_01",
+    "duration_minutes": 27,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Advanced SQL Queries, Subqueries & Joins Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Advanced SQL Queries, Subqueries & Joins?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Advanced SQL Queries, Subqueries & Joins Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_sql_queries_joins_02",
+    "skill_id": "be_sql_queries_joins",
+    "title": "Advanced SQL Queries, Subqueries & Joins Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_sql_queries_joins/res_be_sql_queries_joins_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Advanced SQL Queries, Subqueries & Joins Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Advanced SQL Queries, Subqueries & Joins in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Advanced SQL Queries, Subqueries & Joins Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_sql_queries_joins_03",
+    "skill_id": "be_sql_queries_joins",
+    "title": "Advanced SQL Queries, Subqueries & Joins Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_sql_queries_joins/res_be_sql_queries_joins_03",
+    "duration_minutes": 55,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Advanced SQL Queries, Subqueries & Joins Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Advanced SQL Queries, Subqueries & Joins, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Advanced SQL Queries, Subqueries & Joins Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_indexing_query_opt_01",
+    "skill_id": "be_indexing_query_opt",
+    "title": "Database Indexing (B-Tree, Hash) & Query Optimization Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_indexing_query_opt/res_be_indexing_query_opt_01",
+    "duration_minutes": 30,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Indexing (B-Tree, Hash) & Query Optimization Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Database Indexing (B-Tree, Hash) & Query Optimization?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Indexing (B-Tree, Hash) & Query Optimization Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_indexing_query_opt_02",
+    "skill_id": "be_indexing_query_opt",
+    "title": "Database Indexing (B-Tree, Hash) & Query Optimization Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_indexing_query_opt/res_be_indexing_query_opt_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Indexing (B-Tree, Hash) & Query Optimization Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Database Indexing (B-Tree, Hash) & Query Optimization in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Indexing (B-Tree, Hash) & Query Optimization Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_indexing_query_opt_03",
+    "skill_id": "be_indexing_query_opt",
+    "title": "Database Indexing (B-Tree, Hash) & Query Optimization Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_indexing_query_opt/res_be_indexing_query_opt_03",
+    "duration_minutes": 60,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Indexing (B-Tree, Hash) & Query Optimization Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Database Indexing (B-Tree, Hash) & Query Optimization, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Indexing (B-Tree, Hash) & Query Optimization Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_transactions_acid_01",
+    "skill_id": "be_transactions_acid",
+    "title": "Database Transactions, ACID Guarantees & Isolation Levels Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_transactions_acid/res_be_transactions_acid_01",
+    "duration_minutes": 30,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Transactions, ACID Guarantees & Isolation Levels Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Database Transactions, ACID Guarantees & Isolation Levels?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Transactions, ACID Guarantees & Isolation Levels Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_transactions_acid_02",
+    "skill_id": "be_transactions_acid",
+    "title": "Database Transactions, ACID Guarantees & Isolation Levels Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_transactions_acid/res_be_transactions_acid_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Transactions, ACID Guarantees & Isolation Levels Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Database Transactions, ACID Guarantees & Isolation Levels in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Transactions, ACID Guarantees & Isolation Levels Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_transactions_acid_03",
+    "skill_id": "be_transactions_acid",
+    "title": "Database Transactions, ACID Guarantees & Isolation Levels Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_transactions_acid/res_be_transactions_acid_03",
+    "duration_minutes": 60,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Transactions, ACID Guarantees & Isolation Levels Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Database Transactions, ACID Guarantees & Isolation Levels, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Transactions, ACID Guarantees & Isolation Levels Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_sqlalchemy_orm_01",
+    "skill_id": "be_sqlalchemy_orm",
+    "title": "SQLAlchemy 2.0 ORM & Async Engine Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_sqlalchemy_orm/res_be_sqlalchemy_orm_01",
+    "duration_minutes": 30,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering SQLAlchemy 2.0 ORM & Async Engine Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of SQLAlchemy 2.0 ORM & Async Engine?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of SQLAlchemy 2.0 ORM & Async Engine Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_sqlalchemy_orm_02",
+    "skill_id": "be_sqlalchemy_orm",
+    "title": "SQLAlchemy 2.0 ORM & Async Engine Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_sqlalchemy_orm/res_be_sqlalchemy_orm_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering SQLAlchemy 2.0 ORM & Async Engine Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of SQLAlchemy 2.0 ORM & Async Engine in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of SQLAlchemy 2.0 ORM & Async Engine Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_sqlalchemy_orm_03",
+    "skill_id": "be_sqlalchemy_orm",
+    "title": "SQLAlchemy 2.0 ORM & Async Engine Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_sqlalchemy_orm/res_be_sqlalchemy_orm_03",
+    "duration_minutes": 60,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering SQLAlchemy 2.0 ORM & Async Engine Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for SQLAlchemy 2.0 ORM & Async Engine, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of SQLAlchemy 2.0 ORM & Async Engine Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_database_migrations_alembic_01",
+    "skill_id": "be_database_migrations_alembic",
+    "title": "Database Schema Migrations with Alembic Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_database_migrations_alembic/res_be_database_migrations_alembic_01",
+    "duration_minutes": 22,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Schema Migrations with Alembic Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Database Schema Migrations with Alembic?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Schema Migrations with Alembic Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_database_migrations_alembic_02",
+    "skill_id": "be_database_migrations_alembic",
+    "title": "Database Schema Migrations with Alembic Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_database_migrations_alembic/res_be_database_migrations_alembic_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Schema Migrations with Alembic Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Database Schema Migrations with Alembic in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Schema Migrations with Alembic Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_database_migrations_alembic_03",
+    "skill_id": "be_database_migrations_alembic",
+    "title": "Database Schema Migrations with Alembic Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_database_migrations_alembic/res_be_database_migrations_alembic_03",
+    "duration_minutes": 45,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Database Schema Migrations with Alembic Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Database Schema Migrations with Alembic, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Schema Migrations with Alembic Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_nosql_document_stores_01",
+    "skill_id": "be_nosql_document_stores",
+    "title": "NoSQL Document Databases (MongoDB) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_nosql_document_stores/res_be_nosql_document_stores_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering NoSQL Document Databases (MongoDB) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of NoSQL Document Databases (MongoDB)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of NoSQL Document Databases (MongoDB) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_nosql_document_stores_02",
+    "skill_id": "be_nosql_document_stores",
+    "title": "NoSQL Document Databases (MongoDB) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_nosql_document_stores/res_be_nosql_document_stores_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering NoSQL Document Databases (MongoDB) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of NoSQL Document Databases (MongoDB) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of NoSQL Document Databases (MongoDB) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_nosql_document_stores_03",
+    "skill_id": "be_nosql_document_stores",
+    "title": "NoSQL Document Databases (MongoDB) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_nosql_document_stores/res_be_nosql_document_stores_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering NoSQL Document Databases (MongoDB) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for NoSQL Document Databases (MongoDB), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of NoSQL Document Databases (MongoDB) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_caching_strategies_01",
+    "skill_id": "be_caching_strategies",
+    "title": "Caching Strategies (Cache-Aside, Write-Through) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_caching_strategies/res_be_caching_strategies_01",
+    "duration_minutes": 22,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Caching Strategies (Cache-Aside, Write-Through) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Caching Strategies (Cache-Aside, Write-Through)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Caching Strategies (Cache-Aside, Write-Through) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_caching_strategies_02",
+    "skill_id": "be_caching_strategies",
+    "title": "Caching Strategies (Cache-Aside, Write-Through) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_caching_strategies/res_be_caching_strategies_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Caching Strategies (Cache-Aside, Write-Through) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Caching Strategies (Cache-Aside, Write-Through) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Caching Strategies (Cache-Aside, Write-Through) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_caching_strategies_03",
+    "skill_id": "be_caching_strategies",
+    "title": "Caching Strategies (Cache-Aside, Write-Through) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_caching_strategies/res_be_caching_strategies_03",
+    "duration_minutes": 45,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Caching Strategies (Cache-Aside, Write-Through) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Caching Strategies (Cache-Aside, Write-Through), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Caching Strategies (Cache-Aside, Write-Through) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_redis_in_memory_cache_01",
+    "skill_id": "be_redis_in_memory_cache",
+    "title": "Redis In-Memory Data Store & TTL Expiry Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_redis_in_memory_cache/res_be_redis_in_memory_cache_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Redis In-Memory Data Store & TTL Expiry Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Redis In-Memory Data Store & TTL Expiry?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Redis In-Memory Data Store & TTL Expiry Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_redis_in_memory_cache_02",
+    "skill_id": "be_redis_in_memory_cache",
+    "title": "Redis In-Memory Data Store & TTL Expiry Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_redis_in_memory_cache/res_be_redis_in_memory_cache_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Redis In-Memory Data Store & TTL Expiry Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Redis In-Memory Data Store & TTL Expiry in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Redis In-Memory Data Store & TTL Expiry Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_redis_in_memory_cache_03",
+    "skill_id": "be_redis_in_memory_cache",
+    "title": "Redis In-Memory Data Store & TTL Expiry Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_redis_in_memory_cache/res_be_redis_in_memory_cache_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Redis In-Memory Data Store & TTL Expiry Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Redis In-Memory Data Store & TTL Expiry, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Redis In-Memory Data Store & TTL Expiry Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_cdn_edge_caching_01",
+    "skill_id": "be_cdn_edge_caching",
+    "title": "Content Delivery Networks & Edge Caching Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_cdn_edge_caching/res_be_cdn_edge_caching_01",
+    "duration_minutes": 20,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Content Delivery Networks & Edge Caching Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Content Delivery Networks & Edge Caching?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Content Delivery Networks & Edge Caching Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_cdn_edge_caching_02",
+    "skill_id": "be_cdn_edge_caching",
+    "title": "Content Delivery Networks & Edge Caching Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_cdn_edge_caching/res_be_cdn_edge_caching_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Content Delivery Networks & Edge Caching Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Content Delivery Networks & Edge Caching in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Content Delivery Networks & Edge Caching Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_cdn_edge_caching_03",
+    "skill_id": "be_cdn_edge_caching",
+    "title": "Content Delivery Networks & Edge Caching Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_cdn_edge_caching/res_be_cdn_edge_caching_03",
+    "duration_minutes": 40,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Content Delivery Networks & Edge Caching Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Content Delivery Networks & Edge Caching, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Content Delivery Networks & Edge Caching Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_hashing_encryption_01",
+    "skill_id": "be_hashing_encryption",
+    "title": "Cryptography: Password Hashing (Bcrypt) & Salting Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_hashing_encryption/res_be_hashing_encryption_01",
+    "duration_minutes": 20,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Cryptography: Password Hashing (Bcrypt) & Salting Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Cryptography: Password Hashing (Bcrypt) & Salting?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Cryptography: Password Hashing (Bcrypt) & Salting Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_hashing_encryption_02",
+    "skill_id": "be_hashing_encryption",
+    "title": "Cryptography: Password Hashing (Bcrypt) & Salting Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_hashing_encryption/res_be_hashing_encryption_02",
+    "duration_minutes": 15,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Cryptography: Password Hashing (Bcrypt) & Salting Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Cryptography: Password Hashing (Bcrypt) & Salting in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Cryptography: Password Hashing (Bcrypt) & Salting Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_hashing_encryption_03",
+    "skill_id": "be_hashing_encryption",
+    "title": "Cryptography: Password Hashing (Bcrypt) & Salting Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_hashing_encryption/res_be_hashing_encryption_03",
+    "duration_minutes": 40,
+    "difficulty": "beginner",
+    "quality_score": 0.85,
+    "content_payload": {
+      "summary": "Mastering Cryptography: Password Hashing (Bcrypt) & Salting Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Cryptography: Password Hashing (Bcrypt) & Salting, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Cryptography: Password Hashing (Bcrypt) & Salting Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_jwt_stateless_auth_01",
+    "skill_id": "be_jwt_stateless_auth",
+    "title": "Stateless Authentication with JWT Tokens Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_jwt_stateless_auth/res_be_jwt_stateless_auth_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Stateless Authentication with JWT Tokens Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Stateless Authentication with JWT Tokens?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Stateless Authentication with JWT Tokens Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_jwt_stateless_auth_02",
+    "skill_id": "be_jwt_stateless_auth",
+    "title": "Stateless Authentication with JWT Tokens Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_jwt_stateless_auth/res_be_jwt_stateless_auth_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Stateless Authentication with JWT Tokens Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Stateless Authentication with JWT Tokens in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Stateless Authentication with JWT Tokens Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_jwt_stateless_auth_03",
+    "skill_id": "be_jwt_stateless_auth",
+    "title": "Stateless Authentication with JWT Tokens Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_jwt_stateless_auth/res_be_jwt_stateless_auth_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Stateless Authentication with JWT Tokens Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Stateless Authentication with JWT Tokens, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Stateless Authentication with JWT Tokens Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_oauth2_oidc_01",
+    "skill_id": "be_oauth2_oidc",
+    "title": "OAuth2 & OpenID Connect Protocols Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_oauth2_oidc/res_be_oauth2_oidc_01",
+    "duration_minutes": 30,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering OAuth2 & OpenID Connect Protocols Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of OAuth2 & OpenID Connect Protocols?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of OAuth2 & OpenID Connect Protocols Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_oauth2_oidc_02",
+    "skill_id": "be_oauth2_oidc",
+    "title": "OAuth2 & OpenID Connect Protocols Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_oauth2_oidc/res_be_oauth2_oidc_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering OAuth2 & OpenID Connect Protocols Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of OAuth2 & OpenID Connect Protocols in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of OAuth2 & OpenID Connect Protocols Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_oauth2_oidc_03",
+    "skill_id": "be_oauth2_oidc",
+    "title": "OAuth2 & OpenID Connect Protocols Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_oauth2_oidc/res_be_oauth2_oidc_03",
+    "duration_minutes": 60,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering OAuth2 & OpenID Connect Protocols Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for OAuth2 & OpenID Connect Protocols, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of OAuth2 & OpenID Connect Protocols Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_api_security_rate_limiting_01",
+    "skill_id": "be_api_security_rate_limiting",
+    "title": "API Security: Rate Limiting & OWASP Top 10 Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_api_security_rate_limiting/res_be_api_security_rate_limiting_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering API Security: Rate Limiting & OWASP Top 10 Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of API Security: Rate Limiting & OWASP Top 10?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of API Security: Rate Limiting & OWASP Top 10 Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_api_security_rate_limiting_02",
+    "skill_id": "be_api_security_rate_limiting",
+    "title": "API Security: Rate Limiting & OWASP Top 10 Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_api_security_rate_limiting/res_be_api_security_rate_limiting_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering API Security: Rate Limiting & OWASP Top 10 Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of API Security: Rate Limiting & OWASP Top 10 in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of API Security: Rate Limiting & OWASP Top 10 Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_api_security_rate_limiting_03",
+    "skill_id": "be_api_security_rate_limiting",
+    "title": "API Security: Rate Limiting & OWASP Top 10 Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_api_security_rate_limiting/res_be_api_security_rate_limiting_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering API Security: Rate Limiting & OWASP Top 10 Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for API Security: Rate Limiting & OWASP Top 10, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of API Security: Rate Limiting & OWASP Top 10 Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_message_broker_fundamentals_01",
+    "skill_id": "be_message_broker_fundamentals",
+    "title": "Message Queuing & Broker Fundamentals Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_message_broker_fundamentals/res_be_message_broker_fundamentals_01",
+    "duration_minutes": 22,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Message Queuing & Broker Fundamentals Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Message Queuing & Broker Fundamentals?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Message Queuing & Broker Fundamentals Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_message_broker_fundamentals_02",
+    "skill_id": "be_message_broker_fundamentals",
+    "title": "Message Queuing & Broker Fundamentals Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_message_broker_fundamentals/res_be_message_broker_fundamentals_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Message Queuing & Broker Fundamentals Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Message Queuing & Broker Fundamentals in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Message Queuing & Broker Fundamentals Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_message_broker_fundamentals_03",
+    "skill_id": "be_message_broker_fundamentals",
+    "title": "Message Queuing & Broker Fundamentals Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_message_broker_fundamentals/res_be_message_broker_fundamentals_03",
+    "duration_minutes": 45,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Message Queuing & Broker Fundamentals Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Message Queuing & Broker Fundamentals, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Message Queuing & Broker Fundamentals Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_rabbitmq_task_queues_01",
+    "skill_id": "be_rabbitmq_task_queues",
+    "title": "RabbitMQ Task Queues & AMQP Protocol Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_rabbitmq_task_queues/res_be_rabbitmq_task_queues_01",
+    "duration_minutes": 27,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering RabbitMQ Task Queues & AMQP Protocol Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of RabbitMQ Task Queues & AMQP Protocol?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of RabbitMQ Task Queues & AMQP Protocol Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_rabbitmq_task_queues_02",
+    "skill_id": "be_rabbitmq_task_queues",
+    "title": "RabbitMQ Task Queues & AMQP Protocol Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_rabbitmq_task_queues/res_be_rabbitmq_task_queues_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering RabbitMQ Task Queues & AMQP Protocol Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of RabbitMQ Task Queues & AMQP Protocol in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of RabbitMQ Task Queues & AMQP Protocol Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_rabbitmq_task_queues_03",
+    "skill_id": "be_rabbitmq_task_queues",
+    "title": "RabbitMQ Task Queues & AMQP Protocol Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_rabbitmq_task_queues/res_be_rabbitmq_task_queues_03",
+    "duration_minutes": 55,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering RabbitMQ Task Queues & AMQP Protocol Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for RabbitMQ Task Queues & AMQP Protocol, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of RabbitMQ Task Queues & AMQP Protocol Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_kafka_event_streaming_01",
+    "skill_id": "be_kafka_event_streaming",
+    "title": "Apache Kafka Distributed Event Streaming Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_kafka_event_streaming/res_be_kafka_event_streaming_01",
+    "duration_minutes": 35,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Apache Kafka Distributed Event Streaming Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Apache Kafka Distributed Event Streaming?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Apache Kafka Distributed Event Streaming Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_kafka_event_streaming_02",
+    "skill_id": "be_kafka_event_streaming",
+    "title": "Apache Kafka Distributed Event Streaming Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_kafka_event_streaming/res_be_kafka_event_streaming_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Apache Kafka Distributed Event Streaming Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Apache Kafka Distributed Event Streaming in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Apache Kafka Distributed Event Streaming Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_kafka_event_streaming_03",
+    "skill_id": "be_kafka_event_streaming",
+    "title": "Apache Kafka Distributed Event Streaming Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_kafka_event_streaming/res_be_kafka_event_streaming_03",
+    "duration_minutes": 70,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Apache Kafka Distributed Event Streaming Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Apache Kafka Distributed Event Streaming, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Apache Kafka Distributed Event Streaming Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_background_workers_celery_01",
+    "skill_id": "be_background_workers_celery",
+    "title": "Distributed Background Tasks with Celery Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_background_workers_celery/res_be_background_workers_celery_01",
+    "duration_minutes": 27,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Distributed Background Tasks with Celery Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Distributed Background Tasks with Celery?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Background Tasks with Celery Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_background_workers_celery_02",
+    "skill_id": "be_background_workers_celery",
+    "title": "Distributed Background Tasks with Celery Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_background_workers_celery/res_be_background_workers_celery_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Distributed Background Tasks with Celery Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Distributed Background Tasks with Celery in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Background Tasks with Celery Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_background_workers_celery_03",
+    "skill_id": "be_background_workers_celery",
+    "title": "Distributed Background Tasks with Celery Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_background_workers_celery/res_be_background_workers_celery_03",
+    "duration_minutes": 55,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Distributed Background Tasks with Celery Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Distributed Background Tasks with Celery, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Background Tasks with Celery Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_docker_containerization_01",
+    "skill_id": "be_docker_containerization",
+    "title": "Docker Containerization & Image Optimization Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_docker_containerization/res_be_docker_containerization_01",
+    "duration_minutes": 27,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Docker Containerization & Image Optimization Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Docker Containerization & Image Optimization?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Docker Containerization & Image Optimization Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_docker_containerization_02",
+    "skill_id": "be_docker_containerization",
+    "title": "Docker Containerization & Image Optimization Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_docker_containerization/res_be_docker_containerization_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Docker Containerization & Image Optimization Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Docker Containerization & Image Optimization in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Docker Containerization & Image Optimization Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_docker_containerization_03",
+    "skill_id": "be_docker_containerization",
+    "title": "Docker Containerization & Image Optimization Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_docker_containerization/res_be_docker_containerization_03",
+    "duration_minutes": 55,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Docker Containerization & Image Optimization Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Docker Containerization & Image Optimization, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Docker Containerization & Image Optimization Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_docker_compose_multi_service_01",
+    "skill_id": "be_docker_compose_multi_service",
+    "title": "Docker Compose Multi-Container Orchestration Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_docker_compose_multi_service/res_be_docker_compose_multi_service_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Docker Compose Multi-Container Orchestration Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Docker Compose Multi-Container Orchestration?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Docker Compose Multi-Container Orchestration Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_docker_compose_multi_service_02",
+    "skill_id": "be_docker_compose_multi_service",
+    "title": "Docker Compose Multi-Container Orchestration Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_docker_compose_multi_service/res_be_docker_compose_multi_service_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Docker Compose Multi-Container Orchestration Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Docker Compose Multi-Container Orchestration in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Docker Compose Multi-Container Orchestration Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_docker_compose_multi_service_03",
+    "skill_id": "be_docker_compose_multi_service",
+    "title": "Docker Compose Multi-Container Orchestration Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_docker_compose_multi_service/res_be_docker_compose_multi_service_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Docker Compose Multi-Container Orchestration Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Docker Compose Multi-Container Orchestration, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Docker Compose Multi-Container Orchestration Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_ci_cd_pipelines_01",
+    "skill_id": "be_ci_cd_pipelines",
+    "title": "CI/CD Automation with GitHub Actions Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_ci_cd_pipelines/res_be_ci_cd_pipelines_01",
+    "duration_minutes": 25,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering CI/CD Automation with GitHub Actions Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of CI/CD Automation with GitHub Actions?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of CI/CD Automation with GitHub Actions Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_ci_cd_pipelines_02",
+    "skill_id": "be_ci_cd_pipelines",
+    "title": "CI/CD Automation with GitHub Actions Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_ci_cd_pipelines/res_be_ci_cd_pipelines_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering CI/CD Automation with GitHub Actions Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of CI/CD Automation with GitHub Actions in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of CI/CD Automation with GitHub Actions Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_ci_cd_pipelines_03",
+    "skill_id": "be_ci_cd_pipelines",
+    "title": "CI/CD Automation with GitHub Actions Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_ci_cd_pipelines/res_be_ci_cd_pipelines_03",
+    "duration_minutes": 50,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering CI/CD Automation with GitHub Actions Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for CI/CD Automation with GitHub Actions, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of CI/CD Automation with GitHub Actions Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_kubernetes_basics_01",
+    "skill_id": "be_kubernetes_basics",
+    "title": "Kubernetes Pods, Deployments & Services Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_kubernetes_basics/res_be_kubernetes_basics_01",
+    "duration_minutes": 37,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Kubernetes Pods, Deployments & Services Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Kubernetes Pods, Deployments & Services?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Kubernetes Pods, Deployments & Services Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_kubernetes_basics_02",
+    "skill_id": "be_kubernetes_basics",
+    "title": "Kubernetes Pods, Deployments & Services Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_kubernetes_basics/res_be_kubernetes_basics_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Kubernetes Pods, Deployments & Services Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Kubernetes Pods, Deployments & Services in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Kubernetes Pods, Deployments & Services Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_kubernetes_basics_03",
+    "skill_id": "be_kubernetes_basics",
+    "title": "Kubernetes Pods, Deployments & Services Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_kubernetes_basics/res_be_kubernetes_basics_03",
+    "duration_minutes": 75,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Kubernetes Pods, Deployments & Services Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Kubernetes Pods, Deployments & Services, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Kubernetes Pods, Deployments & Services Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_cloud_infrastructure_aws_gcp_01",
+    "skill_id": "be_cloud_infrastructure_aws_gcp",
+    "title": "Cloud Infrastructure Fundamentals (Compute, VPC, S3) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_cloud_infrastructure_aws_gcp/res_be_cloud_infrastructure_aws_gcp_01",
+    "duration_minutes": 30,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Cloud Infrastructure Fundamentals (Compute, VPC, S3) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Cloud Infrastructure Fundamentals (Compute, VPC, S3)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Cloud Infrastructure Fundamentals (Compute, VPC, S3) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_cloud_infrastructure_aws_gcp_02",
+    "skill_id": "be_cloud_infrastructure_aws_gcp",
+    "title": "Cloud Infrastructure Fundamentals (Compute, VPC, S3) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_cloud_infrastructure_aws_gcp/res_be_cloud_infrastructure_aws_gcp_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Cloud Infrastructure Fundamentals (Compute, VPC, S3) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Cloud Infrastructure Fundamentals (Compute, VPC, S3) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Cloud Infrastructure Fundamentals (Compute, VPC, S3) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_cloud_infrastructure_aws_gcp_03",
+    "skill_id": "be_cloud_infrastructure_aws_gcp",
+    "title": "Cloud Infrastructure Fundamentals (Compute, VPC, S3) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_cloud_infrastructure_aws_gcp/res_be_cloud_infrastructure_aws_gcp_03",
+    "duration_minutes": 60,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Cloud Infrastructure Fundamentals (Compute, VPC, S3) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Cloud Infrastructure Fundamentals (Compute, VPC, S3), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Cloud Infrastructure Fundamentals (Compute, VPC, S3) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_structured_logging_01",
+    "skill_id": "be_structured_logging",
+    "title": "Structured Logging (JSON) & Log Aggregation Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_structured_logging/res_be_structured_logging_01",
+    "duration_minutes": 20,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Structured Logging (JSON) & Log Aggregation Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Structured Logging (JSON) & Log Aggregation?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Structured Logging (JSON) & Log Aggregation Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_structured_logging_02",
+    "skill_id": "be_structured_logging",
+    "title": "Structured Logging (JSON) & Log Aggregation Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_structured_logging/res_be_structured_logging_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Structured Logging (JSON) & Log Aggregation Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Structured Logging (JSON) & Log Aggregation in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Structured Logging (JSON) & Log Aggregation Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_structured_logging_03",
+    "skill_id": "be_structured_logging",
+    "title": "Structured Logging (JSON) & Log Aggregation Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_structured_logging/res_be_structured_logging_03",
+    "duration_minutes": 40,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Structured Logging (JSON) & Log Aggregation Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Structured Logging (JSON) & Log Aggregation, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Structured Logging (JSON) & Log Aggregation Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_metrics_prometheus_grafana_01",
+    "skill_id": "be_metrics_prometheus_grafana",
+    "title": "Metrics Instrumentation with Prometheus & Grafana Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_metrics_prometheus_grafana/res_be_metrics_prometheus_grafana_01",
+    "duration_minutes": 27,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Metrics Instrumentation with Prometheus & Grafana Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Metrics Instrumentation with Prometheus & Grafana?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Metrics Instrumentation with Prometheus & Grafana Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_metrics_prometheus_grafana_02",
+    "skill_id": "be_metrics_prometheus_grafana",
+    "title": "Metrics Instrumentation with Prometheus & Grafana Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_metrics_prometheus_grafana/res_be_metrics_prometheus_grafana_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Metrics Instrumentation with Prometheus & Grafana Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Metrics Instrumentation with Prometheus & Grafana in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Metrics Instrumentation with Prometheus & Grafana Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_metrics_prometheus_grafana_03",
+    "skill_id": "be_metrics_prometheus_grafana",
+    "title": "Metrics Instrumentation with Prometheus & Grafana Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_metrics_prometheus_grafana/res_be_metrics_prometheus_grafana_03",
+    "duration_minutes": 55,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Metrics Instrumentation with Prometheus & Grafana Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Metrics Instrumentation with Prometheus & Grafana, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Metrics Instrumentation with Prometheus & Grafana Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_distributed_tracing_opentelemetry_01",
+    "skill_id": "be_distributed_tracing_opentelemetry",
+    "title": "Distributed Tracing with OpenTelemetry & Jaeger Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_distributed_tracing_opentelemetry/res_be_distributed_tracing_opentelemetry_01",
+    "duration_minutes": 30,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Distributed Tracing with OpenTelemetry & Jaeger Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Distributed Tracing with OpenTelemetry & Jaeger?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Tracing with OpenTelemetry & Jaeger Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_distributed_tracing_opentelemetry_02",
+    "skill_id": "be_distributed_tracing_opentelemetry",
+    "title": "Distributed Tracing with OpenTelemetry & Jaeger Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_distributed_tracing_opentelemetry/res_be_distributed_tracing_opentelemetry_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Distributed Tracing with OpenTelemetry & Jaeger Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Distributed Tracing with OpenTelemetry & Jaeger in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Tracing with OpenTelemetry & Jaeger Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_distributed_tracing_opentelemetry_03",
+    "skill_id": "be_distributed_tracing_opentelemetry",
+    "title": "Distributed Tracing with OpenTelemetry & Jaeger Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_distributed_tracing_opentelemetry/res_be_distributed_tracing_opentelemetry_03",
+    "duration_minutes": 60,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Distributed Tracing with OpenTelemetry & Jaeger Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Distributed Tracing with OpenTelemetry & Jaeger, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Tracing with OpenTelemetry & Jaeger Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_resilience_circuit_breakers_01",
+    "skill_id": "be_resilience_circuit_breakers",
+    "title": "Resilience Patterns: Circuit Breakers & Retries Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_resilience_circuit_breakers/res_be_resilience_circuit_breakers_01",
+    "duration_minutes": 27,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Resilience Patterns: Circuit Breakers & Retries Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Resilience Patterns: Circuit Breakers & Retries?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Resilience Patterns: Circuit Breakers & Retries Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_resilience_circuit_breakers_02",
+    "skill_id": "be_resilience_circuit_breakers",
+    "title": "Resilience Patterns: Circuit Breakers & Retries Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_resilience_circuit_breakers/res_be_resilience_circuit_breakers_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Resilience Patterns: Circuit Breakers & Retries Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Resilience Patterns: Circuit Breakers & Retries in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Resilience Patterns: Circuit Breakers & Retries Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_resilience_circuit_breakers_03",
+    "skill_id": "be_resilience_circuit_breakers",
+    "title": "Resilience Patterns: Circuit Breakers & Retries Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_resilience_circuit_breakers/res_be_resilience_circuit_breakers_03",
+    "duration_minutes": 55,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Resilience Patterns: Circuit Breakers & Retries Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Resilience Patterns: Circuit Breakers & Retries, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Resilience Patterns: Circuit Breakers & Retries Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_microservices_architecture_01",
+    "skill_id": "be_microservices_architecture",
+    "title": "Microservices Design Principles & Boundaries Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_microservices_architecture/res_be_microservices_architecture_01",
+    "duration_minutes": 30,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Microservices Design Principles & Boundaries Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Microservices Design Principles & Boundaries?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Microservices Design Principles & Boundaries Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_microservices_architecture_02",
+    "skill_id": "be_microservices_architecture",
+    "title": "Microservices Design Principles & Boundaries Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_microservices_architecture/res_be_microservices_architecture_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Microservices Design Principles & Boundaries Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Microservices Design Principles & Boundaries in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Microservices Design Principles & Boundaries Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_microservices_architecture_03",
+    "skill_id": "be_microservices_architecture",
+    "title": "Microservices Design Principles & Boundaries Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_microservices_architecture/res_be_microservices_architecture_03",
+    "duration_minutes": 60,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Microservices Design Principles & Boundaries Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Microservices Design Principles & Boundaries, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Microservices Design Principles & Boundaries Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_api_gateway_load_balancing_01",
+    "skill_id": "be_api_gateway_load_balancing",
+    "title": "API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_api_gateway_load_balancing/res_be_api_gateway_load_balancing_01",
+    "duration_minutes": 30,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of API Gateway & Layer 7 Load Balancing (Nginx, Envoy)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_api_gateway_load_balancing_02",
+    "skill_id": "be_api_gateway_load_balancing",
+    "title": "API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_api_gateway_load_balancing/res_be_api_gateway_load_balancing_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of API Gateway & Layer 7 Load Balancing (Nginx, Envoy) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_api_gateway_load_balancing_03",
+    "skill_id": "be_api_gateway_load_balancing",
+    "title": "API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_api_gateway_load_balancing/res_be_api_gateway_load_balancing_03",
+    "duration_minutes": 60,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for API Gateway & Layer 7 Load Balancing (Nginx, Envoy), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of API Gateway & Layer 7 Load Balancing (Nginx, Envoy) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_service_discovery_01",
+    "skill_id": "be_service_discovery",
+    "title": "Service Discovery & Health Checking (Consul/K8s) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_service_discovery/res_be_service_discovery_01",
+    "duration_minutes": 27,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Service Discovery & Health Checking (Consul/K8s) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Service Discovery & Health Checking (Consul/K8s)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Service Discovery & Health Checking (Consul/K8s) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_service_discovery_02",
+    "skill_id": "be_service_discovery",
+    "title": "Service Discovery & Health Checking (Consul/K8s) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_service_discovery/res_be_service_discovery_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Service Discovery & Health Checking (Consul/K8s) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Service Discovery & Health Checking (Consul/K8s) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Service Discovery & Health Checking (Consul/K8s) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_service_discovery_03",
+    "skill_id": "be_service_discovery",
+    "title": "Service Discovery & Health Checking (Consul/K8s) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_service_discovery/res_be_service_discovery_03",
+    "duration_minutes": 55,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Service Discovery & Health Checking (Consul/K8s) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Service Discovery & Health Checking (Consul/K8s), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Service Discovery & Health Checking (Consul/K8s) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_database_sharding_replication_01",
+    "skill_id": "be_database_sharding_replication",
+    "title": "Database Read Replication & Sharding Strategies Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_database_sharding_replication/res_be_database_sharding_replication_01",
+    "duration_minutes": 35,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Database Read Replication & Sharding Strategies Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Database Read Replication & Sharding Strategies?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Read Replication & Sharding Strategies Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_database_sharding_replication_02",
+    "skill_id": "be_database_sharding_replication",
+    "title": "Database Read Replication & Sharding Strategies Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_database_sharding_replication/res_be_database_sharding_replication_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Database Read Replication & Sharding Strategies Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Database Read Replication & Sharding Strategies in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Read Replication & Sharding Strategies Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_database_sharding_replication_03",
+    "skill_id": "be_database_sharding_replication",
+    "title": "Database Read Replication & Sharding Strategies Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_database_sharding_replication/res_be_database_sharding_replication_03",
+    "duration_minutes": 70,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Database Read Replication & Sharding Strategies Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Database Read Replication & Sharding Strategies, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Database Read Replication & Sharding Strategies Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_event_driven_architecture_01",
+    "skill_id": "be_event_driven_architecture",
+    "title": "Event-Driven Architecture & Event Sourcing (CQRS) Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_event_driven_architecture/res_be_event_driven_architecture_01",
+    "duration_minutes": 37,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Event-Driven Architecture & Event Sourcing (CQRS) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Event-Driven Architecture & Event Sourcing (CQRS)?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Event-Driven Architecture & Event Sourcing (CQRS) Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_event_driven_architecture_02",
+    "skill_id": "be_event_driven_architecture",
+    "title": "Event-Driven Architecture & Event Sourcing (CQRS) Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_event_driven_architecture/res_be_event_driven_architecture_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Event-Driven Architecture & Event Sourcing (CQRS) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Event-Driven Architecture & Event Sourcing (CQRS) in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Event-Driven Architecture & Event Sourcing (CQRS) Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_event_driven_architecture_03",
+    "skill_id": "be_event_driven_architecture",
+    "title": "Event-Driven Architecture & Event Sourcing (CQRS) Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_event_driven_architecture/res_be_event_driven_architecture_03",
+    "duration_minutes": 75,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Event-Driven Architecture & Event Sourcing (CQRS) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Event-Driven Architecture & Event Sourcing (CQRS), what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Event-Driven Architecture & Event Sourcing (CQRS) Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_distributed_transactions_saga_01",
+    "skill_id": "be_distributed_transactions_saga",
+    "title": "Distributed Transactions & SAGA Pattern Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_distributed_transactions_saga/res_be_distributed_transactions_saga_01",
+    "duration_minutes": 37,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Distributed Transactions & SAGA Pattern Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Distributed Transactions & SAGA Pattern?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Transactions & SAGA Pattern Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_distributed_transactions_saga_02",
+    "skill_id": "be_distributed_transactions_saga",
+    "title": "Distributed Transactions & SAGA Pattern Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_distributed_transactions_saga/res_be_distributed_transactions_saga_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Distributed Transactions & SAGA Pattern Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Distributed Transactions & SAGA Pattern in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Transactions & SAGA Pattern Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_distributed_transactions_saga_03",
+    "skill_id": "be_distributed_transactions_saga",
+    "title": "Distributed Transactions & SAGA Pattern Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_distributed_transactions_saga/res_be_distributed_transactions_saga_03",
+    "duration_minutes": 75,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Distributed Transactions & SAGA Pattern Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Distributed Transactions & SAGA Pattern, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Distributed Transactions & SAGA Pattern Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_system_design_scalability_01",
+    "skill_id": "be_system_design_scalability",
+    "title": "High-Throughput System Design & Scalability Patterns Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_system_design_scalability/res_be_system_design_scalability_01",
+    "duration_minutes": 45,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering High-Throughput System Design & Scalability Patterns Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of High-Throughput System Design & Scalability Patterns?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of High-Throughput System Design & Scalability Patterns Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_system_design_scalability_02",
+    "skill_id": "be_system_design_scalability",
+    "title": "High-Throughput System Design & Scalability Patterns Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_system_design_scalability/res_be_system_design_scalability_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering High-Throughput System Design & Scalability Patterns Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of High-Throughput System Design & Scalability Patterns in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of High-Throughput System Design & Scalability Patterns Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_system_design_scalability_03",
+    "skill_id": "be_system_design_scalability",
+    "title": "High-Throughput System Design & Scalability Patterns Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_system_design_scalability/res_be_system_design_scalability_03",
+    "duration_minutes": 90,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering High-Throughput System Design & Scalability Patterns Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for High-Throughput System Design & Scalability Patterns, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of High-Throughput System Design & Scalability Patterns Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_production_incident_management_01",
+    "skill_id": "be_production_incident_management",
+    "title": "Production Incident Response & Post-Mortems Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_production_incident_management/res_be_production_incident_management_01",
+    "duration_minutes": 22,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Production Incident Response & Post-Mortems Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Production Incident Response & Post-Mortems?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Production Incident Response & Post-Mortems Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_production_incident_management_02",
+    "skill_id": "be_production_incident_management",
+    "title": "Production Incident Response & Post-Mortems Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_production_incident_management/res_be_production_incident_management_02",
+    "duration_minutes": 15,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Production Incident Response & Post-Mortems Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Production Incident Response & Post-Mortems in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Production Incident Response & Post-Mortems Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_production_incident_management_03",
+    "skill_id": "be_production_incident_management",
+    "title": "Production Incident Response & Post-Mortems Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_production_incident_management/res_be_production_incident_management_03",
+    "duration_minutes": 45,
+    "difficulty": "intermediate",
+    "quality_score": 0.9,
+    "content_payload": {
+      "summary": "Mastering Production Incident Response & Post-Mortems Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Production Incident Response & Post-Mortems, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Production Incident Response & Post-Mortems Hands-on Coding Project."
+      }
+    }
+  },
+  {
+    "id": "res_be_capstone_distributed_system_01",
+    "skill_id": "be_capstone_distributed_system",
+    "title": "Capstone: Production Distributed Backend System Deep Dive Article & Guide",
+    "type": "article",
+    "url": "https://learn.skilltwin.dev/content/be_capstone_distributed_system/res_be_capstone_distributed_system_01",
+    "duration_minutes": 60,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Capstone: Production Distributed Backend System Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "What is the primary architectural purpose of Capstone: Production Distributed Backend System?",
+        "options": [
+          "A. Modularity, abstraction, and correct encapsulation",
+          "B. Decreasing hardware clock speeds",
+          "C. Bypassing validation checks",
+          "D. Forcing synchronous thread blocks"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Capstone: Production Distributed Backend System Deep Dive Article & Guide."
+      }
+    }
+  },
+  {
+    "id": "res_be_capstone_distributed_system_02",
+    "skill_id": "be_capstone_distributed_system",
+    "title": "Capstone: Production Distributed Backend System Interactive Assessment Quiz",
+    "type": "quiz",
+    "url": "https://learn.skilltwin.dev/content/be_capstone_distributed_system/res_be_capstone_distributed_system_02",
+    "duration_minutes": 15,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Capstone: Production Distributed Backend System Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "Which principle best demonstrates verified mastery of Capstone: Production Distributed Backend System in production?",
+        "options": [
+          "A. Implementing defensive edge-case handling and resilient design",
+          "B. Suppressing all runtime exceptions",
+          "C. Using unbounded global variables",
+          "D. Omitting test suites"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Capstone: Production Distributed Backend System Interactive Assessment Quiz."
+      }
+    }
+  },
+  {
+    "id": "res_be_capstone_distributed_system_03",
+    "skill_id": "be_capstone_distributed_system",
+    "title": "Capstone: Production Distributed Backend System Hands-on Coding Project",
+    "type": "coding_exercise",
+    "url": "https://learn.skilltwin.dev/content/be_capstone_distributed_system/res_be_capstone_distributed_system_03",
+    "duration_minutes": 120,
+    "difficulty": "advanced",
+    "quality_score": 0.95,
+    "content_payload": {
+      "summary": "Mastering Capstone: Production Distributed Backend System Hands-on Coding Project with conceptual depth and hands-on exercises.",
+      "quiz": {
+        "question": "When implementing a solution for Capstone: Production Distributed Backend System, what ensures performance and data integrity?",
+        "options": [
+          "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+          "B. Introducing arbitrary sleep timers",
+          "C. Unbounded memory allocations",
+          "D. Ignoring boundary conditions"
+        ],
+        "correct_option": "A",
+        "explanation": "Option A addresses core principles of Capstone: Production Distributed Backend System Hands-on Coding Project."
+      }
+    }
+  }
+]

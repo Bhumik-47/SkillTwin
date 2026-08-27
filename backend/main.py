@@ -1,5 +1,7 @@
-﻿"""
+"""
 SkillTwin FastAPI Main Application Entrypoint
+Integrates Authentication, Profiling, Topological DAG Planning,
+Adaptive Path Repair, BKT Mastery Tracking, and Grounded Gemini Agents.
 """
 import logging
 from contextlib import asynccontextmanager
@@ -10,6 +12,9 @@ from backend.config import settings
 from backend.db.init_db import init_db
 from backend.routers.auth import router as auth_router
 from backend.routers.profile import router as profile_router
+from backend.routers.path import router as path_router
+from backend.routers.assessments import router as assessment_router
+from backend.routers.recommendations import router as recommendation_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -53,6 +58,9 @@ app.add_middleware(
 # Mount Routers
 app.include_router(auth_router)
 app.include_router(profile_router)
+app.include_router(path_router)
+app.include_router(assessment_router)
+app.include_router(recommendation_router)
 
 
 @app.get("/", tags=["Health"])
@@ -63,7 +71,13 @@ async def root():
         "version": settings.APP_VERSION,
         "status": "operational",
         "docs": "/docs",
-        "contract": "/shared/schema.md"
+        "contract": "/shared/schema.md",
+        "domains": [
+            "backend_engineering",
+            "python_fundamentals",
+            "web_basics",
+            "data_analysis_pandas_numpy"
+        ]
     }
 
 
