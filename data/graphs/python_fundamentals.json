@@ -1,0 +1,1661 @@
+{
+  "domain": "python_fundamentals",
+  "domain_name": "Python Programming Fundamentals",
+  "version": "1.0.0",
+  "skills": [
+    {
+      "id": "py_syntax_vars",
+      "name": "Python Syntax, Variables & Types",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Python Syntax, Variables & Types in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 30,
+      "resource_ids": [
+        "res_py_syntax_vars_01",
+        "res_py_syntax_vars_02",
+        "res_py_syntax_vars_03"
+      ]
+    },
+    {
+      "id": "py_operators_expressions",
+      "name": "Operators & Boolean Logic",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Operators & Boolean Logic in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 30,
+      "resource_ids": [
+        "res_py_operators_expressions_01",
+        "res_py_operators_expressions_02",
+        "res_py_operators_expressions_03"
+      ]
+    },
+    {
+      "id": "py_control_flow",
+      "name": "Control Flow, Conditionals & Loops",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Control Flow, Conditionals & Loops in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_py_control_flow_01",
+        "res_py_control_flow_02",
+        "res_py_control_flow_03"
+      ]
+    },
+    {
+      "id": "py_functions_scope",
+      "name": "Functions, Scope & Docstrings",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Functions, Scope & Docstrings in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_py_functions_scope_01",
+        "res_py_functions_scope_02",
+        "res_py_functions_scope_03"
+      ]
+    },
+    {
+      "id": "py_data_structures_lists",
+      "name": "Lists, Tuples & Slicing",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Lists, Tuples & Slicing in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_py_data_structures_lists_01",
+        "res_py_data_structures_lists_02",
+        "res_py_data_structures_lists_03"
+      ]
+    },
+    {
+      "id": "py_data_structures_dicts",
+      "name": "Dictionaries & Sets Data Structures",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Dictionaries & Sets Data Structures in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_py_data_structures_dicts_01",
+        "res_py_data_structures_dicts_02",
+        "res_py_data_structures_dicts_03"
+      ]
+    },
+    {
+      "id": "py_string_manipulation",
+      "name": "String Formatting & Methods",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for String Formatting & Methods in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 35,
+      "resource_ids": [
+        "res_py_string_manipulation_01",
+        "res_py_string_manipulation_02",
+        "res_py_string_manipulation_03"
+      ]
+    },
+    {
+      "id": "py_file_io",
+      "name": "File I/O & Context Managers",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for File I/O & Context Managers in Python Programming Fundamentals.",
+      "difficulty": "beginner",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_py_file_io_01",
+        "res_py_file_io_02",
+        "res_py_file_io_03"
+      ]
+    },
+    {
+      "id": "py_exception_handling",
+      "name": "Exception Handling & Custom Errors",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Exception Handling & Custom Errors in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 45,
+      "resource_ids": [
+        "res_py_exception_handling_01",
+        "res_py_exception_handling_02",
+        "res_py_exception_handling_03"
+      ]
+    },
+    {
+      "id": "py_modules_packages",
+      "name": "Modules, Packages & Virtualenvs",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Modules, Packages & Virtualenvs in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_py_modules_packages_01",
+        "res_py_modules_packages_02",
+        "res_py_modules_packages_03"
+      ]
+    },
+    {
+      "id": "py_oop_classes",
+      "name": "OOP: Classes, Attributes & Methods",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for OOP: Classes, Attributes & Methods in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_py_oop_classes_01",
+        "res_py_oop_classes_02",
+        "res_py_oop_classes_03"
+      ]
+    },
+    {
+      "id": "py_oop_inheritance",
+      "name": "OOP: Inheritance & Polymorphism",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for OOP: Inheritance & Polymorphism in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_py_oop_inheritance_01",
+        "res_py_oop_inheritance_02",
+        "res_py_oop_inheritance_03"
+      ]
+    },
+    {
+      "id": "py_comprehensions",
+      "name": "List, Dict & Set Comprehensions",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for List, Dict & Set Comprehensions in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 35,
+      "resource_ids": [
+        "res_py_comprehensions_01",
+        "res_py_comprehensions_02",
+        "res_py_comprehensions_03"
+      ]
+    },
+    {
+      "id": "py_iterators_generators",
+      "name": "Iterators & yield Generators",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Iterators & yield Generators in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_py_iterators_generators_01",
+        "res_py_iterators_generators_02",
+        "res_py_iterators_generators_03"
+      ]
+    },
+    {
+      "id": "py_decorators",
+      "name": "Higher-Order Functions & Decorators",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Higher-Order Functions & Decorators in Python Programming Fundamentals.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 55,
+      "resource_ids": [
+        "res_py_decorators_01",
+        "res_py_decorators_02",
+        "res_py_decorators_03"
+      ]
+    },
+    {
+      "id": "py_type_hints",
+      "name": "Type Hints & Static Typing (MyPy)",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Type Hints & Static Typing (MyPy) in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 40,
+      "resource_ids": [
+        "res_py_type_hints_01",
+        "res_py_type_hints_02",
+        "res_py_type_hints_03"
+      ]
+    },
+    {
+      "id": "py_concurrency_basics",
+      "name": "Concurrency (Threading & Asyncio)",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Concurrency (Threading & Asyncio) in Python Programming Fundamentals.",
+      "difficulty": "advanced",
+      "estimated_duration_minutes": 60,
+      "resource_ids": [
+        "res_py_concurrency_basics_01",
+        "res_py_concurrency_basics_02",
+        "res_py_concurrency_basics_03"
+      ]
+    },
+    {
+      "id": "py_testing_pytest",
+      "name": "Unit Testing with Pytest & Mocking",
+      "domain": "python_fundamentals",
+      "description": "Comprehensive competency and implementation guidelines for Unit Testing with Pytest & Mocking in Python Programming Fundamentals.",
+      "difficulty": "intermediate",
+      "estimated_duration_minutes": 50,
+      "resource_ids": [
+        "res_py_testing_pytest_01",
+        "res_py_testing_pytest_02",
+        "res_py_testing_pytest_03"
+      ]
+    }
+  ],
+  "dependencies": [
+    {
+      "source_skill_id": "py_syntax_vars",
+      "target_skill_id": "py_operators_expressions",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_operators_expressions",
+      "target_skill_id": "py_control_flow",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_control_flow",
+      "target_skill_id": "py_functions_scope",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_functions_scope",
+      "target_skill_id": "py_data_structures_lists",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_data_structures_lists",
+      "target_skill_id": "py_data_structures_dicts",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_data_structures_lists",
+      "target_skill_id": "py_string_manipulation",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_functions_scope",
+      "target_skill_id": "py_file_io",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_file_io",
+      "target_skill_id": "py_exception_handling",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_functions_scope",
+      "target_skill_id": "py_modules_packages",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_functions_scope",
+      "target_skill_id": "py_oop_classes",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_data_structures_dicts",
+      "target_skill_id": "py_oop_classes",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_oop_classes",
+      "target_skill_id": "py_oop_inheritance",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_data_structures_dicts",
+      "target_skill_id": "py_comprehensions",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_comprehensions",
+      "target_skill_id": "py_iterators_generators",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_functions_scope",
+      "target_skill_id": "py_decorators",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_oop_classes",
+      "target_skill_id": "py_decorators",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_functions_scope",
+      "target_skill_id": "py_type_hints",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_iterators_generators",
+      "target_skill_id": "py_concurrency_basics",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_exception_handling",
+      "target_skill_id": "py_testing_pytest",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    },
+    {
+      "source_skill_id": "py_modules_packages",
+      "target_skill_id": "py_testing_pytest",
+      "dependency_type": "hard_prerequisite",
+      "weight": 1.0
+    }
+  ],
+  "resources": [
+    {
+      "id": "res_py_syntax_vars_01",
+      "skill_id": "py_syntax_vars",
+      "title": "Python Syntax, Variables & Types Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_syntax_vars/res_py_syntax_vars_01",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Python Syntax, Variables & Types Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Python Syntax, Variables & Types?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Python Syntax, Variables & Types Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_syntax_vars_02",
+      "skill_id": "py_syntax_vars",
+      "title": "Python Syntax, Variables & Types Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_syntax_vars/res_py_syntax_vars_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Python Syntax, Variables & Types Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Python Syntax, Variables & Types in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Python Syntax, Variables & Types Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_syntax_vars_03",
+      "skill_id": "py_syntax_vars",
+      "title": "Python Syntax, Variables & Types Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_syntax_vars/res_py_syntax_vars_03",
+      "duration_minutes": 30,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Python Syntax, Variables & Types Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Python Syntax, Variables & Types, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Python Syntax, Variables & Types Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_operators_expressions_01",
+      "skill_id": "py_operators_expressions",
+      "title": "Operators & Boolean Logic Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_operators_expressions/res_py_operators_expressions_01",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Operators & Boolean Logic Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Operators & Boolean Logic?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Operators & Boolean Logic Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_operators_expressions_02",
+      "skill_id": "py_operators_expressions",
+      "title": "Operators & Boolean Logic Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_operators_expressions/res_py_operators_expressions_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Operators & Boolean Logic Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Operators & Boolean Logic in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Operators & Boolean Logic Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_operators_expressions_03",
+      "skill_id": "py_operators_expressions",
+      "title": "Operators & Boolean Logic Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_operators_expressions/res_py_operators_expressions_03",
+      "duration_minutes": 30,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Operators & Boolean Logic Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Operators & Boolean Logic, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Operators & Boolean Logic Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_control_flow_01",
+      "skill_id": "py_control_flow",
+      "title": "Control Flow, Conditionals & Loops Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_control_flow/res_py_control_flow_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Control Flow, Conditionals & Loops Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Control Flow, Conditionals & Loops?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Control Flow, Conditionals & Loops Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_control_flow_02",
+      "skill_id": "py_control_flow",
+      "title": "Control Flow, Conditionals & Loops Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_control_flow/res_py_control_flow_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Control Flow, Conditionals & Loops Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Control Flow, Conditionals & Loops in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Control Flow, Conditionals & Loops Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_control_flow_03",
+      "skill_id": "py_control_flow",
+      "title": "Control Flow, Conditionals & Loops Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_control_flow/res_py_control_flow_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Control Flow, Conditionals & Loops Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Control Flow, Conditionals & Loops, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Control Flow, Conditionals & Loops Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_functions_scope_01",
+      "skill_id": "py_functions_scope",
+      "title": "Functions, Scope & Docstrings Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_functions_scope/res_py_functions_scope_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Functions, Scope & Docstrings Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Functions, Scope & Docstrings?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Functions, Scope & Docstrings Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_functions_scope_02",
+      "skill_id": "py_functions_scope",
+      "title": "Functions, Scope & Docstrings Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_functions_scope/res_py_functions_scope_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Functions, Scope & Docstrings Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Functions, Scope & Docstrings in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Functions, Scope & Docstrings Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_functions_scope_03",
+      "skill_id": "py_functions_scope",
+      "title": "Functions, Scope & Docstrings Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_functions_scope/res_py_functions_scope_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Functions, Scope & Docstrings Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Functions, Scope & Docstrings, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Functions, Scope & Docstrings Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_data_structures_lists_01",
+      "skill_id": "py_data_structures_lists",
+      "title": "Lists, Tuples & Slicing Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_data_structures_lists/res_py_data_structures_lists_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Lists, Tuples & Slicing Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Lists, Tuples & Slicing?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Lists, Tuples & Slicing Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_data_structures_lists_02",
+      "skill_id": "py_data_structures_lists",
+      "title": "Lists, Tuples & Slicing Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_data_structures_lists/res_py_data_structures_lists_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Lists, Tuples & Slicing Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Lists, Tuples & Slicing in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Lists, Tuples & Slicing Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_data_structures_lists_03",
+      "skill_id": "py_data_structures_lists",
+      "title": "Lists, Tuples & Slicing Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_data_structures_lists/res_py_data_structures_lists_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Lists, Tuples & Slicing Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Lists, Tuples & Slicing, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Lists, Tuples & Slicing Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_data_structures_dicts_01",
+      "skill_id": "py_data_structures_dicts",
+      "title": "Dictionaries & Sets Data Structures Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_data_structures_dicts/res_py_data_structures_dicts_01",
+      "duration_minutes": 22,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Dictionaries & Sets Data Structures Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Dictionaries & Sets Data Structures?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Dictionaries & Sets Data Structures Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_data_structures_dicts_02",
+      "skill_id": "py_data_structures_dicts",
+      "title": "Dictionaries & Sets Data Structures Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_data_structures_dicts/res_py_data_structures_dicts_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Dictionaries & Sets Data Structures Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Dictionaries & Sets Data Structures in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Dictionaries & Sets Data Structures Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_data_structures_dicts_03",
+      "skill_id": "py_data_structures_dicts",
+      "title": "Dictionaries & Sets Data Structures Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_data_structures_dicts/res_py_data_structures_dicts_03",
+      "duration_minutes": 45,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering Dictionaries & Sets Data Structures Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Dictionaries & Sets Data Structures, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Dictionaries & Sets Data Structures Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_string_manipulation_01",
+      "skill_id": "py_string_manipulation",
+      "title": "String Formatting & Methods Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_string_manipulation/res_py_string_manipulation_01",
+      "duration_minutes": 17,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering String Formatting & Methods Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of String Formatting & Methods?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of String Formatting & Methods Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_string_manipulation_02",
+      "skill_id": "py_string_manipulation",
+      "title": "String Formatting & Methods Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_string_manipulation/res_py_string_manipulation_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering String Formatting & Methods Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of String Formatting & Methods in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of String Formatting & Methods Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_string_manipulation_03",
+      "skill_id": "py_string_manipulation",
+      "title": "String Formatting & Methods Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_string_manipulation/res_py_string_manipulation_03",
+      "duration_minutes": 35,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering String Formatting & Methods Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for String Formatting & Methods, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of String Formatting & Methods Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_file_io_01",
+      "skill_id": "py_file_io",
+      "title": "File I/O & Context Managers Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_file_io/res_py_file_io_01",
+      "duration_minutes": 20,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering File I/O & Context Managers Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of File I/O & Context Managers?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of File I/O & Context Managers Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_file_io_02",
+      "skill_id": "py_file_io",
+      "title": "File I/O & Context Managers Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_file_io/res_py_file_io_02",
+      "duration_minutes": 15,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering File I/O & Context Managers Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of File I/O & Context Managers in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of File I/O & Context Managers Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_file_io_03",
+      "skill_id": "py_file_io",
+      "title": "File I/O & Context Managers Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_file_io/res_py_file_io_03",
+      "duration_minutes": 40,
+      "difficulty": "beginner",
+      "quality_score": 0.85,
+      "content_payload": {
+        "summary": "Mastering File I/O & Context Managers Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for File I/O & Context Managers, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of File I/O & Context Managers Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_exception_handling_01",
+      "skill_id": "py_exception_handling",
+      "title": "Exception Handling & Custom Errors Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_exception_handling/res_py_exception_handling_01",
+      "duration_minutes": 22,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Exception Handling & Custom Errors Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Exception Handling & Custom Errors?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Exception Handling & Custom Errors Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_exception_handling_02",
+      "skill_id": "py_exception_handling",
+      "title": "Exception Handling & Custom Errors Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_exception_handling/res_py_exception_handling_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Exception Handling & Custom Errors Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Exception Handling & Custom Errors in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Exception Handling & Custom Errors Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_exception_handling_03",
+      "skill_id": "py_exception_handling",
+      "title": "Exception Handling & Custom Errors Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_exception_handling/res_py_exception_handling_03",
+      "duration_minutes": 45,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Exception Handling & Custom Errors Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Exception Handling & Custom Errors, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Exception Handling & Custom Errors Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_modules_packages_01",
+      "skill_id": "py_modules_packages",
+      "title": "Modules, Packages & Virtualenvs Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_modules_packages/res_py_modules_packages_01",
+      "duration_minutes": 20,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Modules, Packages & Virtualenvs Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Modules, Packages & Virtualenvs?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modules, Packages & Virtualenvs Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_modules_packages_02",
+      "skill_id": "py_modules_packages",
+      "title": "Modules, Packages & Virtualenvs Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_modules_packages/res_py_modules_packages_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Modules, Packages & Virtualenvs Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Modules, Packages & Virtualenvs in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modules, Packages & Virtualenvs Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_modules_packages_03",
+      "skill_id": "py_modules_packages",
+      "title": "Modules, Packages & Virtualenvs Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_modules_packages/res_py_modules_packages_03",
+      "duration_minutes": 40,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Modules, Packages & Virtualenvs Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Modules, Packages & Virtualenvs, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Modules, Packages & Virtualenvs Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_oop_classes_01",
+      "skill_id": "py_oop_classes",
+      "title": "OOP: Classes, Attributes & Methods Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_oop_classes/res_py_oop_classes_01",
+      "duration_minutes": 30,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering OOP: Classes, Attributes & Methods Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of OOP: Classes, Attributes & Methods?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of OOP: Classes, Attributes & Methods Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_oop_classes_02",
+      "skill_id": "py_oop_classes",
+      "title": "OOP: Classes, Attributes & Methods Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_oop_classes/res_py_oop_classes_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering OOP: Classes, Attributes & Methods Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of OOP: Classes, Attributes & Methods in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of OOP: Classes, Attributes & Methods Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_oop_classes_03",
+      "skill_id": "py_oop_classes",
+      "title": "OOP: Classes, Attributes & Methods Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_oop_classes/res_py_oop_classes_03",
+      "duration_minutes": 60,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering OOP: Classes, Attributes & Methods Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for OOP: Classes, Attributes & Methods, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of OOP: Classes, Attributes & Methods Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_oop_inheritance_01",
+      "skill_id": "py_oop_inheritance",
+      "title": "OOP: Inheritance & Polymorphism Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_oop_inheritance/res_py_oop_inheritance_01",
+      "duration_minutes": 30,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering OOP: Inheritance & Polymorphism Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of OOP: Inheritance & Polymorphism?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of OOP: Inheritance & Polymorphism Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_oop_inheritance_02",
+      "skill_id": "py_oop_inheritance",
+      "title": "OOP: Inheritance & Polymorphism Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_oop_inheritance/res_py_oop_inheritance_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering OOP: Inheritance & Polymorphism Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of OOP: Inheritance & Polymorphism in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of OOP: Inheritance & Polymorphism Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_oop_inheritance_03",
+      "skill_id": "py_oop_inheritance",
+      "title": "OOP: Inheritance & Polymorphism Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_oop_inheritance/res_py_oop_inheritance_03",
+      "duration_minutes": 60,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering OOP: Inheritance & Polymorphism Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for OOP: Inheritance & Polymorphism, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of OOP: Inheritance & Polymorphism Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_comprehensions_01",
+      "skill_id": "py_comprehensions",
+      "title": "List, Dict & Set Comprehensions Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_comprehensions/res_py_comprehensions_01",
+      "duration_minutes": 17,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering List, Dict & Set Comprehensions Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of List, Dict & Set Comprehensions?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of List, Dict & Set Comprehensions Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_comprehensions_02",
+      "skill_id": "py_comprehensions",
+      "title": "List, Dict & Set Comprehensions Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_comprehensions/res_py_comprehensions_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering List, Dict & Set Comprehensions Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of List, Dict & Set Comprehensions in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of List, Dict & Set Comprehensions Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_comprehensions_03",
+      "skill_id": "py_comprehensions",
+      "title": "List, Dict & Set Comprehensions Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_comprehensions/res_py_comprehensions_03",
+      "duration_minutes": 35,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering List, Dict & Set Comprehensions Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for List, Dict & Set Comprehensions, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of List, Dict & Set Comprehensions Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_iterators_generators_01",
+      "skill_id": "py_iterators_generators",
+      "title": "Iterators & yield Generators Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_iterators_generators/res_py_iterators_generators_01",
+      "duration_minutes": 25,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Iterators & yield Generators Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Iterators & yield Generators?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Iterators & yield Generators Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_iterators_generators_02",
+      "skill_id": "py_iterators_generators",
+      "title": "Iterators & yield Generators Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_iterators_generators/res_py_iterators_generators_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Iterators & yield Generators Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Iterators & yield Generators in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Iterators & yield Generators Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_iterators_generators_03",
+      "skill_id": "py_iterators_generators",
+      "title": "Iterators & yield Generators Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_iterators_generators/res_py_iterators_generators_03",
+      "duration_minutes": 50,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Iterators & yield Generators Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Iterators & yield Generators, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Iterators & yield Generators Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_decorators_01",
+      "skill_id": "py_decorators",
+      "title": "Higher-Order Functions & Decorators Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_decorators/res_py_decorators_01",
+      "duration_minutes": 27,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Higher-Order Functions & Decorators Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Higher-Order Functions & Decorators?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Higher-Order Functions & Decorators Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_decorators_02",
+      "skill_id": "py_decorators",
+      "title": "Higher-Order Functions & Decorators Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_decorators/res_py_decorators_02",
+      "duration_minutes": 15,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Higher-Order Functions & Decorators Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Higher-Order Functions & Decorators in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Higher-Order Functions & Decorators Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_decorators_03",
+      "skill_id": "py_decorators",
+      "title": "Higher-Order Functions & Decorators Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_decorators/res_py_decorators_03",
+      "duration_minutes": 55,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Higher-Order Functions & Decorators Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Higher-Order Functions & Decorators, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Higher-Order Functions & Decorators Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_type_hints_01",
+      "skill_id": "py_type_hints",
+      "title": "Type Hints & Static Typing (MyPy) Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_type_hints/res_py_type_hints_01",
+      "duration_minutes": 20,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Type Hints & Static Typing (MyPy) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Type Hints & Static Typing (MyPy)?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Type Hints & Static Typing (MyPy) Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_type_hints_02",
+      "skill_id": "py_type_hints",
+      "title": "Type Hints & Static Typing (MyPy) Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_type_hints/res_py_type_hints_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Type Hints & Static Typing (MyPy) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Type Hints & Static Typing (MyPy) in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Type Hints & Static Typing (MyPy) Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_type_hints_03",
+      "skill_id": "py_type_hints",
+      "title": "Type Hints & Static Typing (MyPy) Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_type_hints/res_py_type_hints_03",
+      "duration_minutes": 40,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Type Hints & Static Typing (MyPy) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Type Hints & Static Typing (MyPy), what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Type Hints & Static Typing (MyPy) Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_concurrency_basics_01",
+      "skill_id": "py_concurrency_basics",
+      "title": "Concurrency (Threading & Asyncio) Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_concurrency_basics/res_py_concurrency_basics_01",
+      "duration_minutes": 30,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Concurrency (Threading & Asyncio) Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Concurrency (Threading & Asyncio)?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Concurrency (Threading & Asyncio) Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_concurrency_basics_02",
+      "skill_id": "py_concurrency_basics",
+      "title": "Concurrency (Threading & Asyncio) Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_concurrency_basics/res_py_concurrency_basics_02",
+      "duration_minutes": 15,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Concurrency (Threading & Asyncio) Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Concurrency (Threading & Asyncio) in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Concurrency (Threading & Asyncio) Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_concurrency_basics_03",
+      "skill_id": "py_concurrency_basics",
+      "title": "Concurrency (Threading & Asyncio) Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_concurrency_basics/res_py_concurrency_basics_03",
+      "duration_minutes": 60,
+      "difficulty": "advanced",
+      "quality_score": 0.95,
+      "content_payload": {
+        "summary": "Mastering Concurrency (Threading & Asyncio) Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Concurrency (Threading & Asyncio), what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Concurrency (Threading & Asyncio) Hands-on Coding Project."
+        }
+      }
+    },
+    {
+      "id": "res_py_testing_pytest_01",
+      "skill_id": "py_testing_pytest",
+      "title": "Unit Testing with Pytest & Mocking Deep Dive Article & Guide",
+      "type": "article",
+      "url": "https://learn.skilltwin.dev/content/py_testing_pytest/res_py_testing_pytest_01",
+      "duration_minutes": 25,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Unit Testing with Pytest & Mocking Deep Dive Article & Guide with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "What is the primary architectural purpose of Unit Testing with Pytest & Mocking?",
+          "options": [
+            "A. Modularity, abstraction, and correct encapsulation",
+            "B. Decreasing hardware clock speeds",
+            "C. Bypassing validation checks",
+            "D. Forcing synchronous thread blocks"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Unit Testing with Pytest & Mocking Deep Dive Article & Guide."
+        }
+      }
+    },
+    {
+      "id": "res_py_testing_pytest_02",
+      "skill_id": "py_testing_pytest",
+      "title": "Unit Testing with Pytest & Mocking Interactive Assessment Quiz",
+      "type": "quiz",
+      "url": "https://learn.skilltwin.dev/content/py_testing_pytest/res_py_testing_pytest_02",
+      "duration_minutes": 15,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Unit Testing with Pytest & Mocking Interactive Assessment Quiz with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "Which principle best demonstrates verified mastery of Unit Testing with Pytest & Mocking in production?",
+          "options": [
+            "A. Implementing defensive edge-case handling and resilient design",
+            "B. Suppressing all runtime exceptions",
+            "C. Using unbounded global variables",
+            "D. Omitting test suites"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Unit Testing with Pytest & Mocking Interactive Assessment Quiz."
+        }
+      }
+    },
+    {
+      "id": "res_py_testing_pytest_03",
+      "skill_id": "py_testing_pytest",
+      "title": "Unit Testing with Pytest & Mocking Hands-on Coding Project",
+      "type": "coding_exercise",
+      "url": "https://learn.skilltwin.dev/content/py_testing_pytest/res_py_testing_pytest_03",
+      "duration_minutes": 50,
+      "difficulty": "intermediate",
+      "quality_score": 0.9,
+      "content_payload": {
+        "summary": "Mastering Unit Testing with Pytest & Mocking Hands-on Coding Project with conceptual depth and hands-on exercises.",
+        "quiz": {
+          "question": "When implementing a solution for Unit Testing with Pytest & Mocking, what ensures performance and data integrity?",
+          "options": [
+            "A. Leveraging atomic operations, validated schemas, and efficient algorithms",
+            "B. Introducing arbitrary sleep timers",
+            "C. Unbounded memory allocations",
+            "D. Ignoring boundary conditions"
+          ],
+          "correct_option": "A",
+          "explanation": "Option A addresses core principles of Unit Testing with Pytest & Mocking Hands-on Coding Project."
+        }
+      }
+    }
+  ]
+}
