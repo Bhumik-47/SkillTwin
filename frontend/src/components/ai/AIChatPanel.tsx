@@ -7,7 +7,11 @@ import {
   Bot,
   X,
   Send,
-  ShieldCheck
+  ShieldCheck,
+  Sparkles,
+  HelpCircle,
+  RotateCcw,
+  AlertTriangle
 } from 'lucide-react';
 
 interface ChatMessage {
@@ -18,6 +22,108 @@ interface ChatMessage {
   timestamp: string;
 }
 
+// Helper to render inline markdown tokens (bold, code, italic)
+function renderInlineMarkdown(text: string) {
+  // Regex to split by bold (**...**), inline code (`...`), and italic (*...*)
+  const parts = text.split(/(\*\*[^*]+\*\*|`[^`]+`|\*[^*]+\*)/g);
+  return parts.map((part, index) => {
+    if (part.startsWith('**') && part.endsWith('**')) {
+      return (
+        <strong key={index} className="font-bold dark:text-white text-slate-900">
+          {part.slice(2, -2)}
+        </strong>
+      );
+    }
+    if (part.startsWith('`') && part.endsWith('`')) {
+      return (
+        <code
+          key={index}
+          className="rounded px-1.5 py-0.5 bg-slate-200 dark:bg-surface-50 font-mono text-[11px] text-cyan-700 dark:text-cyan-300"
+        >
+          {part.slice(1, -1)}
+        </code>
+      );
+    }
+    if (part.startsWith('*') && part.endsWith('*') && part.length > 2) {
+      return <em key={index} className="italic">{part.slice(1, -1)}</em>;
+    }
+    return part;
+  });
+}
+
+// Helper to render structured markdown messages (headings, lists, paragraphs)
+function FormattedMessage({ text }: { text: string }) {
+  const lines = text.split('\n');
+  const elements: React.ReactNode[] = [];
+  let currentList: { type: 'ul' | 'ol'; items: React.ReactNode[] } | null = null;
+
+  const flushList = () => {
+    if (currentList) {
+      if (currentList.type === 'ul') {
+        elements.push(
+          <ul key={`ul_${elements.length}`} className="my-1.5 space-y-1">
+            {currentList.items}
+          </ul>
+        );
+      } else {
+        elements.push(
+          <ol key={`ol_${elements.length}`} className="my-1.5 space-y-1">
+            {currentList.items}
+          </ol>
+        );
+      }
+      currentList = null;
+    }
+  };
+
+  lines.forEach((line, lineIdx) => {
+    const trimmed = line.trim();
+
+    if (trimmed.startsWith('### ')) {
+      flushList();
+      elements.push(
+        <h4 key={lineIdx} className="font-bold text-xs sm:text-sm mt-2 mb-1 dark:text-white text-slate-900">
+          {renderInlineMarkdown(trimmed.slice(4))}
+        </h4>
+      );
+    } else if (trimmed.startsWith('- ') || trimmed.startsWith('* ')) {
+      if (!currentList || currentList.type !== 'ul') {
+        flushList();
+        currentList = { type: 'ul', items: [] };
+      }
+      currentList.items.push(
+        <li key={lineIdx} className="ml-4 list-disc leading-relaxed text-xs">
+          {renderInlineMarkdown(trimmed.slice(2))}
+        </li>
+      );
+    } else if (/^\d+\.\s/.test(trimmed)) {
+      if (!currentList || currentList.type !== 'ol') {
+        flushList();
+        currentList = { type: 'ol', items: [] };
+      }
+      const textAfterNumber = trimmed.replace(/^\d+\.\s/, '');
+      currentList.items.push(
+        <li key={lineIdx} className="ml-4 list-decimal leading-relaxed text-xs">
+          {renderInlineMarkdown(textAfterNumber)}
+        </li>
+      );
+    } else if (trimmed === '') {
+      flushList();
+      elements.push(<div key={lineIdx} className="h-1.5" />);
+    } else {
+      flushList();
+      elements.push(
+        <p key={lineIdx} className="leading-relaxed text-xs my-0.5">
+          {renderInlineMarkdown(line)}
+        </p>
+      );
+    }
+  });
+
+  flushList();
+  return <div className="space-y-0.5">{elements}</div>;
+}
+
 export default function AIChatPanel() {
   const {
     isAIChatOpen,
@@ -26,24 +132,21 @@ export default function AIChatPanel() {
     currentPath,
     currentDomain,
     masteryMap,
-    skills
+    skills,
+    user
   } = useSkillTwin();
 
+  const getInitialMessage = (): ChatMessage => ({
+    id: 'm1',
+    sender: 'ai',
+    text: `Hi **${user.full_name.split(' ')[0]}**! I'm your AI Learning Assistant. I can explain any concept, help you prepare for practice quizzes, or answer questions about your study roadmap.\n\nWhat would you like to explore today?`,
+    timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+  });
+
   const [inputQuery, setInputQuery] = useState('');
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      id: 'm1',
-      sender: 'ai',
-      text: `Hello Alex! I am TwinAI, your strictly grounded learning copilot. I analyze your real Bayesian Knowledge Tracing posterior values and prerequisite DAG topological ordering. Ask me anything about your roadmap, skill requirements, or recent plan adaptations!`,
-      grounding: {
-        system: 'Zero-Hallucination Grounding Engine',
-        domain: currentDomain,
-        tracked_skills: skills.length,
-      },
-      timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-    },
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>([getInitialMessage()]);
   const [isSending, setIsSending] = useState(false);
+  const [showClearConfirm, setShowClearConfirm] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -67,7 +170,7 @@ export default function AIChatPanel() {
     setInputQuery('');
     setIsSending(true);
 
-    // Call grounded chat engine
+    // Call chat engine
     const { reply, grounding } = await SkillTwinAPI.sendChatMessage(
       textToSend,
       selectedSkillId,
@@ -88,69 +191,103 @@ export default function AIChatPanel() {
     setIsSending(false);
   };
 
+  const handleConfirmClear = () => {
+    setMessages([getInitialMessage()]);
+    setShowClearConfirm(false);
+  };
+
   const quickPrompts = [
-    `Why did my roadmap adapt?`,
-    `What are the prerequisites for Redis?`,
-    `Explain my lowest mastery skill`,
     `What should I study next?`,
+    `Explain Redis caching`,
+    `What is database indexing?`,
+    `FastAPI vs Django`,
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex h-[580px] w-96 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border dark:border-cyan-500/30 border-cyan-200 dark:bg-[#0b1222]/95 bg-white/95 shadow-2xl backdrop-blur-2xl animate-in slide-in-from-bottom-5 duration-200 transition-colors">
+    <div className="fixed bottom-6 right-6 z-50 flex h-[540px] w-96 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0d1525] bg-white shadow-2xl animate-modal-reveal transition-colors">
       
       {/* Header */}
-      <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 dark:bg-surface-200/80 bg-slate-100 px-4 py-3.5 backdrop-blur-xl">
+      <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-100 px-4 py-3">
         <div className="flex items-center gap-2.5">
-          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 to-brand-600 text-white shadow-md shadow-cyan-500/25">
+          <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 to-brand-600 text-white shadow-sm">
             <Bot className="h-4 w-4" />
-            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 border border-[#090d16]" />
+            <span className="absolute -top-0.5 -right-0.5 h-2 w-2 rounded-full bg-emerald-400 border border-[#0d1525]" />
           </div>
           <div>
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-bold dark:text-white text-slate-900">TwinAI Assistant</span>
-              <span className="rounded bg-cyan-500/20 px-1.5 py-0.2 text-[9px] font-semibold text-cyan-600 dark:text-cyan-300 border border-cyan-500/30">
-                Grounded
-              </span>
+              <span className="text-xs font-bold dark:text-white text-slate-900">AI Learning Tutor</span>
             </div>
-            <p className="text-[10px] dark:text-slate-400 text-slate-500">Zero-hallucination BKT reasoning</p>
+            <p className="text-[10px] dark:text-slate-400 text-slate-500">Always available to help</p>
           </div>
         </div>
 
-        <button
-          onClick={() => setIsAIChatOpen(false)}
-          className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white p-1 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all"
-        >
-          <X className="h-4 w-4" />
-        </button>
+        <div className="flex items-center gap-1.5">
+          {/* Refresh / Clear Chat Trigger */}
+          <button
+            onClick={() => setShowClearConfirm(true)}
+            title="Refresh and clear chat"
+            className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-white p-1 text-slate-400 hover:text-brand-500 dark:hover:text-white transition-all active:scale-[0.95]"
+          >
+            <RotateCcw className="h-3.5 w-3.5" />
+          </button>
+
+          {/* Close Panel Trigger */}
+          <button
+            onClick={() => setIsAIChatOpen(false)}
+            className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-white p-1 text-slate-400 hover:text-slate-900 dark:hover:text-white transition-all active:scale-[0.95]"
+          >
+            <X className="h-4 w-4" />
+          </button>
+        </div>
       </div>
 
+      {/* Caution Prompt for Chat Refresh */}
+      {showClearConfirm && (
+        <div className="border-b border-amber-500/30 bg-amber-500/10 p-3 text-xs animate-in fade-in">
+          <div className="flex items-start gap-2 text-amber-700 dark:text-amber-300">
+            <AlertTriangle className="h-4 w-4 shrink-0 mt-0.5 text-amber-500" />
+            <div className="space-y-1.5 flex-1">
+              <p className="font-semibold">Clear conversation history?</p>
+              <p className="text-[11px] opacity-90 leading-tight">
+                Previous messages in this session will be lost.
+              </p>
+              <div className="flex items-center gap-2 pt-1">
+                <button
+                  onClick={handleConfirmClear}
+                  className="rounded-lg bg-amber-600 hover:bg-amber-500 text-white font-bold px-2.5 py-1 text-[10px] shadow-xs active:scale-[0.95]"
+                >
+                  Clear Chat
+                </button>
+                <button
+                  onClick={() => setShowClearConfirm(false)}
+                  className="rounded-lg border border-slate-300 dark:border-white/10 bg-white dark:bg-surface-50 px-2.5 py-1 text-[10px] font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100"
+                >
+                  Cancel
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Messages List */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-3.5">
+      <div className="flex-1 overflow-y-auto p-4 space-y-3">
         {messages.map(msg => (
           <div
             key={msg.id}
             className={`flex flex-col ${msg.sender === 'user' ? 'items-end' : 'items-start'}`}
           >
             <div
-              className={`max-w-[85%] rounded-2xl p-3 text-xs leading-relaxed ${
+              className={`max-w-[88%] rounded-2xl p-3 text-xs leading-relaxed ${
                 msg.sender === 'user'
-                  ? 'bg-brand-600 text-white shadow-md shadow-brand-600/20'
-                  : 'border dark:border-white/10 border-slate-200 dark:bg-surface-200/90 bg-slate-50 dark:text-slate-200 text-slate-800 shadow-sm'
+                  ? 'bg-brand-600 text-white shadow-sm font-medium'
+                  : 'border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 dark:text-slate-200 text-slate-800'
               }`}
             >
-              {msg.text}
-
-              {/* Grounding Metadata Badge */}
-              {msg.grounding && (
-                <div className="mt-2 rounded-xl border dark:border-cyan-500/20 border-cyan-200 dark:bg-cyan-950/30 bg-cyan-50 p-2 text-[10px] dark:text-slate-300 text-slate-700 font-mono">
-                  <div className="flex items-center gap-1 text-cyan-600 dark:text-cyan-400 font-semibold mb-1">
-                    <ShieldCheck className="h-3 w-3" />
-                    <span>Verifiable Grounding Payload:</span>
-                  </div>
-                  <pre className="overflow-x-auto text-[9px] dark:text-slate-400 text-slate-600">
-                    {JSON.stringify(msg.grounding, null, 2)}
-                  </pre>
-                </div>
+              {msg.sender === 'user' ? (
+                <span>{msg.text}</span>
+              ) : (
+                <FormattedMessage text={msg.text} />
               )}
             </div>
             <span className="text-[9px] dark:text-slate-500 text-slate-400 mt-1 px-1">{msg.timestamp}</span>
@@ -158,21 +295,21 @@ export default function AIChatPanel() {
         ))}
         {isSending && (
           <div className="flex items-center gap-2 text-xs dark:text-slate-400 text-slate-500 animate-pulse">
-            <Bot className="h-4 w-4 text-cyan-500" />
-            <span>Calculating grounded mathematical reasoning...</span>
+            <Bot className="h-4 w-4 text-cyan-400" />
+            <span>Thinking...</span>
           </div>
         )}
         <div ref={messagesEndRef} />
       </div>
 
       {/* Quick Prompt Chips */}
-      <div className="border-t dark:border-white/5 border-slate-200 dark:bg-surface-300/30 bg-slate-100 px-3 py-2">
+      <div className="border-t dark:border-white/5 border-slate-200 dark:bg-surface-50 bg-slate-100 px-3 py-2">
         <div className="flex gap-1.5 overflow-x-auto no-scrollbar">
           {quickPrompts.map((qp, i) => (
             <button
               key={i}
               onClick={() => handleSend(qp)}
-              className="rounded-lg border dark:border-white/10 border-slate-200 dark:bg-surface-200/80 bg-white px-2 py-1 text-[10px] font-medium dark:text-slate-300 text-slate-700 hover:border-cyan-500/40 dark:hover:text-white hover:text-slate-900 whitespace-nowrap transition-all shadow-xs"
+              className="rounded-lg border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white px-2.5 py-1 text-[10.5px] font-medium dark:text-slate-300 text-slate-700 hover:border-brand-500 whitespace-nowrap transition-all shadow-2xs active:scale-[0.97]"
             >
               {qp}
             </button>
@@ -181,7 +318,7 @@ export default function AIChatPanel() {
       </div>
 
       {/* Input Box */}
-      <div className="border-t dark:border-white/10 border-slate-200 dark:bg-surface-200/90 bg-white p-3">
+      <div className="border-t dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white p-3">
         <form
           onSubmit={e => {
             e.preventDefault();
@@ -191,15 +328,15 @@ export default function AIChatPanel() {
         >
           <input
             type="text"
-            placeholder="Ask TwinAI with mathematical grounding..."
+            placeholder="Ask a question about your study plan..."
             value={inputQuery}
             onChange={e => setInputQuery(e.target.value)}
-            className="flex-1 rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-300/80 bg-slate-50 px-3.5 py-2 text-xs dark:text-white text-slate-900 placeholder-slate-400 focus:border-cyan-500 focus:outline-none"
+            className="flex-1 rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-slate-50 px-3.5 py-2 text-xs dark:text-white text-slate-900 placeholder-slate-400 focus:border-brand-500 focus:outline-none transition-all"
           />
           <button
             type="submit"
             disabled={!inputQuery.trim() || isSending}
-            className="flex h-8 w-8 items-center justify-center rounded-xl bg-cyan-600 hover:bg-cyan-500 text-white shadow-md shadow-cyan-600/20 disabled:opacity-40 transition-all"
+            className="flex h-8 w-8 items-center justify-center rounded-xl bg-brand-600 hover:bg-brand-500 text-white disabled:opacity-40 transition-all active:scale-[0.95]"
           >
             <Send className="h-3.5 w-3.5" />
           </button>

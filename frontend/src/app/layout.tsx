@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import './globals.css';
 
 export const metadata: Metadata = {
-  title: 'SkillTwin — Adaptive Learning Path Recommender with BKT & Graph Repair',
-  description: 'AI/ML personalized curriculum recommender that estimates true skill mastery with Bayesian Knowledge Tracing and adapts paths via local DAG graph repair.',
+  title: 'SkillTwin — Personalized Adaptive Learning Roadmap',
+  description: 'AI-guided personalized curriculum that adapts dynamically to your real skill level with continuous progress tracking.',
 };
 
 export default function RootLayout({
@@ -12,7 +12,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -21,7 +21,7 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#090d16] text-slate-100 antialiased min-h-screen">
+      <body className="bg-slate-50 text-slate-900 dark:bg-[#040711] dark:text-slate-100 antialiased min-h-screen selection:bg-brand-500 selection:text-white transition-colors duration-150">
         {children}
       </body>
     </html>

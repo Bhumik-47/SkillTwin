@@ -1,161 +1,258 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
+import { LearningPathNode } from '../../lib/types';
 import {
-  Compass,
   Sparkles,
   Zap,
-  Clock,
   CheckCircle2,
-  Lock,
-  ArrowRight
+  Clock,
+  ArrowRight,
+  Calculator,
+  Compass,
+  Bot,
+  Activity,
+  Layers,
+  ShieldCheck,
+  AlertCircle,
+  ChevronDown,
+  ChevronUp,
+  HelpCircle,
+  Play
 } from 'lucide-react';
+import { DEFAULT_BKT_PARAMS } from '../../lib/engine/bkt';
 
-export default function MilestoneHero() {
+interface MilestoneHeroProps {
+  activeNode: LearningPathNode | null;
+  onLaunchAssessment: (skillId?: string) => void;
+  onInspectGraph: () => void;
+}
+
+export default function MilestoneHero({
+  activeNode,
+  onLaunchAssessment,
+  onInspectGraph,
+}: MilestoneHeroProps) {
   const {
     currentPath,
     masteryMap,
-    openAssessment,
-    setSelectedSkillId,
-    recommendations,
-    skills
+    skills,
+    dependencies,
+    openBktModal,
+    setIsAIChatOpen,
+    setSelectedSkillId
   } = useSkillTwin();
 
-  if (!currentPath || currentPath.nodes.length === 0) return null;
+  const [showDetails, setShowDetails] = useState(false);
 
-  // Find active in-progress node
-  const activeNode = currentPath.nodes.find(n => n.status === 'in_progress') || currentPath.nodes.find(n => n.status === 'ready') || currentPath.nodes[0];
-  const skill = skills.find(s => s.id === activeNode.skill_id);
-  const masteryProb = masteryMap.get(activeNode.skill_id) ?? activeNode.mastery_prob ?? 0.10;
+  if (!activeNode) return null;
 
-  const topRec = recommendations[0];
+  const activeSkill = skills.find(s => s.id === activeNode.skill_id);
+  const masteryProb = masteryMap.get(activeNode.skill_id) ?? (activeNode.mastery_prob ?? 0.10);
+  const masteryPercent = Math.round(masteryProb * 100);
+  const isMastered = masteryProb >= 0.80;
+
+  // Direct prerequisites for this skill
+  const prereqDeps = dependencies.filter(d => d.target_skill_id === activeNode.skill_id);
+  const prereqs = prereqDeps.map(d => {
+    const s = skills.find(sk => sk.id === d.source_skill_id);
+    const m = masteryMap.get(d.source_skill_id) ?? 0.10;
+    return { id: d.source_skill_id, name: s?.name || d.source_skill_id, mastery: m, isMet: m >= 0.80 };
+  });
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border dark:border-brand-500/30 border-brand-200 dark:bg-gradient-to-br dark:from-[#12192e] dark:via-surface-200 dark:to-[#0b101e] bg-gradient-to-br from-indigo-50/70 via-white to-sky-50/50 p-6 shadow-xl backdrop-blur-xl transition-colors">
+    <div className="relative overflow-hidden rounded-3xl border dark:border-white/10 border-slate-200 dark:bg-[#090f1b] bg-white p-6 sm:p-8 shadow-sm transition-all">
       
-      {/* Background radial accent glow */}
-      <div className="pointer-events-none absolute top-0 right-0 h-96 w-96 rounded-full bg-brand-500/10 blur-3xl" />
-      <div className="pointer-events-none absolute bottom-0 left-0 h-64 w-64 rounded-full bg-cyan-500/10 blur-3xl" />
-
-      <div className="relative z-10 grid grid-cols-1 gap-6 lg:grid-cols-3">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
-        {/* Left: Active Milestone Info */}
-        <div className="lg:col-span-2 space-y-4">
-          <div className="flex items-center gap-2">
-            <span className="flex items-center gap-1.5 rounded-full bg-brand-500/15 px-3 py-1 text-[11px] font-bold text-brand-600 dark:text-brand-300 border border-brand-500/30">
-              <Compass className="h-3.5 w-3.5 text-brand-500" />
-              Current Milestone • Step {activeNode.step_order} of {currentPath.nodes.length}
+        {/* Left Column: Chapter Info & Actions (7 cols) */}
+        <div className="lg:col-span-7 space-y-4">
+          
+          {/* Status Badges */}
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="rounded-full bg-brand-500/15 px-3 py-0.5 text-xs font-semibold text-brand-600 dark:text-brand-300 border border-brand-500/30">
+              Chapter {activeNode.step_order} of {currentPath?.nodes.length || skills.length}
             </span>
-            {activeNode.is_remedial && (
-              <span className="rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[10px] font-extrabold uppercase text-rose-500 dark:text-rose-300 border border-rose-500/40 animate-pulse">
-                Remedial Intervention
-              </span>
-            )}
+
+            <span className={`rounded-full px-3 py-0.5 text-xs font-semibold border ${
+              isMastered
+                ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border-emerald-500/30'
+                : 'bg-amber-500/15 text-amber-600 dark:text-amber-300 border-amber-500/30'
+            }`}>
+              {isMastered ? '✓ Mastered' : '⚡ In Progress'}
+            </span>
+
+            <span className="text-xs dark:text-slate-400 text-slate-500">
+              Est: ~{activeNode.estimated_minutes || 45} mins
+            </span>
           </div>
 
+          {/* Headline & Description */}
           <div>
-            <h2 className="text-2xl sm:text-3xl font-extrabold dark:text-white text-slate-900 tracking-tight">
-              {activeNode.skill_name}
-            </h2>
-            <p className="mt-2 text-xs sm:text-sm dark:text-slate-300 text-slate-600 leading-relaxed max-w-xl">
-              {skill?.description || 'Core competency in current learning sequence.'}
+            <h1 className="text-2xl sm:text-3xl font-extrabold tracking-tight dark:text-white text-slate-900 leading-tight">
+              {activeNode.skill_name || activeSkill?.name || activeNode.skill_id}
+            </h1>
+            <p className="mt-2 text-xs sm:text-sm dark:text-slate-300 text-slate-600 leading-relaxed max-w-2xl">
+              {activeSkill?.description || 'Learn and practice key concepts to unlock the next chapter in your roadmap.'}
             </p>
           </div>
 
-          {/* Prerequisites Status Bar */}
-          <div className="flex flex-wrap items-center gap-2 text-xs dark:text-slate-400 text-slate-500 pt-1">
-            <span className="font-medium dark:text-slate-300 text-slate-700">Prerequisites:</span>
-            {activeNode.prerequisite_skill_ids.length === 0 ? (
-              <span className="text-emerald-500 font-medium">None (Root Topic)</span>
-            ) : (
-              activeNode.prerequisite_skill_ids.map(prId => {
-                const prMastery = masteryMap.get(prId) ?? 0.10;
-                const isPrMastered = prMastery >= 0.80;
-                return (
-                  <span
-                    key={prId}
-                    className={`inline-flex items-center gap-1 rounded-lg px-2 py-0.5 text-[11px] border ${
-                      isPrMastered
-                        ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border-emerald-500/30'
-                        : 'dark:bg-slate-800 bg-slate-200 dark:text-slate-400 text-slate-600 border-slate-300 dark:border-slate-700'
-                    }`}
+          {/* Required Earlier Topics */}
+          {prereqs.length > 0 && (
+            <div className="rounded-2xl border dark:border-white/5 border-slate-200 dark:bg-surface-50/50 bg-slate-50 p-3.5 space-y-2">
+              <div className="flex items-center justify-between text-xs font-semibold dark:text-slate-300 text-slate-700">
+                <span>You&apos;ll need to finish these first ({prereqs.length}):</span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                {prereqs.map(pr => (
+                  <div
+                    key={pr.id}
+                    onClick={() => setSelectedSkillId(pr.id)}
+                    className="flex items-center justify-between rounded-xl border dark:border-white/5 border-slate-200 dark:bg-surface-100 bg-white p-2 text-xs cursor-pointer hover:border-brand-400 transition-all"
                   >
-                    {isPrMastered ? <CheckCircle2 className="h-3 w-3 text-emerald-500" /> : <Lock className="h-3 w-3" />}
-                    {prId.replace(/_/g, ' ')}
-                  </span>
-                );
-              })
-            )}
-          </div>
+                    <div className="flex items-center gap-2 truncate">
+                      {pr.isMet ? (
+                        <CheckCircle2 className="h-4 w-4 text-emerald-500 shrink-0" />
+                      ) : (
+                        <AlertCircle className="h-4 w-4 text-amber-500 shrink-0" />
+                      )}
+                      <span className="truncate dark:text-slate-200 text-slate-800 font-medium">{pr.name}</span>
+                    </div>
+                    <span className="text-[11px] dark:text-slate-400 text-slate-500 font-semibold shrink-0">
+                      {Math.round(pr.mastery * 100)}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
 
-          {/* Action Buttons */}
-          <div className="flex flex-wrap items-center gap-3 pt-2">
+          {/* Action CTAs */}
+          <div className="flex flex-wrap items-center gap-3 pt-1">
             <button
-              onClick={() => openAssessment(activeNode.skill_id)}
-              className="flex items-center gap-2 rounded-2xl bg-gradient-to-r from-brand-600 to-indigo-600 hover:from-brand-500 hover:to-indigo-500 px-5 py-3 text-xs font-bold text-white shadow-xl shadow-brand-500/25 transition-all active:scale-95"
+              onClick={() => onLaunchAssessment(activeNode.skill_id)}
+              className="flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm transition-all btn-tactile"
             >
-              <Zap className="h-4 w-4" />
-              <span>Verify & Take Milestone Quiz</span>
+              <Zap className="h-4 w-4 text-amber-300" />
+              <span>Take Quick Practice Quiz</span>
             </button>
 
             <button
-              onClick={() => setSelectedSkillId(activeNode.skill_id)}
-              className="flex items-center gap-1.5 rounded-2xl border dark:border-white/15 border-slate-300 dark:bg-surface-200/80 bg-white hover:bg-slate-50 dark:hover:bg-white/10 px-4 py-3 text-xs font-semibold dark:text-slate-200 text-slate-700 transition-all shadow-sm"
+              onClick={onInspectGraph}
+              className="flex items-center gap-2 rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-slate-100 px-4 py-2.5 text-xs sm:text-sm font-semibold dark:text-slate-200 text-slate-700 hover:bg-slate-200 dark:hover:bg-surface-100 transition-all btn-tactile"
             >
-              <span>Explore Knowledge DAG</span>
-              <ArrowRight className="h-3.5 w-3.5" />
+              <Compass className="h-4 w-4 text-cyan-500" />
+              <span>Explore in Learning Map</span>
+            </button>
+
+            <button
+              onClick={() => setIsAIChatOpen(true)}
+              className="flex items-center gap-1.5 rounded-xl border border-cyan-500/30 dark:bg-cyan-500/10 bg-cyan-50 px-3.5 py-2.5 text-xs font-semibold text-cyan-600 dark:text-cyan-300 hover:bg-cyan-100 transition-all btn-tactile"
+            >
+              <Bot className="h-4 w-4 text-cyan-500" />
+              <span>Ask AI Tutor</span>
             </button>
           </div>
+
         </div>
 
-        {/* Right: BKT Mastery Gauge & Top AI Recommendation */}
-        <div className="flex flex-col justify-between rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/60 bg-white/80 p-5 backdrop-blur-xl">
-          <div>
+        {/* Right Column: Skill Level Summary (5 cols) */}
+        <div className="lg:col-span-5 flex flex-col justify-center">
+          <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-50/50 bg-slate-50 p-6 space-y-4">
+            
             <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-3">
-              <span className="text-[11px] font-bold uppercase tracking-wider dark:text-slate-400 text-slate-500">
-                Latent Mastery $P(L)$
+              <span className="text-xs font-bold uppercase tracking-wider dark:text-slate-300 text-slate-700">
+                Your Skill Level
               </span>
-              <span className="font-mono text-xl font-black text-brand-600 dark:text-brand-300">
-                {(masteryProb * 100).toFixed(0)}%
+              <span className="text-xs font-bold text-brand-500">
+                Target: 80%
               </span>
             </div>
 
-            <div className="mt-3">
-              <div className="flex justify-between text-[11px] dark:text-slate-400 text-slate-500 mb-1">
-                <span>Current Posterior</span>
-                <span>Threshold: 80%</span>
-              </div>
-              <div className="h-2 w-full overflow-hidden rounded-full dark:bg-surface-100 bg-slate-200">
-                <div
-                  className="h-full rounded-full bg-gradient-to-r from-brand-500 to-cyan-400 transition-all duration-500"
-                  style={{ width: `${Math.max(8, masteryProb * 100)}%` }}
-                />
-              </div>
-            </div>
-
-            {/* AI Grounded Next Step */}
-            {topRec && (
-              <div className="mt-4 rounded-xl border dark:border-brand-500/20 border-brand-200 dark:bg-brand-950/30 bg-brand-50/50 p-3">
-                <div className="flex items-center gap-1.5 text-[11px] font-semibold text-brand-600 dark:text-brand-300">
-                  <Sparkles className="h-3 w-3 text-brand-500" />
-                  <span>Next Recommended Action</span>
+            {/* Circular Gauge */}
+            <div className="flex items-center gap-5 justify-center py-1">
+              <div className="relative flex h-28 w-28 items-center justify-center">
+                <svg className="h-full w-full -rotate-90 transform" viewBox="0 0 100 100">
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    className="stroke-slate-200 dark:stroke-surface-100"
+                    strokeWidth="8"
+                    fill="transparent"
+                  />
+                  <circle
+                    cx="50"
+                    cy="50"
+                    r="38"
+                    className={isMastered ? 'stroke-emerald-500' : 'stroke-brand-600'}
+                    strokeWidth="8"
+                    strokeDasharray={`${2 * Math.PI * 38}`}
+                    strokeDashoffset={`${2 * Math.PI * 38 * (1 - masteryProb)}`}
+                    strokeLinecap="round"
+                    fill="transparent"
+                    style={{ transition: 'stroke-dashoffset 0.5s ease-out' }}
+                  />
+                </svg>
+                <div className="absolute flex flex-col items-center justify-center text-center">
+                  <span className="text-2xl font-black font-mono tracking-tight dark:text-white text-slate-900">
+                    {masteryPercent}%
+                  </span>
+                  <span className="text-[9px] uppercase font-semibold text-slate-400">
+                    {isMastered ? 'Mastered' : 'Progress'}
+                  </span>
                 </div>
-                <p className="mt-1 text-[11px] dark:text-slate-300 text-slate-600 line-clamp-3 leading-relaxed">
-                  {topRec.grounded_explanation}
+              </div>
+
+              <div className="space-y-1.5 flex-1 text-xs">
+                <p className="dark:text-slate-300 text-slate-700 font-medium leading-relaxed">
+                  {isMastered
+                    ? 'Great job! You have verified this chapter. You can proceed to subsequent topics.'
+                    : `Score at least 80% on practice quizzes to unlock next chapters automatically.`}
                 </p>
+
+                {/* Collapsible Details Toggle */}
+                <button
+                  onClick={() => setShowDetails(!showDetails)}
+                  className="text-[11px] font-semibold text-cyan-600 dark:text-cyan-400 hover:underline flex items-center gap-1 pt-1"
+                >
+                  <HelpCircle className="h-3 w-3" />
+                  <span>{showDetails ? 'Hide technical details' : 'How is this calculated?'}</span>
+                </button>
+              </div>
+            </div>
+
+            {/* Optional Collapsed Calculation Details */}
+            {showDetails && (
+              <div className="rounded-xl dark:bg-surface-100 bg-white p-3 text-[11px] dark:text-slate-300 text-slate-600 space-y-1.5 border dark:border-white/5 border-slate-200 animate-in fade-in">
+                <p className="font-semibold text-xs dark:text-white text-slate-900">Adaptive Progress Model</p>
+                <p className="leading-relaxed">
+                  SkillTwin uses Bayesian probability to estimate how well you understand each concept based on your quiz answers, question difficulty, and learning progress.
+                </p>
+                <div className="pt-1 flex justify-end">
+                  <button
+                    onClick={openBktModal}
+                    className="text-[10.5px] font-bold text-brand-500 hover:underline"
+                  >
+                    View math formula breakdown →
+                  </button>
+                </div>
               </div>
             )}
-          </div>
 
-          <div className="mt-4 flex items-center justify-between text-[11px] dark:text-slate-400 text-slate-500 border-t dark:border-white/10 border-slate-200 pt-3">
-            <span className="flex items-center gap-1">
-              <Clock className="h-3.5 w-3.5" />
-              Est. Duration: {activeNode.estimated_minutes}m
-            </span>
-            <span className="dark:text-slate-300 text-slate-700 font-medium">Path v{currentPath.version}</span>
+            {/* Friendly Next Step Card */}
+            <div className="rounded-xl border border-brand-500/20 dark:bg-brand-950/20 bg-indigo-50/70 p-3 flex items-start gap-2 text-xs">
+              <Sparkles className="h-4 w-4 text-brand-500 shrink-0 mt-0.5" />
+              <p className="dark:text-slate-300 text-slate-700 leading-relaxed">
+                <strong>Recommended Next Step:</strong> Take a quick practice quiz to test your knowledge and advance your study plan.
+              </p>
+            </div>
+
           </div>
         </div>
+
       </div>
     </div>
   );

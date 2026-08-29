@@ -141,7 +141,7 @@ export default function DAGCanvas() {
   const handleZoomIn = () => setZoom(z => Math.min(1.4, z + 0.15));
   const handleZoomOut = () => setZoom(z => Math.max(0.4, z - 0.15));
   const handleResetFit = () => {
-    setZoom(0.8);
+    setZoom(0.85);
     setPan({ x: 50, y: 30 });
   };
 
@@ -168,8 +168,17 @@ export default function DAGCanvas() {
   }, [skills, searchQuery, statusFilter, masteryMap, dependencies]);
 
   return (
-    <div className="relative h-[calc(100vh-140px)] w-full overflow-hidden rounded-3xl border dark:border-white/10 border-slate-300 dark:bg-[#080d19] bg-slate-100 shadow-2xl transition-colors">
+    <div className="relative h-[calc(100vh-140px)] w-full overflow-hidden rounded-3xl border dark:border-white/10 border-slate-300 dark:bg-[#070b12] bg-slate-100 shadow-sm transition-colors">
       
+      {/* Background Subtle Grid Pattern */}
+      <div
+        className="pointer-events-none absolute inset-0 opacity-[0.03] dark:opacity-[0.07]"
+        style={{
+          backgroundImage: `radial-gradient(#6366f1 1px, transparent 1px)`,
+          backgroundSize: '24px 24px'
+        }}
+      />
+
       {/* Control Bar: Search & Status Filters */}
       <div className="absolute top-4 left-4 z-20 flex flex-wrap items-center gap-3">
         {/* Search */}
@@ -177,69 +186,69 @@ export default function DAGCanvas() {
           <Search className="absolute left-3 top-1/2 h-3.5 w-3.5 -translate-y-1/2 dark:text-slate-400 text-slate-500" />
           <input
             type="text"
-            placeholder="Search skill nodes..."
+            placeholder="Search topics..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="h-9 w-60 rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200/90 bg-white/90 pl-9 pr-3 text-xs dark:text-white text-slate-900 placeholder-slate-400 backdrop-blur-xl focus:border-brand-500 focus:outline-none shadow-sm"
+            className="h-9 w-60 rounded-xl border dark:border-white/10 border-slate-300 dark:bg-[#090f1b] bg-white pl-9 pr-3 text-xs dark:text-white text-slate-900 placeholder-slate-400 focus:border-brand-500 focus:outline-none shadow-sm transition-all"
           />
         </div>
 
         {/* Status Filter */}
-        <div className="flex rounded-xl dark:bg-surface-200/90 bg-white/90 border dark:border-white/10 border-slate-300 p-0.5 text-xs backdrop-blur-xl shadow-sm">
+        <div className="flex rounded-xl dark:bg-[#090f1b] bg-white border dark:border-white/10 border-slate-300 p-0.5 text-xs shadow-sm">
           {(['all', 'completed', 'in_progress', 'ready', 'locked'] as const).map(st => (
             <button
               key={st}
               onClick={() => setStatusFilter(st)}
-              className={`rounded-lg px-2.5 py-1 text-[11px] font-medium capitalize transition-all ${
+              className={`rounded-lg px-2.5 py-1 text-[11px] font-semibold capitalize transition-all ${
                 statusFilter === st
-                  ? 'bg-brand-600 text-white shadow-sm'
+                  ? 'bg-brand-600 text-white shadow-xs'
                   : 'dark:text-slate-400 text-slate-600 hover:dark:text-white hover:text-slate-900'
               }`}
             >
-              {st === 'all' ? 'All Nodes' : st.replace('_', ' ')}
+              {st === 'all' ? 'All Topics' : st === 'completed' ? 'Mastered' : st.replace('_', ' ')}
             </button>
           ))}
         </div>
       </div>
 
       {/* Floating Canvas Zoom/Pan Controls */}
-      <div className="absolute bottom-6 right-6 z-20 flex flex-col gap-1.5 rounded-2xl border dark:border-white/10 border-slate-300 dark:bg-surface-200/90 bg-white/90 p-1.5 shadow-2xl backdrop-blur-xl">
+      <div className="absolute bottom-6 right-6 z-20 flex flex-col gap-1 rounded-2xl border dark:border-white/10 border-slate-300 dark:bg-[#090f1b] bg-white p-1.5 shadow-xl">
         <button
           onClick={handleZoomIn}
           title="Zoom In"
-          className="flex h-8 w-8 items-center justify-center rounded-xl dark:text-slate-300 text-slate-700 hover:dark:bg-white/10 hover:bg-slate-100 transition-all"
+          className="flex h-8 w-8 items-center justify-center rounded-xl dark:text-slate-300 text-slate-700 hover:dark:bg-white/10 hover:bg-slate-100 transition-all active:scale-[0.95]"
         >
           <ZoomIn className="h-4 w-4" />
         </button>
         <button
           onClick={handleZoomOut}
           title="Zoom Out"
-          className="flex h-8 w-8 items-center justify-center rounded-xl dark:text-slate-300 text-slate-700 hover:dark:bg-white/10 hover:bg-slate-100 transition-all"
+          className="flex h-8 w-8 items-center justify-center rounded-xl dark:text-slate-300 text-slate-700 hover:dark:bg-white/10 hover:bg-slate-100 transition-all active:scale-[0.95]"
         >
           <ZoomOut className="h-4 w-4" />
         </button>
         <button
           onClick={handleResetFit}
           title="Reset View"
-          className="flex h-8 w-8 items-center justify-center rounded-xl dark:text-slate-300 text-slate-700 hover:dark:bg-white/10 hover:bg-slate-100 transition-all"
+          className="flex h-8 w-8 items-center justify-center rounded-xl dark:text-slate-300 text-slate-700 hover:dark:bg-white/10 hover:bg-slate-100 transition-all active:scale-[0.95]"
         >
           <Maximize2 className="h-4 w-4" />
         </button>
       </div>
 
       {/* Legend Badge */}
-      <div className="absolute bottom-6 left-6 z-20 hidden md:flex items-center gap-3 rounded-2xl border dark:border-white/10 border-slate-300 dark:bg-surface-200/80 bg-white/90 px-4 py-2 text-[11px] dark:text-slate-300 text-slate-700 backdrop-blur-xl shadow-md">
+      <div className="absolute bottom-6 left-6 z-20 hidden md:flex items-center gap-3.5 rounded-2xl border dark:border-white/10 border-slate-300 dark:bg-[#090f1b] bg-white px-4 py-2 text-[11px] font-medium dark:text-slate-300 text-slate-700 shadow-md">
         <span className="flex items-center gap-1.5 text-emerald-500">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 shadow-[0_0_6px_#34d399]" />
-          Mastered (≥ 0.80)
+          <span className="h-2 w-2 rounded-full bg-emerald-400" />
+          Mastered (≥ 80%)
         </span>
         <span className="flex items-center gap-1.5 text-amber-500">
-          <span className="h-2 w-2 rounded-full bg-amber-400 shadow-[0_0_6px_#fbbf24]" />
+          <span className="h-2 w-2 rounded-full bg-amber-400" />
           In Progress
         </span>
         <span className="flex items-center gap-1.5 text-cyan-500">
           <span className="h-2 w-2 rounded-full bg-cyan-400" />
-          Ready
+          Ready Next
         </span>
         <span className="flex items-center gap-1.5 dark:text-slate-400 text-slate-500">
           <span className="h-2 w-2 rounded-full bg-slate-400" />
@@ -262,7 +271,7 @@ export default function DAGCanvas() {
             transformOrigin: '0 0',
             width: `${totalWidth}px`,
             height: `${totalHeight}px`,
-            transition: isDragging ? 'none' : 'transform 0.1s ease-out',
+            transition: isDragging ? 'none' : 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)',
           }}
           className="relative"
         >
@@ -310,15 +319,15 @@ export default function DAGCanvas() {
             {edgePaths.map(edge => {
               if (!edge) return null;
               const isSelected = edge.isRelatedToSelected;
-              let strokeColor = '#94a3b8';
+              let strokeColor = '#64748b';
               let marker = 'url(#arrow-slate)';
               let strokeDasharray = 'none';
 
               if (edge.dependencyType === 'hard_prerequisite') {
-                strokeColor = isSelected ? '#38bdf8' : '#0284c7';
+                strokeColor = isSelected ? '#38bdf8' : '#0369a1';
                 marker = 'url(#arrow-cyan)';
               } else if (edge.dependencyType === 'soft_prerequisite') {
-                strokeColor = isSelected ? '#c084fc' : '#9333ea';
+                strokeColor = isSelected ? '#c084fc' : '#7e22ce';
                 marker = 'url(#arrow-violet)';
                 strokeDasharray = '4 4';
               } else {
@@ -334,7 +343,6 @@ export default function DAGCanvas() {
                   strokeWidth={isSelected ? 2.5 : 1.5}
                   strokeDasharray={strokeDasharray}
                   markerEnd={marker}
-                  className={isSelected ? 'animate-laser-flow' : ''}
                 />
               );
             })}

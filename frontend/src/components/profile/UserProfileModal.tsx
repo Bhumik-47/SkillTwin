@@ -110,17 +110,14 @@ export default function UserProfileModal() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border border-brand-500/30 dark:bg-[#0c1220] bg-white p-6 shadow-2xl backdrop-blur-2xl dark:text-white text-slate-900 transition-colors max-h-[90vh] overflow-y-auto">
+      <div className="relative w-full max-w-lg overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0b101b] bg-white p-6 shadow-2xl animate-modal-reveal max-h-[90vh] overflow-y-auto">
         
-        {/* Ambient glow */}
-        <div className="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-brand-500/15 blur-3xl" />
-
         {/* Header */}
         <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-4">
           <div className="flex items-center gap-3">
-            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tr from-brand-600 to-cyan-500 text-white font-bold text-lg shadow-lg shadow-brand-500/25">
+            <div className="relative flex h-12 w-12 items-center justify-center rounded-2xl bg-brand-600 text-white font-bold text-lg shadow-sm">
               {user.full_name ? user.full_name.split(' ').map(n => n[0]).join('') : 'U'}
-              <div className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 border-2 dark:border-[#0c1220] border-white text-white">
+              <div className="absolute -bottom-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-emerald-500 border-2 dark:border-[#0b101b] border-white text-white">
                 <CheckCircle2 className="h-3 w-3" />
               </div>
             </div>
@@ -128,7 +125,7 @@ export default function UserProfileModal() {
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-base font-bold dark:text-white text-slate-900">{user.full_name}</h3>
-                <span className="rounded-full bg-brand-500/20 px-2 py-0.2 text-[9px] font-bold text-brand-400 border border-brand-500/30">
+                <span className="rounded-full bg-brand-500/20 px-2 py-0.2 text-[9px] font-bold uppercase text-brand-500 border border-brand-500/30">
                   {profile.prior_experience_level.toUpperCase()}
                 </span>
               </div>
@@ -140,13 +137,13 @@ export default function UserProfileModal() {
             <button
               onClick={toggleTheme}
               title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-              className="flex h-8 w-8 items-center justify-center rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-200 bg-slate-100 dark:text-amber-400 text-slate-700 hover:scale-105 transition-all"
+              className="flex h-8 w-8 items-center justify-center rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 dark:text-amber-400 text-slate-700 hover:scale-105 transition-all duration-150 active:scale-[0.95]"
             >
               {theme === 'dark' ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
             </button>
             <button
               onClick={() => setIsProfileModalOpen(false)}
-              className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-200 bg-slate-100 p-1.5 dark:text-slate-400 text-slate-600 hover:text-brand-500 transition-all"
+              className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 p-1.5 dark:text-slate-400 text-slate-600 hover:text-brand-500 transition-all active:scale-[0.95]"
             >
               <X className="h-4 w-4" />
             </button>
@@ -154,26 +151,26 @@ export default function UserProfileModal() {
         </div>
 
         {/* Modal Navigation Tabs */}
-        <div className="mt-4 flex rounded-xl dark:bg-surface-200 bg-slate-100 p-1 border dark:border-white/10 border-slate-200 text-xs">
+        <div className="mt-4 flex rounded-xl dark:bg-surface-100 bg-slate-100 p-1 border dark:border-white/10 border-slate-200 text-xs">
           <button
             onClick={() => setActiveTabMode('profile')}
             className={`flex-1 rounded-lg py-1.5 font-semibold transition-all ${
               activeTabMode === 'profile'
-                ? 'bg-brand-600 text-white shadow-sm'
+                ? 'bg-brand-600 text-white shadow-xs'
                 : 'dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Learner Profile & Goals
+            Study Profile & Goals
           </button>
           <button
             onClick={() => setActiveTabMode('auth')}
             className={`flex-1 rounded-lg py-1.5 font-semibold transition-all ${
               activeTabMode === 'auth'
-                ? 'bg-brand-600 text-white shadow-sm'
+                ? 'bg-brand-600 text-white shadow-xs'
                 : 'dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
-            Account & JWT Auth
+            Account & Sign In
           </button>
         </div>
 
@@ -181,34 +178,34 @@ export default function UserProfileModal() {
           <>
             {/* User Stats Grid */}
             <div className="mt-4 grid grid-cols-3 gap-2.5 text-center text-xs">
-              <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/40 bg-slate-50 p-3">
+              <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 p-3">
                 <span className="text-[10px] uppercase dark:text-slate-400 text-slate-500 font-semibold block">Mastered</span>
-                <strong className="text-lg font-bold text-emerald-500">{masteredCount}</strong>
-                <span className="text-[10px] dark:text-slate-500 text-slate-400 block">/ {skills.length} skills</span>
+                <strong className="text-lg font-bold text-emerald-500 font-mono">{masteredCount}</strong>
+                <span className="text-[10px] dark:text-slate-500 text-slate-400 block">/ {skills.length} chapters</span>
               </div>
 
-              <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/40 bg-slate-50 p-3">
+              <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 p-3">
                 <span className="text-[10px] uppercase dark:text-slate-400 text-slate-500 font-semibold block">In Progress</span>
-                <strong className="text-lg font-bold text-amber-500">{inProgressCount}</strong>
-                <span className="text-[10px] dark:text-slate-500 text-slate-400 block">active steps</span>
+                <strong className="text-lg font-bold text-amber-500 font-mono">{inProgressCount}</strong>
+                <span className="text-[10px] dark:text-slate-500 text-slate-400 block">active topics</span>
               </div>
 
-              <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/40 bg-slate-50 p-3">
-                <span className="text-[10px] uppercase dark:text-slate-400 text-slate-500 font-semibold block">Avg BKT</span>
-                <strong className="text-lg font-bold text-brand-500">{avgMastery}%</strong>
-                <span className="text-[10px] dark:text-slate-500 text-slate-400 block">latent mastery</span>
+              <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 p-3">
+                <span className="text-[10px] uppercase dark:text-slate-400 text-slate-500 font-semibold block">Skill Level</span>
+                <strong className="text-lg font-bold text-brand-500 font-mono">{avgMastery}%</strong>
+                <span className="text-[10px] dark:text-slate-500 text-slate-400 block">average score</span>
               </div>
             </div>
 
             {/* Target Profile Details */}
-            <div className="mt-4 rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/40 bg-slate-50 p-4">
+            <div className="mt-4 rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 p-4">
               <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-2 mb-3">
                 <span className="text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-600">
-                  Learning Profile & Configuration
+                  Study Preferences
                 </span>
                 <button
                   onClick={() => setIsEditing(!isEditing)}
-                  className="text-xs font-semibold text-brand-500 hover:text-brand-400 flex items-center gap-1"
+                  className="text-xs font-semibold text-brand-500 hover:text-brand-400 flex items-center gap-1 active:scale-[0.95] transition-all"
                 >
                   <Edit3 className="h-3 w-3" />
                   <span>{isEditing ? 'Cancel' : 'Edit'}</span>
@@ -218,7 +215,7 @@ export default function UserProfileModal() {
               {!isEditing ? (
                 <div className="space-y-2 text-xs">
                   <div className="flex justify-between">
-                    <span className="dark:text-slate-400 text-slate-500">Target Role:</span>
+                    <span className="dark:text-slate-400 text-slate-500">Target Goal:</span>
                     <span className="font-semibold dark:text-white text-slate-800">{profile.target_role}</span>
                   </div>
                   <div className="flex justify-between">
@@ -233,20 +230,16 @@ export default function UserProfileModal() {
                     <span className="dark:text-slate-400 text-slate-500">Experience Tier:</span>
                     <span className="font-semibold capitalize dark:text-white text-slate-800">{profile.prior_experience_level}</span>
                   </div>
-                  <div className="flex justify-between">
-                    <span className="dark:text-slate-400 text-slate-500">User ID:</span>
-                    <span className="font-mono text-[11px] dark:text-slate-400 text-slate-600">{user.id}</span>
-                  </div>
                 </div>
               ) : (
                 <div className="space-y-3 text-xs">
                   <div>
-                    <label className="dark:text-slate-400 text-slate-600 block mb-1">Target Role</label>
+                    <label className="dark:text-slate-400 text-slate-600 block mb-1">Target Role / Goal</label>
                     <input
                       type="text"
                       value={targetRole}
                       onChange={e => setTargetRole(e.target.value)}
-                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200 bg-white px-3 py-1.5 dark:text-white text-slate-900"
+                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-3 py-1.5 dark:text-white text-slate-900 focus:border-brand-500 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -257,7 +250,7 @@ export default function UserProfileModal() {
                       max="40"
                       value={weeklyHours}
                       onChange={e => setWeeklyHours(parseInt(e.target.value) || 10)}
-                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200 bg-white px-3 py-1.5 dark:text-white text-slate-900"
+                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-3 py-1.5 dark:text-white text-slate-900 focus:border-brand-500 focus:outline-none"
                     />
                   </div>
                   <div>
@@ -265,11 +258,11 @@ export default function UserProfileModal() {
                     <select
                       value={learningStyle}
                       onChange={e => setLearningStyle(e.target.value as any)}
-                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200 bg-white px-3 py-1.5 dark:text-white text-slate-900"
+                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-3 py-1.5 dark:text-white text-slate-900 focus:border-brand-500 focus:outline-none"
                     >
                       <option value="hands_on">Hands-on Exercises</option>
                       <option value="video">Video Courses</option>
-                      <option value="reading">Documentation & Books</option>
+                      <option value="reading">Documentation & Guides</option>
                       <option value="mixed">Mixed Hybrid</option>
                     </select>
                   </div>
@@ -277,9 +270,9 @@ export default function UserProfileModal() {
                   <div className="flex justify-end pt-2">
                     <button
                       onClick={handleSaveProfile}
-                      className="rounded-xl bg-brand-600 hover:bg-brand-500 px-4 py-1.5 text-xs font-bold text-white shadow-md"
+                      className="rounded-xl bg-brand-600 hover:bg-brand-500 px-4 py-1.5 text-xs font-bold text-white shadow-sm active:scale-[0.97] transition-all"
                     >
-                      Save Profile
+                      Save Preferences
                     </button>
                   </div>
                 </div>
@@ -287,32 +280,26 @@ export default function UserProfileModal() {
             </div>
           </>
         ) : (
-          /* Authentication / Account Management Tab */
+          /* Authentication Tab */
           <div className="mt-4 space-y-4 text-xs">
-            <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/40 bg-slate-50 p-4">
+            <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 p-4">
               <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-2 mb-3">
-                <span className="font-bold uppercase tracking-wider dark:text-slate-400 text-slate-600 flex items-center gap-1.5">
+                <span className="font-bold dark:text-slate-400 text-slate-600 flex items-center gap-1.5">
                   <KeyRound className="h-3.5 w-3.5 text-cyan-500" />
-                  Backend Authentication State
+                  Account Status
                 </span>
-                <span className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${
-                  backendOnline ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300' : 'bg-slate-500/15 text-slate-500'
+                <span className={`rounded-md px-1.5 py-0.5 text-[10px] font-bold ${
+                  backendOnline ? 'bg-emerald-500/15 text-emerald-600 dark:text-emerald-300 border border-emerald-500/30' : 'bg-slate-500/15 text-slate-500'
                 }`}>
-                  {backendOnline ? 'FastAPI Online' : 'Offline Mode'}
+                  {backendOnline ? 'Cloud Synced' : 'Guest / Demo Mode'}
                 </span>
               </div>
 
               <div className="space-y-2">
                 <div className="flex justify-between">
-                  <span className="dark:text-slate-400 text-slate-500">Status:</span>
+                  <span className="dark:text-slate-400 text-slate-500">Session Status:</span>
                   <span className="font-semibold dark:text-white text-slate-800">
-                    {isAuthenticated ? 'Authenticated (JWT Active)' : 'Demo / Guest Session'}
-                  </span>
-                </div>
-                <div className="flex justify-between">
-                  <span className="dark:text-slate-400 text-slate-500">Bearer Token:</span>
-                  <span className="font-mono text-[10px] truncate max-w-[200px] dark:text-slate-400 text-slate-600">
-                    {token ? `${token.substring(0, 16)}...` : 'None'}
+                    {isAuthenticated ? 'Signed In' : 'Guest Session'}
                   </span>
                 </div>
                 {isAuthenticated && (
@@ -322,7 +309,7 @@ export default function UserProfileModal() {
                       className="flex items-center gap-1 text-rose-500 hover:text-rose-400 text-xs font-semibold"
                     >
                       <LogOut className="h-3.5 w-3.5" />
-                      <span>Log Out Session</span>
+                      <span>Sign Out</span>
                     </button>
                   </div>
                 )}
@@ -330,10 +317,10 @@ export default function UserProfileModal() {
             </div>
 
             {/* Login / Sign-up Form */}
-            <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-300/40 bg-slate-50 p-4">
+            <div className="rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 p-4">
               <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-2 mb-3">
                 <span className="font-bold dark:text-white text-slate-900">
-                  {authMode === 'login' ? 'Sign In to SkillTwin Account' : 'Register New Learner'}
+                  {authMode === 'login' ? 'Sign In to Your Account' : 'Create New Account'}
                 </span>
                 <button
                   type="button"
@@ -363,7 +350,7 @@ export default function UserProfileModal() {
                       placeholder="e.g. Alex Rivera"
                       value={authFullName}
                       onChange={e => setAuthFullName(e.target.value)}
-                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200 bg-white px-3 py-1.5 dark:text-white text-slate-900"
+                      className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-3 py-1.5 dark:text-white text-slate-900 focus:border-brand-500 focus:outline-none"
                     />
                   </div>
                 )}
@@ -376,7 +363,7 @@ export default function UserProfileModal() {
                     placeholder="learner@skilltwin.ai"
                     value={authEmail}
                     onChange={e => setAuthEmail(e.target.value)}
-                    className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200 bg-white px-3 py-1.5 dark:text-white text-slate-900"
+                    className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-3 py-1.5 dark:text-white text-slate-900 focus:border-brand-500 focus:outline-none"
                   />
                 </div>
 
@@ -389,7 +376,7 @@ export default function UserProfileModal() {
                     placeholder="••••••••"
                     value={authPassword}
                     onChange={e => setAuthPassword(e.target.value)}
-                    className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-200 bg-white px-3 py-1.5 dark:text-white text-slate-900"
+                    className="w-full rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-3 py-1.5 dark:text-white text-slate-900 focus:border-brand-500 focus:outline-none"
                   />
                 </div>
 
@@ -397,7 +384,7 @@ export default function UserProfileModal() {
                   <button
                     type="submit"
                     disabled={isSubmittingAuth}
-                    className="flex items-center gap-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 px-4 py-2 text-xs font-bold text-white shadow-md transition-all disabled:opacity-50"
+                    className="flex items-center gap-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 px-4 py-2 text-xs font-bold text-white shadow-sm transition-all active:scale-[0.97] disabled:opacity-50"
                   >
                     {authMode === 'login' ? <LogIn className="h-3.5 w-3.5" /> : <UserPlus className="h-3.5 w-3.5" />}
                     <span>{isSubmittingAuth ? 'Processing...' : authMode === 'login' ? 'Sign In' : 'Create Account'}</span>
@@ -417,7 +404,7 @@ export default function UserProfileModal() {
             }}
             className="flex items-center gap-1.5 text-xs font-bold text-brand-500 hover:text-brand-400"
           >
-            <span>View Full Calibration Dashboard</span>
+            <span>View Detailed Skill Progress</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </button>
 
@@ -426,9 +413,9 @@ export default function UserProfileModal() {
               setIsProfileModalOpen(false);
               resetDomainState();
             }}
-            className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-200 bg-slate-100 px-3.5 py-1.5 text-xs font-medium dark:text-slate-300 text-slate-700 hover:bg-slate-200 dark:hover:bg-surface-100 transition-all"
+            className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 px-3.5 py-1.5 text-xs font-medium dark:text-slate-300 text-slate-700 hover:bg-slate-200 dark:hover:bg-surface-50/80 transition-all"
           >
-            Reset Session
+            Reset Plan
           </button>
         </div>
       </div>
