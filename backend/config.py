@@ -34,6 +34,10 @@ class Settings(BaseSettings):
         default="skilltwin-super-secret-development-key-change-in-production-2026",
         description="JWT secret signing key"
     )
+    JWT_SECRET_KEY: Optional[str] = Field(
+        default=None,
+        description="Alias for JWT secret signing key"
+    )
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
 
