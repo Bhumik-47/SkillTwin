@@ -390,6 +390,10 @@ export default function UserProfileModal() {
                     <span>{isSubmittingAuth ? 'Processing...' : authMode === 'login' ? 'Sign In' : 'Create Account'}</span>
                   </button>
                 </div>
+
+                <p className="mt-2 text-center text-[11px] text-slate-400 dark:text-slate-500">
+                  Default profile: <span className="font-mono">email = 123@gmail.com</span>, <span className="font-mono">password = 123456</span>
+                </p>
               </form>
             </div>
           </div>

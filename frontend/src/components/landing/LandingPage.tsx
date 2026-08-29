@@ -1067,6 +1067,10 @@ export default function LandingPage({ onEnterApp }: LandingPageProps) {
                   <span>{isSubmitting ? 'Processing...' : authMode === 'signup' ? 'Create Account & Enter' : 'Sign In & Enter'}</span>
                 </button>
               </div>
+
+              <p className="mt-2 text-center text-[11px] text-slate-400 dark:text-slate-500">
+                Default profile: <span className="font-mono">email = 123@gmail.com</span>, <span className="font-mono">password = 123456</span>
+              </p>
             </form>
 
             <div className="mt-4 text-center">
