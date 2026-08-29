@@ -62,15 +62,95 @@ All data models, API request/response contracts, ID naming conventions, and syst
 
 ## 🚀 Getting Started
 
-### Prerequisites
-- Python 3.11+
-- Node.js 18+ & npm / pnpm
-- Docker & Docker Compose (optional)
-- Google Gemini API Key
+### 📋 Prerequisites
+- **Python 3.11+**
+- **Node.js 18.18+ or 20+** & **npm**
+- *(Optional)* **Docker Desktop** (for containerized execution)
+- **Google Gemini API Key** (for grounded AI agents and personalized explanations)
 
-### Configuration
-Copy the template environment file:
+---
+
+### ⚙️ Step 1: Configure Environment Variables
+
+Create your local `.env` file by copying the template:
+
 ```bash
 cp .env.example .env
 ```
-Populate `.env` with your database credentials and `GEMINI_API_KEY`.
+
+Open `.env` and configure the following required variables:
+
+| Variable | Description | Example / Default |
+| :--- | :--- | :--- |
+| `GEMINI_API_KEY` | **Required for AI Agents** — Your Google Gemini API Key | `AIzaSy...` |
+| `SECRET_KEY` / `JWT_SECRET_KEY` | **Required for Auth** — Cryptographic secret used for signing JWT tokens | `your-secure-random-secret-key` |
+| `DATABASE_URL` | **Database Connection** — Async DB connection string | `sqlite+aiosqlite:///./skilltwin.db` *(SQLite)* or `postgresql+asyncpg://postgres:postgrespassword@localhost:5432/skilltwin` *(Postgres)* |
+| `SYNC_DATABASE_URL` | Sync database connection string for migrations/scripts | `sqlite:///./skilltwin.db` *(SQLite)* or `postgresql://postgres:postgrespassword@localhost:5432/skilltwin` *(Postgres)* |
+
+> 💡 **Zero-Config SQLite Note**: By default, the application runs out-of-the-box with SQLite (`skilltwin.db`) without requiring an external database server. If using PostgreSQL or Docker, use the PostgreSQL connection strings.
+
+---
+
+### 🐳 Method A: Run with Docker Compose (Recommended)
+
+Docker runs the entire stack (**PostgreSQL + FastAPI Backend + Next.js Frontend**) in isolated containers with one command:
+
+```bash
+docker compose up --build
+```
+
+- 🌐 **Learner Dashboard (Frontend)**: [http://localhost:3000](http://localhost:3000)
+- 📚 **Interactive Swagger API Docs**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- 💓 **Backend Health Check**: [http://localhost:8000/health](http://localhost:8000/health)
+
+---
+
+### 💻 Method B: Run Locally on Host Machine
+
+If you prefer running the backend and frontend directly on your local system without Docker:
+
+#### 1. Start the FastAPI Backend
+Open a terminal in the root repository directory:
+
+```bash
+# Install Python dependencies
+pip install -r backend/requirements.txt
+
+# Start FastAPI server
+python -m uvicorn backend.main:app --host 127.0.0.1 --port 8000 --reload
+```
+- API will be live at: [http://localhost:8000](http://localhost:8000)
+- OpenAPI Swagger Docs: [http://localhost:8000/docs](http://localhost:8000/docs)
+
+#### 2. Start the Next.js Frontend
+Open a second terminal:
+
+```bash
+cd frontend
+
+# Install Node dependencies
+npm install
+
+# Start Next.js development server
+npm run dev
+```
+- Web Application will be live at: [http://localhost:3000](http://localhost:3000)
+
+---
+
+### 🧪 Automated Tests & Validation
+
+Run the automated test suites to verify system integrity:
+
+```bash
+# Run Backend Pytest Suite (BKT, DAG Planner, Subgraph Repair, API Endpoints)
+pytest
+
+# Run Frontend Engine & Invariant Tests
+cd frontend
+node --test src/tests/engine.test.mjs
+
+# Run End-to-End Scenario Demo
+python demo/scenario_demo.py
+```
+
