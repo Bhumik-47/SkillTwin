@@ -1,4 +1,4 @@
-﻿FROM python:3.11-slim
+FROM python:3.11-slim
 
 WORKDIR /app
 
@@ -13,8 +13,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY backend/requirements.txt /app/requirements.txt
 RUN pip install --no-cache-dir -r /app/requirements.txt
 
-# Copy backend code and shared data
+# Set PYTHONPATH so all local modules (ml, backend, shared) resolve seamlessly
+ENV PYTHONPATH=/app
+
+# Copy backend code, ml engine, and shared data
 COPY backend /app/backend
+COPY ml /app/ml
 COPY data /app/data
 COPY shared /app/shared
 
