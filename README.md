@@ -197,5 +197,14 @@ SkillTwin comes pre-loaded with curated domain DAGs:
 
 ---
 
+## 🤝 Contributing & Community
+
+Contributions are welcome! Please check out our community standards and guidelines before contributing:
+- 📖 [Contributing Guidelines](CONTRIBUTING.md) — Workflow, branching, schema contracts, and PR instructions.
+- 📜 [Code of Conduct](CODE_OF_CONDUCT.md) — Community standards and expectations.
+- 🛡️ [Security Policy](SECURITY.md) — Vulnerability reporting and credential guidelines.
+
+---
+
 ## 📄 License
 This project is open-source under the [MIT License](LICENSE).
