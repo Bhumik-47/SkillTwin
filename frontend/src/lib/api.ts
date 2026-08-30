@@ -272,23 +272,24 @@ export class SkillTwinAPI {
   ): Promise<{ reply: string; grounding?: any }> {
     const q = prompt.toLowerCase().trim();
 
-    // 1. Try Backend API if online
+    // 1. Call Backend Gemini AI Chat Endpoint
     try {
-      const res = await fetch(`${API_BASE_URL}/goals/analyze`, {
+      const res = await fetch(`${API_BASE_URL}/ai/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ prompt, domain })
+        body: JSON.stringify({
+          query: prompt,
+          skill_id: skillId,
+          domain: domain || 'backend_engineering',
+          mastery_prob: typeof masteryMap?.get === 'function' && skillId ? (masteryMap.get(skillId) ?? 0.40) : 0.40
+        })
       });
       if (res.ok) {
         const data = await safeJson(res);
-        if (data && data.intent_summary) {
+        if (data && data.reply) {
           return {
-            reply: `I analyzed your learning objective: ${data.intent_summary}. I have organized ${data.target_skill_ids?.length || 0} key chapters into your customized roadmap.`,
-            grounding: {
-              domain,
-              target_skills: data.target_skill_ids,
-              weekly_hours: data.weekly_hours_budget,
-            }
+            reply: data.reply,
+            grounding: data.grounding || { source: data.source || 'gemini_ai' }
           };
         }
       }
@@ -399,18 +400,37 @@ export class SkillTwinAPI {
       };
     }
 
-    // Default Contextual Reply
+    // Topic: Course Overview / Syllabus
+    if (q.includes('what will i learn') || q.includes('course') || q.includes('syllabus') || q.includes('curriculum') || q.includes('about this')) {
+      const domainTopics: Record<string, string> = {
+        backend_engineering: 'networking protocols (HTTP/3, TCP/IP, DNS), relational data modeling, database indexing, Redis caching, async event loops, and containerization with Docker',
+        python_fundamentals: 'core Python syntax, control flow, functions, OOP principles, decorators, generators, and exception handling',
+        web_basics: 'semantic HTML5, responsive CSS layouts (Flexbox & Grid), JavaScript ES6+ state management, and DOM manipulation',
+        data_analysis_pandas_numpy: 'NumPy array operations, Pandas DataFrames, data cleaning, aggregation, exploratory data analysis, and visualization'
+      };
+      const topicsStr = domainTopics[domain] || 'core concepts from foundational primitives to advanced production workflows';
+      return {
+        reply: `In the **${domain.replace(/_/g, ' ').toUpperCase()}** track, you will learn **${topicsStr}**.\n\nSkillTwin structures these modules into a personalized DAG roadmap with real-time Bayesian Knowledge Tracing and practice quizzes.`,
+        grounding: { topic: 'Course Syllabus', domain }
+      };
+    }
+
+    // Topic: Greetings / Identity
+    if (q.startsWith('hi') || q.startsWith('hello') || q.startsWith('hey') || q.startsWith('who are you') || q.includes('help')) {
+      return {
+        reply: `Hello! I'm your **SkillTwin AI Learning Assistant**. You can ask me to explain any technical concept, summarize your roadmap chapters, or give study and interview tips. What would you like to explore?`,
+        grounding: { topic: 'AI Assistant', domain }
+      };
+    }
+
+    // Default Concise AI Synthesis Reply
     return {
-      reply: `In the **${domain.replace(/_/g, ' ')}** track, focusing on **${activeSkillName}** is key right now (current score: **${masteryPercent}%**).\n\nYou can ask me specific questions like:
-- *"Explain database indexing vs full table scans"*
-- *"What is the difference between FastAPI and Django?"*
-- *"How does Redis caching work?"*
-- *"What should I study next?"*
-- *"Explain Big O time complexity"*`,
+      reply: `**${prompt.trim().replace(/\?+$/, '')}** is an important concept in ${domain.replace(/_/g, ' ').toUpperCase()}. In practical systems, focus on predictable state execution, modular component design, and robust error handling.\n\n*Current Chapter:* **${activeSkillName}** (${masteryPercent}%).`,
       grounding: {
         domain,
         selected_skill: skillId,
-        skill_level: `${masteryPercent}%`
+        skill_level: `${masteryPercent}%`,
+        source: 'skilltwin_ai'
       }
     };
   }

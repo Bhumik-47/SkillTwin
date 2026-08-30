@@ -16,6 +16,7 @@ from backend.routers.assessments import router as assessments_router
 from backend.routers.progress import router as progress_router
 from backend.routers.recommendations import router as recommendations_router
 from backend.routers.integrations import router as integrations_router
+from backend.routers.ai_chat import router as ai_chat_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -67,6 +68,7 @@ app.include_router(assessments_router)
 app.include_router(progress_router)
 app.include_router(recommendations_router)
 app.include_router(integrations_router)
+app.include_router(ai_chat_router)
 
 
 @app.get("/", tags=["Health"])
