@@ -1,57 +1,63 @@
 # Security Policy
 
-The **SkillTwin** team takes security and data integrity seriously. This document outlines our policy regarding reporting potential vulnerabilities and safeguarding secrets.
+## 1. Purpose
+The purpose of this Security Policy is to protect the integrity, privacy, and safety of the **SkillTwin** project and its users. As an open-source student and hackathon project, we are committed to promptly addressing security vulnerabilities while ensuring a secure development environment.
 
 ---
 
-## Supported Versions
+## 2. How to Report a Security Vulnerability
 
-SkillTwin is an active open-source hackathon project undergoing continuous iteration. Security updates and bug fixes are applied exclusively to the latest revision of the primary branch:
+If you discover a security vulnerability in SkillTwin, **please report it privately**.
 
-| Version / Branch | Supported | Notes |
-| :--- | :--- | :--- |
-| `main` (latest commit) | :white_check_mark: | Primary supported branch |
-| Older commits / feature branches | :x: | Please rebase or merge onto `main` |
+> ⚠️ **Important**: Do **NOT** report vulnerabilities or potential security flaws through public GitHub Issues, Pull Requests, or Discussions.
 
----
-
-## Reporting a Vulnerability
-
-If you discover a security vulnerability in SkillTwin, please **do not open a public issue or discussion**. Responsible disclosure protects all users and learners.
-
-### Reporting Procedure:
+### Reporting Process:
 1. **GitHub Private Vulnerability Reporting**:
-   - Navigate to the **Security** tab of the SkillTwin GitHub repository: [https://github.com/Bhumik-47/SkillTwin/security](https://github.com/Bhumik-47/SkillTwin/security)
-   - Click **Report a vulnerability** to submit a private advisory directly to the project maintainers.
-2. **Alternative Maintainer Contact**:
-   - If Private Vulnerability Reporting is unavailable, reach out privately to repository maintainers via GitHub before publishing details.
+   - Go to the **Security** tab of the repository: [https://github.com/Bhumik-47/SkillTwin/security](https://github.com/Bhumik-47/SkillTwin/security)
+   - Click on **Report a vulnerability** to privately submit details to the repository maintainers.
+2. **Direct Maintainer Contact via GitHub**:
+   - If GitHub Private Vulnerability Reporting is unavailable, please contact the repository maintainers privately through GitHub before sharing any sensitive details.
 
 ---
 
-## What Information to Include in a Report
+## 3. What a Useful Report Should Contain
 
-To help us assess and resolve the issue quickly, please include:
-- A clear description of the vulnerability and its potential impact.
-- Step-by-step instructions or a minimal Proof of Concept (PoC) to reproduce the behavior.
-- Affected components (e.g., `backend/auth`, `backend/routers`, `frontend/src/lib/api.ts`, Gemini agent endpoints).
-- Any proposed remediation or patch, if available.
-
-We will acknowledge receipt of your report, investigate the issue, and coordinate a fix in a timely manner.
+To help maintainers investigate and resolve the issue quickly, please provide:
+- A clear description of the vulnerability and its potential security impact.
+- Step-by-step reproduction instructions or a minimal proof of concept (PoC).
+- Affected sub-systems or files (e.g., `backend/auth/`, `backend/routers/`, `frontend/src/lib/`, API routes, Gemini agents).
+- Any suggested remediation, mitigation, or patch (if available).
 
 ---
 
-## Strict Policy on Secrets & Credentials
+## 4. Expected Response & Handling Process
 
-> ⚠️ **CRITICAL WARNING**: Never commit or attach real secrets in issues, pull requests, vulnerability reports, or git history.
+- **Acknowledgment**: Repository maintainers will acknowledge receipt of the private report in a timely manner.
+- **Investigation**: Maintainers will review, reproduce, and assess the severity of the reported issue.
+- **Remediation**: A fix will be developed and tested in a private branch before being merged into `main`.
+- **Resolution**: Once the fix is published, maintainers will notify the reporter and update the repository.
+
+---
+
+## 5. Responsible Disclosure Guidance
+
+We ask all security researchers and contributors to practice **responsible disclosure**:
+- Give maintainers reasonable time to investigate and fix the vulnerability before disclosing it publicly.
+- Do not exploit the vulnerability beyond what is strictly necessary to demonstrate proof of concept.
+- Avoid any destructive actions, accessing unauthorized user data, or disrupting the platform.
+
+---
+
+## 6. Strict Warning on Secrets & Credentials
+
+Contributors, users, and reporters must **NEVER publicly disclose, commit, or attach real secrets** in GitHub issues, pull requests, commit messages, or repository discussions.
 
 ### Prohibited Items:
-Contributors and reporters must **NEVER** commit or include:
-- **Google Gemini API Keys** (`GEMINI_API_KEY`) or third-party AI keys
-- **JWT Secret Keys** (`SECRET_KEY`, `JWT_SECRET_KEY`)
-- **User Passwords & Hashes**
-- **Database Credentials** or live database connection strings containing passwords
-- **Local Environment Files** (`.env`, `.env.local`, `.env.production`)
+- **API Keys** (e.g., Google Gemini `GEMINI_API_KEY`, AI service tokens)
+- **JWT Secrets** (`SECRET_KEY`, `JWT_SECRET_KEY`)
+- **Passwords and password hashes**
+- **Database credentials** or connection strings with authentication parameters
+- **Environment files** (`.env`, `.env.local`, `.env.production`)
+- **Any other sensitive secrets, private keys, or tokens**
 
-If you suspect a secret was committed accidentally:
-1. Immediately rotate / revoke the exposed key with the service provider (e.g., Google AI Studio).
-2. Cleanse git history if needed and notify repository maintainers.
+If secrets are accidentally exposed, immediately revoke and rotate the affected keys and notify the repository maintainers.
