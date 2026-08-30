@@ -1,8 +1,15 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
-import { getStudyResourcesForSkill, getInterviewQuestionsForSkill } from '../../data/topic_resources';
+import {
+  getStudyResourcesForSkill,
+  getPrioritizedStudyResources,
+  getInterviewQuestionsForSkill,
+  getDefaultTabForPreference,
+  type ResourceCategory,
+  type LearningPreference
+} from '../../data/topic_resources';
 import {
   X,
   CheckCircle2,
@@ -15,7 +22,11 @@ import {
   HelpCircle,
   BookOpen,
   ExternalLink,
-  Target
+  Target,
+  Video,
+  Code,
+  PenTool,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function SkillDetailDrawer() {
@@ -27,8 +38,12 @@ export default function SkillDetailDrawer() {
     masteryMap,
     openAssessment,
     openBktModal,
-    setIsAIChatOpen
+    setIsAIChatOpen,
+    profile
   } = useSkillTwin();
+
+  const preference: LearningPreference = (profile?.preferred_learning_style as LearningPreference) || 'mixed';
+  const [activeTab, setActiveTab] = useState<ResourceCategory | 'all'>(getDefaultTabForPreference(preference));
 
   if (!selectedSkillId) return null;
 
@@ -182,47 +197,183 @@ export default function SkillDetailDrawer() {
         )}
       </div>
 
-      {/* Curated Study Resources (GeeksforGeeks, W3Schools, TutorialsPoint) */}
-      <div className="mt-5 border-t dark:border-white/10 border-slate-200 pt-4 space-y-3">
-        <div className="flex items-center justify-between">
-          <h4 className="text-[11px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 flex items-center gap-1.5">
-            <BookOpen className="h-3.5 w-3.5" />
-            <span>Study Resources & Tutorials</span>
-          </h4>
-          <span className="text-[10px] text-slate-400">GFG / W3Schools</span>
-        </div>
+      {/* Striver-Style Tabbed & Prioritized Study Resources */}
+      {(() => {
+        const prioritizedResources = getPrioritizedStudyResources(skill.id, skill.name, preference);
+        const tabs: { key: ResourceCategory | 'all'; label: string; icon: React.ReactNode }[] = [
+          { key: 'all', label: 'All', icon: <Zap className="h-3 w-3 text-amber-400" /> },
+          { key: 'reading', label: 'Read', icon: <BookOpen className="h-3 w-3" /> },
+          { key: 'video', label: 'Watch', icon: <Video className="h-3 w-3" /> },
+          { key: 'exercise', label: 'Practice', icon: <Code className="h-3 w-3" /> },
+          { key: 'blog', label: 'Blog', icon: <PenTool className="h-3 w-3" /> },
+        ];
 
-        <div className="space-y-2">
-          {getStudyResourcesForSkill(skill.id, skill.name).map((res, idx) => (
-            <a
-              key={idx}
-              href={res.url}
-              target="_blank"
-              rel="noreferrer"
-              className="block rounded-xl border dark:border-white/5 border-slate-200 dark:bg-surface-50/70 bg-slate-50 p-2.5 hover:border-brand-500/40 transition-all group text-xs"
-            >
-              <div className="flex items-center justify-between mb-1">
-                <span className={`rounded-full px-2 py-0.2 text-[9px] font-bold ${
-                  res.platform === 'GeeksforGeeks'
-                    ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300'
-                    : res.platform === 'W3Schools'
-                    ? 'bg-green-500/15 text-green-700 dark:text-green-300'
-                    : 'bg-brand-500/15 text-brand-700 dark:text-brand-300'
-                }`}>
-                  {res.platform}
-                </span>
-                <span className="text-[10px] text-slate-400">{res.duration}</span>
-              </div>
-              <p className="font-bold dark:text-white text-slate-900 group-hover:text-brand-500 transition-colors line-clamp-1">
-                {res.title}
-              </p>
-              <p className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-2 mt-0.5">
-                {res.summary}
-              </p>
-            </a>
-          ))}
-        </div>
-      </div>
+        const displayResources = activeTab === 'all' 
+          ? prioritizedResources 
+          : prioritizedResources.filter(r => r.category === activeTab);
+
+        const platformColor = (p: string) => {
+          if (p === 'GeeksforGeeks') return 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300';
+          if (p === 'W3Schools') return 'bg-green-500/15 text-green-700 dark:text-green-300';
+          if (p === 'YouTube') return 'bg-red-500/15 text-red-700 dark:text-red-300';
+          if (p === 'HackerRank' || p === 'LeetCode') return 'bg-amber-500/15 text-amber-700 dark:text-amber-300';
+          if (p === 'Dev.to') return 'bg-indigo-500/15 text-indigo-700 dark:text-indigo-300';
+          if (p === 'RealPython') return 'bg-blue-500/15 text-blue-700 dark:text-blue-300';
+          if (p === 'MDN Web Docs') return 'bg-sky-500/15 text-sky-700 dark:text-sky-300';
+          if (p === 'freeCodeCamp') return 'bg-teal-500/15 text-teal-700 dark:text-teal-300';
+          if (p === 'Kaggle') return 'bg-cyan-500/15 text-cyan-700 dark:text-cyan-300';
+          return 'bg-brand-500/15 text-brand-700 dark:text-brand-300';
+        };
+
+        const preferenceLabels: Record<LearningPreference, { title: string; desc: string }> = {
+          video: { title: '🎬 Video-First Mode', desc: 'Curated video lectures prioritized at the top.' },
+          reading: { title: '📖 Deep Reading Mode', desc: 'Comprehensive guides & key takeaway notes shown first.' },
+          hands_on: { title: '💻 Hands-On Mode', desc: 'Practice labs & coding drills prioritized first.' },
+          mixed: { title: '🔀 Mixed Mode', desc: 'Balanced Striver roadmap: Read → Watch → Practice.' },
+        };
+
+        return (
+          <div className="mt-5 border-t dark:border-white/10 border-slate-200 pt-4 space-y-3">
+            <div className="flex items-center justify-between">
+              <h4 className="text-[11px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 flex items-center gap-1.5">
+                <BookOpen className="h-3.5 w-3.5" />
+                <span>Study Resources</span>
+              </h4>
+              <span className="text-[9px] font-bold text-slate-400 px-2 py-0.5 rounded-full dark:bg-white/5 bg-slate-100">
+                {preferenceLabels[preference]?.title}
+              </span>
+            </div>
+
+            {/* Preference Banner */}
+            <p className="text-[10px] text-slate-500 dark:text-slate-400">
+              {preferenceLabels[preference]?.desc}
+            </p>
+
+            {/* Tabs */}
+            <div className="flex gap-1 p-0.5 rounded-xl dark:bg-surface-50 bg-slate-100 border dark:border-white/5 border-slate-200">
+              {tabs.map(tab => {
+                const count = tab.key === 'all' 
+                  ? prioritizedResources.length 
+                  : prioritizedResources.filter(r => r.category === tab.key).length;
+                return (
+                  <button
+                    key={tab.key}
+                    onClick={() => setActiveTab(tab.key)}
+                    className={`flex-1 flex items-center justify-center gap-1 px-1.5 py-1.5 rounded-lg text-[10px] font-bold transition-all ${
+                      activeTab === tab.key
+                        ? 'bg-brand-600 text-white shadow-sm'
+                        : 'dark:text-slate-400 text-slate-500 hover:dark:text-white hover:text-slate-800'
+                    } ${count === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
+                    disabled={count === 0}
+                  >
+                    {tab.icon}
+                    <span className="hidden sm:inline">{tab.label}</span>
+                    {count > 0 && (
+                      <span className={`text-[8px] rounded-full px-1 ${
+                        activeTab === tab.key
+                          ? 'bg-white/20'
+                          : 'dark:bg-white/5 bg-slate-200'
+                      }`}>
+                        {count}
+                      </span>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+
+            {/* Resource Cards */}
+            <div className="space-y-2.5">
+              {displayResources.length === 0 ? (
+                <p className="text-xs text-slate-400 italic py-2 text-center">
+                  No resources in this tab for this topic.
+                </p>
+              ) : (
+                displayResources.map((res, idx) => {
+                  const isTopPick = activeTab === 'all' && idx === 0;
+
+                  return (
+                    <div
+                      key={idx}
+                      className={`rounded-xl border p-3 transition-all group text-xs ${
+                        isTopPick
+                          ? 'border-brand-500/50 dark:bg-brand-950/20 bg-brand-50/50 shadow-xs'
+                          : 'dark:border-white/5 border-slate-200 dark:bg-surface-50/70 bg-slate-50 hover:border-brand-500/40'
+                      }`}
+                    >
+                      <div className="flex items-center justify-between mb-1.5">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${platformColor(res.platform)}`}>
+                            {res.platform}
+                          </span>
+                          <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">
+                            • {res.category}
+                          </span>
+                          {res.verified && (
+                            <span className="flex items-center gap-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-400">
+                              <ShieldCheck className="h-2.5 w-2.5" />
+                              Verified
+                            </span>
+                          )}
+                          {isTopPick && (
+                            <span className="text-[8px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.2 rounded-full border border-amber-500/20">
+                              ⭐ Top Match
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[10px] text-slate-400 font-medium">{res.duration}</span>
+                      </div>
+
+                      <a
+                        href={res.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block font-bold dark:text-white text-slate-900 group-hover:text-brand-500 transition-colors"
+                      >
+                        {res.title}
+                      </a>
+
+                      <p className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-2 mt-1">
+                        {res.summary}
+                      </p>
+
+                      {/* Key Points / Transcript Highlights */}
+                      {res.keyPoints && res.keyPoints.length > 0 && (
+                        <div className="mt-2 pt-2 border-t dark:border-white/5 border-slate-200/80 space-y-1">
+                          <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                            💡 Core Key Takeaways:
+                          </span>
+                          <ul className="space-y-0.5">
+                            {res.keyPoints.slice(0, 3).map((pt, pIdx) => (
+                              <li key={pIdx} className="text-[10.5px] dark:text-slate-300 text-slate-600 flex items-start gap-1">
+                                <span className="text-brand-500 font-bold">•</span>
+                                <span className="leading-tight">{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
+                      <div className="mt-2.5 flex items-center justify-between pt-1 text-[10px]">
+                        <span className="text-slate-400 font-medium">Difficulty: {res.difficulty}</span>
+                        <a
+                          href={res.url}
+                          target="_blank"
+                          rel="noreferrer"
+                          className="inline-flex items-center gap-1 font-bold text-brand-600 dark:text-brand-400 hover:underline"
+                        >
+                          <span>{res.category === 'video' ? 'Watch Lecture' : res.category === 'exercise' ? 'Solve Challenge' : 'Open Article'}</span>
+                          <ExternalLink className="h-2.5 w-2.5" />
+                        </a>
+                      </div>
+                    </div>
+                  );
+                })
+              )}
+            </div>
+          </div>
+        );
+      })()}
 
       {/* Primary Actions */}
       <div className="mt-6 space-y-2 border-t dark:border-white/10 border-slate-200 pt-4">

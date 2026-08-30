@@ -2,8 +2,7 @@
 
 import React, { useState, useMemo } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
-import { getStudyResourcesForSkill, getInterviewQuestionsForSkill } from '../../data/topic_resources';
-import ProgressChart from '../analytics/ProgressChart';
+import { getStudyResourcesForSkill, getPrioritizedStudyResources, type LearningPreference, type ResourceCategory } from '../../data/topic_resources';
 import {
   Sparkles,
   Zap,
@@ -33,7 +32,10 @@ import {
   Lightbulb,
   Code,
   ShieldAlert,
-  ChevronDown
+  ChevronDown,
+  Video,
+  PenTool,
+  ShieldCheck
 } from 'lucide-react';
 
 export default function DashboardView() {
@@ -54,7 +56,7 @@ export default function DashboardView() {
   } = useSkillTwin();
 
   const [expandedWhyId, setExpandedWhyId] = useState<string | null>(null);
-  const [expandedFaqIndex, setExpandedFaqIndex] = useState<number | null>(0);
+  const [activeResourceTab, setActiveResourceTab] = useState<ResourceCategory | 'all'>('all');
   const [currentFlashcardIndex, setCurrentFlashcardIndex] = useState<number>(0);
   const [isFlashcardFlipped, setIsFlashcardFlipped] = useState<boolean>(false);
 
@@ -84,17 +86,17 @@ export default function DashboardView() {
     ? Math.min(7, new Set(attemptsHistory.map(a => a.timestamp?.slice(0, 10) || 'today')).size)
     : 0;
 
-  // Curated Learner-Friendly Resources (GeeksforGeeks, W3Schools, TutorialsPoint, MDN)
-  const activeChapterResources = useMemo(() => {
+  // Curated Learner-Friendly Resources (prioritized by learning preference)
+  const learningPref: LearningPreference = (profile?.preferred_learning_style as LearningPreference) || 'mixed';
+  const prioritizedResources = useMemo(() => {
     if (!activeNode) return [];
-    return getStudyResourcesForSkill(activeNode.skill_id, activeNode.skill_name || activeSkill?.name);
-  }, [activeNode, activeSkill]);
+    return getPrioritizedStudyResources(activeNode.skill_id, activeNode.skill_name || activeSkill?.name || '', learningPref);
+  }, [activeNode, activeSkill, learningPref]);
 
-  // "What You Can Be Asked" (Sample Interview / Assessment Questions)
-  const interviewQuestionsList = useMemo(() => {
-    if (!activeNode) return [];
-    return getInterviewQuestionsForSkill(activeNode.skill_id, activeNode.skill_name || activeSkill?.name);
-  }, [activeNode, activeSkill]);
+  const displayResources = useMemo(() => {
+    if (activeResourceTab === 'all') return prioritizedResources;
+    return prioritizedResources.filter(r => r.category === activeResourceTab);
+  }, [prioritizedResources, activeResourceTab]);
 
   // Flash Knowledge Cards for quick drills
   const flashcards = useMemo(() => [
@@ -351,169 +353,198 @@ export default function DashboardView() {
       </div>
 
       {/* ------------------------------------------------------------- */}
-      {/* 2.5 Skill Growth Trajectory Chart (LeetCode Contest-Style)    */}
+      {/* 3. Focused Curated Study Resources (UIverse-Inspired Cards)    */}
       {/* ------------------------------------------------------------- */}
-      <ProgressChart
-        currentMasteryPct={activeMasteryPercent}
-        skillsMasteredCount={masteredCount}
-      />
-
-      {/* ------------------------------------------------------------- */}
-      {/* 3. Curated Learning Resources & "What Can Be Asked" Drawer    */}
-      {/* ------------------------------------------------------------- */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+      <div className="rounded-3xl border dark:border-white/10 border-slate-200 dark:bg-[#090f1b] bg-white p-6 sm:p-8 shadow-sm space-y-6">
         
-        {/* Left: Curated Reading & Video References (6 Cols) */}
-        <div className="lg:col-span-6 rounded-3xl border dark:border-white/10 border-slate-200 dark:bg-[#090f1b] bg-white p-6 sm:p-8 shadow-sm space-y-5 flex flex-col justify-between">
-          <div className="space-y-4">
-            
-            <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-brand-500/15 text-brand-600 dark:text-brand-300">
-                  <BookOpen className="h-4 w-4" />
-                </div>
-                <h3 className="text-base font-bold dark:text-white text-slate-900">
-                  Curated Study Resources
-                </h3>
+        {/* Section Header & Preference Filter Tabs */}
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b dark:border-white/10 border-slate-200 pb-5">
+          <div className="space-y-1">
+            <div className="flex items-center gap-2.5">
+              <div className="flex h-8 w-8 items-center justify-center rounded-2xl bg-brand-500/15 text-brand-600 dark:text-brand-300 border border-brand-500/30">
+                <BookOpen className="h-4 w-4" />
               </div>
-              <span className="text-xs text-slate-400 font-semibold">For Active Chapter</span>
+              <h3 className="text-lg font-extrabold dark:text-white text-slate-900 tracking-tight">
+                Curated Study Resources
+              </h3>
+              <span className="rounded-full bg-brand-500/10 dark:bg-brand-400/10 border border-brand-500/20 px-2.5 py-0.5 text-[10px] font-bold text-brand-600 dark:text-brand-300">
+                {activeNode?.skill_name || 'Active Chapter'}
+              </span>
             </div>
-
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Read these references before testing your skills on <strong>{activeNode?.skill_name || 'this topic'}</strong>:
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              {learningPref === 'video'
+                ? '🎬 Video-First Mode active: High-yield video lectures and visual walk-throughs prioritized.'
+                : learningPref === 'hands_on'
+                ? '💻 Hands-On Mode active: Coding labs, challenges, and sandbox exercises prioritized.'
+                : learningPref === 'reading'
+                ? '📖 Deep Reading Mode active: In-depth technical articles and key takeaway notes prioritized.'
+                : '🔀 Mixed Mode active: Balanced Striver-style curriculum (Read → Watch → Practice).'}
             </p>
+          </div>
 
-            <div className="space-y-3">
-              {activeChapterResources.map((res, idx) => {
-                const isGfg = res.platform === 'GeeksforGeeks';
-                const isW3 = res.platform === 'W3Schools';
-                const isTutorialsPoint = res.platform === 'TutorialsPoint';
-                const isMdn = res.platform === 'MDN Web Docs';
+          {/* Category Filter Tabs */}
+          <div className="flex items-center gap-1.5 p-1 rounded-2xl dark:bg-surface-50 bg-slate-100 border dark:border-white/5 border-slate-200 overflow-x-auto">
+            {[
+              { key: 'all' as const, label: 'All', icon: <Zap className="h-3 w-3 text-amber-400" /> },
+              { key: 'reading' as const, label: 'Articles', icon: <BookOpen className="h-3 w-3" /> },
+              { key: 'video' as const, label: 'Videos', icon: <Video className="h-3 w-3" /> },
+              { key: 'exercise' as const, label: 'Practice', icon: <Code className="h-3 w-3" /> },
+              { key: 'blog' as const, label: 'Blogs', icon: <PenTool className="h-3 w-3" /> },
+            ].map(tab => {
+              const count = tab.key === 'all'
+                ? prioritizedResources.length
+                : prioritizedResources.filter(r => r.category === tab.key).length;
 
-                return (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border dark:border-white/5 border-slate-200 dark:bg-surface-50/60 bg-slate-50 p-4 space-y-2.5 hover:border-brand-500/40 transition-all group shadow-2xs"
-                  >
-                    <div className="flex items-center justify-between text-[11px]">
-                      <div className="flex items-center gap-1.5">
-                        <span className={`rounded-full px-2.5 py-0.5 font-bold border ${
-                          isGfg
-                            ? 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30'
-                            : isW3
-                            ? 'bg-green-500/15 text-green-700 dark:text-green-300 border-green-500/30'
-                            : isTutorialsPoint
-                            ? 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30'
-                            : isMdn
-                            ? 'bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30'
-                            : 'bg-brand-500/15 text-brand-700 dark:text-brand-300 border-brand-500/30'
-                        }`}>
-                          {res.platform}
+              return (
+                <button
+                  key={tab.key}
+                  onClick={() => setActiveResourceTab(tab.key)}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-bold transition-all ${
+                    activeResourceTab === tab.key
+                      ? 'bg-brand-600 text-white shadow-sm shadow-brand-500/20'
+                      : 'dark:text-slate-400 text-slate-600 hover:dark:text-white hover:text-slate-900'
+                  } ${count === 0 ? 'opacity-40 cursor-not-allowed' : ''}`}
+                  disabled={count === 0}
+                >
+                  {tab.icon}
+                  <span>{tab.label}</span>
+                  {count > 0 && (
+                    <span className={`text-[9px] rounded-full px-1.5 py-0.2 font-mono ${
+                      activeResourceTab === tab.key ? 'bg-white/20' : 'dark:bg-white/5 bg-slate-200'
+                    }`}>
+                      {count}
+                    </span>
+                  )}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Resources Grid — UIverse-Inspired Glow & Lift Cards */}
+        {displayResources.length === 0 ? (
+          <div className="py-12 text-center text-xs text-slate-400 italic">
+            No resources available in this category for the active chapter.
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+            {displayResources.map((res, idx) => {
+              const isTopMatch = activeResourceTab === 'all' && idx === 0;
+
+              const platformColor = (() => {
+                switch (res.platform) {
+                  case 'GeeksforGeeks': return { badge: 'bg-emerald-500/15 text-emerald-700 dark:text-emerald-300 border-emerald-500/30', glow: 'bg-emerald-500/15' };
+                  case 'W3Schools': return { badge: 'bg-green-500/15 text-green-700 dark:text-green-300 border-green-500/30', glow: 'bg-green-500/15' };
+                  case 'YouTube': return { badge: 'bg-red-500/15 text-red-700 dark:text-red-300 border-red-500/30', glow: 'bg-red-500/15' };
+                  case 'HackerRank': case 'LeetCode': return { badge: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30', glow: 'bg-amber-500/15' };
+                  case 'Dev.to': return { badge: 'bg-indigo-500/15 text-indigo-700 dark:text-indigo-300 border-indigo-500/30', glow: 'bg-indigo-500/15' };
+                  case 'RealPython': return { badge: 'bg-blue-500/15 text-blue-700 dark:text-blue-300 border-blue-500/30', glow: 'bg-blue-500/15' };
+                  case 'MDN Web Docs': return { badge: 'bg-sky-500/15 text-sky-700 dark:text-sky-300 border-sky-500/30', glow: 'bg-sky-500/15' };
+                  case 'freeCodeCamp': return { badge: 'bg-teal-500/15 text-teal-700 dark:text-teal-300 border-teal-500/30', glow: 'bg-teal-500/15' };
+                  case 'Kaggle': return { badge: 'bg-cyan-500/15 text-cyan-700 dark:text-cyan-300 border-cyan-500/30', glow: 'bg-cyan-500/15' };
+                  case 'TutorialsPoint': return { badge: 'bg-amber-500/15 text-amber-700 dark:text-amber-300 border-amber-500/30', glow: 'bg-amber-500/15' };
+                  default: return { badge: 'bg-brand-500/15 text-brand-700 dark:text-brand-300 border-brand-500/30', glow: 'bg-brand-500/15' };
+                }
+              })();
+
+              return (
+                <div
+                  key={idx}
+                  className="relative group rounded-3xl p-[1px] bg-gradient-to-b from-brand-500/20 via-cyan-500/10 to-transparent hover:from-brand-500/60 hover:via-cyan-400/50 hover:to-indigo-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-cyan-500/10"
+                >
+                  {/* Card Interior */}
+                  <div className="relative rounded-[23px] dark:bg-[#0c1424]/95 bg-white/95 backdrop-blur-xl p-6 flex flex-col justify-between h-full overflow-hidden border dark:border-white/5 border-slate-200">
+                    
+                    {/* Ambient Glow Orb on hover */}
+                    <div className={`absolute -top-12 -right-12 w-32 h-32 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${platformColor.glow}`} />
+
+                    <div className="space-y-4 relative z-10">
+                      
+                      {/* Meta Top Header */}
+                      <div className="flex items-center justify-between text-xs">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold border ${platformColor.badge}`}>
+                            {res.platform}
+                          </span>
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                            • {res.category}
+                          </span>
+                          {res.verified && (
+                            <span className="flex items-center gap-0.5 text-[9px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-full border border-emerald-500/20">
+                              <ShieldCheck className="h-3 w-3" />
+                              Verified
+                            </span>
+                          )}
+                          {isTopMatch && (
+                            <span className="text-[9px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/15 px-2 py-0.5 rounded-full border border-amber-500/30">
+                              ⭐ Top Match
+                            </span>
+                          )}
+                        </div>
+
+                        <span className="text-slate-400 font-medium flex items-center gap-1 text-[11px]">
+                          <Clock className="h-3 w-3" />
+                          {res.duration}
                         </span>
-                        <span className="text-slate-400 font-medium">• {res.type}</span>
                       </div>
 
-                      <span className="text-slate-400 font-medium flex items-center gap-1">
-                        <Clock className="h-3 w-3" />
-                        {res.duration}
-                      </span>
+                      {/* Title with Gradient Hover */}
+                      <a
+                        href={res.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className="block text-sm sm:text-base font-extrabold dark:text-white text-slate-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-400 group-hover:to-cyan-400 transition-all duration-300 line-clamp-2"
+                      >
+                        {res.title}
+                      </a>
+
+                      {/* Summary */}
+                      <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed line-clamp-3">
+                        {res.summary}
+                      </p>
+
+                      {/* Core Key Takeaways / Transcript Bullet Highlights */}
+                      {res.keyPoints && res.keyPoints.length > 0 && (
+                        <div className="rounded-2xl p-3 dark:bg-surface-50/70 bg-slate-50 border dark:border-white/5 border-slate-200/80 space-y-1.5">
+                          <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 flex items-center gap-1">
+                            <Sparkles className="h-3 w-3 text-amber-400" />
+                            <span>Core Key Takeaways:</span>
+                          </span>
+                          <ul className="space-y-1">
+                            {res.keyPoints.slice(0, 3).map((pt, pIdx) => (
+                              <li key={pIdx} className="text-[11px] dark:text-slate-300 text-slate-600 flex items-start gap-1.5">
+                                <span className="text-cyan-500 font-bold leading-tight">•</span>
+                                <span className="leading-tight">{pt}</span>
+                              </li>
+                            ))}
+                          </ul>
+                        </div>
+                      )}
+
                     </div>
 
-                    <h4 className="text-xs sm:text-sm font-bold dark:text-white text-slate-900 group-hover:text-brand-500 transition-colors">
-                      {res.title}
-                    </h4>
-
-                    <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                      {res.summary}
-                    </p>
-
-                    <div className="pt-1 flex items-center justify-between text-xs border-t dark:border-white/5 border-slate-200">
+                    {/* Action Footer */}
+                    <div className="pt-4 mt-4 border-t dark:border-white/5 border-slate-200 flex items-center justify-between text-xs relative z-10">
                       <span className="text-[11px] font-semibold text-slate-400">
-                        Difficulty: {res.difficulty}
+                        Level: <strong className="dark:text-slate-200 text-slate-700">{res.difficulty}</strong>
                       </span>
                       <a
                         href={res.url}
                         target="_blank"
                         rel="noreferrer"
-                        className={`inline-flex items-center gap-1.5 font-bold px-3 py-1 rounded-xl text-[11px] transition-all ${
-                          isGfg
-                            ? 'bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 hover:bg-emerald-500/20'
-                            : isW3
-                            ? 'bg-green-500/10 text-green-700 dark:text-green-300 hover:bg-green-500/20'
-                            : 'bg-brand-500/10 text-brand-700 dark:text-brand-300 hover:bg-brand-500/20'
-                        }`}
+                        className="inline-flex items-center gap-1.5 font-bold px-3.5 py-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-sm shadow-brand-500/20 text-xs transition-all duration-200 group/btn"
                       >
-                        <span>Open on {res.platform}</span>
-                        <ExternalLink className="h-3 w-3" />
+                        <span>{res.category === 'video' ? 'Watch Lecture' : res.category === 'exercise' ? 'Solve Problem' : 'Open Resource'}</span>
+                        <ArrowRight className="h-3 w-3 group-hover/btn:translate-x-1 transition-transform" />
                       </a>
                     </div>
+
                   </div>
-                );
-              })}
-            </div>
-
-          </div>
-        </div>
-
-        {/* Right: "What You Can Be Asked" (Interview & Quiz Cheat-Sheet) (6 Cols) */}
-        <div className="lg:col-span-6 rounded-3xl border dark:border-white/10 border-slate-200 dark:bg-[#090f1b] bg-white p-6 sm:p-8 shadow-sm space-y-5 flex flex-col justify-between">
-          <div className="space-y-4">
-            
-            <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-3">
-              <div className="flex items-center gap-2">
-                <div className="flex h-7 w-7 items-center justify-center rounded-xl bg-amber-500/15 text-amber-600 dark:text-amber-300">
-                  <Target className="h-4 w-4" />
                 </div>
-                <h3 className="text-base font-bold dark:text-white text-slate-900">
-                  What Interviewers & Quizzes Ask
-                </h3>
-              </div>
-              <span className="text-xs text-slate-400 font-semibold">Core Cheat-Sheet</span>
-            </div>
-
-            <p className="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-              Master the exact conceptual questions and architectural principles tested for this topic:
-            </p>
-
-            <div className="space-y-2.5">
-              {interviewQuestionsList.map((item, idx) => {
-                const isExpanded = expandedFaqIndex === idx;
-                return (
-                  <div
-                    key={idx}
-                    className="rounded-2xl border dark:border-white/5 border-slate-200 dark:bg-surface-50/60 bg-slate-50 overflow-hidden transition-all"
-                  >
-                    <button
-                      onClick={() => setExpandedFaqIndex(isExpanded ? null : idx)}
-                      className="w-full p-3.5 text-left text-xs font-bold dark:text-slate-200 text-slate-800 flex items-center justify-between gap-3 hover:text-brand-500 transition-colors"
-                    >
-                      <span>{item.q}</span>
-                      <ChevronDown className={`h-4 w-4 shrink-0 transition-transform ${isExpanded ? 'rotate-180 text-brand-500' : 'text-slate-400'}`} />
-                    </button>
-
-                    {isExpanded && (
-                      <div className="px-3.5 pb-3.5 pt-1 text-xs dark:text-slate-300 text-slate-600 leading-relaxed border-t dark:border-white/5 border-slate-200 bg-white/40 dark:bg-surface-100/40">
-                        <strong className="text-brand-600 dark:text-brand-300 block mb-1">Key Principle:</strong>
-                        {item.a}
-                      </div>
-                    )}
-                  </div>
-                );
-              })}
-            </div>
-
+              );
+            })}
           </div>
-
-          <div className="pt-2">
-            <button
-              onClick={() => activeNode && handleStartChapter(activeNode.skill_id)}
-              className="w-full flex items-center justify-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 py-3 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
-            >
-              <Zap className="h-4 w-4" />
-              <span>Test Myself on These Questions Now</span>
-            </button>
-          </div>
-        </div>
+        )}
 
       </div>
 
