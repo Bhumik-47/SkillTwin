@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
 import ProgressChart from '../analytics/ProgressChart';
+import { computeWeeklyStreak } from '../../lib/streak';
 import {
   User,
   ShieldCheck,
@@ -72,9 +73,8 @@ export default function LearnerProfileView() {
   const verifiedMasteredCount = Array.from(masteryMap.entries()).filter(([_, p]) => p >= 0.80).length;
   const estimatedCount = Array.from(masteryMap.entries()).filter(([_, p]) => p >= 0.35 && p < 0.80).length;
 
-  const activeStreakDays = attemptsHistory && attemptsHistory.length > 0
-    ? Math.min(7, new Set(attemptsHistory.map(a => a.timestamp?.slice(0, 10) || 'today')).size)
-    : 0;
+  // Calendar-synced weekly streak calculation
+  const weeklyStreak = useMemo(() => computeWeeklyStreak(attemptsHistory), [attemptsHistory]);
 
   const avgMastery = masteryMap.size > 0
     ? Math.round((Array.from(masteryMap.values()).reduce((a, b) => a + b, 0) / masteryMap.size) * 100)
@@ -236,9 +236,9 @@ export default function LearnerProfileView() {
               </p>
 
               <div className="flex flex-wrap items-center gap-2 pt-1 text-xs">
-                <span className="inline-flex items-center gap-1 font-bold text-amber-500 bg-amber-500/10 px-2.5 py-0.5 rounded-lg border border-amber-500/20">
-                  <Flame className={`h-3.5 w-3.5 ${activeStreakDays > 0 ? 'fill-amber-500 text-amber-500' : 'text-slate-400'}`} />
-                  <span>{activeStreakDays > 0 ? `${activeStreakDays} Day Streak` : '0 Day Streak • Start a Quiz'}</span>
+                <span className="inline-flex items-center gap-1.5 font-bold text-amber-500 bg-amber-500/10 px-2.5 py-0.5 rounded-lg border border-amber-500/20">
+                  <Flame className={`h-3.5 w-3.5 ${weeklyStreak.consecutiveStreakDays > 0 ? 'fill-amber-500 text-amber-500' : 'text-slate-400'}`} />
+                  <span>{weeklyStreak.consecutiveStreakDays > 0 ? `${weeklyStreak.consecutiveStreakDays} Day Streak` : '0 Day Streak • Start a Quiz'}</span>
                 </span>
                 <span className="inline-flex items-center gap-1 dark:text-slate-300 text-slate-700 bg-slate-100 dark:bg-surface-50 px-2.5 py-0.5 rounded-lg border dark:border-white/5 border-slate-200">
                   <Clock className="h-3.5 w-3.5 text-brand-500" />

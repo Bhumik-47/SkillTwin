@@ -131,8 +131,11 @@ export default function AssessmentModal() {
     const score = totalQuestions > 0 ? correctCount / totalQuestions : 0.0;
     const res = await submitAssessmentEvidence(skill.id, score, 60, answeredMap);
 
-    if (score >= 0.70) {
-      confetti({ particleCount: 65, spread: 70, origin: { y: 0.6 } });
+    // Confetti on passing scores
+    if (score >= 1.0) {
+      confetti({ particleCount: 100, spread: 90, origin: { y: 0.6 } });
+    } else if (score >= 0.75) {
+      confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
     }
 
     setSubmissionResult({
@@ -144,6 +147,102 @@ export default function AssessmentModal() {
     });
     setIsSubmitted(true);
     setIsSubmitting(false);
+  };
+
+  const handleRetakeQuiz = () => {
+    setSelectedAnswers({});
+    setCurrentQIndex(0);
+    setIsSubmitted(false);
+    setSubmissionResult(null);
+    setVisibleHints({});
+  };
+
+  const handleStartRemedialQuiz = () => {
+    setIsLoadingQuestions(true);
+    setSelectedAnswers({});
+    setCurrentQIndex(0);
+    setIsSubmitted(false);
+    setSubmissionResult(null);
+    setVisibleHints({});
+
+    SkillTwinAPI.getQuestionsForSkill(skill.id, {
+      skillName: skill.name,
+      domain: currentDomain,
+      isRemedial: true,
+      masteryProb: 0.15,
+      attemptCount: 1
+    })
+      .then(qList => {
+        setQuestions(qList);
+        setIsLoadingQuestions(false);
+      })
+      .catch(() => setIsLoadingQuestions(false));
+  };
+
+  const handleStartAdvancedChallenge = () => {
+    setIsLoadingQuestions(true);
+    setSelectedAnswers({});
+    setCurrentQIndex(0);
+    setIsSubmitted(false);
+    setSubmissionResult(null);
+    setVisibleHints({});
+
+    SkillTwinAPI.getQuestionsForSkill(skill.id, {
+      skillName: skill.name,
+      domain: currentDomain,
+      isAdvanced: true,
+      masteryProb: 0.95,
+      attemptCount: 1
+    })
+      .then(qList => {
+        setQuestions(qList);
+        setIsLoadingQuestions(false);
+      })
+      .catch(() => setIsLoadingQuestions(false));
+  };
+
+  const getOutcomeTier = (scorePct: number) => {
+    if (scorePct >= 100) {
+      return {
+        tier: 'perfect',
+        title: '🏆 Perfect 100% Score! Advanced Topics Unlocked',
+        desc: 'Exceptional mastery! You answered all 4 questions correctly. Advanced challenge topics and downstream chapters have been unlocked on your roadmap.',
+        badge: '🏆 Level 4 • Mastered Pro (100%)',
+        badgeColor: 'text-emerald-500 bg-emerald-500/15 border-emerald-500/40',
+        borderColor: 'border-emerald-500/40 dark:bg-emerald-950/25 bg-emerald-50/90',
+        iconColor: 'border-emerald-500/50 bg-emerald-500/20 text-emerald-600 dark:text-emerald-300'
+      };
+    } else if (scorePct >= 75) {
+      return {
+        tier: 'passed',
+        title: '🎉 Chapter Passed (75%)! Next Chapter Unlocked',
+        desc: 'Competency verified! You scored 75% (3/4 correct), meeting the required benchmark to advance along your active learning roadmap.',
+        badge: '🎯 Level 3 • Competent (75%)',
+        badgeColor: 'text-cyan-500 bg-cyan-500/15 border-cyan-500/40',
+        borderColor: 'border-cyan-500/40 dark:bg-cyan-950/25 bg-cyan-50/90',
+        iconColor: 'border-cyan-500/50 bg-cyan-500/20 text-cyan-600 dark:text-cyan-300'
+      };
+    } else if (scorePct >= 50) {
+      return {
+        tier: 'retry',
+        title: '🔄 Needs Reinforcement (50%) • Passing Score is 75%',
+        desc: 'You scored 50% (2/4 correct). A minimum score of 75% is required to unlock the next chapter. Review the explanations below and repeat this chapter quiz to advance.',
+        badge: '⚡ Level 2 • Basic (50%)',
+        badgeColor: 'text-amber-500 bg-amber-500/15 border-amber-500/40',
+        borderColor: 'border-amber-500/40 dark:bg-amber-950/25 bg-amber-50/90',
+        iconColor: 'border-amber-500/50 bg-amber-500/20 text-amber-600 dark:text-amber-300'
+      };
+    } else {
+      return {
+        tier: 'remedial',
+        title: '🌱 Prerequisite Gap Detected • Remedial Quiz Scheduled',
+        desc: `You scored ${scorePct}% (${Math.round((scorePct / 100) * 4)}/4 correct). A foundational prerequisite gap was detected. A focused remedial practice quiz has been scheduled to help you master the core building blocks.`,
+        badge: '🌱 Level 1 • Foundational Review',
+        badgeColor: 'text-rose-500 bg-rose-500/15 border-rose-500/40',
+        borderColor: 'border-rose-500/40 dark:bg-rose-950/25 bg-rose-50/90',
+        iconColor: 'border-rose-500/50 bg-rose-500/20 text-rose-600 dark:text-rose-300'
+      };
+    }
   };
 
   const getStageBadge = (stage?: number) => {
@@ -232,16 +331,16 @@ export default function AssessmentModal() {
                       key={q.id}
                       type="button"
                       onClick={() => setCurrentQIndex(idx)}
-                      className={`h-7 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${
+                      className={`h-7 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1.5 ${
                         isCurrent
                           ? 'bg-brand-600 text-white shadow-md ring-2 ring-brand-400 scale-105'
                           : isAnswered
-                          ? 'dark:bg-emerald-950/50 bg-emerald-50 text-emerald-600 dark:text-emerald-300 border border-emerald-500/40'
+                          ? 'dark:bg-cyan-950/40 bg-cyan-50 text-cyan-700 dark:text-cyan-300 border border-cyan-500/40'
                           : 'dark:bg-surface-50 bg-slate-100 dark:text-slate-400 text-slate-600 border dark:border-white/5 border-slate-200 hover:border-brand-500/40'
                       }`}
                     >
                       <span>Q{idx + 1}</span>
-                      {isAnswered && <Check className="h-3 w-3 stroke-[3]" />}
+                      {isAnswered && <span className="h-1.5 w-1.5 rounded-full bg-cyan-500 dark:bg-cyan-400 inline-block" />}
                     </button>
                   );
                 })}
@@ -368,41 +467,41 @@ export default function AssessmentModal() {
             /* ------------------------------------------------------- */
             <div className="space-y-6 animate-in fade-in duration-200">
               
-              {/* Score & Mastery Level Banner */}
-              <div className={`rounded-3xl border p-6 text-center relative overflow-hidden ${
-                submissionResult?.attempt?.is_correct
-                  ? 'border-emerald-500/40 dark:bg-emerald-950/25 bg-emerald-50/90'
-                  : 'border-amber-500/40 dark:bg-amber-950/25 bg-amber-50/90'
-              }`}>
-                <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border shadow-md ${
-                  submissionResult?.attempt?.is_correct
-                    ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-600 dark:text-emerald-300'
-                    : 'border-amber-500/50 bg-amber-500/20 text-amber-600 dark:text-amber-300'
-                }`}>
-                  {submissionResult?.attempt?.is_correct ? (
-                    <Award className="h-8 w-8" />
-                  ) : (
-                    <AlertCircle className="h-8 w-8" />
-                  )}
-                </div>
+              {/* Score & Mastery Level Banner (4-Tier Progression System) */}
+              {(() => {
+                const outcome = getOutcomeTier(submissionResult.scorePct);
+                const finalPosterior = submissionResult?.bktResult?.posterior_after_transition ?? (submissionResult.scorePct >= 75 ? 0.80 : 0.40);
+                const levelInfo = getMasteryLevelBadge(finalPosterior);
 
-                <h4 className="text-lg font-bold dark:text-white text-slate-900 mt-3">
-                  {submissionResult?.attempt?.is_correct
-                    ? '🎉 Chapter Passed! Next Concepts Unlocked'
-                    : '🌱 Foundation In-Progress • Extra Practice Scheduled'}
-                </h4>
+                return (
+                  <div className={`rounded-3xl border p-6 text-center relative overflow-hidden ${outcome.borderColor}`}>
+                    <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border shadow-md ${outcome.iconColor}`}>
+                      {outcome.tier === 'perfect' ? (
+                        <Award className="h-8 w-8 text-emerald-500" />
+                      ) : outcome.tier === 'passed' ? (
+                        <CheckCircle2 className="h-8 w-8 text-cyan-500" />
+                      ) : outcome.tier === 'retry' ? (
+                        <RotateCcw className="h-8 w-8 text-amber-500" />
+                      ) : (
+                        <Flame className="h-8 w-8 text-rose-500" />
+                      )}
+                    </div>
 
-                <p className="text-xs sm:text-sm dark:text-slate-300 text-slate-600 mt-1 max-w-lg mx-auto leading-relaxed">
-                  {submissionResult?.attempt?.is_correct
-                    ? `You scored ${submissionResult.scorePct}% (${submissionResult.correctCount}/${submissionResult.totalCount} correct). You demonstrated required competency and advanced your roadmap!`
-                    : `You scored ${submissionResult.scorePct}% (${submissionResult.correctCount}/${submissionResult.totalCount} correct). We added a focused reinforcement step to help you lock down the basics.`}
-                </p>
+                    <div className="mt-3 flex items-center justify-center gap-2">
+                      <span className={`text-[11px] font-bold px-3 py-0.5 rounded-full border ${outcome.badgeColor}`}>
+                        {outcome.badge}
+                      </span>
+                    </div>
 
-                {/* 4-Level Gauge Breakdown */}
-                {(() => {
-                  const finalPosterior = submissionResult?.bktResult?.posterior_after_transition ?? 0.50;
-                  const levelInfo = getMasteryLevelBadge(finalPosterior);
-                  return (
+                    <h4 className="text-lg font-bold dark:text-white text-slate-900 mt-2">
+                      {outcome.title}
+                    </h4>
+
+                    <p className="text-xs sm:text-sm dark:text-slate-300 text-slate-600 mt-1 max-w-lg mx-auto leading-relaxed">
+                      {outcome.desc}
+                    </p>
+
+                    {/* 4-Level Gauge Breakdown */}
                     <div className="mt-5 max-w-md mx-auto rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white p-4 text-left space-y-3">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Mastery Classification</span>
@@ -424,16 +523,16 @@ export default function AssessmentModal() {
                         <div>
                           <span className="text-[10px] text-slate-400 block">Updated Skill Score</span>
                           <span className={`text-base font-bold ${
-                            submissionResult?.attempt?.is_correct ? 'text-emerald-500' : 'text-amber-500'
+                            submissionResult.scorePct >= 75 ? 'text-emerald-500' : submissionResult.scorePct >= 50 ? 'text-amber-500' : 'text-rose-500'
                           }`}>
                             {Math.round(finalPosterior * 100)}%
                           </span>
                         </div>
                       </div>
                     </div>
-                  );
-                })()}
-              </div>
+                  </div>
+                );
+              })()}
 
               {/* Detailed Question Review & Explanations Accordion */}
               <div className="space-y-3">
@@ -476,19 +575,58 @@ export default function AssessmentModal() {
                           </div>
                         </div>
 
-                        <div className="mt-3 pl-7 space-y-1.5 text-xs">
-                          <p className="dark:text-slate-300 text-slate-700">
-                            <strong>Your Answer:</strong> {chosenOpt?.text || 'Not answered'}
-                          </p>
-                          {!isRight && correctOpt && (
-                            <p className="text-emerald-600 dark:text-emerald-400 font-medium">
-                              <strong>Correct Answer:</strong> {correctOpt.text}
-                            </p>
-                          )}
+                        {/* Options List in Review Mode */}
+                        <div className="mt-3 pl-7 space-y-2 text-xs">
+                          <div className="space-y-1.5">
+                            {q.options.map((opt: any) => {
+                              const isThisChosen = chosenId === opt.id;
+                              const isThisCorrect = opt.is_correct;
+
+                              let optStyle = 'dark:border-white/5 border-slate-200 dark:bg-surface-50/40 bg-white/60 dark:text-slate-400 text-slate-600';
+                              let badge = null;
+
+                              if (isThisCorrect) {
+                                optStyle = 'border-emerald-500/50 bg-emerald-500/10 text-emerald-800 dark:text-emerald-200 font-semibold';
+                                badge = (
+                                  <span className="ml-auto text-[10px] font-bold text-emerald-600 dark:text-emerald-400 bg-emerald-500/15 px-2 py-0.5 rounded-full border border-emerald-500/30 flex items-center gap-1">
+                                    <Check className="h-2.5 w-2.5 stroke-[3]" />
+                                    Correct Answer
+                                  </span>
+                                );
+                              } else if (isThisChosen && !isThisCorrect) {
+                                optStyle = 'border-rose-500/50 bg-rose-500/10 text-rose-800 dark:text-rose-200 font-semibold';
+                                badge = (
+                                  <span className="ml-auto text-[10px] font-bold text-rose-600 dark:text-rose-400 bg-rose-500/15 px-2 py-0.5 rounded-full border border-rose-500/30 flex items-center gap-1">
+                                    <X className="h-2.5 w-2.5 stroke-[3]" />
+                                    Your Choice (Incorrect)
+                                  </span>
+                                );
+                              }
+
+                              return (
+                                <div
+                                  key={opt.id}
+                                  className={`rounded-xl border p-2.5 flex items-center justify-between gap-2 transition-all ${optStyle}`}
+                                >
+                                  <div className="flex items-center gap-2">
+                                    <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-lg text-[10px] font-mono font-bold bg-black/5 dark:bg-white/5">
+                                      {opt.id.toUpperCase()}
+                                    </span>
+                                    <span className="leading-tight">{opt.text}</span>
+                                  </div>
+                                  {badge}
+                                </div>
+                              );
+                            })}
+                          </div>
+
                           {correctOpt?.explanation && (
-                            <p className="mt-2 text-[11px] dark:text-slate-400 text-slate-600 bg-white/60 dark:bg-surface-50 p-2.5 rounded-xl border dark:border-white/5 border-slate-200">
-                              💡 <strong>Explanation:</strong> {correctOpt.explanation}
-                            </p>
+                            <div className="mt-2.5 text-[11px] dark:text-slate-300 text-slate-700 bg-white dark:bg-surface-50 p-3 rounded-xl border dark:border-white/5 border-slate-200">
+                              <span className="font-bold text-brand-600 dark:text-brand-300 block mb-0.5">
+                                💡 Explanation & Core Principle:
+                              </span>
+                              <p className="leading-relaxed">{correctOpt.explanation}</p>
+                            </div>
                           )}
                         </div>
                       </div>
@@ -555,16 +693,56 @@ export default function AssessmentModal() {
                 <span>Inspect BKT Mastery Calculation</span>
               </button>
 
-              <button
-                onClick={() => {
-                  closeAssessment();
-                  setActiveTab('roadmap');
-                }}
-                className="flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
-              >
-                <span>Continue Roadmap</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
+              <div className="flex items-center gap-2">
+                {submissionResult.scorePct === 50 ? (
+                  <button
+                    onClick={handleRetakeQuiz}
+                    className="flex items-center gap-2 rounded-xl bg-amber-600 hover:bg-amber-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                  >
+                    <RotateCcw className="h-4 w-4" />
+                    <span>Repeat Chapter Quiz (Target 75%+)</span>
+                  </button>
+                ) : submissionResult.scorePct <= 25 ? (
+                  <button
+                    onClick={handleStartRemedialQuiz}
+                    className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 hover:from-amber-500 hover:to-rose-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                  >
+                    <Flame className="h-4 w-4" />
+                    <span>Start Remedial Quiz (Level 1 Concepts)</span>
+                  </button>
+                ) : submissionResult.scorePct >= 100 ? (
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={handleStartAdvancedChallenge}
+                      className="flex items-center gap-1.5 rounded-xl bg-gradient-to-r from-amber-500 to-emerald-600 hover:from-amber-400 hover:to-emerald-500 px-4 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                    >
+                      <Sparkles className="h-4 w-4" />
+                      <span>Take Advanced Challenge</span>
+                    </button>
+                    <button
+                      onClick={() => {
+                        closeAssessment();
+                        setActiveTab('roadmap');
+                      }}
+                      className="flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                    >
+                      <span>Continue Next Chapter</span>
+                      <ArrowRight className="h-4 w-4" />
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    onClick={() => {
+                      closeAssessment();
+                      setActiveTab('roadmap');
+                    }}
+                    className="flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                  >
+                    <span>Continue Next Chapter</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </button>
+                )}
+              </div>
             </>
           )}
 

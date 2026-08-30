@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
 import { getStudyResourcesForSkill, getPrioritizedStudyResources, type LearningPreference, type ResourceCategory } from '../../data/topic_resources';
+import { computeWeeklyStreak } from '../../lib/streak';
 import {
   Sparkles,
   Zap,
@@ -81,10 +82,8 @@ export default function DashboardView() {
   const activeMastery = activeNode ? (masteryMap.get(activeNode.skill_id) ?? 0.10) : 0.10;
   const activeMasteryPercent = Math.round(activeMastery * 100);
 
-  // Dynamic streak based on verified quiz activity
-  const activeStreakDays = attemptsHistory && attemptsHistory.length > 0
-    ? Math.min(7, new Set(attemptsHistory.map(a => a.timestamp?.slice(0, 10) || 'today')).size)
-    : 0;
+  // Calendar-synced weekly streak calculation
+  const weeklyStreak = useMemo(() => computeWeeklyStreak(attemptsHistory), [attemptsHistory]);
 
   // Curated Learner-Friendly Resources (prioritized by learning preference)
   const learningPref: LearningPreference = (profile?.preferred_learning_style as LearningPreference) || 'mixed';
@@ -322,28 +321,45 @@ export default function DashboardView() {
             </div>
           </div>
 
-          {/* 7-Day Micro Study Streak */}
-          <div className="border-t dark:border-white/5 border-slate-200 pt-4 space-y-2">
+          {/* 7-Day Calendar-Synced Study Streak */}
+          <div className="border-t dark:border-white/5 border-slate-200 pt-4 space-y-2.5">
             <div className="flex items-center justify-between text-xs">
               <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                <Flame className={`h-3.5 w-3.5 ${activeStreakDays > 0 ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
+                <Flame className={`h-3.5 w-3.5 ${weeklyStreak.consecutiveStreakDays > 0 ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
                 <span>Weekly Study Streak</span>
               </span>
               <span className="text-amber-500 font-bold font-mono">
-                {activeStreakDays > 0 ? `${activeStreakDays} Day${activeStreakDays > 1 ? 's' : ''} Active` : '0 Days (Start Today)'}
+                {weeklyStreak.consecutiveStreakDays > 0
+                  ? `${weeklyStreak.consecutiveStreakDays} Day${weeklyStreak.consecutiveStreakDays > 1 ? 's' : ''} Streak`
+                  : '0 Days (Start Today)'}
               </span>
             </div>
-            <div className="grid grid-cols-7 gap-1.5 text-center text-[10px]">
-              {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => (
+
+            {/* Calendar Days Grid (Mon - Sun) */}
+            <div className="grid grid-cols-7 gap-1 text-center">
+              {weeklyStreak.days.map((d) => (
                 <div
-                  key={idx}
-                  className={`rounded-lg py-1.5 font-bold transition-all ${
-                    idx < activeStreakDays
-                      ? 'bg-amber-500/20 text-amber-600 dark:text-amber-300 border border-amber-500/40'
-                      : 'bg-slate-100 dark:bg-surface-50 text-slate-400'
+                  key={d.dateString}
+                  className={`rounded-xl py-1 px-0.5 transition-all flex flex-col items-center justify-center relative ${
+                    d.isActive
+                      ? 'bg-amber-500/20 text-amber-600 dark:text-amber-300 border border-amber-500/50 shadow-xs'
+                      : d.isToday
+                      ? 'dark:bg-surface-100 bg-slate-100 dark:text-white text-slate-900 border border-brand-500/50 ring-1 ring-brand-500/30'
+                      : d.isFuture
+                      ? 'dark:bg-surface-50/40 bg-slate-50/50 text-slate-400 opacity-60'
+                      : 'dark:bg-surface-50 bg-slate-100 text-slate-400'
                   }`}
                 >
-                  {day}
+                  <span className="text-[9px] font-bold uppercase tracking-wider">{d.shortLetter}</span>
+                  <span className="text-[11px] font-mono font-extrabold mt-0.5">{d.dayNumber}</span>
+                  {d.isToday && (
+                    <span className="text-[7px] font-bold text-brand-500 uppercase leading-none mt-0.5">Today</span>
+                  )}
+                  {d.isActive && (
+                    <span className="absolute -top-1 -right-1 flex h-3 w-3 items-center justify-center rounded-full bg-amber-500 text-[8px] font-bold text-white shadow">
+                      ✓
+                    </span>
+                  )}
                 </div>
               ))}
             </div>
