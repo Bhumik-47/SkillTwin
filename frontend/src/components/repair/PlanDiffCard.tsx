@@ -204,7 +204,7 @@ export default function PlanDiffCard() {
                 const isTrigger = node.skill_id === diff.trigger_skill_id;
                 return (
                   <div
-                    key={node.node_id || `old_${idx}`}
+                    key={`old_${node.node_id || node.skill_id}_${idx}`}
                     className={`flex items-center justify-between rounded-xl border p-2.5 text-xs transition-all ${
                       isTrigger
                         ? 'border-rose-500/50 bg-rose-500/15 text-rose-700 dark:text-rose-200'
@@ -243,7 +243,7 @@ export default function PlanDiffCard() {
 
                 return (
                   <div
-                    key={node.node_id || `new_${idx}`}
+                    key={`new_${node.node_id || node.skill_id}_${idx}`}
                     className={`flex items-center justify-between rounded-xl border p-2.5 text-xs transition-all ${
                       isInserted
                         ? 'border-rose-500/60 bg-rose-500/20 text-rose-700 dark:text-rose-100 font-semibold'
@@ -283,7 +283,7 @@ export default function PlanDiffCard() {
 
             return (
               <div
-                key={node.node_id || `summary_${idx}`}
+                key={`summary_${node.node_id || node.skill_id}_${idx}`}
                 className={`flex items-center justify-between rounded-xl border p-3 text-xs ${
                   isInserted
                     ? 'border-rose-500/60 bg-rose-500/15 text-rose-700 dark:text-rose-100'

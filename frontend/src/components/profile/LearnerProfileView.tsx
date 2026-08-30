@@ -4,6 +4,7 @@ import React, { useState, useMemo } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
 import ProgressChart from '../analytics/ProgressChart';
 import { computeWeeklyStreak } from '../../lib/streak';
+import { API_BASE_URL } from '../../lib/api';
 import {
   User,
   ShieldCheck,
@@ -95,7 +96,7 @@ export default function LearnerProfileView() {
     if (!resumeText.trim()) return;
     setIsDetecting(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/integrations/resume/parse-text', {
+      const res = await fetch(`${API_BASE_URL}/integrations/resume/parse-text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resume_text: resumeText })
@@ -120,7 +121,7 @@ export default function LearnerProfileView() {
     if (!githubUser.trim()) return;
     setIsDetecting(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/integrations/github/sync', {
+      const res = await fetch(`${API_BASE_URL}/integrations/github/sync`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ github_username: githubUser })

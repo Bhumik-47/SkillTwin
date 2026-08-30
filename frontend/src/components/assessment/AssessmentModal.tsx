@@ -155,6 +155,21 @@ export default function AssessmentModal() {
     setIsSubmitted(false);
     setSubmissionResult(null);
     setVisibleHints({});
+    setIsLoadingQuestions(true);
+
+    const currentMastery = masteryMap.get(skill.id) ?? 0.10;
+    SkillTwinAPI.getQuestionsForSkill(skill.id, {
+      skillName: skill.name,
+      domain: currentDomain,
+      isRemedial: false,
+      masteryProb: currentMastery,
+      attemptCount: 0
+    })
+      .then(qList => {
+        setQuestions(qList);
+        setIsLoadingQuestions(false);
+      })
+      .catch(() => setIsLoadingQuestions(false));
   };
 
   const handleStartRemedialQuiz = () => {
@@ -168,8 +183,8 @@ export default function AssessmentModal() {
     SkillTwinAPI.getQuestionsForSkill(skill.id, {
       skillName: skill.name,
       domain: currentDomain,
-      isRemedial: true,
-      masteryProb: 0.15,
+      isRemedial: false,
+      masteryProb: 0.20,
       attemptCount: 1
     })
       .then(qList => {

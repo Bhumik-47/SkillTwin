@@ -164,14 +164,14 @@ export default function DashboardView() {
                   ? '🎉 Quiz Passed! Time to move to the next concept.'
                   : 'Plan updated: We added an extra practice topic to help you strengthen your foundation.'}
               </p>
-              <p className={`text-xs ${
+              <p className={`text-xs leading-relaxed max-w-2xl ${
                 activeRepairDiff.trigger_event === 'assessment_passed'
                   ? 'dark:text-emerald-300/80 text-emerald-600'
                   : 'dark:text-rose-300/80 text-rose-600'
               }`}>
                 {activeRepairDiff.trigger_event === 'assessment_passed'
                   ? 'Great job! The next chapter in your roadmap is unlocked and ready to start.'
-                  : `${activeRepairDiff.inserted_nodes?.length || 1} new practice chapter added before moving forward.`}
+                  : (activeRepairDiff.explanation || `${activeRepairDiff.inserted_nodes?.length || 1} new practice chapter added before moving forward.`)}
               </p>
             </div>
           </div>

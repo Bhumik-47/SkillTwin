@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
 import { DomainId, ExperienceLevel, LearningStyle, DetectedSkillItem } from '../../lib/types';
+import { API_BASE_URL } from '../../lib/api';
 import {
   Sparkles,
   X,
@@ -48,7 +49,7 @@ export default function OnboardingModal() {
     if (!resumeText.trim()) return;
     setIsScanning(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/integrations/resume/parse-text', {
+      const res = await fetch(`${API_BASE_URL}/integrations/resume/parse-text`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ resume_text: resumeText })
@@ -71,7 +72,7 @@ export default function OnboardingModal() {
     if (!githubUser.trim()) return;
     setIsScanning(true);
     try {
-      const res = await fetch('http://127.0.0.1:8000/integrations/github/sync', {
+      const res = await fetch(`${API_BASE_URL}/integrations/github/sync`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ github_username: githubUser })

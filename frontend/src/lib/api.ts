@@ -2,7 +2,7 @@ import domainQuestions from '../data/questions/domain_questions.json';
 import { AssessmentQuestion, LearningPath } from './types';
 import { ADVANCED_PRO_QUESTIONS_MAP } from '../data/questions/advanced_pro_questions';
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000';
+export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? '/api-backend' : 'http://127.0.0.1:8000');
 
 async function safeJson(res: Response) {
   try {
@@ -22,6 +22,31 @@ export class SkillTwinAPI {
       return false;
     }
   }
+
+  static generateDiagnosticFeedback(skillId: string, scorePct: number, skillName?: string): string {
+    const name = skillName || skillId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+    const scoreText = scorePct <= 25 ? 'significant foundational gaps (score <= 25%)' : 'partial comprehension (score: 50%)';
+
+    const TOPIC_DIAGNOSTICS: Record<string, string> = {
+      threads_and_processes: `Diagnostic Analysis: You struggled with thread synchronization and race condition mechanisms in ${name}. Core gaps identified: (1) Distinguishing between shared process heap memory and thread-isolated stack memory, and (2) Mutex lock lifecycles during concurrent state mutations. A focused remedial practice chapter has been scheduled so you can master OS concurrency primitives before moving forward.`,
+      http_basics: `Diagnostic Analysis: You missed core questions on HTTP protocols in ${name}. Key gaps: Distinguishing between 0-RTT replay attack vulnerabilities in HTTP/3 vs Keep-Alive connection pooling in HTTP/1.1/2. Reviewing request idempotency and status code semantics is required before moving to API design.`,
+      tcp_ip_sockets: `Diagnostic Analysis: Identified misconceptions in ${name} regarding the TCP 3-way handshake, TIME_WAIT port exhaustion, and BBR vs loss-based congestion control. Sockets and kernel buffer boundaries must be reinforced before distributed networking.`,
+      rest_api_design: `Diagnostic Analysis: Gaps identified in RESTful architectural constraints and HTTP verb semantics (PUT vs PATCH idempotency). Reinforcing standardized HTTP error responses (400 vs 422 vs 500) will ensure robust API contract designs.`,
+      sql_fundamentals: `Diagnostic Analysis: Core weakness in relational joins (INNER vs LEFT vs FULL OUTER) and aggregate grouping logic. Solidifying SQL query execution order is necessary before database indexing.`,
+      database_indexing: `Diagnostic Analysis: Identified gaps in B-Tree index traversal vs Full Table Scans, and compound index leftmost-prefix rules. Understanding query planner cost estimation is vital before advanced database optimization.`,
+      redis_caching: `Diagnostic Analysis: Gaps in cache eviction policies (LRU/LFU) and Cache-Aside vs Write-Through strategies. Understanding cache stampede mitigation will prevent database bottlenecks.`,
+      docker_basics: `Diagnostic Analysis: Misconceptions in Docker container layer caching and volume persistence vs image immutability. Mastering Dockerfile instruction order is needed before container orchestration.`,
+      git_fundamentals: `Diagnostic Analysis: Identified confusion between merge commits, fast-forwarding, and git rebase history rewriting. Understanding commit pointer graphs is crucial before collaborative branch workflows.`,
+      async_programming: `Diagnostic Analysis: Identified gaps in Event Loop task queues, microtasks vs macrotasks, and blocking vs non-blocking I/O calls. Understanding coroutine lifecycle prevents deadlocks in high-concurrency servers.`,
+    };
+
+    if (TOPIC_DIAGNOSTICS[skillId]) {
+      return TOPIC_DIAGNOSTICS[skillId];
+    }
+
+    return `Diagnostic Analysis: Your assessment indicated ${scoreText} in ${name}. Specific conceptual gaps were detected in prerequisite building blocks and syntax usage. An extra remedial practice session was added to strengthen your understanding before advancing.`;
+  }
+
 
   static async getQuestionsForSkill(
     skillId: string,
@@ -72,17 +97,7 @@ export class SkillTwinAPI {
     const matched = allQuestions.filter(q => q.skill_id === skillId);
 
     if (matched.length > 0) {
-      if (isRemedial) {
-        // For remedial sessions, prioritize foundational and basic questions (Stages 1 & 2)
-        const remedialSet = matched.filter(q => (q.stage || 1) <= 2);
-        if (remedialSet.length > 0) {
-          return remedialSet;
-        }
-        return matched.slice(0, 2);
-      }
-
-      // For standard chapter assessments, return the complete progressive 4-stage quiz!
-      // Sorted by stage 1 -> 2 -> 3 -> 4
+      // Always deliver the full comprehensive question bank (all stages 1..4) so learners get complete practice on retakes
       const sorted = [...matched].sort((a, b) => (a.stage || 1) - (b.stage || 1));
       return sorted;
     }

@@ -647,8 +647,13 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
       answers
     }, token).catch(() => {});
 
+    // Generate specific diagnostic explanation if failed
+    const diagnostic = (!isCorrect && posterior < 0.80)
+      ? SkillTwinAPI.generateDiagnosticFeedback(skillId, Math.round(score * 100))
+      : undefined;
+
     if (!isCorrect && posterior < 0.80) {
-      await triggerRepair(skillId, true, posterior);
+      await triggerRepair(skillId, true, posterior, diagnostic);
     } else {
       await triggerRepair(skillId, false, posterior);
     }
@@ -663,7 +668,12 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
     await submitAssessmentEvidence(skillId, score, 60);
   };
 
-  const triggerRepair = async (triggerSkillId: string, forceRemedial: boolean = false, updatedMastery?: number) => {
+  const triggerRepair = async (
+    triggerSkillId: string,
+    forceRemedial: boolean = false,
+    updatedMastery?: number,
+    customExplanation?: string
+  ) => {
     if (!currentPath) return;
 
     const oldNodes = [...currentPath.nodes];
@@ -678,57 +688,82 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
     let currentStep = 1;
 
     if (forceRemedial && triggerIdx !== -1) {
-      for (let i = 0; i < triggerIdx; i++) {
-        const n = { ...oldNodes[i], step_order: currentStep++ };
-        unchanged.push(n);
-        newNodes.push(n);
-      }
+      const originalNode = oldNodes[triggerIdx];
+      const cleanSkillName = (originalNode.skill_name || '').replace(/\s*\(Remedial Reinforcement\)/gi, '').trim();
+      const existingRemedialIdx = oldNodes.findIndex(n => n.is_remedial && n.skill_id === triggerSkillId);
 
-      const remedialNode: LearningPathNode = {
-        node_id: `node_${triggerSkillId}_remedial`,
-        step_order: currentStep++,
-        skill_id: triggerSkillId,
-        skill_name: `${oldNodes[triggerIdx].skill_name} (Remedial Reinforcement)`,
-        recommended_resource_id: `res_${triggerSkillId}_remedial_01`,
-        status: 'in_progress',
-        mastery_prob: triggerMastery,
-        prerequisite_skill_ids: oldNodes[triggerIdx].prerequisite_skill_ids,
-        estimated_minutes: 30,
-        is_remedial: true,
-        is_inserted: true
-      };
-      inserted.push(remedialNode);
-      newNodes.push(remedialNode);
+      if (existingRemedialIdx !== -1) {
+        // Learner failed a second time on the remedial or current node:
+        // Do NOT insert a duplicate remedial node. Keep single remedial node in_progress and reset its quiz.
+        for (let i = 0; i < oldNodes.length; i++) {
+          const n = { ...oldNodes[i] };
+          if (n.is_remedial && n.skill_id === triggerSkillId) {
+            n.status = 'in_progress';
+            n.mastery_prob = triggerMastery;
+            n.skill_name = `${cleanSkillName} (Remedial Reinforcement)`;
+          } else if (n.skill_id === triggerSkillId && !n.is_remedial) {
+            n.status = 'ready';
+            n.mastery_prob = triggerMastery;
+            n.skill_name = cleanSkillName;
+          }
+          n.step_order = currentStep++;
+          newNodes.push(n);
+        }
+      } else {
+        // First failure: insert exactly 1 remedial node before the trigger checkpoint
+        for (let i = 0; i < triggerIdx; i++) {
+          const n = { ...oldNodes[i], step_order: currentStep++ };
+          unchanged.push(n);
+          newNodes.push(n);
+        }
 
-      const shiftedTrigger: LearningPathNode = {
-        ...oldNodes[triggerIdx],
-        step_order: currentStep++,
-        status: 'ready',
-        mastery_prob: triggerMastery,
-        is_reordered: true
-      };
-      reordered.push({
-        node_id: shiftedTrigger.node_id,
-        skill_id: triggerSkillId,
-        old_step_order: oldNodes[triggerIdx].step_order,
-        new_step_order: shiftedTrigger.step_order
-      });
-      newNodes.push(shiftedTrigger);
-
-      for (let i = triggerIdx + 1; i < oldNodes.length; i++) {
-        const shifted = {
-          ...oldNodes[i],
+        const remedialNode: LearningPathNode = {
+          node_id: `node_${triggerSkillId}_remedial`,
           step_order: currentStep++,
-          status: 'locked' as const,
+          skill_id: triggerSkillId,
+          skill_name: `${cleanSkillName} (Remedial Reinforcement)`,
+          recommended_resource_id: `res_${triggerSkillId}_remedial_01`,
+          status: 'in_progress',
+          mastery_prob: triggerMastery,
+          prerequisite_skill_ids: originalNode.prerequisite_skill_ids,
+          estimated_minutes: 30,
+          is_remedial: true,
+          is_inserted: true
+        };
+        inserted.push(remedialNode);
+        newNodes.push(remedialNode);
+
+        const shiftedTrigger: LearningPathNode = {
+          ...originalNode,
+          skill_name: cleanSkillName,
+          step_order: currentStep++,
+          status: 'ready',
+          mastery_prob: triggerMastery,
           is_reordered: true
         };
         reordered.push({
-          node_id: shifted.node_id,
-          skill_id: shifted.skill_id,
-          old_step_order: oldNodes[i].step_order,
-          new_step_order: shifted.step_order
+          node_id: shiftedTrigger.node_id,
+          skill_id: triggerSkillId,
+          old_step_order: originalNode.step_order,
+          new_step_order: shiftedTrigger.step_order
         });
-        newNodes.push(shifted);
+        newNodes.push(shiftedTrigger);
+
+        for (let i = triggerIdx + 1; i < oldNodes.length; i++) {
+          const shifted = {
+            ...oldNodes[i],
+            step_order: currentStep++,
+            status: 'locked' as const,
+            is_reordered: true
+          };
+          reordered.push({
+            node_id: shifted.node_id,
+            skill_id: shifted.skill_id,
+            old_step_order: oldNodes[i].step_order,
+            new_step_order: shifted.step_order
+          });
+          newNodes.push(shifted);
+        }
       }
     } else {
       // Passed assessment: clean up any remedial node for this skill if present, mark completed, unlock next
@@ -750,8 +785,11 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
           nextUnlocked = true;
         }
 
+        const cleanName = (node.skill_name || '').replace(/\s*\(Remedial Reinforcement\)/gi, '').trim();
+
         const updatedNode = {
           ...node,
+          skill_name: cleanName,
           step_order: currentStep++,
           status: nextStatus,
           mastery_prob: nodeMastery
@@ -779,9 +817,9 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
         unchanged_node_count: unchanged.length,
         repair_ratio: Math.round((Math.max(1, touchedCount) / newNodes.length) * 100) / 100
       },
-      explanation: forceRemedial
+      explanation: customExplanation || (forceRemedial
         ? `Mastery for ${triggerSkillId.replace(/_/g, ' ')} adjusted to ${(triggerMastery * 100).toFixed(0)}%. Inserted a targeted foundation chapter to build confidence before moving forward.`
-        : `🎉 You passed the quiz! Mastery for ${triggerSkillId.replace(/_/g, ' ')} elevated to ${(triggerMastery * 100).toFixed(0)}%. Time to move on to the next concept!`,
+        : `🎉 You passed the quiz! Mastery for ${triggerSkillId.replace(/_/g, ' ')} elevated to ${(triggerMastery * 100).toFixed(0)}%. Time to move on to the next concept!`),
       timestamp: new Date().toISOString()
     };
 
