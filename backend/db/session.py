@@ -1,4 +1,4 @@
-﻿"""
+"""
 Database Session & Connection Management for SkillTwin
 Supports async SQLAlchemy 2.0 with PostgreSQL (asyncpg) and SQLite (aiosqlite fallback).
 """
@@ -25,8 +25,11 @@ if db_url.startswith("sqlite:///"):
 elif db_url.startswith("postgresql://"):
     db_url = db_url.replace("postgresql://", "postgresql+asyncpg://")
 
+# Silence raw SQL query echoing from SQLAlchemy engine
+logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)
+
 # Engine options
-engine_kwargs = {"echo": settings.DEBUG}
+engine_kwargs = {"echo": False}
 if "sqlite" in db_url:
     engine_kwargs["connect_args"] = {"check_same_thread": False}
 else:

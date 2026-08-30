@@ -1,11 +1,15 @@
-﻿"""
+"""
 Password Hashing and Cryptographic Utilities
 """
 import hashlib
 import hmac
-import os
 import secrets
-from typing import Tuple
+
+try:
+    import bcrypt
+    HAS_BCRYPT = True
+except Exception:
+    HAS_BCRYPT = False
 
 try:
     from passlib.context import CryptContext
@@ -17,6 +21,17 @@ except Exception:
 
 def verify_password(plain_password: str, hashed_password: str) -> bool:
     """Verify a plain password against a stored hashed password string."""
+    if not plain_password or not hashed_password:
+        return False
+
+    # Direct bcrypt verification
+    if HAS_BCRYPT and (hashed_password.startswith("$2a$") or hashed_password.startswith("$2b$") or hashed_password.startswith("$2y$")):
+        try:
+            return bcrypt.checkpw(plain_password.encode("utf-8"), hashed_password.encode("utf-8"))
+        except Exception:
+            pass
+
+    # Passlib check fallback
     if HAS_PASSLIB:
         try:
             return pwd_context.verify(plain_password, hashed_password)
@@ -42,6 +57,12 @@ def verify_password(plain_password: str, hashed_password: str) -> bool:
 
 def get_password_hash(password: str) -> str:
     """Hash a password securely using bcrypt (or PBKDF2 fallback)."""
+    if HAS_BCRYPT:
+        try:
+            return bcrypt.hashpw(password.encode("utf-8"), bcrypt.gensalt()).decode("utf-8")
+        except Exception:
+            pass
+
     if HAS_PASSLIB:
         try:
             return pwd_context.hash(password)
@@ -58,3 +79,4 @@ def get_password_hash(password: str) -> str:
         iterations
     ).hex()
     return f"pbkdf2${iterations}${salt}${hash_val}"
+

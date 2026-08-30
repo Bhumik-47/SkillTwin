@@ -1,4 +1,4 @@
-﻿"""
+"""
 SQLAlchemy 2.0 Database Models for SkillTwin
 Strictly adheres to /shared/schema.md as the authoritative Single Source of Truth.
 """
@@ -151,6 +151,8 @@ class LearnerSkillState(Base):
     bkt_p_guess = Column(Float, default=0.20, nullable=False)    # P(G)
     confidence_score = Column(Float, default=0.0, nullable=False)
     is_mastered = Column(Boolean, default=False, nullable=False)
+    source = Column(String(64), default="self_report", nullable=False)  # verified, self_report, resume, github
+    evidence_snippet = Column(Text, nullable=True)  # Quote from resume/code repo supporting the estimate
     total_attempts = Column(Integer, default=0, nullable=False)
     successful_attempts = Column(Integer, default=0, nullable=False)
     last_assessed_at = Column(DateTime(timezone=True), nullable=True)
@@ -241,6 +243,7 @@ class Recommendation(Base):
     resource_id = Column(String(128), ForeignKey("resources.id", ondelete="SET NULL"), nullable=True)
     action_type = Column(String(64), default="learn", nullable=False)  # learn, reinforce, assess, skip
     grounded_explanation = Column(Text, nullable=False)
+    reason = Column(String(512), nullable=True)  # Plain-language grounded one-sentence reason
     grounding_metadata = Column(JSON, nullable=False)
     created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
 
@@ -261,3 +264,17 @@ class ProgressRecord(Base):
     overall_completion_pct = Column(Float, default=0.0, nullable=False)
     average_mastery = Column(Float, default=0.0, nullable=False)
     last_active_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
+
+
+class SkillProgressSnapshot(Base):
+    """Timestamped historical snapshot for LeetCode-contest-style progress curve."""
+    __tablename__ = "skill_progress_snapshots"
+
+    id = Column(String(64), primary_key=True, default=lambda: generate_id("snap"))
+    user_id = Column(String(64), ForeignKey("users.id", ondelete="CASCADE"), index=True, nullable=False)
+    date = Column(String(32), nullable=False)  # YYYY-MM-DD or session label
+    overall_mastery_pct = Column(Float, default=0.0, nullable=False)  # 0.0 - 100.0
+    skills_mastered_count = Column(Integer, default=0, nullable=False)
+    total_skills_count = Column(Integer, default=0, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=lambda: datetime.now(timezone.utc), nullable=False)
+

@@ -52,3 +52,27 @@ async def submit_assessment(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Assessment submission failed: {str(e)}"
         )
+
+
+@router.get(
+    "/questions",
+    status_code=status.HTTP_200_OK,
+    summary="Fetch multi-tier questions for a skill"
+)
+async def get_assessment_questions(
+    skill_id: str,
+    db: AsyncSession = Depends(get_db)
+):
+    try:
+        # Load resource or question bank for this skill
+        return {
+            "skill_id": skill_id,
+            "status": "ready",
+            "questions": []
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Failed to fetch questions: {str(e)}"
+        )
+

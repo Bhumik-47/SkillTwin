@@ -1,157 +1,1302 @@
 {
   "questions": [
     {
-      "id": "q_http_01",
+      "id": "q_http_s1",
       "skill_id": "http_basics",
-      "prompt": "Which HTTP status code should a server return when a request creates a new resource successfully?",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: HTTP is the communication language between web browsers and servers. Status codes starting with 2xx mean success, 4xx mean client errors, and 5xx mean server errors.",
+      "hint": "Think about what code is returned when something is successfully created.",
+      "prompt": "Which HTTP status code signifies that a client's request successfully created a brand new resource on the server?",
       "options": [
-        { "id": "a", "text": "200 OK", "is_correct": false, "explanation": "200 OK is for standard successful responses without resource creation." },
-        { "id": "b", "text": "201 Created", "is_correct": true, "explanation": "201 Created indicates the request succeeded and a new resource was created, typically including a Location header." },
-        { "id": "c", "text": "204 No Content", "is_correct": false, "explanation": "204 No Content is for actions that succeed but produce no response body." },
-        { "id": "d", "text": "301 Moved Permanently", "is_correct": false, "explanation": "301 is a redirection status code." }
+        { "id": "a", "text": "200 OK — Standard success, but typically doesn't specify resource creation", "is_correct": false, "explanation": "200 OK is general success. 201 Created is the specific code for newly created entities." },
+        { "id": "b", "text": "201 Created — Indicates the request succeeded and a new resource was created", "is_correct": true, "explanation": "Correct! 201 Created explicitly confirms a new resource was generated, usually providing its URL." },
+        { "id": "c", "text": "404 Not Found — The server cannot find the requested resource", "is_correct": false, "explanation": "404 is a client error code indicating missing resources." },
+        { "id": "d", "text": "500 Internal Server Error — The server encountered an unexpected error", "is_correct": false, "explanation": "500 is a generic server-side error code." }
       ]
     },
     {
-      "id": "q_rest_01",
+      "id": "q_http_s2",
+      "skill_id": "http_basics",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: HTTP request methods tell the server what action to perform on a resource (GET to read, POST to submit new data, PUT to replace).",
+      "hint": "Which header informs the receiver whether the payload is JSON, HTML, or plaintext?",
+      "prompt": "Which HTTP header is used by clients to inform the server about the media format of the data being sent in the request body?",
+      "options": [
+        { "id": "a", "text": "Content-Type (e.g., application/json)", "is_correct": true, "explanation": "Correct! Content-Type tells the recipient how to decode and parse the body." },
+        { "id": "b", "text": "Accept-Encoding", "is_correct": false, "explanation": "Accept-Encoding indicates compression algorithms supported by the client (gzip, br)." },
+        { "id": "c", "text": "User-Agent", "is_correct": false, "explanation": "User-Agent identifies the client browser or application." },
+        { "id": "d", "text": "Authorization", "is_correct": false, "explanation": "Authorization carries authentication credentials or tokens." }
+      ]
+    },
+    {
+      "id": "q_http_s3",
+      "skill_id": "http_basics",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: HTTP/1.1 introduced persistent connections and chunked transfer, while HTTP/2 introduced binary multiplexing over a single connection.",
+      "hint": "What happens when a large response size is unknown before sending begins?",
+      "prompt": "When a web server streams dynamically generated data whose total byte length is unknown in advance, which HTTP/1.1 mechanism is used?",
+      "options": [
+        { "id": "a", "text": "Transfer-Encoding: chunked", "is_correct": true, "explanation": "Correct! Chunked transfer encoding allows sending data as a series of size-prefixed chunks without an initial Content-Length header." },
+        { "id": "b", "text": "Connection: close", "is_correct": false, "explanation": "Closing connections disables HTTP keep-alive but does not structure dynamic streaming." },
+        { "id": "c", "text": "Content-Encoding: gzip", "is_correct": false, "explanation": "Content-Encoding specifies compression, not the transport framing mechanism." },
+        { "id": "d", "text": "Cache-Control: no-cache", "is_correct": false, "explanation": "Cache-Control governs caching directives." }
+      ]
+    },
+    {
+      "id": "q_http_s4",
+      "skill_id": "http_basics",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: HTTP/2 solves Head-of-Line blocking at the application layer through binary framing and bidirectional multiplexed streams.",
+      "hint": "How does HTTP/2 eliminate redundant header transmissions?",
+      "prompt": "How does HTTP/2 achieve zero Head-of-Line (HoL) blocking at the application layer and reduce network overhead compared to HTTP/1.1?",
+      "options": [
+        { "id": "a", "text": "By interleaving independent binary stream frames across a single shared TCP socket and using HPACK compression", "is_correct": true, "explanation": "Correct! HTTP/2 uses binary framing and HPACK to multiplex concurrent request/response streams on one TCP connection." },
+        { "id": "b", "text": "By opening 50 separate TCP sockets concurrently for every domain", "is_correct": false, "explanation": "Opening many parallel TCP sockets is the HTTP/1.1 workaround that HTTP/2 eliminates." },
+        { "id": "c", "text": "By replacing TCP entirely with UDP in standard HTTP/2", "is_correct": false, "explanation": "Replacing TCP with QUIC/UDP is HTTP/3, not HTTP/2." },
+        { "id": "d", "text": "By eliminating request headers entirely from all requests", "is_correct": false, "explanation": "Headers are compressed with HPACK, not eliminated." }
+      ]
+    },
+
+    {
+      "id": "q_tcp_s1",
+      "skill_id": "tcp_ip_sockets",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: TCP (Transmission Control Protocol) is a reliable transport protocol that guarantees packets arrive in exact order without loss.",
+      "hint": "Which protocol provides guaranteed delivery with acknowledgments?",
+      "prompt": "What is the primary difference between TCP and UDP at the transport layer?",
+      "options": [
+        { "id": "a", "text": "TCP is connection-oriented and guarantees reliable in-order delivery; UDP is connectionless and lightweight", "is_correct": true, "explanation": "Correct! TCP establishes a connection and retransmits lost packets; UDP sends datagrams with lower latency but no delivery guarantees." },
+        { "id": "b", "text": "UDP encrypts data by default; TCP sends plaintext", "is_correct": false, "explanation": "Encryption is provided by TLS, not by base UDP or TCP." },
+        { "id": "c", "text": "TCP can only transmit text; UDP can only transmit video", "is_correct": false, "explanation": "Both protocols can transmit any binary data." },
+        { "id": "d", "text": "TCP operates at the physical hardware layer", "is_correct": false, "explanation": "TCP operates at Layer 4 (Transport Layer)." }
+      ]
+    },
+    {
+      "id": "q_tcp_s2",
+      "skill_id": "tcp_ip_sockets",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Before transmitting data, a TCP connection is established using a 3-way handshake (SYN -> SYN-ACK -> ACK).",
+      "hint": "What is the exact 3-step sequence of control flags exchanged?",
+      "prompt": "Which sequence of TCP flags establishes a new connection between a client and a server?",
+      "options": [
+        { "id": "a", "text": "SYN -> SYN-ACK -> ACK", "is_correct": true, "explanation": "Correct! Client sends SYN, server acknowledges with SYN-ACK, client completes with ACK." },
+        { "id": "b", "text": "ACK -> SYN -> FIN", "is_correct": false, "explanation": "FIN is used to terminate connections, not initiate them." },
+        { "id": "c", "text": "RST -> SYN -> ACK", "is_correct": false, "explanation": "RST is used to reset aborted connections." },
+        { "id": "d", "text": "PING -> PONG -> CONNECT", "is_correct": false, "explanation": "PING/PONG are application layer health checks." }
+      ]
+    },
+    {
+      "id": "q_tcp_s3",
+      "skill_id": "tcp_ip_sockets",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: When closing a socket, the endpoint that initiates the active close enters the TIME_WAIT state.",
+      "hint": "Why does a closing socket wait for 2 * MSL (Maximum Segment Lifetime)?",
+      "prompt": "What is the primary purpose of the TCP `TIME_WAIT` socket state?",
+      "options": [
+        { "id": "a", "text": "To ensure delayed duplicate packets from the old connection expire and ensure the remote peer received the final ACK", "is_correct": true, "explanation": "Correct! TIME_WAIT prevents old wandering packets from corrupting new connections using the same port tuple." },
+        { "id": "b", "text": "To compress all remaining data before closing the disk file", "is_correct": false, "explanation": "TIME_WAIT is purely a transport layer state." },
+        { "id": "c", "text": "To notify DNS servers that the IP address is shutting down", "is_correct": false, "explanation": "DNS is independent of TCP socket teardowns." },
+        { "id": "d", "text": "To reboot the operating system network stack", "is_correct": false, "explanation": "TIME_WAIT is managed per-socket in the kernel." }
+      ]
+    },
+    {
+      "id": "q_tcp_s4",
+      "skill_id": "tcp_ip_sockets",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Modern TCP uses congestion control algorithms (like CUBIC or Google BBR) and sliding window flow control.",
+      "hint": "How does Nagle's algorithm interact with TCP Delayed ACKs?",
+      "prompt": "In high-throughput microservices, why do engineers frequently disable Nagle's algorithm (`TCP_NODELAY = 1`)?",
+      "options": [
+        { "id": "a", "text": "To prevent high latency caused by Nagle's algorithm buffering small packets while waiting for the peer's delayed ACK", "is_correct": true, "explanation": "Correct! Nagle buffers small writes until an ACK arrives, creating ~40-200ms latency spikes when combined with Delayed ACKs." },
+        { "id": "b", "text": "To enable automatic symmetric encryption on the raw socket", "is_correct": false, "explanation": "Encryption is handled by TLS, not TCP_NODELAY." },
+        { "id": "c", "text": "To prevent IP packet spoofing on local subnets", "is_correct": false, "explanation": "TCP_NODELAY has no relationship with IP spoofing defense." },
+        { "id": "d", "text": "To limit bandwidth usage on cloud virtual machines", "is_correct": false, "explanation": "TCP_NODELAY optimizes latency for interactive workloads." }
+      ]
+    },
+
+    {
+      "id": "q_dns_s1",
+      "skill_id": "dns_resolution",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: DNS (Domain Name System) is the internet's phonebook, translating human-friendly names (e.g. google.com) into computer-routable IP addresses (e.g. 142.250.190.46).",
+      "hint": "What does an 'A Record' map to?",
+      "prompt": "Which DNS record type maps a domain name directly to an IPv4 address?",
+      "options": [
+        { "id": "a", "text": "A Record", "is_correct": true, "explanation": "Correct! 'A' records map hostname to IPv4 addresses. 'AAAA' records map to IPv6 addresses." },
+        { "id": "b", "text": "CNAME Record", "is_correct": false, "explanation": "CNAME maps an alias domain name to another domain name." },
+        { "id": "c", "text": "MX Record", "is_correct": false, "explanation": "MX records specify mail exchange servers." },
+        { "id": "d", "text": "TXT Record", "is_correct": false, "explanation": "TXT records store arbitrary text such as SPF/DKIM verification." }
+      ]
+    },
+    {
+      "id": "q_dns_s2",
+      "skill_id": "dns_resolution",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: DNS TTL (Time To Live) dictates how many seconds intermediate resolvers can cache a DNS answer before querying again.",
+      "hint": "What happens when you lower the TTL before a planned server migration?",
+      "prompt": "Why do engineers lower the TTL (Time-to-Live) of DNS records prior to migrating servers to a new IP address?",
+      "options": [
+        { "id": "a", "text": "To ensure resolvers expire cached records quickly and pick up the new IP address without long propagation delays", "is_correct": true, "explanation": "Correct! Low TTLs reduce client caching duration so IP changes take effect in minutes rather than days." },
+        { "id": "b", "text": "To increase the download speed of assets on the client browser", "is_correct": false, "explanation": "TTL only affects DNS cache expiry duration." },
+        { "id": "c", "text": "To encrypt the DNS queries against eavesdropping", "is_correct": false, "explanation": "Encryption requires DoH (DNS over HTTPS) or DoT." },
+        { "id": "d", "text": "To automatically compress HTTP response headers", "is_correct": false, "explanation": "DNS is independent of HTTP compression." }
+      ]
+    },
+    {
+      "id": "q_dns_s3",
+      "skill_id": "dns_resolution",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Recursive DNS resolvers query the DNS hierarchy: Root Servers -> TLD Servers -> Authoritative Name Servers.",
+      "hint": "Which server holds the definitive final record for a specific domain?",
+      "prompt": "In a full recursive DNS resolution flow, which server provides the definitive, authoritative IP answer for `api.skilltwin.dev`?",
+      "options": [
+        { "id": "a", "text": "The Authoritative Name Server for skilltwin.dev", "is_correct": true, "explanation": "Correct! The authoritative server holds the actual zone file records configured by the domain owner." },
+        { "id": "b", "text": "The Root Name Server (e.g. a.root-servers.net)", "is_correct": false, "explanation": "Root servers only point queries to the appropriate TLD (.dev) servers." },
+        { "id": "c", "text": "The client operating system's localhost file only", "is_correct": false, "explanation": "Local hosts files are only checked before DNS recursion starts." },
+        { "id": "d", "text": "The SSL Certificate Authority", "is_correct": false, "explanation": "CAs issue digital certificates, not DNS answers." }
+      ]
+    },
+    {
+      "id": "q_dns_s4",
+      "skill_id": "dns_resolution",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Anycast BGP routing allows multiple geographic DNS nodes to advertise the exact same IP address, directing queries to the nearest physical datacenter.",
+      "hint": "How do global CDNs (Cloudflare, Route53) route users to the closest DNS edge node?",
+      "prompt": "How does Anycast DNS routing optimize query latency and provide DDoS resilience for global authoritative name servers?",
+      "options": [
+        { "id": "a", "text": "By announcing the same IP address from multiple global datacenters via BGP, allowing internet routing to send queries to the topologically nearest healthy node", "is_correct": true, "explanation": "Correct! BGP routes packets to the closest Anycast instance, absorbing attack traffic locally and minimizing latency." },
+        { "id": "b", "text": "By requiring all clients to install a proprietary kernel driver", "is_correct": false, "explanation": "Anycast is standard BGP network routing; no client changes are needed." },
+        { "id": "c", "text": "By converting all DNS lookups into WebSockets connections", "is_correct": false, "explanation": "Anycast operates at the IP routing layer." },
+        { "id": "d", "text": "By storing all internet domain records on every client laptop", "is_correct": false, "explanation": "Distributed authoritative nodes serve the lookups." }
+      ]
+    },
+
+    {
+      "id": "q_tls_s1",
+      "skill_id": "tls_encryption",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: TLS (Transport Layer Security) encrypts data between client and server, preventing eavesdropping, tampering, and impersonation.",
+      "hint": "What does the browser lock icon indicate?",
+      "prompt": "What primary security protection does TLS/HTTPS provide for users entering passwords or credit cards on a website?",
+      "options": [
+        { "id": "a", "text": "End-to-end encryption so third parties on the network cannot read or tamper with transmitted credentials", "is_correct": true, "explanation": "Correct! TLS encrypts traffic across intermediate network routers and WiFi access points." },
+        { "id": "b", "text": "Ensuring the website code is completely free of software bugs", "is_correct": false, "explanation": "TLS secures communication channels; it does not audit application code." },
+        { "id": "c", "text": "Preventing the user's hard drive from running out of disk space", "is_correct": false, "explanation": "TLS is a network cryptographic protocol." },
+        { "id": "d", "text": "Guaranteeing 100% server uptime", "is_correct": false, "explanation": "Uptime depends on infrastructure reliability." }
+      ]
+    },
+    {
+      "id": "q_tls_s2",
+      "skill_id": "tls_encryption",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: TLS uses asymmetric cryptography (public/private keys) to establish trust and securely exchange a symmetric session key for fast data encryption.",
+      "hint": "Why does TLS switch from asymmetric to symmetric encryption after the handshake?",
+      "prompt": "Why does TLS perform an initial asymmetric key exchange but then switch to symmetric AES/ChaCha20 encryption for the actual data stream?",
+      "options": [
+        { "id": "a", "text": "Symmetric encryption is orders of magnitude faster and computationally cheaper for bulk data transfer", "is_correct": true, "explanation": "Correct! Asymmetric math (RSA/ECC) is computationally heavy; symmetric ciphers (AES-GCM) are fast and hardware-accelerated." },
+        { "id": "b", "text": "Asymmetric encryption cannot encrypt data larger than 100 bytes", "is_correct": false, "explanation": "Asymmetric keys can technically encrypt larger data via hybrid encryption, but are too slow for streaming." },
+        { "id": "c", "text": "Symmetric encryption does not require a secret key", "is_correct": false, "explanation": "Symmetric encryption requires a shared secret key." },
+        { "id": "d", "text": "To allow search engine web crawlers to read the encrypted text", "is_correct": false, "explanation": "Crawlers must negotiate TLS like any other client." }
+      ]
+    },
+    {
+      "id": "q_tls_s3",
+      "skill_id": "tls_encryption",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: TLS 1.3 reduced handshake latency from 2-RTT down to 1-RTT and mandated Forward Secrecy.",
+      "hint": "What guarantees that historical recorded traffic cannot be decrypted even if the server's private key is leaked in the future?",
+      "prompt": "Which cryptographic property in modern TLS ensures that past session communications remain secure even if the server's long-term private key is compromised in the future?",
+      "options": [
+        { "id": "a", "text": "Forward Secrecy (using ephemeral Diffie-Hellman keys like ECDHE)", "is_correct": true, "explanation": "Correct! Ephemeral keys are discarded after session close, so past recorded sessions cannot be decrypted later." },
+        { "id": "b", "text": "MD5 Hash Validation", "is_correct": false, "explanation": "MD5 is a deprecated cryptographic hash algorithm." },
+        { "id": "c", "text": "Static RSA Key Transport", "is_correct": false, "explanation": "Static RSA lacks forward secrecy, which is why it was removed in TLS 1.3." },
+        { "id": "d", "text": "Basic Authentication Headers", "is_correct": false, "explanation": "Basic Auth transmits credentials, not cryptographic keys." }
+      ]
+    },
+    {
+      "id": "q_tls_s4",
+      "skill_id": "tls_encryption",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: ALPN (Application-Layer Protocol Negotiation) lets the TLS handshake negotiate the protocol (h2, http/1.1) inside the ClientHello.",
+      "hint": "How does a browser negotiate HTTP/2 with a server without an extra round-trip?",
+      "prompt": "How does the ALPN (Application-Layer Protocol Negotiation) TLS extension allow clients to upgrade to HTTP/2 without adding extra network round-trips?",
+      "options": [
+        { "id": "a", "text": "By including supported application protocols in the TLS ClientHello message, allowing the server to select HTTP/2 during the initial handshake", "is_correct": true, "explanation": "Correct! ALPN embeds protocol negotiation inside the TLS handshake, eliminating extra round-trip latency." },
+        { "id": "b", "text": "By forcing all connections to first send an unencrypted HTTP/1.1 Upgrade header", "is_correct": false, "explanation": "ALPN avoids the unencrypted HTTP Upgrade round-trip entirely." },
+        { "id": "c", "text": "By hardcoding the server's IP address into the browser source code", "is_correct": false, "explanation": "ALPN operates dynamically over TLS." },
+        { "id": "d", "text": "By bypassing TLS encryption for static images", "is_correct": false, "explanation": "ALPN is an extension of the TLS security handshake." }
+      ]
+    },
+
+    {
+      "id": "q_rest_s1",
       "skill_id": "restful_api_design",
-      "prompt": "According to REST semantics, which HTTP method must be idempotent?",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: REST APIs use nouns in URLs to identify resources (e.g., `/users`, `/orders`), and HTTP methods to specify the action (GET to read, DELETE to remove).",
+      "hint": "Which URL follows clean RESTful resource naming conventions?",
+      "prompt": "Which URL pattern follows best-practice RESTful API design to retrieve the user with ID 42?",
       "options": [
-        { "id": "a", "text": "POST", "is_correct": false, "explanation": "POST is typically non-idempotent because repeated calls create multiple resources." },
-        { "id": "b", "text": "PUT", "is_correct": true, "explanation": "PUT is strictly idempotent: making multiple identical PUT requests produces the exact same server state as a single request." },
-        { "id": "c", "text": "PATCH", "is_correct": false, "explanation": "PATCH can be non-idempotent depending on the delta instruction." },
-        { "id": "d", "text": "CONNECT", "is_correct": false, "explanation": "CONNECT is used to establish tunnel connections." }
+        { "id": "a", "text": "GET /users/42", "is_correct": true, "explanation": "Correct! Clean REST uses plural resource nouns (`/users`) followed by unique identifiers." },
+        { "id": "b", "text": "POST /getUserById?id=42", "is_correct": false, "explanation": "RPC style uses verbs in the URL; REST uses HTTP methods on noun endpoints." },
+        { "id": "c", "text": "GET /do_action_fetch_single_user_record/42", "is_correct": false, "explanation": "Avoid embedding procedural verbs in REST URLs." },
+        { "id": "d", "text": "DELETE /users/42/view", "is_correct": false, "explanation": "DELETE should not be used to view data." }
       ]
     },
     {
-      "id": "q_sql_01",
-      "skill_id": "sql_query_optimization",
-      "prompt": "Why can an index on (last_name, first_name) NOT be used efficiently for the query `WHERE first_name = 'Alex'`?",
+      "id": "q_rest_s2",
+      "skill_id": "restful_api_design",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Idempotency means making multiple identical requests has the same side-effect on the server as making just one request.",
+      "hint": "If a network timeout occurs, which method is safe to retry multiple times without creating duplicate rows?",
+      "prompt": "Which HTTP method is defined by REST standards as strictly idempotent?",
       "options": [
-        { "id": "a", "text": "Because B-Trees store data in descending order only.", "is_correct": false, "explanation": "B-Trees support bidirectional scans." },
-        { "id": "b", "text": "Due to the Leftmost Prefix Rule in composite B-Tree indexes.", "is_correct": true, "explanation": "Composite indexes can only be searched starting from the leftmost column (last_name). Filtering only on the second column forces a full scan of the index." },
-        { "id": "c", "text": "Because string comparisons cannot use B-Trees.", "is_correct": false, "explanation": "B-Trees are optimized for string ordering." },
-        { "id": "d", "text": "Because first_name is a reserved SQL keyword.", "is_correct": false, "explanation": "first_name is a standard identifier." }
+        { "id": "a", "text": "PUT — Replacing a resource at a specific URI produces the exact same server state whether called 1 or 10 times", "is_correct": true, "explanation": "Correct! PUT and DELETE are idempotent. Calling PUT multiple times leaves the resource with the same state." },
+        { "id": "b", "text": "POST — Because submitting 5 times creates 5 separate database records", "is_correct": false, "explanation": "POST is non-idempotent because multiple calls create multiple entities." },
+        { "id": "c", "text": "CONNECT — For setting up TCP tunnels", "is_correct": false, "explanation": "CONNECT is a tunnel protocol." },
+        { "id": "d", "text": "PATCH with append operations", "is_correct": false, "explanation": "PATCH can be non-idempotent depending on delta instructions." }
       ]
     },
     {
-      "id": "q_acid_01",
-      "skill_id": "acid_transactions",
-      "prompt": "Which isolation level prevents Dirty Reads and Non-Repeatable Reads, but may still permit Phantom Reads in standard SQL-92?",
+      "id": "q_rest_s3",
+      "skill_id": "restful_api_design",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: REST APIs use standard HTTP error status codes (400 for bad syntax, 401 for unauthenticated, 403 for unauthorized, 422 for schema validation errors).",
+      "hint": "What code should you return when a user is logged in, but lacks permission to view an admin dashboard?",
+      "prompt": "When a client provides valid authentication credentials but lacks permissions to access an administrative endpoint, what HTTP status code should be returned?",
       "options": [
-        { "id": "a", "text": "Read Uncommitted", "is_correct": false, "explanation": "Allows dirty reads." },
-        { "id": "b", "text": "Read Committed", "is_correct": false, "explanation": "Allows non-repeatable reads." },
-        { "id": "c", "text": "Repeatable Read", "is_correct": true, "explanation": "Repeatable Read guarantees rows read cannot change during transaction, but new inserted rows (phantoms) may appear without range locks." },
-        { "id": "d", "text": "Serializable", "is_correct": false, "explanation": "Serializable prevents all anomalies including phantoms." }
+        { "id": "a", "text": "403 Forbidden", "is_correct": true, "explanation": "Correct! 401 means unauthenticated (who are you?); 403 means authenticated but unauthorized (you cannot enter)." },
+        { "id": "b", "text": "401 Unauthorized", "is_correct": false, "explanation": "401 is used when authentication credentials are missing or invalid." },
+        { "id": "c", "text": "500 Internal Server Error", "is_correct": false, "explanation": "500 implies an unexpected application crash, not an authorization rejection." },
+        { "id": "d", "text": "200 OK with error: 'forbidden' in JSON body", "is_correct": false, "explanation": "Hiding HTTP errors inside 200 OK responses violates REST semantics." }
       ]
     },
     {
-      "id": "q_redis_01",
-      "skill_id": "redis_key_value",
-      "prompt": "Which Redis data structure is optimal for maintaining a real-time leaderboard sorted by user scores with O(log N) insertion?",
+      "id": "q_rest_s4",
+      "skill_id": "restful_api_design",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: HATEOAS (Hypermedia as the Engine of Application State) provides dynamic hypermedia links in JSON responses allowing clients to navigate actions dynamically.",
+      "hint": "What is the key principle behind Richardson Maturity Model Level 3?",
+      "prompt": "In Level 3 of the Richardson Maturity Model (HATEOAS), how do clients discover available next actions (such as paying an invoice or cancelling an order)?",
       "options": [
-        { "id": "a", "text": "Redis Hashes (HSET)", "is_correct": false, "explanation": "Hashes store field-value pairs without ordering." },
-        { "id": "b", "text": "Redis Sorted Sets (ZSET)", "is_correct": true, "explanation": "Sorted Sets store elements ordered by score using skip lists and hash tables, supporting O(log N) updates and range queries." },
-        { "id": "c", "text": "Redis Lists (LPUSH)", "is_correct": false, "explanation": "Lists are ordered by insertion time, not score values." },
-        { "id": "d", "text": "Redis HyperLogLog", "is_correct": false, "explanation": "HyperLogLog estimates cardinality of unique items." }
+        { "id": "a", "text": "By parsing hypermedia links (`_links`) dynamically included inside the response payload", "is_correct": true, "explanation": "Correct! HATEOAS responses include rel/href links indicating valid state transitions." },
+        { "id": "b", "text": "By hardcoding all possible API routes in the client source code", "is_correct": false, "explanation": "HATEOAS decouples clients from hardcoded URL routes." },
+        { "id": "c", "text": "By inspecting DNS TXT records", "is_correct": false, "explanation": "DNS is unrelated to application hypermedia." },
+        { "id": "d", "text": "By converting the REST API to binary SOAP XML", "is_correct": false, "explanation": "HATEOAS is a core constraint of REST." }
+      ]
+    },
+
+    {
+      "id": "q_py_var_s1",
+      "skill_id": "python_syntax_variables",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Python is dynamically typed. You create variables simply by assigning values (e.g. `age = 25`, `name = 'Alex'`).",
+      "hint": "What type does the literal `3.14` have in Python?",
+      "prompt": "What is the data type of the expression `x = 42.0` in Python?",
+      "options": [
+        { "id": "a", "text": "float — Numbers containing decimal points are floating-point numbers", "is_correct": true, "explanation": "Correct! In Python, numbers with decimal points are instantiated as `float`." },
+        { "id": "b", "text": "int — Whole integer numbers only", "is_correct": false, "explanation": "Integers do not contain decimal places." },
+        { "id": "c", "text": "str — Character text strings", "is_correct": false, "explanation": "Strings are enclosed in quotation marks." },
+        { "id": "d", "text": "bool — True or False boolean", "is_correct": false, "explanation": "Booleans are True or False." }
       ]
     },
     {
-      "id": "q_caching_01",
-      "skill_id": "caching_patterns",
-      "prompt": "In the Cache-Aside (Lazy Loading) pattern, what happens when a read misses the cache?",
+      "id": "q_py_var_s2",
+      "skill_id": "python_syntax_variables",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Formatted string literals (f-strings) let you embed expressions inside string literals using curly braces `{}`.",
+      "hint": "What will `f'Hello {name}'` evaluate to if `name = 'Alex'`?",
+      "prompt": "What is the output of `f'{2 + 3} items'` in Python 3.6+?",
       "options": [
-        { "id": "a", "text": "The database writes to the cache directly.", "is_correct": false, "explanation": "The DB is unaware of the application cache." },
-        { "id": "b", "text": "The application reads from the DB, writes the result to cache, and returns it.", "is_correct": true, "explanation": "In Cache-Aside, the application queries the cache first. On a miss, it fetches from the primary DB, populates the cache, and serves the client." },
-        { "id": "c", "text": "The client retries after 500ms.", "is_correct": false, "explanation": "The client receives the response synchronously from DB." },
-        { "id": "d", "text": "A background queue asynchronously refreshes all keys.", "is_correct": false, "explanation": "That describes Refresh-Ahead caching." }
+        { "id": "a", "text": "'5 items'", "is_correct": true, "explanation": "Correct! Expressions inside `{}` are evaluated at runtime and converted to string." },
+        { "id": "b", "text": "'{2 + 3} items'", "is_correct": false, "explanation": "Standard strings don't evaluate `{}`; f-strings prefixed with `f` do." },
+        { "id": "c", "text": "'23 items'", "is_correct": false, "explanation": "Numbers 2 and 3 are added mathematically, not concatenated as text." },
+        { "id": "d", "text": "SyntaxError", "is_correct": false, "explanation": "f-strings are native Python 3 syntax." }
       ]
     },
     {
-      "id": "q_jwt_01",
-      "skill_id": "jwt_token_auth",
-      "prompt": "What is the primary vulnerability of storing sensitive JWT access tokens in browser `localStorage`?",
+      "id": "q_py_var_s3",
+      "skill_id": "python_syntax_variables",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: In Python, variables are references to objects in memory. The `is` operator checks memory identity (`id(a) == id(b)`), while `==` checks value equality.",
+      "hint": "Do two separately created lists with the same values share the exact same memory address?",
+      "prompt": "Given `a = [1, 2, 3]` and `b = [1, 2, 3]`, what do `a == b` and `a is b` evaluate to?",
       "options": [
-        { "id": "a", "text": "Cross-Site Request Forgery (CSRF)", "is_correct": false, "explanation": "CSRF affects automatic cookie transmission, not manual Authorization headers." },
-        { "id": "b", "text": "Cross-Site Scripting (XSS) token exfiltration", "is_correct": true, "explanation": "Any injected JavaScript can access window.localStorage and exfiltrate the JWT. HttpOnly cookies protect against script access." },
-        { "id": "c", "text": "DNS Poisoning", "is_correct": false, "explanation": "DNS poisoning is an infra network attack." },
-        { "id": "d", "text": "SQL Injection", "is_correct": false, "explanation": "Local storage does not execute SQL." }
+        { "id": "a", "text": "a == b is True, but a is b is False", "is_correct": true, "explanation": "Correct! They have equal values (`==`), but are two distinct list objects in memory (`is` checks object identity)." },
+        { "id": "b", "text": "Both are True", "is_correct": false, "explanation": "`a is b` is False because they occupy separate heap memory locations." },
+        { "id": "c", "text": "Both are False", "is_correct": false, "explanation": "Their values are identical, so `a == b` is True." },
+        { "id": "d", "text": "TypeError", "is_correct": false, "explanation": "Comparison operators work smoothly on lists." }
       ]
     },
     {
-      "id": "q_kafka_01",
-      "skill_id": "event_streaming_kafka",
-      "prompt": "In Apache Kafka, what determines the maximum number of active consumers in a single consumer group that can process messages concurrently?",
+      "id": "q_py_var_s4",
+      "skill_id": "python_syntax_variables",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: CPython optimizes memory via small integer interning (caching integers from -5 to 256) and string interning.",
+      "hint": "Why does `a is b` return True for `256` but False for `300` in standard CPython REPL?",
+      "prompt": "Why does `x = 100; y = 100; x is y` evaluate to `True` in CPython, but `x = 1000; y = 1000; x is y` may evaluate to `False`?",
       "options": [
-        { "id": "a", "text": "The number of broker nodes in the cluster.", "is_correct": false, "explanation": "Brokers host topics, but consumer parallelism is tied to partitions." },
-        { "id": "b", "text": "The number of topic partitions.", "is_correct": true, "explanation": "Each partition is consumed by exactly one consumer in a consumer group at any time. Extra consumers remain idle." },
-        { "id": "c", "text": "The total size of the message log in GB.", "is_correct": false, "explanation": "Log size does not limit consumer allocation." },
-        { "id": "d", "text": "The ZooKeeper / KRaft quorum size.", "is_correct": false, "explanation": "The quorum manages metadata, not partition consumption limits." }
+        { "id": "a", "text": "CPython pre-allocates and interns small integer singleton objects in the range [-5, 256] for performance", "is_correct": true, "explanation": "Correct! Integers between -5 and 256 are interned globally in CPython, referencing the same singleton memory address." },
+        { "id": "b", "text": "Because numbers over 256 overflow 32-bit CPU registers", "is_correct": false, "explanation": "Python integers support arbitrary precision." },
+        { "id": "c", "text": "Because Python automatically converts numbers over 1000 into strings", "is_correct": false, "explanation": "Numbers remain integer objects." },
+        { "id": "d", "text": "Because garbage collection deletes numbers greater than 256 immediately", "is_correct": false, "explanation": "Garbage collection manages unreferenced objects." }
       ]
     },
+
     {
-      "id": "q_py_ctrl_01",
+      "id": "q_py_flow_s1",
       "skill_id": "control_flow",
-      "prompt": "What will be the output of `bool([]) or (5 and 0)` in Python?",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: `if`, `elif`, and `else` blocks allow code to branch based on boolean conditions. Python uses indentation to define code blocks.",
+      "hint": "Which branch executes when score is 85?",
+      "prompt": "In the code `score = 85; if score >= 90: res = 'A'; elif score >= 80: res = 'B'; else: res = 'C'`, what is `res`?",
       "options": [
-        { "id": "a", "text": "True", "is_correct": false, "explanation": "bool([]) is False, and (5 and 0) evaluates to 0." },
-        { "id": "b", "text": "0", "is_correct": true, "explanation": "bool([]) is False. In Python `False or X` returns X. `5 and 0` evaluates to 0 because 0 is falsy." },
-        { "id": "c", "text": "False", "is_correct": false, "explanation": "The expression returns the falsy value 0 itself." },
-        { "id": "d", "text": "None", "is_correct": false, "explanation": "None is not returned." }
+        { "id": "a", "text": "'B'", "is_correct": true, "explanation": "Correct! 85 is not >= 90, but it is >= 80, so the `elif` branch executes." },
+        { "id": "b", "text": "'A'", "is_correct": false, "explanation": "85 is less than 90." },
+        { "id": "c", "text": "'C'", "is_correct": false, "explanation": "`else` only runs if all preceding conditions are False." },
+        { "id": "d", "text": "None", "is_correct": false, "explanation": "res is assigned 'B'." }
       ]
     },
     {
-      "id": "q_py_func_01",
+      "id": "q_py_flow_s2",
+      "skill_id": "control_flow",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Python provides a concise conditional expression (ternary operator): `x if condition else y`.",
+      "hint": "What value is returned if `is_admin` is True?",
+      "prompt": "What does `role = 'Admin' if is_admin else 'User'` evaluate to when `is_admin = True`?",
+      "options": [
+        { "id": "a", "text": "'Admin'", "is_correct": true, "explanation": "Correct! Since `is_admin` is True, the expression before `if` is returned." },
+        { "id": "b", "text": "'User'", "is_correct": false, "explanation": "'User' would be returned if `is_admin` was False." },
+        { "id": "c", "text": "True", "is_correct": false, "explanation": "The ternary operator returns the specified value, not the condition." },
+        { "id": "d", "text": "SyntaxError", "is_correct": false, "explanation": "This is standard Python ternary syntax." }
+      ]
+    },
+    {
+      "id": "q_py_flow_s3",
+      "skill_id": "control_flow",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: In Python, boolean operators `and` and `or` short-circuit and return the operand value itself, not just a boolean True/False.",
+      "hint": "What does `False or 'fallback'` return in Python?",
+      "prompt": "What is the exact return value of `bool([]) or (5 and 0)` in Python?",
+      "options": [
+        { "id": "a", "text": "0", "is_correct": true, "explanation": "Correct! `bool([])` is False. `False or X` evaluates and returns X. `(5 and 0)` evaluates to 0 because 0 is falsy." },
+        { "id": "b", "text": "True", "is_correct": false, "explanation": "Neither branch evaluates to True." },
+        { "id": "c", "text": "False", "is_correct": false, "explanation": "Python returns the actual evaluated operand value (0), not the boolean type." },
+        { "id": "d", "text": "None", "is_correct": false, "explanation": "0 is returned." }
+      ]
+    },
+    {
+      "id": "q_py_flow_s4",
+      "skill_id": "control_flow",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Python 3.10+ introduced structural pattern matching with `match` and `case`, supporting sequence destructuring and guard expressions.",
+      "hint": "How do you match a 2D point tuple and check if both coordinates are equal using a guard?",
+      "prompt": "In Python 3.10+ Pattern Matching, which syntax matches a 2-element tuple `(x, y)` and only executes if `x == y`?",
+      "options": [
+        { "id": "a", "text": "case (x, y) if x == y:", "is_correct": true, "explanation": "Correct! The `if` keyword inside a `case` clause acts as a pattern guard condition." },
+        { "id": "b", "text": "case (x, x):", "is_correct": false, "explanation": "Repeating variable names in patterns is invalid syntax in Python pattern matching." },
+        { "id": "c", "text": "case (x, y) where x == y:", "is_correct": false, "explanation": "`where` is not a Python keyword; `if` is used for guards." },
+        { "id": "d", "text": "when (x == y):", "is_correct": false, "explanation": "`case` with `if` is the correct syntax." }
+      ]
+    },
+
+    {
+      "id": "q_py_loop_s1",
+      "skill_id": "loops_iteration",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: A `for` loop iterates over a sequence (like a list, string, or range). `range(3)` produces numbers 0, 1, 2.",
+      "hint": "Remember that Python ranges start at 0 and stop before the end value.",
+      "prompt": "How many times will `for i in range(4): print(i)` execute its print statement?",
+      "options": [
+        { "id": "a", "text": "4 times (for values 0, 1, 2, 3)", "is_correct": true, "explanation": "Correct! `range(4)` generates 4 elements starting at 0 up to 3." },
+        { "id": "b", "text": "3 times", "is_correct": false, "explanation": "0, 1, 2, 3 is 4 numbers." },
+        { "id": "c", "text": "5 times", "is_correct": false, "explanation": "The stop index 4 is non-inclusive." },
+        { "id": "d", "text": "Infinite loop", "is_correct": false, "explanation": "range is a finite iterator." }
+      ]
+    },
+    {
+      "id": "q_py_loop_s2",
+      "skill_id": "loops_iteration",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: `break` immediately exits a loop, while `continue` skips the rest of the current iteration and jumps to the next item.",
+      "hint": "What keyword skips processing the current item and moves to the next?",
+      "prompt": "Which keyword is used inside a loop to skip the rest of the current iteration and move directly to the next item?",
+      "options": [
+        { "id": "a", "text": "continue", "is_correct": true, "explanation": "Correct! `continue` skips to the next loop iteration without terminating the entire loop." },
+        { "id": "b", "text": "break", "is_correct": false, "explanation": "`break` terminates the entire loop immediately." },
+        { "id": "c", "text": "pass", "is_correct": false, "explanation": "`pass` is a null statement placeholder that does nothing." },
+        { "id": "d", "text": "return", "is_correct": false, "explanation": "`return` exits the enclosing function." }
+      ]
+    },
+    {
+      "id": "q_py_loop_s3",
+      "skill_id": "loops_iteration",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: `enumerate(iterable)` provides both the index and the item during iteration, avoiding manual counter variables (`i += 1`).",
+      "hint": "How do you unpack index and value from enumerate?",
+      "prompt": "What is the Pythonic way to iterate over a list `fruits` while tracking the 0-based index `i`?",
+      "options": [
+        { "id": "a", "text": "for i, fruit in enumerate(fruits):", "is_correct": true, "explanation": "Correct! `enumerate()` yields `(index, item)` pairs cleanly and efficiently." },
+        { "id": "b", "text": "for i in range(len(fruits)): fruit = fruits[i]", "is_correct": false, "explanation": "While functional, `range(len())` is unpythonic compared to `enumerate()`." },
+        { "id": "c", "text": "for fruit in fruits: i = fruits.index(fruit)", "is_correct": false, "explanation": "Calling `.index()` is slow ($O(N)$) and breaks on duplicate items." },
+        { "id": "d", "text": "while fruits.has_next():", "is_correct": false, "explanation": "Python does not use Java-style iterator methods." }
+      ]
+    },
+    {
+      "id": "q_py_loop_s4",
+      "skill_id": "loops_iteration",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: In Python, `for ... else` and `while ... else` execute the `else` block only if the loop completed naturally without hitting a `break`.",
+      "hint": "When does the `else` block attached to a `for` loop run?",
+      "prompt": "In Python, when does the `else` block of a `for ... else` statement execute?",
+      "options": [
+        { "id": "a", "text": "Only if the loop terminates normally without encountering a `break` statement", "is_correct": true, "explanation": "Correct! The `else` block runs after completion, acting as a 'no-break-occurred' confirmation block." },
+        { "id": "b", "text": "Whenever the loop hits an exception", "is_correct": false, "explanation": "Exceptions are handled by `try/except`." },
+        { "id": "c", "text": "On every single iteration of the loop", "is_correct": false, "explanation": "It runs at most once after loop completion." },
+        { "id": "d", "text": "Only if the iterable was completely empty", "is_correct": false, "explanation": "An empty loop still runs the `else` block because no `break` occurred." }
+      ]
+    },
+
+    {
+      "id": "q_py_func_s1",
       "skill_id": "functions_and_scopes",
-      "prompt": "What happens when using a mutable default argument like `def add_item(item, target_list=[])` in Python?",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Functions are declared with `def name(parameters):`. They encapsulate reusable logic and return a result with `return`.",
+      "hint": "What keyword defines a function in Python?",
+      "prompt": "Which keyword is used to declare a function in Python?",
       "options": [
-        { "id": "a", "text": "A new list is instantiated on every function call.", "is_correct": false, "explanation": "Default argument expressions are evaluated once when the function is defined." },
-        { "id": "b", "text": "The same list object persists across subsequent calls, causing unexpected mutations.", "is_correct": true, "explanation": "Python evaluates default parameters at definition time. Mutating target_list modifies the single shared object across all invocations." },
-        { "id": "c", "text": "Python raises a TypeError at runtime.", "is_correct": false, "explanation": "Mutable defaults are valid syntax." },
-        { "id": "d", "text": "The list becomes read-only.", "is_correct": false, "explanation": "Lists remain mutable." }
+        { "id": "a", "text": "def", "is_correct": true, "explanation": "Correct! `def` defines a function in Python (e.g. `def add(a, b): return a + b`)." },
+        { "id": "b", "text": "function", "is_correct": false, "explanation": "`function` is used in JavaScript." },
+        { "id": "c", "text": "fn", "is_correct": false, "explanation": "`fn` is used in Rust." },
+        { "id": "d", "text": "func", "is_correct": false, "explanation": "`func` is used in Go and Swift." }
       ]
     },
     {
-      "id": "q_web_flex_01",
+      "id": "q_py_func_s2",
+      "skill_id": "functions_and_scopes",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: `*args` captures variable-length positional arguments as a tuple; `**kwargs` captures keyword arguments as a dictionary.",
+      "hint": "What data structure does `*args` pack arguments into inside the function?",
+      "prompt": "When defining a function `def calculate(*args):`, what data structure is `args` inside the function?",
+      "options": [
+        { "id": "a", "text": "tuple", "is_correct": true, "explanation": "Correct! `*args` bundles positional arguments into an immutable `tuple`." },
+        { "id": "b", "text": "list", "is_correct": false, "explanation": "args is a tuple, not a mutable list." },
+        { "id": "c", "text": "dict", "is_correct": false, "explanation": "`**kwargs` produces a dict, while `*args` produces a tuple." },
+        { "id": "d", "text": "set", "is_correct": false, "explanation": "Arguments maintain order in a tuple." }
+      ]
+    },
+    {
+      "id": "q_py_func_s3",
+      "skill_id": "functions_and_scopes",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Python resolves variable names using the LEGB rule: Local -> Enclosing -> Global -> Built-in.",
+      "hint": "If a variable is defined both globally and inside a function, which one is accessed inside the function by default?",
+      "prompt": "According to Python's LEGB scope resolution rule, in what order does Python search for variable names?",
+      "options": [
+        { "id": "a", "text": "Local -> Enclosing -> Global -> Built-in", "is_correct": true, "explanation": "Correct! Python searches Local function scope, Enclosing closures, Global module scope, and Built-ins last." },
+        { "id": "b", "text": "Global -> Local -> Built-in -> Enclosing", "is_correct": false, "explanation": "Local always takes precedence over Global." },
+        { "id": "c", "text": "Built-in -> Global -> Local", "is_correct": false, "explanation": "Built-ins are checked last." },
+        { "id": "d", "text": "Lexical -> Dynamic -> Static", "is_correct": false, "explanation": "LEGB is the exact resolution hierarchy." }
+      ]
+    },
+    {
+      "id": "q_py_func_s4",
+      "skill_id": "functions_and_scopes",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Default parameter expressions are evaluated ONCE when the function is defined, NOT each time the function is called.",
+      "hint": "What happens when you use a mutable default like `def append_to(item, target=[])`?",
+      "prompt": "What is the result of calling `append_to(1)` followed by `append_to(2)` if `def append_to(val, lst=[]): lst.append(val); return lst`?",
+      "options": [
+        { "id": "a", "text": "The second call returns `[1, 2]` because default list `lst` is created once at function definition time and shared across calls", "is_correct": true, "explanation": "Correct! Mutable default arguments persist across calls. Use `lst=None` and `if lst is None: lst = []` as the fix." },
+        { "id": "b", "text": "The second call returns `[2]` because a new list is created on each call", "is_correct": false, "explanation": "Default arguments are evaluated once at definition, not per invocation." },
+        { "id": "c", "text": "TypeError: list is not callable", "is_correct": false, "explanation": "The code executes but exhibits shared mutable state." },
+        { "id": "d", "text": "SyntaxError", "is_correct": false, "explanation": "This is valid Python syntax with a well-known behavioral gotcha." }
+      ]
+    },
+
+    {
+      "id": "q_py_list_s1",
+      "skill_id": "lists_and_tuples",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Lists (`[1, 2, 3]`) are mutable (can be changed after creation), while Tuples (`(1, 2, 3)`) are immutable (cannot be modified).",
+      "hint": "Which collection allows `.append()` or changing items with `items[0] = 99`?",
+      "prompt": "What is the primary difference between a Python List and a Python Tuple?",
+      "options": [
+        { "id": "a", "text": "Lists are mutable and can be modified; Tuples are immutable and fixed after creation", "is_correct": true, "explanation": "Correct! Lists allow appending, popping, and reassignment; tuples cannot be modified once instantiated." },
+        { "id": "b", "text": "Lists can only hold numbers; Tuples hold strings", "is_correct": false, "explanation": "Both lists and tuples can hold any heterogeneous data types." },
+        { "id": "c", "text": "Tuples cannot be indexed", "is_correct": false, "explanation": "Tuples support 0-based indexing like lists (`t[0]`)." },
+        { "id": "d", "text": "Lists use curly braces `{}`", "is_correct": false, "explanation": "Lists use square brackets `[]`; sets and dicts use `{}`." }
+      ]
+    },
+    {
+      "id": "q_py_list_s2",
+      "skill_id": "lists_and_tuples",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Python slicing syntax `sequence[start:stop:step]` allows extracting substrings or sublists. A step of `-1` reverses the sequence.",
+      "hint": "How do you reverse a list `items` using slice notation?",
+      "prompt": "What expression reverses the list `nums = [10, 20, 30, 40]` using slice notation?",
+      "options": [
+        { "id": "a", "text": "nums[::-1]", "is_correct": true, "explanation": "Correct! `[::-1]` slices from start to end with a step of -1, producing `[40, 30, 20, 10]`." },
+        { "id": "b", "text": "nums[-1:0]", "is_correct": false, "explanation": "Without negative step, this produces an empty slice." },
+        { "id": "c", "text": "nums.reverse_slice()", "is_correct": false, "explanation": "No such built-in slice method exists." },
+        { "id": "d", "text": "nums[1:4]", "is_correct": false, "explanation": "This takes elements from index 1 to 3." }
+      ]
+    },
+    {
+      "id": "q_py_list_s3",
+      "skill_id": "lists_and_tuples",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: `list.sort()` sorts the list in-place and returns `None`, while the built-in `sorted(list)` returns a new sorted list without modifying the original.",
+      "hint": "What does `nums.sort()` return?",
+      "prompt": "What happens when you run `result = nums.sort()` on a list in Python?",
+      "options": [
+        { "id": "a", "text": "`nums` is sorted in-place, and `result` is assigned `None`", "is_correct": true, "explanation": "Correct! In-place mutating list methods return `None` to remind developers they modified the original object." },
+        { "id": "b", "text": "`result` holds the new sorted list, and `nums` is unchanged", "is_correct": false, "explanation": "That is the behavior of `sorted(nums)`, not `nums.sort()`." },
+        { "id": "c", "text": "A TypeError is raised", "is_correct": false, "explanation": "sort() is a standard list method." },
+        { "id": "d", "text": "`nums` is reversed", "is_correct": false, "explanation": "sort() orders items in ascending order by default." }
+      ]
+    },
+    {
+      "id": "q_py_list_s4",
+      "skill_id": "lists_and_tuples",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Python lists are dynamic arrays. Appending at the end is amortized $O(1)$, while inserting at index 0 is $O(N)$ because all elements must be shifted in memory.",
+      "hint": "Which data structure from the `collections` module provides $O(1)$ fast pushes/pops from both ends?",
+      "prompt": "If an algorithm requires frequent inserts and pops from the beginning of a collection (FIFO queue), why is `collections.deque` preferred over a standard Python list?",
+      "options": [
+        { "id": "a", "text": "`collections.deque` performs $O(1)$ constant-time pops/inserts from both ends, whereas `list.insert(0, val)` is $O(N)$ due to element shifting", "is_correct": true, "explanation": "Correct! Lists must shift $N$ elements in memory on index 0 mutations; deques use doubly-linked blocks." },
+        { "id": "b", "text": "Lists cannot store more than 1,000 items in memory", "is_correct": false, "explanation": "Lists can store millions of items." },
+        { "id": "c", "text": "`collections.deque` automatically saves data to SQLite disk storage", "is_correct": false, "explanation": "deque is an in-memory data structure." },
+        { "id": "d", "text": "Lists do not support integer values", "is_correct": false, "explanation": "Lists support all data types." }
+      ]
+    },
+
+    {
+      "id": "q_html_s1",
+      "skill_id": "html_semantic_markup",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Semantic HTML tags (like `<nav>`, `<header>`, `<main>`, `<article>`) give clear structural meaning to web browsers, screen readers, and search engines.",
+      "hint": "Which tag explicitly represents the primary navigation links of a webpage?",
+      "prompt": "Which semantic HTML5 element should wrap the primary site navigation links?",
+      "options": [
+        { "id": "a", "text": "<nav>", "is_correct": true, "explanation": "Correct! `<nav>` designates major navigational link sections for accessibility and screen readers." },
+        { "id": "b", "text": "<div id='navigation-bar'>", "is_correct": false, "explanation": "Generic `<div>` tags lack semantic meaning for assistive technologies." },
+        { "id": "c", "text": "<menuitem>", "is_correct": false, "explanation": "<menuitem> is a deprecated non-standard element." },
+        { "id": "d", "text": "<section class='nav'>", "is_correct": false, "explanation": "`<nav>` is the dedicated semantic landmark for navigation." }
+      ]
+    },
+    {
+      "id": "q_html_s2",
+      "skill_id": "html_semantic_markup",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: `<button>` is used for user actions (submitting forms, opening modals), while `<a>` (anchor) is used for navigating to new URLs.",
+      "hint": "When opening a modal popup with JavaScript without changing the URL, what tag should you use?",
+      "prompt": "For an interactive UI control that opens a modal popup upon click without navigating to a new URL, which element is semantically correct and keyboard accessible?",
+      "options": [
+        { "id": "a", "text": "<button type='button'>", "is_correct": true, "explanation": "Correct! Buttons are natively focusable and triggerable via Space/Enter keys for actions." },
+        { "id": "b", "text": "<a href='#'>", "is_correct": false, "explanation": "Anchor tags without valid destinations break accessibility and cause accidental page jumps." },
+        { "id": "c", "text": "<div onclick='openModal()'>", "is_correct": false, "explanation": "Divs are not keyboard focusable without manual tabindex and key listener hacks." },
+        { "id": "d", "text": "<span>", "is_correct": false, "explanation": "Spans are inline generic containers without interactive keyboard affordance." }
+      ]
+    },
+    {
+      "id": "q_html_s3",
+      "skill_id": "html_semantic_markup",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Proper document structure uses a single `<h1>` per page for the main topic, followed hierarchically by `<h2>`, `<h3>`, without skipping heading levels.",
+      "hint": "Why is heading order important for screen reader users?",
+      "prompt": "Why is maintaining strict sequential heading hierarchy (`h1` -> `h2` -> `h3`) critical for web accessibility?",
+      "options": [
+        { "id": "a", "text": "Screen reader users navigate webpages by jumping between heading levels to understand document outline", "is_correct": true, "explanation": "Correct! Screen readers generate an outline table of contents from heading tags." },
+        { "id": "b", "text": "Skipping heading levels causes JavaScript execution to crash", "is_correct": false, "explanation": "Browsers still render invalid heading structures without JS crashes, but accessibility is degraded." },
+        { "id": "c", "text": "Because CSS flexbox only functions inside `h1` tags", "is_correct": false, "explanation": "CSS applies independently of heading tags." },
+        { "id": "d", "text": "To prevent browser memory leaks", "is_correct": false, "explanation": "Heading levels do not affect memory leaks." }
+      ]
+    },
+    {
+      "id": "q_html_s4",
+      "skill_id": "html_semantic_markup",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: `aria-live` attributes inform screen readers to immediately announce dynamically injected DOM updates (like toast alerts or live chat messages).",
+      "hint": "Which attribute announces urgent error messages immediately without waiting for user interaction?",
+      "prompt": "When dynamically injecting an asynchronous error alert into the DOM, which ARIA configuration immediately announces the error to screen readers?",
+      "options": [
+        { "id": "a", "text": "role='alert' or aria-live='assertive'", "is_correct": true, "explanation": "Correct! `assertive` interrupts current speech to immediately announce high-priority error messages." },
+        { "id": "b", "text": "aria-hidden='true'", "is_correct": false, "explanation": "`aria-hidden='true'` hides the element completely from screen readers." },
+        { "id": "c", "text": "aria-live='off'", "is_correct": false, "explanation": "`off` suppresses automated announcements." },
+        { "id": "d", "text": "tabindex='-1'", "is_correct": false, "explanation": "`tabindex='-1'` enables programmatic focus but does not trigger live region announcements." }
+      ]
+    },
+
+    {
+      "id": "q_css_box_s1",
+      "skill_id": "css_box_model",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Every HTML element is surrounded by a Box Model composed of 4 concentric layers: Content -> Padding -> Border -> Margin.",
+      "hint": "Which layer creates transparent breathing room OUTSIDE the element's border?",
+      "prompt": "In the CSS Box Model, which property creates space outside the element's border between adjacent elements?",
+      "options": [
+        { "id": "a", "text": "margin", "is_correct": true, "explanation": "Correct! Margin is the outermost layer creating separation between elements." },
+        { "id": "b", "text": "padding", "is_correct": false, "explanation": "Padding creates space inside the border around content." },
+        { "id": "c", "text": "border", "is_correct": false, "explanation": "Border is the perimeter line between padding and margin." },
+        { "id": "d", "text": "outline", "is_correct": false, "explanation": "Outline is drawn outside borders without occupying layout space." }
+      ]
+    },
+    {
+      "id": "q_css_box_s2",
+      "skill_id": "css_box_model",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: `box-sizing: border-box` includes padding and border within the element's total declared width and height, preventing layout breakage.",
+      "hint": "With `width: 200px; padding: 20px; box-sizing: border-box`, what is the total rendered width?",
+      "prompt": "If an element has `width: 200px`, `padding: 20px`, and `box-sizing: border-box`, what is its total rendered width on the screen?",
+      "options": [
+        { "id": "a", "text": "200px — Padding is absorbed inside the declared 200px width", "is_correct": true, "explanation": "Correct! `border-box` maintains total width at 200px by shrinking content area to 160px." },
+        { "id": "b", "text": "240px — Because padding is added to width", "is_correct": false, "explanation": "That would occur with default `box-sizing: content-box`." },
+        { "id": "c", "text": "160px", "is_correct": false, "explanation": "160px is the content box width, but total rendered width is 200px." },
+        { "id": "d", "text": "220px", "is_correct": false, "explanation": "20px padding on both sides is 40px." }
+      ]
+    },
+    {
+      "id": "q_css_box_s3",
+      "skill_id": "css_box_model",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: CSS Specificity calculates precedence using (Inline, IDs, Classes/Attributes/Pseudo-classes, Elements/Pseudo-elements).",
+      "hint": "Which selector has higher specificity: `#header` or `.header.active`?",
+      "prompt": "Which CSS rule has the highest specificity and will take precedence?",
+      "options": [
+        { "id": "a", "text": "#main-nav (1 ID: Specificity 1-0-0)", "is_correct": true, "explanation": "Correct! A single ID selector (1-0-0) outweighs any number of combined class selectors (0-2-0)." },
+        { "id": "b", "text": ".nav-container.active.open (3 classes: Specificity 0-3-0)", "is_correct": false, "explanation": "Classes cannot override an ID selector regardless of quantity." },
+        { "id": "c", "text": "nav ul li a (4 elements: Specificity 0-0-4)", "is_correct": false, "explanation": "Element selectors have the lowest specificity." },
+        { "id": "d", "text": "* (Universal selector: Specificity 0-0-0)", "is_correct": false, "explanation": "Universal selector has zero specificity." }
+      ]
+    },
+    {
+      "id": "q_css_box_s4",
+      "skill_id": "css_box_model",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Margin collapsing occurs when vertical margins of adjacent block elements touch, combining into a single margin equal to the largest value.",
+      "hint": "If two stacked divs have `margin-bottom: 30px` and `margin-top: 20px`, what is the gap between them?",
+      "prompt": "Two adjacent vertical block elements have `margin-bottom: 30px` and `margin-top: 20px` respectively. What is the resulting vertical distance between them in standard normal flow?",
+      "options": [
+        { "id": "a", "text": "30px — Due to vertical margin collapsing, the larger margin wins", "is_correct": true, "explanation": "Correct! Vertical margins collapse into the maximum of the two (`max(30px, 20px) = 30px`)." },
+        { "id": "b", "text": "50px — The margins add together", "is_correct": false, "explanation": "Vertical margins in normal block flow collapse rather than sum." },
+        { "id": "c", "text": "10px — The difference between the margins", "is_correct": false, "explanation": "Margins do not subtract." },
+        { "id": "d", "text": "20px — The smaller margin wins", "is_correct": false, "explanation": "The maximum margin determines the gap." }
+      ]
+    },
+
+    {
+      "id": "q_css_flex_s1",
       "skill_id": "css_flexbox",
-      "prompt": "In CSS Flexbox, what does `justify-content: space-between` do?",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Flexbox (`display: flex`) aligns items along a main axis (horizontal by default) and cross axis (vertical by default).",
+      "hint": "Which property aligns items horizontally when flex-direction is row?",
+      "prompt": "In a standard row Flexbox container, which property distributes and centers items along the horizontal main axis?",
       "options": [
-        { "id": "a", "text": "Distributes items evenly along the cross axis.", "is_correct": false, "explanation": "The cross axis is aligned with align-content / align-items." },
-        { "id": "b", "text": "Places first item at start, last at end, with equal space between remaining items along main axis.", "is_correct": true, "explanation": "space-between anchors the extremities and divides available space evenly between interior items." },
-        { "id": "c", "text": "Adds equal margin before the first and after the last item.", "is_correct": false, "explanation": "That describes space-around or space-evenly." },
-        { "id": "d", "text": "Wraps overflowing items onto a new line.", "is_correct": false, "explanation": "Wrapping is controlled by flex-wrap." }
+        { "id": "a", "text": "justify-content: center", "is_correct": true, "explanation": "Correct! `justify-content` controls alignment along the main axis." },
+        { "id": "b", "text": "align-items: center", "is_correct": false, "explanation": "`align-items` controls alignment along the cross axis (vertical in row mode)." },
+        { "id": "c", "text": "text-align: center", "is_correct": false, "explanation": "`text-align` centers inline text, not flex items." },
+        { "id": "d", "text": "flex-wrap: center", "is_correct": false, "explanation": "`flex-wrap` controls whether items wrap to multiple lines (wrap/nowrap)." }
       ]
     },
     {
-      "id": "q_web_async_01",
-      "skill_id": "promises_async_await",
-      "prompt": "When does code following an `await` expression resume execution?",
+      "id": "q_css_flex_s2",
+      "skill_id": "css_flexbox",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: The `gap` property in Flexbox creates consistent spacing between flex children without needing manual margin calculations.",
+      "hint": "What CSS property sets a 16px space between all flex items?",
+      "prompt": "What is the cleanest modern CSS way to add 16px of space between flex children without adding outer margins?",
       "options": [
-        { "id": "a", "text": "Synchronously in the same call stack turn.", "is_correct": false, "explanation": "Await always yields control back to the event loop." },
-        { "id": "b", "text": "In the microtask queue after the awaited Promise resolves.", "is_correct": true, "explanation": "Promise settlements schedule the continuation into the microtask queue, which drains before macrotasks (timers/I/O)." },
-        { "id": "c", "text": "In a separate OS worker thread.", "is_correct": false, "explanation": "JavaScript execution is single-threaded." },
-        { "id": "d", "text": "After requestAnimationFrame.", "is_correct": false, "explanation": "Microtasks run immediately after the current script turn." }
+        { "id": "a", "text": "gap: 16px (or row-gap / column-gap)", "is_correct": true, "explanation": "Correct! `gap` cleanly applies spacing between flex items only, avoiding extra outer edge margins." },
+        { "id": "b", "text": "margin-right: 16px on every item with :last-child overrides", "is_correct": false, "explanation": "While historically used, `gap` is the modern standard supported in all browsers." },
+        { "id": "c", "text": "padding: 16px on the container", "is_correct": false, "explanation": "Container padding creates space around the perimeter, not between children." },
+        { "id": "d", "text": "border-spacing: 16px", "is_correct": false, "explanation": "`border-spacing` only applies to HTML table layouts." }
       ]
     },
     {
-      "id": "q_np_broad_01",
+      "id": "q_css_flex_s3",
+      "skill_id": "css_flexbox",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: `flex: 1` is shorthand for `flex-grow: 1; flex-shrink: 1; flex-basis: 0%`, allowing items to expand and fill available space equally.",
+      "hint": "What property allows a flex child to expand and take up all leftover space in the container?",
+      "prompt": "In a horizontal flex layout with a fixed 200px sidebar, how do you make the main content area expand to fill all remaining container space?",
+      "options": [
+        { "id": "a", "text": "Set `flex: 1` (or `flex-grow: 1`) on the main content container", "is_correct": true, "explanation": "Correct! `flex-grow: 1` instructs the item to absorb all remaining positive free space." },
+        { "id": "b", "text": "Set `width: 100vw` on the content area", "is_correct": false, "explanation": "100vw forces full viewport width, overflowing the sidebar." },
+        { "id": "c", "text": "Set `float: right`", "is_correct": false, "explanation": "Float is ignored inside flex formatting contexts." },
+        { "id": "d", "text": "Set `display: block` on the main content", "is_correct": false, "explanation": "Display block does not cause flex items to absorb remaining space automatically." }
+      ]
+    },
+    {
+      "id": "q_css_flex_s4",
+      "skill_id": "css_flexbox",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: `flex-basis: auto` bases initial size on content, whereas `flex-basis: 0` calculates grow distribution purely on ratio.",
+      "hint": "Why does `flex: 1 1 auto` produce unequal widths for cards with varying text lengths compared to `flex: 1 1 0px`?",
+      "prompt": "Why do three flex items with `flex: 1 1 auto` render with different widths when containing unequal text lengths, whereas `flex: 1 1 0px` guarantees identical widths?",
+      "options": [
+        { "id": "a", "text": "`flex-basis: auto` allocates remaining space AFTER subtracting content widths, while `flex-basis: 0px` distributes the entire container width equally", "is_correct": true, "explanation": "Correct! `auto` distributes leftover free space after content size; `0px` distributes total container space purely by grow ratios." },
+        { "id": "b", "text": "Because auto enables GPU hardware acceleration", "is_correct": false, "explanation": "Hardware acceleration is unrelated to flex-basis calculations." },
+        { "id": "c", "text": "Because 0px disables flex-shrink", "is_correct": false, "explanation": "The second parameter (`1`) defines flex-shrink." },
+        { "id": "d", "text": "Due to CSS grid overrides", "is_correct": false, "explanation": "This is a fundamental behavior of the flexbox layout algorithm." }
+      ]
+    },
+
+    {
+      "id": "q_css_grid_s1",
+      "skill_id": "css_grid",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: CSS Grid (`display: grid`) is a 2D layout system capable of arranging elements into rows and columns simultaneously.",
+      "hint": "How do you create a grid with 3 equal columns using fractional units?",
+      "prompt": "Which CSS rule creates a 3-column grid where all columns have equal width?",
+      "options": [
+        { "id": "a", "text": "grid-template-columns: repeat(3, 1fr)", "is_correct": true, "explanation": "Correct! `repeat(3, 1fr)` creates three columns, each taking 1 fraction of available space." },
+        { "id": "b", "text": "flex-direction: grid-3", "is_correct": false, "explanation": "Flexbox does not have a grid-3 direction." },
+        { "id": "c", "text": "columns: 3fr", "is_correct": false, "explanation": "`columns` is for multi-column text flow, not CSS Grid tracks." },
+        { "id": "d", "text": "display: 3-column", "is_correct": false, "explanation": "Valid display value is `display: grid`." }
+      ]
+    },
+    {
+      "id": "q_css_grid_s2",
+      "skill_id": "css_grid",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: The `fr` (fractional) unit represents a fraction of the available free space in the grid container.",
+      "hint": "In `grid-template-columns: 200px 1fr 2fr`, what receives the remaining space after 200px is subtracted?",
+      "prompt": "In `grid-template-columns: 200px 1fr 2fr`, how is the space distributed?",
+      "options": [
+        { "id": "a", "text": "First column takes 200px fixed; remaining space is divided into 3 parts (col 2 takes 1/3, col 3 takes 2/3)", "is_correct": true, "explanation": "Correct! Fixed pixels are allocated first, then remaining free space is divided according to `fr` ratios." },
+        { "id": "b", "text": "All three columns are forced to 200px", "is_correct": false, "explanation": "`fr` columns dynamically expand to fill remaining space." },
+        { "id": "c", "text": "The 2fr column is twice the width of the whole screen", "is_correct": false, "explanation": "Fractions divide container space, not screen size." },
+        { "id": "d", "text": "The container overflows horizontally by default", "is_correct": false, "explanation": "`fr` units prevent overflow by dividing remaining space." }
+      ]
+    },
+    {
+      "id": "q_css_grid_s3",
+      "skill_id": "css_grid",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: `repeat(auto-fit, minmax(250px, 1fr))` creates responsive card grids that automatically wrap to fewer or more columns without any media queries!",
+      "hint": "What does `minmax(250px, 1fr)` enforce on card widths?",
+      "prompt": "Why is `grid-template-columns: repeat(auto-fit, minmax(250px, 1fr))` widely used for responsive card layouts?",
+      "options": [
+        { "id": "a", "text": "It automatically fits as many 250px+ cards per row as possible and expands them to fill the row without needing media queries", "is_correct": true, "explanation": "Correct! `auto-fit` + `minmax()` dynamically wraps and scales cards based on container width alone." },
+        { "id": "b", "text": "It disables CSS Grid on mobile screens automatically", "is_correct": false, "explanation": "It renders a single 1fr column on small screens cleanly." },
+        { "id": "c", "text": "It converts images inside cards to WebP format", "is_correct": false, "explanation": "CSS Grid does not process image formats." },
+        { "id": "d", "text": "It forces all cards to render in a 3D isometric perspective", "is_correct": false, "explanation": "Grid arranges 2D layout tracks." }
+      ]
+    },
+    {
+      "id": "q_css_grid_s4",
+      "skill_id": "css_grid",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: `auto-fill` preserves empty grid tracks when space permits, whereas `auto-fit` collapses empty tracks to zero and stretches active items.",
+      "hint": "What happens when you have only 2 cards in a wide container with auto-fit vs auto-fill?",
+      "prompt": "What is the key functional difference between `auto-fill` and `auto-fit` in CSS Grid when there are fewer items than available container track space?",
+      "options": [
+        { "id": "a", "text": "`auto-fit` collapses empty tracks to 0px allowing existing items to expand, while `auto-fill` preserves empty ghost tracks across the row", "is_correct": true, "explanation": "Correct! `auto-fit` stretches existing cards to fill space; `auto-fill` keeps slot placeholders for future items." },
+        { "id": "b", "text": "`auto-fill` works in Firefox only; `auto-fit` works in Chrome only", "is_correct": false, "explanation": "Both are supported across all modern browsers." },
+        { "id": "c", "text": "`auto-fill` requires JavaScript to calculate column counts", "is_correct": false, "explanation": "Both are pure CSS layout algorithms." },
+        { "id": "d", "text": "There is no difference; they are aliases", "is_correct": false, "explanation": "Their track collapsing behavior differs significantly." }
+      ]
+    },
+
+    {
+      "id": "q_resp_s1",
+      "skill_id": "responsive_design",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Responsive web design ensures websites look great on all devices (mobiles, tablets, laptops) using fluid layouts and media queries.",
+      "hint": "Which meta tag in the HTML `<head>` is required for mobile responsiveness?",
+      "prompt": "Which HTML `<meta>` tag is mandatory for enabling responsive viewport scaling on mobile devices?",
+      "options": [
+        { "id": "a", "text": "<meta name='viewport' content='width=device-width, initial-scale=1.0'>", "is_correct": true, "explanation": "Correct! Without this tag, mobile browsers render desktop-width pages zoomed out." },
+        { "id": "b", "text": "<meta name='responsive' content='true'>", "is_correct": false, "explanation": "No such meta tag standard exists." },
+        { "id": "c", "text": "<meta name='screen-size' content='mobile'>", "is_correct": false, "explanation": "The standard name is `viewport`." },
+        { "id": "d", "text": "<meta http-equiv='mobile-optimizations'>", "is_correct": false, "explanation": "Viewport meta tag is the universally required standard." }
+      ]
+    },
+    {
+      "id": "q_resp_s2",
+      "skill_id": "responsive_design",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: In Mobile-First design, default CSS styles target mobile screens, and `@media (min-width: ...)` queries add enhancements for larger screens.",
+      "hint": "Which media query applies styles when the screen is AT LEAST 768px wide (tablets & up)?",
+      "prompt": "In mobile-first CSS architecture, which media query applies styles for screens 768px wide and above?",
+      "options": [
+        { "id": "a", "text": "@media (min-width: 768px) { ... }", "is_correct": true, "explanation": "Correct! `min-width: 768px` triggers when the viewport width is 768px or wider." },
+        { "id": "b", "text": "@media (max-width: 768px) { ... }", "is_correct": false, "explanation": "`max-width` targets screens 768px and narrower (desktop-first pattern)." },
+        { "id": "c", "text": "@media (screen-width: 768px) { ... }", "is_correct": false, "explanation": "Syntax uses `min-width` or `max-width`." },
+        { "id": "d", "text": "@media (device: tablet) { ... }", "is_correct": false, "explanation": "CSS media queries evaluate pixel dimensions, not device names." }
+      ]
+    },
+    {
+      "id": "q_resp_s3",
+      "skill_id": "responsive_design",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Modern fluid typography uses `clamp(min, preferred, max)` to smoothly scale font sizes between mobile and desktop without jumpy breakpoints.",
+      "hint": "What does `font-size: clamp(1rem, 2.5vw, 2rem)` do?",
+      "prompt": "What is the benefit of using `font-size: clamp(1rem, 2.5vw, 2rem)` in modern responsive CSS?",
+      "options": [
+        { "id": "a", "text": "It scales font size smoothly with viewport width (`2.5vw`), while guaranteeing it never shrinks below 1rem or exceeds 2rem", "is_correct": true, "explanation": "Correct! `clamp()` locks values within minimum and maximum bounds while scaling dynamically." },
+        { "id": "b", "text": "It disables text selection on mobile devices", "is_correct": false, "explanation": "clamp() only computes numeric dimension values." },
+        { "id": "c", "text": "It requires downloading custom web fonts", "is_correct": false, "explanation": "clamp() works with all font families." },
+        { "id": "d", "text": "It forces font rendering to run on GPU shaders", "is_correct": false, "explanation": "clamp() is a CSS sizing math function." }
+      ]
+    },
+    {
+      "id": "q_resp_s4",
+      "skill_id": "responsive_design",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: CSS Container Queries (`@container`) style components based on the width of their parent container rather than the global browser viewport.",
+      "hint": "Why are container queries revolutionary for reusable design systems (like cards placed in sidebars vs main content)?",
+      "prompt": "Why are CSS Container Queries (`@container`) superior to Viewport Media Queries (`@media`) for building modular, reusable component libraries?",
+      "options": [
+        { "id": "a", "text": "Components adapt their layout based on the width of their direct parent container, whether placed in a narrow sidebar or a wide main page section", "is_correct": true, "explanation": "Correct! Container queries enable truly autonomous components that respond to allocated container space." },
+        { "id": "b", "text": "Container queries compress Docker containers automatically", "is_correct": false, "explanation": "CSS container queries refer to DOM layout containers." },
+        { "id": "c", "text": "They eliminate the need for HTML markup entirely", "is_correct": false, "explanation": "Container queries style HTML elements." },
+        { "id": "d", "text": "They increase HTTP/3 network throughput", "is_correct": false, "explanation": "They are purely clientside CSS layout mechanisms." }
+      ]
+    },
+
+    {
+      "id": "q_np_arr_s1",
+      "skill_id": "numpy_ndarray_basics",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: NumPy `ndarray` is a fast multi-dimensional array storing elements of the same data type in continuous memory blocks for high-speed mathematical operations.",
+      "hint": "How do you create a 1D array of five zeros in NumPy?",
+      "prompt": "Which NumPy function creates an array of 5 elements initialized to zero?",
+      "options": [
+        { "id": "a", "text": "np.zeros(5)", "is_correct": true, "explanation": "Correct! `np.zeros(5)` creates a float64 array `[0., 0., 0., 0., 0.]`." },
+        { "id": "b", "text": "np.empty_list(5)", "is_correct": false, "explanation": "No such function exists in NumPy." },
+        { "id": "c", "text": "np.create(0, 5)", "is_correct": false, "explanation": "Standard function is `np.zeros()`." },
+        { "id": "d", "text": "np.nulls(5)", "is_correct": false, "explanation": "`np.zeros` is the standard initializers." }
+      ]
+    },
+    {
+      "id": "q_np_arr_s2",
+      "skill_id": "numpy_ndarray_basics",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: `array.shape` returns a tuple representing dimensions (rows, columns). `array.reshape()` changes dimensions without copying data.",
+      "hint": "What is the shape of `arr = np.array([[1, 2, 3], [4, 5, 6]])`?",
+      "prompt": "What is the `.shape` of a 2D NumPy array containing 2 rows and 3 columns?",
+      "options": [
+        { "id": "a", "text": "(2, 3)", "is_correct": true, "explanation": "Correct! NumPy shapes are formatted as `(rows, columns)`." },
+        { "id": "b", "text": "(3, 2)", "is_correct": false, "explanation": "(3, 2) represents 3 rows and 2 columns." },
+        { "id": "c", "text": "6", "is_correct": false, "explanation": "6 is the `.size` (total number of elements), not `.shape`." },
+        { "id": "d", "text": "[2 x 3]", "is_correct": false, "explanation": "NumPy shapes are returned as Python tuples." }
+      ]
+    },
+    {
+      "id": "q_np_arr_s3",
+      "skill_id": "numpy_ndarray_basics",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: `np.arange(start, stop, step)` generates spaced integer arrays, while `np.linspace(start, stop, num)` generates evenly spaced numbers over a specified interval.",
+      "hint": "Which function generates 50 evenly spaced numbers between 0.0 and 1.0?",
+      "prompt": "Which function generates exactly 50 linearly and evenly spaced float numbers between 0.0 and 1.0 inclusive?",
+      "options": [
+        { "id": "a", "text": "np.linspace(0.0, 1.0, 50)", "is_correct": true, "explanation": "Correct! `linspace` calculates exact step intervals to return the requested number of evenly spaced points." },
+        { "id": "b", "text": "np.arange(0.0, 1.0, 50)", "is_correct": false, "explanation": "`arange` takes step size as the third argument, not total count." },
+        { "id": "c", "text": "np.random.uniform(0.0, 1.0, 50)", "is_correct": false, "explanation": "Random uniform generates random numbers, not evenly spaced points." },
+        { "id": "d", "text": "np.repeat(50, [0, 1])", "is_correct": false, "explanation": "repeat duplicates values." }
+      ]
+    },
+    {
+      "id": "q_np_arr_s4",
+      "skill_id": "numpy_ndarray_basics",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: `reshape(-1, ...)` allows NumPy to automatically infer the remaining dimension based on array length.",
+      "hint": "If an array has 12 elements and you reshape with `arr.reshape(3, -1)`, what will the second dimension be?",
+      "prompt": "If an array with 12 elements is reshaped via `arr.reshape(3, -1)`, what is the resulting shape?",
+      "options": [
+        { "id": "a", "text": "(3, 4) — Because 12 / 3 = 4 is inferred automatically", "is_correct": true, "explanation": "Correct! `-1` tells NumPy to compute the dimension automatically based on total elements." },
+        { "id": "b", "text": "(3, 1)", "is_correct": false, "explanation": "3 * 1 = 3 != 12." },
+        { "id": "c", "text": "ValueError", "is_correct": false, "explanation": "A single -1 dimension wildcard is valid in NumPy." },
+        { "id": "d", "text": "(3, 12)", "is_correct": false, "explanation": "3 * 12 = 36 != 12." }
+      ]
+    },
+
+    {
+      "id": "q_np_idx_s1",
+      "skill_id": "numpy_indexing_slicing",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: NumPy 2D array elements are accessed with `arr[row, column]`, with 0-based indexing.",
+      "hint": "What element is at row index 0 and column index 1 in `[[10, 20], [30, 40]]`?",
+      "prompt": "In `arr = np.array([[10, 20], [30, 40]])`, what value is returned by `arr[0, 1]`?",
+      "options": [
+        { "id": "a", "text": "20 — Row 0, Column 1", "is_correct": true, "explanation": "Correct! `arr[0, 1]` selects the second element of the first row." },
+        { "id": "b", "text": "10 — Row 0, Column 0", "is_correct": false, "explanation": "10 is at `[0, 0]`." },
+        { "id": "c", "text": "30 — Row 1, Column 0", "is_correct": false, "explanation": "30 is at `[1, 0]`." },
+        { "id": "d", "text": "40 — Row 1, Column 1", "is_correct": false, "explanation": "40 is at `[1, 1]`." }
+      ]
+    },
+    {
+      "id": "q_np_idx_s2",
+      "skill_id": "numpy_indexing_slicing",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Boolean masking filters arrays by evaluating conditions element-wise: `arr[arr > 5]` extracts all items greater than 5.",
+      "hint": "What does `arr[arr % 2 == 0]` extract from `np.array([1, 2, 3, 4, 5, 6])`?",
+      "prompt": "What is the result of `arr[arr % 2 == 0]` when `arr = np.array([1, 2, 3, 4, 5, 6])`?",
+      "options": [
+        { "id": "a", "text": "array([2, 4, 6]) — Filters and returns all even elements", "is_correct": true, "explanation": "Correct! Boolean indexing returns a 1D array of elements where the boolean mask is True." },
+        { "id": "b", "text": "array([1, 3, 5])", "is_correct": false, "explanation": "That would be odd elements (`arr % 2 != 0`)." },
+        { "id": "c", "text": "True", "is_correct": false, "explanation": "Boolean indexing returns matching elements, not a single boolean." },
+        { "id": "d", "text": "array([0, 0, 0])", "is_correct": false, "explanation": "Original values matching the condition are preserved." }
+      ]
+    },
+    {
+      "id": "q_np_idx_s3",
+      "skill_id": "numpy_indexing_slicing",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Slices of NumPy arrays create VIEWS (sharing memory with the original array), whereas Fancy Indexing (using integer arrays) creates COPIES.",
+      "hint": "If you modify a sliced sub-array `sub = arr[0:2]`, does the original `arr` change?",
+      "prompt": "If `sub = arr[0:2]` is modified via `sub[0] = 999`, why does `arr[0]` also change in NumPy?",
+      "options": [
+        { "id": "a", "text": "Basic array slicing in NumPy returns a memory VIEW of the original array rather than a copy", "is_correct": true, "explanation": "Correct! Basic slices share memory buffers with parent arrays to prevent expensive memory allocations." },
+        { "id": "b", "text": "Because NumPy variables are stored on disk", "is_correct": false, "explanation": "NumPy operates in RAM." },
+        { "id": "c", "text": "Because 999 is a global variable", "is_correct": false, "explanation": "999 is a literal value." },
+        { "id": "d", "text": "It doesn't change; original arrays are immutable", "is_correct": false, "explanation": "NumPy arrays are mutable by default." }
+      ]
+    },
+    {
+      "id": "q_np_idx_s4",
+      "skill_id": "numpy_indexing_slicing",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Multi-dimensional fancy indexing allows extracting non-contiguous points using coordinate index arrays.",
+      "hint": "What does `arr[[0, 1], [1, 2]]` extract from a 2D matrix?",
+      "prompt": "For a 2D matrix `arr`, what does `arr[[0, 2], [1, 3]]` extract?",
+      "options": [
+        { "id": "a", "text": "The pair of points `(0, 1)` and `(2, 3)` as a 1D array `[arr[0, 1], arr[2, 3]]`", "is_correct": true, "explanation": "Correct! Integer array indexing pairs coordinate indices `(row[i], col[i])`." },
+        { "id": "b", "text": "A 2x2 rectangular submatrix containing all 4 permutations", "is_correct": false, "explanation": "Rectangular mesh extraction requires `np.ix_([0, 2], [1, 3])`." },
+        { "id": "c", "text": "The entire matrix inverted", "is_correct": false, "explanation": "Specific elements are indexed." },
+        { "id": "d", "text": "IndexError", "is_correct": false, "explanation": "Dual array coordinate indexing is standard NumPy syntax." }
+      ]
+    },
+
+    {
+      "id": "q_np_broad_s1",
       "skill_id": "numpy_broadcasting_vectorization",
-      "prompt": "Can a NumPy array of shape (4, 1) be broadcast with an array of shape (1, 3)? What is the resulting shape?",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: Vectorization performs math on entire arrays in parallel at C-speed without writing slow Python `for` loops.",
+      "hint": "What is the result of `np.array([1, 2, 3]) * 2`?",
+      "prompt": "What is the result of multiplying a NumPy array `arr = np.array([1, 2, 3])` by the scalar `2`?",
       "options": [
-        { "id": "a", "text": "No, ValueError is raised because dimensions do not match.", "is_correct": false, "explanation": "Dimensions with length 1 are stretched to match." },
-        { "id": "b", "text": "Yes, compatible; resulting shape is (4, 3).", "is_correct": true, "explanation": "Both trailing dimensions match rules (1 matches 3 -> 3, 4 matches 1 -> 4), resulting in a (4, 3) broadcast grid." },
-        { "id": "c", "text": "Yes, resulting shape is (12, 1).", "is_correct": false, "explanation": "Shapes are not flattened." },
-        { "id": "d", "text": "Yes, resulting shape is (1, 1).", "is_correct": false, "explanation": "Broadcasting expands dimensions, not shrinks them." }
+        { "id": "a", "text": "array([2, 4, 6]) — Every element is multiplied by 2", "is_correct": true, "explanation": "Correct! NumPy broadcasts the scalar 2 across all elements element-wise." },
+        { "id": "b", "text": "array([1, 2, 3, 1, 2, 3]) — Duplicates the list twice", "is_correct": false, "explanation": "That is the behavior of standard Python lists, not vectorized NumPy arrays." },
+        { "id": "c", "text": "array([2, 2, 2])", "is_correct": false, "explanation": "Original elements are scaled by 2." },
+        { "id": "d", "text": "TypeError", "is_correct": false, "explanation": "Scalar arithmetic is fundamental to NumPy." }
       ]
     },
     {
-      "id": "q_pd_loc_01",
-      "skill_id": "pandas_loc_iloc_selection",
-      "prompt": "In Pandas, what is the key difference between `df.loc[]` and `df.iloc[]`?",
+      "id": "q_np_broad_s2",
+      "skill_id": "numpy_broadcasting_vectorization",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: Universal Functions (`ufuncs`) like `np.sqrt()`, `np.exp()`, and `np.abs()` execute fast element-wise mathematical calculations.",
+      "hint": "Which function computes the square root of every element in an array?",
+      "prompt": "Which NumPy function computes the element-wise square root of array elements?",
       "options": [
-        { "id": "a", "text": ".loc is for rows only, .iloc is for columns only.", "is_correct": false, "explanation": "Both accept row and column indexers." },
-        { "id": "b", "text": ".loc is label-based (inclusive of slice end), while .iloc is integer position-based (exclusive of slice end).", "is_correct": true, "explanation": ".loc uses index/column labels and includes endpoint; .iloc uses 0-based integer positions and obeys standard Python exclusive slice rules." },
-        { "id": "c", "text": ".iloc supports boolean masks while .loc does not.", "is_correct": false, "explanation": "Both support boolean indexing." },
-        { "id": "d", "text": ".loc creates a deep copy, .iloc creates a view.", "is_correct": false, "explanation": "View/copy depends on memory layout, not accessor." }
+        { "id": "a", "text": "np.sqrt(arr)", "is_correct": true, "explanation": "Correct! `np.sqrt()` is a vectorized universal function operating across all elements." },
+        { "id": "b", "text": "math.sqrt(arr)", "is_correct": false, "explanation": "Python's `math.sqrt` only accepts a single scalar number and throws TypeError on arrays." },
+        { "id": "c", "text": "arr.root()", "is_correct": false, "explanation": "No `.root()` method exists on ndarrays." },
+        { "id": "d", "text": "np.power_half(arr)", "is_correct": false, "explanation": "Standard ufunc is `np.sqrt`." }
+      ]
+    },
+    {
+      "id": "q_np_broad_s3",
+      "skill_id": "numpy_broadcasting_vectorization",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: NumPy Broadcasting Rule: Two dimensions are compatible if they are EQUAL, or if ONE OF THEM IS 1.",
+      "hint": "Can an array of shape `(3, 4)` add with an array of shape `(1, 4)`?",
+      "prompt": "According to NumPy broadcasting rules, can an array of shape `(3, 4)` be added directly to an array of shape `(1, 4)`?",
+      "options": [
+        { "id": "a", "text": "Yes, because the trailing dimensions match (4 == 4) and the leading dimension has a 1, which stretches to 3", "is_correct": true, "explanation": "Correct! The `(1, 4)` array is virtually broadcast across the 3 rows without copying data." },
+        { "id": "b", "text": "No, shapes must be 100% identical in every dimension", "is_correct": false, "explanation": "Broadcasting specifically allows dimension stretching when a dimension is 1." },
+        { "id": "c", "text": "Only if both arrays contain boolean types", "is_correct": false, "explanation": "Broadcasting applies to all numerical data types." },
+        { "id": "d", "text": "No, it throws a ShapeMismatchError", "is_correct": false, "explanation": "This is a valid broadcasting combination resulting in shape (3, 4)." }
+      ]
+    },
+    {
+      "id": "q_np_broad_s4",
+      "skill_id": "numpy_broadcasting_vectorization",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Adding a column vector `(M, 1)` to a row vector `(1, N)` broadcasts both dimensions to produce an `(M, N)` 2D outer matrix.",
+      "hint": "What is the shape of `a[:, None] + b[None, :]` where `a` has length 3 and `b` has length 5?",
+      "prompt": "If `a` has shape `(3, 1)` and `b` has shape `(1, 5)`, what is the shape of `a + b` in NumPy?",
+      "options": [
+        { "id": "a", "text": "(3, 5) — Both dimensions stretch to form a 2D grid matrix", "is_correct": true, "explanation": "Correct! Dim 1 stretches from 1 to 5, and Dim 0 stretches from 1 to 3, producing `(3, 5)`." },
+        { "id": "b", "text": "(3, 1)", "is_correct": false, "explanation": "The second dimension broadcasts to 5." },
+        { "id": "c", "text": "(15,)", "is_correct": false, "explanation": "It produces a 2D matrix, not a flattened 1D array." },
+        { "id": "d", "text": "ValueError", "is_correct": false, "explanation": "This is the classic outer sum broadcasting pattern." }
+      ]
+    },
+
+    {
+      "id": "q_np_stat_s1",
+      "skill_id": "numpy_statistical_aggregations",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: NumPy provides statistical summary functions: `np.mean()` (average), `np.median()` (middle value), `np.std()` (standard deviation).",
+      "hint": "What is the average of `[2, 4, 6]`?",
+      "prompt": "What is the result of `np.mean(np.array([2, 4, 6]))`?",
+      "options": [
+        { "id": "a", "text": "4.0 — The arithmetic average `(2 + 4 + 6) / 3`", "is_correct": true, "explanation": "Correct! `np.mean()` computes the arithmetic average." },
+        { "id": "b", "text": "12.0", "is_correct": false, "explanation": "12 is the `np.sum()`." },
+        { "id": "c", "text": "2.0", "is_correct": false, "explanation": "2 is the `np.min()`." },
+        { "id": "d", "text": "6.0", "is_correct": false, "explanation": "6 is the `np.max()`." }
+      ]
+    },
+    {
+      "id": "q_np_stat_s2",
+      "skill_id": "numpy_statistical_aggregations",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: In 2D arrays, `axis=0` calculates statistics down columns (collapsing rows), while `axis=1` calculates statistics across rows (collapsing columns).",
+      "hint": "To compute the mean of each individual column, which axis do you collapse along?",
+      "prompt": "To calculate the average of each COLUMN in a 2D matrix (shape 100 rows, 5 columns), which axis parameter should be passed?",
+      "options": [
+        { "id": "a", "text": "axis=0 (computes down rows for each column, resulting in 5 values)", "is_correct": true, "explanation": "Correct! `axis=0` collapses rows to produce column-wise summaries." },
+        { "id": "b", "text": "axis=1 (computes across columns for each row, resulting in 100 values)", "is_correct": false, "explanation": "`axis=1` produces row-wise summaries." },
+        { "id": "c", "text": "axis='all'", "is_correct": false, "explanation": "Default `axis=None` computes global scalar average." },
+        { "id": "d", "text": "axis=-2", "is_correct": false, "explanation": "`axis=0` is the standard column aggregation axis." }
+      ]
+    },
+    {
+      "id": "q_np_stat_s3",
+      "skill_id": "numpy_statistical_aggregations",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Standard `np.mean()` returns `NaN` if any element is NaN. Functions prefixed with `nan` (like `np.nanmean()`) safely ignore missing values.",
+      "hint": "What function computes the mean while ignoring NaN values?",
+      "prompt": "When an array contains missing `np.nan` values, which function correctly calculates the mean of valid numbers without returning `NaN`?",
+      "options": [
+        { "id": "a", "text": "np.nanmean(arr)", "is_correct": true, "explanation": "Correct! `np.nanmean()`, `np.nanstd()`, and `np.nanmedian()` ignore NaN elements during calculation." },
+        { "id": "b", "text": "np.mean(arr, ignore_nulls=True)", "is_correct": false, "explanation": "`np.mean` does not have an ignore_nulls parameter." },
+        { "id": "c", "text": "np.clean_mean(arr)", "is_correct": false, "explanation": "No clean_mean function exists." },
+        { "id": "d", "text": "arr.mean_without_nan()", "is_correct": false, "explanation": "`np.nanmean` is the standard NumPy utility." }
+      ]
+    },
+    {
+      "id": "q_np_stat_s4",
+      "skill_id": "numpy_statistical_aggregations",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: `np.argmax()` returns the index position of the maximum value rather than the maximum value itself.",
+      "hint": "How do you find the row index where a column reaches its peak value?",
+      "prompt": "What does `idx = np.argmax(arr)` return for an array?",
+      "options": [
+        { "id": "a", "text": "The integer index location of the maximum value in the array", "is_correct": true, "explanation": "Correct! `argmax` finds the index of the highest element, useful for classification predictions and peaks." },
+        { "id": "b", "text": "The maximum floating point value itself", "is_correct": false, "explanation": "That is returned by `np.max()`." },
+        { "id": "c", "text": "The total count of positive numbers", "is_correct": false, "explanation": "That is computed with `np.sum(arr > 0)`." },
+        { "id": "d", "text": "A sorted copy of the array", "is_correct": false, "explanation": "Sorting is done via `np.sort()` or `np.argsort()`." }
+      ]
+    },
+
+    {
+      "id": "q_pd_df_s1",
+      "skill_id": "pandas_series_dataframes",
+      "stage": 1,
+      "difficulty": "foundational",
+      "tier": "remedial_1",
+      "concept_primer": "💡 Core Concept: A Pandas Series is a 1-dimensional labeled array (a single column), while a DataFrame is a 2-dimensional labeled table (multiple columns with rows).",
+      "hint": "What is the 2D tabular data structure called in Pandas?",
+      "prompt": "What is the primary 2-dimensional tabular data structure in Pandas called?",
+      "options": [
+        { "id": "a", "text": "DataFrame (pd.DataFrame)", "is_correct": true, "explanation": "Correct! DataFrames represent 2D tables with labeled rows (index) and labeled columns." },
+        { "id": "b", "text": "Series (pd.Series)", "is_correct": false, "explanation": "Series is a 1-dimensional single column structure." },
+        { "id": "c", "text": "DataMatrix", "is_correct": false, "explanation": "The standard Pandas structure is DataFrame." },
+        { "id": "d", "text": "Panel3D", "is_correct": false, "explanation": "Panel was deprecated in favor of MultiIndex DataFrames." }
+      ]
+    },
+    {
+      "id": "q_pd_df_s2",
+      "skill_id": "pandas_series_dataframes",
+      "stage": 2,
+      "difficulty": "basic",
+      "tier": "remedial_2",
+      "concept_primer": "💡 Core Concept: You can inspect a DataFrame quickly using `.head(n)` (first n rows), `.info()` (data types & non-null counts), and `.describe()` (statistical metrics).",
+      "hint": "Which method prints data types and non-null counts for all columns?",
+      "prompt": "Which Pandas DataFrame method displays a concise summary of column data types, memory usage, and non-null counts?",
+      "options": [
+        { "id": "a", "text": "df.info()", "is_correct": true, "explanation": "Correct! `df.info()` prints column names, non-null value counts, dtypes, and memory consumption." },
+        { "id": "b", "text": "df.describe()", "is_correct": false, "explanation": "`df.describe()` calculates statistical summaries (mean, std, min, max) for numeric columns." },
+        { "id": "c", "text": "df.shape()", "is_correct": false, "explanation": "`shape` is an attribute (not a method) returning `(rows, cols)`." },
+        { "id": "d", "text": "df.summary()", "is_correct": false, "explanation": "The standard method is `df.info()`." }
+      ]
+    },
+    {
+      "id": "q_pd_df_s3",
+      "skill_id": "pandas_series_dataframes",
+      "stage": 3,
+      "difficulty": "intermediate",
+      "tier": "standard",
+      "concept_primer": "💡 Core Concept: Single bracket selection `df['col']` returns a 1D Series, while double bracket selection `df[['col']]` returns a 2D DataFrame.",
+      "hint": "What type is returned by `df[['salary', 'age']]`?",
+      "prompt": "What data type is returned when indexing a DataFrame with a list of column names: `df[['name', 'score']]`?",
+      "options": [
+        { "id": "a", "text": "A 2D Pandas DataFrame containing only the selected columns", "is_correct": true, "explanation": "Correct! Passing a list `[['col1', 'col2']]` always returns a DataFrame subset." },
+        { "id": "b", "text": "A 1D Pandas Series", "is_correct": false, "explanation": "Single bracket with a string `df['name']` returns a Series." },
+        { "id": "c", "text": "A Python dictionary", "is_correct": false, "explanation": "DataFrame slicing remains a DataFrame object." },
+        { "id": "d", "text": "A NumPy 1D array", "is_correct": false, "explanation": "Use `df.values` to convert to raw NumPy arrays." }
+      ]
+    },
+    {
+      "id": "q_pd_df_s4",
+      "skill_id": "pandas_series_dataframes",
+      "stage": 4,
+      "difficulty": "advanced",
+      "tier": "challenge",
+      "concept_primer": "💡 Advanced Concept: Converting repetitive text columns to `category` dtype drastically reduces memory consumption and speeds up groupby operations.",
+      "hint": "How do you optimize memory for a column with 1,000,000 rows containing only 'US', 'CA', 'UK'?",
+      "prompt": "For a DataFrame column with 1,000,000 rows containing only 5 distinct country codes as text, what optimization reduces memory usage by up to 80%?",
+      "options": [
+        { "id": "a", "text": "Converting the column to `category` dtype: `df['country'] = df['country'].astype('category')`", "is_correct": true, "explanation": "Correct! Categorical dtypes store integers mapped to a dictionary of categories, saving immense memory." },
+        { "id": "b", "text": "Converting to float64", "is_correct": false, "explanation": "Text strings cannot convert to float64." },
+        { "id": "c", "text": "Deleting the column index", "is_correct": false, "explanation": "Index deletion does not compress column payloads." },
+        { "id": "d", "text": "Saving the DataFrame to a `.txt` file", "is_correct": false, "explanation": "In-memory dtype conversion is the solution." }
       ]
     }
   ]

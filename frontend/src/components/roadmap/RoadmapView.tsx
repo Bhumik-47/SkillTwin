@@ -18,7 +18,13 @@ import {
   Search,
   Filter,
   Activity,
-  Compass
+  Compass,
+  GitCompare,
+  Target,
+  UserCheck,
+  SplitSquareVertical,
+  Check,
+  AlertCircle
 } from 'lucide-react';
 
 export default function RoadmapView() {
@@ -30,13 +36,17 @@ export default function RoadmapView() {
     dependencies,
     openAssessment,
     setSelectedSkillId,
-    setActiveTab
+    setActiveTab,
+    currentDomain
   } = useSkillTwin();
 
+  // 4-Stage Flow Step state: 1 (Current), 2 (Required), 3 (The Gap), 4 (Roadmap)
+  const [activeStep, setActiveStep] = useState<number>(4);
   const [searchFilter, setSearchFilter] = useState('');
   const [statusFilter, setStatusFilter] = useState<string>('all');
 
   const nodes = currentPath?.nodes || [];
+  const targetRole = currentDomain ? currentDomain.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : "Software Engineer";
 
   // Identify active node: first node that is not mastered
   const activeNode = useMemo(() => {
@@ -47,7 +57,39 @@ export default function RoadmapView() {
     }) || nodes[0];
   }, [nodes, masteryMap]);
 
-  // Filter nodes
+  // Current possessed skills (mastery >= 0.40 or completed)
+  const currentSkillsList = useMemo(() => {
+    return skills.filter(s => {
+      const m = masteryMap.get(s.id) ?? 0.10;
+      return m >= 0.35;
+    }).map(s => ({
+      ...s,
+      mastery: masteryMap.get(s.id) ?? 0.10,
+      isMastered: (masteryMap.get(s.id) ?? 0.10) >= 0.80
+    }));
+  }, [skills, masteryMap]);
+
+  // Required skills for role (all skills in roadmap)
+  const requiredSkillsList = useMemo(() => {
+    return nodes.map(n => {
+      const skill = skills.find(s => s.id === n.skill_id);
+      const m = masteryMap.get(n.skill_id) ?? 0.10;
+      return {
+        id: n.skill_id,
+        name: n.skill_name || skill?.name || n.skill_id,
+        difficulty: skill?.difficulty || 'intermediate',
+        mastery: m,
+        isMastered: m >= 0.80
+      };
+    });
+  }, [nodes, skills, masteryMap]);
+
+  // Gap skills (required skills with mastery < 0.70)
+  const gapSkillsList = useMemo(() => {
+    return requiredSkillsList.filter(s => !s.isMastered);
+  }, [requiredSkillsList]);
+
+  // Filter nodes for Stage 4
   const filteredNodes = useMemo(() => {
     return nodes.filter(node => {
       const skill = skills.find(s => s.id === node.skill_id);
@@ -76,7 +118,6 @@ export default function RoadmapView() {
     });
   }, [nodes, searchFilter, statusFilter, skills, masteryMap, activeRepairDiff, activeNode]);
 
-  // Overall path metrics
   const totalMinutes = useMemo(() => {
     return nodes.reduce((acc, n) => acc + (n.estimated_minutes || 45), 0);
   }, [nodes]);
@@ -103,13 +144,171 @@ export default function RoadmapView() {
         onInspectGraph={() => handleInspectGraph(activeNode?.skill_id)}
       />
 
+      {/* ========================================================================= */}
+      {/* 4-STAGE GAP-FIRST RECOMMENDATION FLOW STEPPER                             */}
+      {/* ========================================================================= */}
+      <div className="rounded-3xl border dark:border-white/10 border-slate-200 dark:bg-[#070c18] bg-white p-5 shadow-sm">
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded-md border border-brand-500/20">
+              Personalized Guidance Flow
+            </span>
+          </div>
+          <span className="text-xs font-mono dark:text-slate-400 text-slate-500">
+            Target Role: <strong className="text-slate-900 dark:text-white">{targetRole}</strong>
+          </span>
+        </div>
+
+        {/* 4 Step Pills */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+          {[
+            { step: 1, title: 'Your Current Skills', subtitle: `${currentSkillsList.length} skills possessed`, icon: UserCheck },
+            { step: 2, title: `Required for ${targetRole}`, subtitle: `${requiredSkillsList.length} total competencies`, icon: Target },
+            { step: 3, title: 'The Skill Gap', subtitle: `${gapSkillsList.length} topics missing`, icon: SplitSquareVertical },
+            { step: 4, title: 'What to Learn Next', subtitle: 'Curated roadmap sequence', icon: Sparkles }
+          ].map(s => {
+            const Icon = s.icon;
+            const isCurrent = activeStep === s.step;
+            return (
+              <button
+                key={s.step}
+                onClick={() => setActiveStep(s.step)}
+                className={`flex items-start gap-2.5 p-3 rounded-2xl border text-left transition-all btn-tactile ${
+                  isCurrent
+                    ? 'border-brand-500 dark:bg-brand-950/30 bg-indigo-50/80 ring-1 ring-brand-500/40 shadow-xs'
+                    : 'dark:border-white/5 border-slate-200 dark:bg-surface-100 bg-slate-50/70 hover:border-slate-300 dark:hover:border-white/10'
+                }`}
+              >
+                <div className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-xl text-xs font-bold ${
+                  isCurrent ? 'bg-brand-600 text-white' : 'dark:bg-surface-50 bg-slate-200 dark:text-slate-400 text-slate-600'
+                }`}>
+                  {s.step}
+                </div>
+                <div className="min-w-0">
+                  <div className="text-xs font-bold dark:text-white text-slate-900 truncate">
+                    {s.title}
+                  </div>
+                  <div className="text-[11px] text-slate-500 dark:text-slate-400 truncate">
+                    {s.subtitle}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Guided Step Panels */}
+        {activeStep === 1 && (
+          <div className="mt-4 pt-4 border-t dark:border-white/5 border-slate-100 animate-in fade-in duration-150">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
+              <UserCheck className="h-4 w-4 text-brand-500" />
+              Step 1: Your Current Starting Skills
+            </h4>
+            {currentSkillsList.length === 0 ? (
+              <p className="text-xs dark:text-slate-400 text-slate-500">
+                No prior skills logged yet. Upload your resume or connect GitHub in Profile to detect existing skills automatically!
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+                {currentSkillsList.map(s => (
+                  <div key={s.id} className="flex items-center justify-between p-2.5 rounded-xl border dark:border-white/5 border-slate-200 dark:bg-surface-50 bg-slate-50 text-xs">
+                    <span className="font-semibold dark:text-slate-200 text-slate-800 truncate pr-2">{s.name}</span>
+                    <span className="font-mono text-[10px] font-bold px-2 py-0.5 rounded bg-brand-500/10 text-brand-600 dark:text-brand-400 border border-brand-500/20">
+                      {Math.round(s.mastery * 100)}%
+                    </span>
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        {activeStep === 2 && (
+          <div className="mt-4 pt-4 border-t dark:border-white/5 border-slate-100 animate-in fade-in duration-150">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
+              <Target className="h-4 w-4 text-emerald-500" />
+              Step 2: Core Competencies Required for {targetRole}
+            </h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2.5">
+              {requiredSkillsList.map(s => (
+                <div key={s.id} className="flex items-center justify-between p-2.5 rounded-xl border dark:border-white/5 border-slate-200 dark:bg-surface-50 bg-slate-50 text-xs">
+                  <span className="font-semibold dark:text-slate-200 text-slate-800 truncate pr-2">{s.name}</span>
+                  <span className="text-[10px] uppercase font-bold text-slate-400">
+                    {s.difficulty}
+                  </span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {activeStep === 3 && (
+          <div className="mt-4 pt-4 border-t dark:border-white/5 border-slate-100 animate-in fade-in duration-150">
+            <h4 className="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-3 flex items-center gap-1.5">
+              <SplitSquareVertical className="h-4 w-4 text-amber-500" />
+              Step 3: The Gap (What You Have vs. What You Need)
+            </h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              {/* Left: What You Have */}
+              <div className="rounded-2xl border border-emerald-500/20 dark:bg-emerald-950/10 bg-emerald-50/40 p-3.5 space-y-2">
+                <div className="flex items-center justify-between font-bold text-emerald-600 dark:text-emerald-400">
+                  <span>Skills You Have ({currentSkillsList.length})</span>
+                  <Check className="h-4 w-4" />
+                </div>
+                <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                  {currentSkillsList.map(s => (
+                    <div key={s.id} className="flex items-center justify-between py-1 border-b dark:border-white/5 border-slate-200/50 text-[11px]">
+                      <span className="dark:text-slate-200 text-slate-800">{s.name}</span>
+                      <span className="text-emerald-500 font-bold">{Math.round(s.mastery * 100)}%</span>
+                    </div>
+                  ))}
+                  {currentSkillsList.length === 0 && (
+                    <p className="text-slate-400 text-[11px]">No skills mastered yet.</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Right: What's Missing */}
+              <div className="rounded-2xl border border-amber-500/20 dark:bg-amber-950/10 bg-amber-50/40 p-3.5 space-y-2">
+                <div className="flex items-center justify-between font-bold text-amber-600 dark:text-amber-400">
+                  <span>Missing Skills to Learn ({gapSkillsList.length})</span>
+                  <AlertCircle className="h-4 w-4" />
+                </div>
+                <div className="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                  {gapSkillsList.map(s => (
+                    <div key={s.id} className="flex items-center justify-between py-1 border-b dark:border-white/5 border-slate-200/50 text-[11px]">
+                      <span className="dark:text-slate-200 text-slate-800">{s.name}</span>
+                      <span className="text-amber-500 font-semibold">Ready to Study</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-3 text-right">
+              <button
+                onClick={() => setActiveStep(4)}
+                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-brand-600 text-white font-bold text-xs shadow-sm hover:bg-brand-500 transition-all btn-tactile"
+              >
+                <span>View Sequenced Roadmap</span>
+                <ArrowRight className="h-3.5 w-3.5" />
+              </button>
+            </div>
+          </div>
+        )}
+      </div>
+
+      {/* ========================================================================= */}
+      {/* STAGE 4: SEQUENCED CHAPTER ROADMAP WITH VISIBLE REASONS                   */}
+      {/* ========================================================================= */}
+      
       {/* Roadmap Controls: Search & Simple Filters */}
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-[#090f1b] bg-white p-4 shadow-sm">
         
         {/* Left Metrics */}
         <div className="flex items-center gap-3 text-xs">
           <span className="font-bold dark:text-white text-slate-900">
-            Course Roadmap:
+            Step 4: Sequenced Curriculum:
           </span>
           <span className="font-bold text-brand-500">
             {masteredCount} of {nodes.length} Completed
@@ -165,6 +364,16 @@ export default function RoadmapView() {
           const isActive = node.skill_id === activeNode?.skill_id;
           const isRemedial = activeRepairDiff?.inserted_nodes?.some((i: any) => i.skill_id === node.skill_id);
 
+          // Calculate downstream dependent skills for grounded reason display
+          const downstreamDeps = dependencies.filter(d => d.source_skill_id === node.skill_id);
+          const downstreamNames = downstreamDeps.map(d => skills.find(s => s.id === d.target_skill_id)?.name || d.target_skill_id);
+          
+          const defaultReason = downstreamNames.length > 0
+            ? `You should learn ${node.skill_name || skill?.name || node.skill_id} because it's required for ${downstreamNames.length} skill${downstreamNames.length > 1 ? 's' : ''} in your target ${targetRole} role: ${downstreamNames.slice(0, 3).join(', ')}.`
+            : `You should learn ${node.skill_name || skill?.name || node.skill_id} because it is a core required competency for your target ${targetRole} role.`;
+
+          const displayReason = node.reason || defaultReason;
+
           // Direct prerequisites for this card
           const prereqDeps = dependencies.filter(d => d.target_skill_id === node.skill_id);
           const prereqSkills = prereqDeps.map(d => {
@@ -175,7 +384,7 @@ export default function RoadmapView() {
 
           return (
             <div
-              key={node.node_id || `${node.skill_id}_${index}`}
+              key={`roadmap_node_${node.node_id || node.skill_id}_step_${node.step_order || index}_${index}`}
               className={`rounded-2xl border transition-all p-5 ${
                 isRemedial
                   ? 'border-rose-500/40 dark:bg-rose-950/15 bg-rose-50/50'
@@ -236,15 +445,23 @@ export default function RoadmapView() {
                       {skill?.description || 'Learn and practice key concepts to progress toward your goals.'}
                     </p>
 
+                    {/* Grounded Plain-Language Reason (Feature 2 & 4: Always visible) */}
+                    <div className="mt-2 rounded-xl border border-brand-500/20 dark:bg-brand-950/20 bg-brand-50/50 p-2.5 text-xs text-brand-700 dark:text-brand-300 flex items-start gap-2">
+                      <Sparkles className="h-3.5 w-3.5 shrink-0 mt-0.5 text-brand-500" />
+                      <span className="leading-relaxed">
+                        <strong>Why this topic:</strong> {displayReason}
+                      </span>
+                    </div>
+
                     {/* Required Earlier Topics */}
                     {prereqSkills.length > 0 && (
                       <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
                         <span className="text-[10.5px] font-medium text-slate-400 mr-1">
                           You&apos;ll need to finish first:
                         </span>
-                        {prereqSkills.map(pr => (
+                        {prereqSkills.map((pr, prIdx) => (
                           <button
-                            key={pr.id}
+                            key={`roadmap_prereq_${node.skill_id}_${pr.id}_${prIdx}`}
                             onClick={() => setSelectedSkillId(pr.id)}
                             className="inline-flex items-center gap-1 rounded-lg border dark:border-white/5 border-slate-200 dark:bg-white/[0.04] bg-slate-100 px-2 py-0.5 text-[10.5px] dark:text-slate-300 text-slate-700 hover:border-brand-500/40 transition-all"
                           >

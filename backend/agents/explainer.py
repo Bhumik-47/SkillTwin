@@ -107,32 +107,58 @@ class PathExplainerAgent:
                 f"Unlocked unblocked downstream prerequisite nodes ({touched} node(s) updated) while keeping verified steps intact."
             )
 
+    def explain_role_alignment(
+        self,
+        skill_name: str,
+        target_role: str,
+        dependent_skill_names: Optional[List[str]] = None
+    ) -> str:
+        """
+        Generates grounded, template-constrained explanation tying a skill directly to the target role.
+        Pattern: "You should learn {skill} because it's required for {n} skills in your target {role} role: {skill_list}."
+        """
+        deps = dependent_skill_names or []
+        n = len(deps)
+        if n > 0:
+            deps_str = ", ".join(deps[:3])
+            if n > 3:
+                deps_str += f", and {n - 3} more"
+            return f"You should learn {skill_name} because it's required for {n} skill{'s' if n > 1 else ''} in your target {target_role} role: {deps_str}."
+        return f"You should learn {skill_name} because it is a core required competency for your target {target_role} role."
+
     def explain_recommendation(
         self,
         skill_name: str,
         mastery_prob: float,
         action_type: str = "learn",
         prerequisite_names: Optional[List[str]] = None,
+        target_role: Optional[str] = None,
+        dependent_skill_names: Optional[List[str]] = None,
         score_breakdown: Optional[Dict[str, Any]] = None
     ) -> str:
         """
         Generates explanation for a next-best action recommendation.
         """
+        role = target_role or "Software Engineer"
+        deps = dependent_skill_names or []
+        if deps:
+            return self.explain_role_alignment(skill_name, role, deps)
+
         prereqs = prerequisite_names or []
         if action_type == "reinforce":
             return (
                 f"Your current mastery for {skill_name} is {mastery_prob:.2f}. "
-                f"Completing this focused exercise will raise your mastery above the 0.80 threshold required for subsequent modules."
+                f"Completing this focused exercise will raise your mastery above the 0.80 threshold required for your target {role} role."
             )
         elif action_type == "learn":
             if prereqs:
                 prereq_str = ", ".join(prereqs)
-                return f"You have satisfied prerequisites ({prereq_str}). {skill_name} is your highest-priority next learning objective."
-            return f"{skill_name} is ready for study (current mastery: {mastery_prob:.2f}) and directly aligns with your target goal."
+                return f"You have satisfied prerequisites ({prereq_str}). {skill_name} is your highest-priority next learning objective for {role}."
+            return f"{skill_name} is ready for study (current mastery: {mastery_prob:.2f}) and directly aligns with your target {role} role."
         elif action_type == "assess":
             return f"Validate your proficiency in {skill_name} (current estimate: {mastery_prob:.2f}) through an assessment checkpoint."
         else:
-            return f"Review the recommended resource for {skill_name} to maintain topic mastery."
+            return f"Review the recommended resource for {skill_name} to maintain topic mastery for {role}."
 
 
 # Global instance

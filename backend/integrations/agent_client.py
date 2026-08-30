@@ -106,3 +106,28 @@ class AgentIntegrationClient:
             return f"Validate your proficiency in {skill_name} (current estimate: {mastery_prob:.2f}) through an assessment checkpoint."
         else:
             return f"Review the recommended resource for {skill_name} to maintain topic mastery."
+
+    @classmethod
+    def explain_role_alignment(
+        cls,
+        skill_name: str,
+        target_role: str,
+        dependent_skill_names: Optional[List[str]] = None
+    ) -> str:
+        """Generate constrained role-grounded explanation for a skill in roadmap."""
+        if HAS_EXPLAINER_AGENT and hasattr(explainer_module, "path_explainer_agent"):
+            try:
+                return explainer_module.path_explainer_agent.explain_role_alignment(
+                    skill_name, target_role, dependent_skill_names
+                )
+            except Exception as e:
+                logger.warning(f"Role alignment explanation failed: {e}. Falling back.")
+
+        deps = dependent_skill_names or []
+        n = len(deps)
+        if n > 0:
+            deps_str = ", ".join(deps[:3])
+            if n > 3:
+                deps_str += f", and {n - 3} more"
+            return f"You should learn {skill_name} because it's required for {n} skill{'s' if n > 1 else ''} in your target {target_role} role: {deps_str}."
+        return f"You should learn {skill_name} because it is a core required competency for your target {target_role} role."

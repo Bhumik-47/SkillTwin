@@ -16,7 +16,8 @@ import {
   BarChart3,
   CheckCircle2,
   Zap,
-  BookOpen
+  BookOpen,
+  LogOut
 } from 'lucide-react';
 
 export default function Header() {
@@ -32,7 +33,9 @@ export default function Header() {
     theme,
     toggleTheme,
     user,
-    setShowLandingPage
+    setShowLandingPage,
+    setActiveTab,
+    logoutUser
   } = useSkillTwin();
 
   const [isDomainDropdownOpen, setIsDomainDropdownOpen] = useState(false);
@@ -228,15 +231,25 @@ export default function Header() {
             <span className="hidden sm:inline">AI Tutor</span>
           </button>
 
-          {/* Profile Trigger */}
+          {/* Profile Trigger - Routes to dedicated Profile Page */}
           <button
-            onClick={() => setIsProfileModalOpen(true)}
+            onClick={() => setActiveTab('profile')}
+            title="View Profile & Settings"
             className="flex items-center gap-2 rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-100 p-1 sm:px-2.5 sm:py-1.5 text-xs font-semibold dark:text-slate-200 text-slate-700 hover:border-brand-500/40 transition-all active:scale-[0.97]"
           >
             <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand-600 text-white text-[11px] font-bold">
               {user.full_name.split(' ').map(n => n[0]).join('')}
             </div>
             <span className="hidden lg:inline font-bold max-w-[90px] truncate">{user.full_name}</span>
+          </button>
+
+          {/* Quick Log Out Action */}
+          <button
+            onClick={logoutUser}
+            title="Log Out / Switch Account"
+            className="flex h-9 w-9 items-center justify-center rounded-xl border border-rose-500/20 bg-rose-500/10 hover:bg-rose-500/20 text-rose-500 transition-all active:scale-[0.95]"
+          >
+            <LogOut className="h-4 w-4" />
           </button>
         </div>
 

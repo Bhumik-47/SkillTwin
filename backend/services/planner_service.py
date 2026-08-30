@@ -57,6 +57,7 @@ class PlannerService:
         prof_res = await db.execute(prof_stmt)
         profile = prof_res.scalar_one_or_none()
         preferred_style = profile.preferred_learning_style if profile else "hands_on"
+        target_role = profile.target_role if profile and profile.target_role else goal_title
 
         # 3. Fetch All Skills and Dependencies
         skill_res = await db.execute(select(Skill))
@@ -161,8 +162,21 @@ class PlannerService:
             elif skill_obj.resource_ids:
                 recommended_resource_id = skill_obj.resource_ids[0]
 
-            node_duration = skill_obj.estimated_duration_minutes
+            node_duration = skill_obj.estimated_duration_minutes or 45
             total_estimated_minutes += node_duration
+
+            # Downstream dependent skill names in target role roadmap
+            downstream_ids = [succ for succ in G.successors(skill_id) if succ in skills_by_id]
+            downstream_names = [skills_by_id[succ].name for succ in downstream_ids]
+            
+            node_reason = AgentIntegrationClient.explain_role_alignment(
+                skill_name=skill_obj.name,
+                target_role=target_role,
+                dependent_skill_names=downstream_names
+            ) if hasattr(AgentIntegrationClient, "explain_role_alignment") else (
+                f"You should learn {skill_obj.name} because it's required for {len(downstream_names)} skill{'s' if len(downstream_names) > 1 else ''} in your target {target_role} role: {', '.join(downstream_names[:3])}."
+                if downstream_names else f"You should learn {skill_obj.name} because it is a core required competency for your target {target_role} role."
+            )
 
             node_schema = LearningPathNodeSchema(
                 node_id=f"node_{skill_id}",
@@ -173,7 +187,8 @@ class PlannerService:
                 status=status,
                 mastery_prob=round(current_mastery, 4),
                 prerequisite_skill_ids=direct_prereqs,
-                estimated_minutes=node_duration
+                estimated_minutes=node_duration,
+                reason=node_reason
             )
             nodes.append(node_schema)
 

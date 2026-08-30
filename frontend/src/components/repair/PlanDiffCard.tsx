@@ -46,18 +46,30 @@ export default function PlanDiffCard() {
   };
 
   return (
-    <div className="relative overflow-hidden rounded-3xl border border-rose-500/40 dark:bg-[#0c1220] bg-white p-6 shadow-xl transition-all">
+    <div className={`relative overflow-hidden rounded-3xl border p-6 shadow-xl transition-all ${
+      isFailureTrigger
+        ? 'border-rose-500/40 dark:bg-[#0c1220] bg-white'
+        : 'border-emerald-500/40 dark:bg-[#09151c] bg-white'
+    }`}>
       
       {/* Header */}
       <div className="flex flex-wrap items-center justify-between gap-4 border-b dark:border-white/10 border-slate-200 pb-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-rose-500/40 bg-rose-500/15 text-rose-500">
-            <Sparkles className="h-6 w-6" />
+          <div className={`flex h-11 w-11 items-center justify-center rounded-2xl border ${
+            isFailureTrigger
+              ? 'border-rose-500/40 bg-rose-500/15 text-rose-500'
+              : 'border-emerald-500/40 bg-emerald-500/15 text-emerald-500'
+          }`}>
+            {isFailureTrigger ? <Sparkles className="h-6 w-6" /> : <CheckCircle2 className="h-6 w-6" />}
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-300 border border-rose-500/30">
-                Plan Updated
+              <span className={`rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider border ${
+                isFailureTrigger
+                  ? 'bg-rose-500/20 text-rose-600 dark:text-rose-300 border-rose-500/30'
+                  : 'bg-emerald-500/20 text-emerald-600 dark:text-emerald-300 border-emerald-500/30'
+              }`}>
+                {isFailureTrigger ? 'Plan Adjusted' : '🎉 Quiz Passed'}
               </span>
               <span className="text-xs dark:text-slate-400 text-slate-500">
                 Version {diff.previous_version || 1} → {diff.new_version || 2}

@@ -3,6 +3,7 @@ Learning Path Planning & Local Path Repair Route Controllers
 Handles /learning-path/generate (POST) and /adapt-path (POST).
 Strictly adheres to /shared/schema.md Sections 3.4 and 3.6.
 """
+from typing import Optional, List, Dict, Any
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -100,3 +101,31 @@ async def adapt_path(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
             detail=f"Path adaptation failed: {str(e)}"
         )
+
+
+@router.get(
+    "/paths/gap-analysis",
+    status_code=status.HTTP_200_OK,
+    summary="Compute 4-stage gap-first analysis for target role",
+    description="Returns current skills, required target role skills, missing gap diff, and sequenced path recommendations."
+)
+async def get_gap_analysis(
+    target_role: Optional[str] = None,
+    domain: Optional[str] = None,
+    current_user: User = Depends(get_current_user),
+    db: AsyncSession = Depends(get_db)
+):
+    try:
+        from backend.services.gap_service import GapService
+        return await GapService.compute_gap_analysis(
+            db=db,
+            user_id=current_user.id,
+            target_role=target_role,
+            domain=domain
+        )
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Gap analysis failed: {str(e)}"
+        )
+

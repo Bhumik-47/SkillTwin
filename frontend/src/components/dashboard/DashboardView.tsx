@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
 import { getStudyResourcesForSkill, getInterviewQuestionsForSkill } from '../../data/topic_resources';
+import ProgressChart from '../analytics/ProgressChart';
 import {
   Sparkles,
   Zap,
@@ -48,7 +49,8 @@ export default function DashboardView() {
     activeRepairDiff,
     setSelectedSkillId,
     setIsAIChatOpen,
-    openBktModal
+    openBktModal,
+    attemptsHistory
   } = useSkillTwin();
 
   const [expandedWhyId, setExpandedWhyId] = useState<string | null>(null);
@@ -74,8 +76,13 @@ export default function DashboardView() {
   const upcomingNodes = nodes.filter(n => n.skill_id !== activeNode?.skill_id && (masteryMap.get(n.skill_id) ?? 0) < 0.80).slice(0, 3);
 
   // Active skill mastery score
-  const activeMastery = activeNode ? (masteryMap.get(activeNode.skill_id) ?? 0.40) : 0.40;
+  const activeMastery = activeNode ? (masteryMap.get(activeNode.skill_id) ?? 0.10) : 0.10;
   const activeMasteryPercent = Math.round(activeMastery * 100);
+
+  // Dynamic streak based on verified quiz activity
+  const activeStreakDays = attemptsHistory && attemptsHistory.length > 0
+    ? Math.min(7, new Set(attemptsHistory.map(a => a.timestamp?.slice(0, 10) || 'today')).size)
+    : 0;
 
   // Curated Learner-Friendly Resources (GeeksforGeeks, W3Schools, TutorialsPoint, MDN)
   const activeChapterResources = useMemo(() => {
@@ -129,26 +136,54 @@ export default function DashboardView() {
       {/* 1. Plan Update Banner (if recent repair was triggered)        */}
       {/* ------------------------------------------------------------- */}
       {activeRepairDiff && (
-        <div className="flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-rose-500/30 dark:bg-rose-950/20 bg-rose-50 p-4 transition-all animate-in fade-in">
+        <div className={`flex flex-wrap items-center justify-between gap-3 rounded-2xl border p-4 transition-all animate-in fade-in ${
+          activeRepairDiff.trigger_event === 'assessment_passed'
+            ? 'border-emerald-500/30 dark:bg-emerald-950/20 bg-emerald-50'
+            : 'border-rose-500/30 dark:bg-rose-950/20 bg-rose-50'
+        }`}>
           <div className="flex items-center gap-3">
-            <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-xl bg-rose-500/20 text-rose-500">
-              <Sparkles className="h-4 w-4" />
+            <div className={`flex h-8 w-8 shrink-0 items-center justify-center rounded-xl ${
+              activeRepairDiff.trigger_event === 'assessment_passed'
+                ? 'bg-emerald-500/20 text-emerald-500'
+                : 'bg-rose-500/20 text-rose-500'
+            }`}>
+              {activeRepairDiff.trigger_event === 'assessment_passed' ? (
+                <CheckCircle2 className="h-4 w-4" />
+              ) : (
+                <Sparkles className="h-4 w-4" />
+              )}
             </div>
             <div>
-              <p className="text-xs sm:text-sm font-semibold dark:text-rose-200 text-rose-800">
-                Plan updated: We added an extra practice topic to help you strengthen your foundation.
+              <p className={`text-xs sm:text-sm font-semibold ${
+                activeRepairDiff.trigger_event === 'assessment_passed'
+                  ? 'dark:text-emerald-200 text-emerald-800'
+                  : 'dark:text-rose-200 text-rose-800'
+              }`}>
+                {activeRepairDiff.trigger_event === 'assessment_passed'
+                  ? '🎉 Quiz Passed! Time to move to the next concept.'
+                  : 'Plan updated: We added an extra practice topic to help you strengthen your foundation.'}
               </p>
-              <p className="text-xs dark:text-rose-300/80 text-rose-600">
-                {activeRepairDiff.inserted_nodes?.length || 1} new practice chapter added before moving forward.
+              <p className={`text-xs ${
+                activeRepairDiff.trigger_event === 'assessment_passed'
+                  ? 'dark:text-emerald-300/80 text-emerald-600'
+                  : 'dark:text-rose-300/80 text-rose-600'
+              }`}>
+                {activeRepairDiff.trigger_event === 'assessment_passed'
+                  ? 'Great job! The next chapter in your roadmap is unlocked and ready to start.'
+                  : `${activeRepairDiff.inserted_nodes?.length || 1} new practice chapter added before moving forward.`}
               </p>
             </div>
           </div>
 
           <button
-            onClick={() => setActiveTab('repair_studio')}
-            className="flex items-center gap-1 text-xs font-bold text-rose-600 dark:text-rose-300 hover:underline"
+            onClick={() => setActiveTab(activeRepairDiff.trigger_event === 'assessment_passed' ? 'roadmap' : 'repair_studio')}
+            className={`flex items-center gap-1 text-xs font-bold hover:underline ${
+              activeRepairDiff.trigger_event === 'assessment_passed'
+                ? 'text-emerald-600 dark:text-emerald-300'
+                : 'text-rose-600 dark:text-rose-300'
+            }`}
           >
-            <span>See what changed</span>
+            <span>{activeRepairDiff.trigger_event === 'assessment_passed' ? 'View Roadmap' : 'See what changed'}</span>
             <ArrowRight className="h-3.5 w-3.5" />
           </button>
         </div>
@@ -289,17 +324,19 @@ export default function DashboardView() {
           <div className="border-t dark:border-white/5 border-slate-200 pt-4 space-y-2">
             <div className="flex items-center justify-between text-xs">
               <span className="font-semibold text-slate-700 dark:text-slate-300 flex items-center gap-1.5">
-                <Flame className="h-3.5 w-3.5 text-amber-500" />
+                <Flame className={`h-3.5 w-3.5 ${activeStreakDays > 0 ? 'text-amber-500 fill-amber-500' : 'text-slate-400'}`} />
                 <span>Weekly Study Streak</span>
               </span>
-              <span className="text-amber-500 font-bold font-mono">4 Days Active</span>
+              <span className="text-amber-500 font-bold font-mono">
+                {activeStreakDays > 0 ? `${activeStreakDays} Day${activeStreakDays > 1 ? 's' : ''} Active` : '0 Days (Start Today)'}
+              </span>
             </div>
             <div className="grid grid-cols-7 gap-1.5 text-center text-[10px]">
               {['M', 'T', 'W', 'T', 'F', 'S', 'S'].map((day, idx) => (
                 <div
                   key={idx}
                   className={`rounded-lg py-1.5 font-bold transition-all ${
-                    idx < 4
+                    idx < activeStreakDays
                       ? 'bg-amber-500/20 text-amber-600 dark:text-amber-300 border border-amber-500/40'
                       : 'bg-slate-100 dark:bg-surface-50 text-slate-400'
                   }`}
@@ -312,6 +349,14 @@ export default function DashboardView() {
         </div>
 
       </div>
+
+      {/* ------------------------------------------------------------- */}
+      {/* 2.5 Skill Growth Trajectory Chart (LeetCode Contest-Style)    */}
+      {/* ------------------------------------------------------------- */}
+      <ProgressChart
+        currentMasteryPct={activeMasteryPercent}
+        skillsMasteredCount={masteredCount}
+      />
 
       {/* ------------------------------------------------------------- */}
       {/* 3. Curated Learning Resources & "What Can Be Asked" Drawer    */}

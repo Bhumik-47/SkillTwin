@@ -11,7 +11,11 @@ import {
   Sparkles,
   HelpCircle,
   RotateCcw,
-  AlertTriangle
+  AlertTriangle,
+  Maximize2,
+  Minimize2,
+  Expand,
+  Scaling
 } from 'lucide-react';
 
 interface ChatMessage {
@@ -149,6 +153,80 @@ export default function AIChatPanel() {
   const [showClearConfirm, setShowClearConfirm] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Resize State & Presets
+  const [sizePreset, setSizePreset] = useState<'normal' | 'large' | 'fullscreen'>('normal');
+  const [customDimensions, setCustomDimensions] = useState<{ width: number; height: number }>({
+    width: 420,
+    height: 560
+  });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef<{ startX: number; startY: number; startW: number; startH: number } | null>(null);
+
+  const startResize = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    dragStartRef.current = {
+      startX: e.clientX,
+      startY: e.clientY,
+      startW: customDimensions.width,
+      startH: customDimensions.height
+    };
+  };
+
+  useEffect(() => {
+    if (!isDragging) return;
+
+    const onMouseMove = (e: MouseEvent) => {
+      if (!dragStartRef.current) return;
+      const deltaX = dragStartRef.current.startX - e.clientX;
+      const deltaY = dragStartRef.current.startY - e.clientY;
+      const newW = Math.max(340, Math.min(window.innerWidth - 32, dragStartRef.current.startW + deltaX));
+      const newH = Math.max(420, Math.min(window.innerHeight - 32, dragStartRef.current.startH + deltaY));
+      setCustomDimensions({ width: newW, height: newH });
+      setSizePreset('normal');
+    };
+
+    const onMouseUp = () => {
+      setIsDragging(false);
+      dragStartRef.current = null;
+    };
+
+    window.addEventListener('mousemove', onMouseMove);
+    window.addEventListener('mouseup', onMouseUp);
+
+    return () => {
+      window.removeEventListener('mousemove', onMouseMove);
+      window.removeEventListener('mouseup', onMouseUp);
+    };
+  }, [isDragging]);
+
+  const isFullscreen = sizePreset === 'fullscreen';
+
+  const toggleSizePreset = () => {
+    if (sizePreset === 'normal') {
+      setSizePreset('large');
+      setCustomDimensions({ width: 680, height: 680 });
+    } else if (sizePreset === 'large') {
+      setSizePreset('fullscreen');
+    } else {
+      setSizePreset('normal');
+      setCustomDimensions({ width: 420, height: 560 });
+    }
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        if (sizePreset === 'fullscreen') {
+          setSizePreset('normal');
+          setCustomDimensions({ width: 420, height: 560 });
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [sizePreset]);
+
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
@@ -204,10 +282,51 @@ export default function AIChatPanel() {
   ];
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex h-[540px] w-96 max-w-[calc(100vw-2rem)] flex-col overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0d1525] bg-white shadow-2xl animate-modal-reveal transition-colors">
+    <>
+      {/* Background Dim Backdrop when in Fullscreen */}
+      {isFullscreen && (
+        <div
+          onClick={() => setSizePreset('normal')}
+          className="fixed inset-0 z-[55] bg-black/60 backdrop-blur-xs animate-in fade-in duration-150"
+        />
+      )}
+
+      <div
+        style={
+          isFullscreen
+            ? {
+                top: '5rem',
+                bottom: '1.5rem',
+                left: '1.25rem',
+                right: '1.25rem',
+                maxWidth: '68rem',
+                margin: '0 auto',
+                height: 'calc(100vh - 6.5rem)'
+              }
+            : {
+                width: `${customDimensions.width}px`,
+                height: `${customDimensions.height}px`,
+                maxWidth: 'calc(100vw - 2rem)',
+                maxHeight: 'calc(100vh - 5.5rem)'
+              }
+        }
+        className={`fixed z-[60] flex flex-col overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0d1525] bg-white shadow-2xl animate-modal-reveal transition-all ${
+          isFullscreen ? 'inset-x-4 sm:inset-x-auto' : 'bottom-4 sm:bottom-6 right-4 sm:right-6'
+        } ${isDragging ? 'select-none transition-none' : 'duration-200'}`}
+      >
+        {/* Top-Left Drag-to-Resize Corner Handle */}
+        {!isFullscreen && (
+          <div
+            onMouseDown={startResize}
+            title="Drag to resize chat window"
+            className="absolute top-0 left-0 h-6 w-6 z-30 cursor-nwse-resize group flex items-start justify-start p-1"
+          >
+            <div className="h-3 w-3 rounded-br border-t-2 border-l-2 border-slate-400 group-hover:border-cyan-400 transition-colors" />
+          </div>
+        )}
       
       {/* Header */}
-      <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-100 px-4 py-3">
+      <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-100 px-4 py-3 select-none">
         <div className="flex items-center gap-2.5">
           <div className="relative flex h-8 w-8 items-center justify-center rounded-xl bg-gradient-to-tr from-cyan-500 to-brand-600 text-white shadow-sm">
             <Bot className="h-4 w-4" />
@@ -222,6 +341,21 @@ export default function AIChatPanel() {
         </div>
 
         <div className="flex items-center gap-1.5">
+          {/* Size Preset Toggle */}
+          <button
+            onClick={toggleSizePreset}
+            title={sizePreset === 'fullscreen' ? 'Restore standard view' : sizePreset === 'large' ? 'Full screen' : 'Expand window'}
+            className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-white p-1 text-slate-400 hover:text-brand-500 dark:hover:text-white transition-all active:scale-[0.95]"
+          >
+            {sizePreset === 'fullscreen' ? (
+              <Minimize2 className="h-3.5 w-3.5" />
+            ) : sizePreset === 'large' ? (
+              <Maximize2 className="h-3.5 w-3.5" />
+            ) : (
+              <Expand className="h-3.5 w-3.5" />
+            )}
+          </button>
+
           {/* Refresh / Clear Chat Trigger */}
           <button
             onClick={() => setShowClearConfirm(true)}
@@ -343,5 +477,6 @@ export default function AIChatPanel() {
         </form>
       </div>
     </div>
+    </>
   );
 }

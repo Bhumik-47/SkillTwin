@@ -15,6 +15,7 @@ from backend.routers.paths import router as paths_router
 from backend.routers.assessments import router as assessments_router
 from backend.routers.progress import router as progress_router
 from backend.routers.recommendations import router as recommendations_router
+from backend.routers.integrations import router as integrations_router
 
 logging.basicConfig(
     level=logging.INFO,
@@ -62,8 +63,10 @@ app.include_router(profile_router)
 app.include_router(skills_router)
 app.include_router(paths_router)
 app.include_router(assessments_router)
+app.include_router(assessments_router, prefix="/assessments")
 app.include_router(progress_router)
 app.include_router(recommendations_router)
+app.include_router(integrations_router)
 
 
 @app.get("/", tags=["Health"])

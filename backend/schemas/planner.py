@@ -20,6 +20,7 @@ class LearningPathNodeSchema(BaseModel):
     mastery_prob: float = Field(default=0.0, ge=0.0, le=1.0, description="Current mastery probability")
     prerequisite_skill_ids: List[str] = Field(default_factory=list, description="Direct prerequisite skill IDs")
     estimated_minutes: int = Field(default=45, ge=1, description="Estimated time to complete node")
+    reason: Optional[str] = Field(default=None, description="Plain-language reason tying this skill to downstream goals")
 
 
 class LearningPathGenerateRequest(BaseModel):

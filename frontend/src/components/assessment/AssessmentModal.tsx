@@ -9,10 +9,20 @@ import {
   X,
   CheckCircle2,
   AlertCircle,
-  Calculator,
   GitCompare,
   Zap,
-  HelpCircle
+  HelpCircle,
+  ChevronLeft,
+  ChevronRight,
+  Sparkles,
+  ArrowRight,
+  Award,
+  BookOpen,
+  TrendingUp,
+  Check,
+  Flame,
+  ShieldCheck,
+  RotateCcw
 } from 'lucide-react';
 import { AssessmentQuestion } from '../../lib/types';
 
@@ -26,26 +36,44 @@ export default function AssessmentModal() {
     submitAssessmentEvidence,
     openBktModal,
     setActiveTab,
-    currentDomain
+    currentDomain,
+    activeRepairDiff,
+    currentPath
   } = useSkillTwin();
 
   const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
+  const [currentQIndex, setCurrentQIndex] = useState<number>(0);
   const [selectedAnswers, setSelectedAnswers] = useState<Record<string, string>>({});
   const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
   const [submissionResult, setSubmissionResult] = useState<any>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [isLoadingQuestions, setIsLoadingQuestions] = useState<boolean>(true);
+  const [visibleHints, setVisibleHints] = useState<Record<string, boolean>>({});
+  const [expandedReviewId, setExpandedReviewId] = useState<string | null>(null);
 
   const skill = skills.find(s => s.id === assessmentSkillId) || skills[0];
+  const isRemedialNode = !!activeRepairDiff?.inserted_nodes?.some((i: any) => i.skill_id === skill?.id) ||
+    !!currentPath?.nodes?.some(n => n.skill_id === skill?.id && n.is_remedial);
 
   useEffect(() => {
     if (isAssessmentOpen && skill) {
       setIsLoadingQuestions(true);
+      setCurrentQIndex(0);
       setSelectedAnswers({});
       setIsSubmitted(false);
       setSubmissionResult(null);
+      setVisibleHints({});
+      setExpandedReviewId(null);
 
-      SkillTwinAPI.getQuestionsForSkill(skill.id, skill.name, currentDomain)
+      const currentMastery = masteryMap.get(skill.id) ?? 0.10;
+
+      SkillTwinAPI.getQuestionsForSkill(skill.id, {
+        skillName: skill.name,
+        domain: currentDomain,
+        isRemedial: isRemedialNode,
+        masteryProb: currentMastery,
+        attemptCount: isRemedialNode ? 1 : 0
+      })
         .then(qList => {
           setQuestions(qList);
           setIsLoadingQuestions(false);
@@ -54,194 +82,468 @@ export default function AssessmentModal() {
           setIsLoadingQuestions(false);
         });
     }
-  }, [isAssessmentOpen, skill, currentDomain]);
+  }, [isAssessmentOpen, assessmentSkillId, currentDomain]);
 
   if (!isAssessmentOpen || !skill) return null;
 
   const currentPrior = masteryMap.get(skill.id) ?? 0.10;
+  const currentQ = questions[currentQIndex];
+  const totalQuestions = questions.length;
+  const answeredCount = Object.keys(selectedAnswers).length;
+  const progressPct = totalQuestions > 0 ? (answeredCount / totalQuestions) * 100 : 0;
 
   const handleSelectOption = (questionId: string, optionId: string) => {
     if (isSubmitted) return;
     setSelectedAnswers(prev => ({ ...prev, [questionId]: optionId }));
   };
 
+  const toggleHint = (questionId: string) => {
+    setVisibleHints(prev => ({ ...prev, [questionId]: !prev[questionId] }));
+  };
+
+  const handleNext = () => {
+    if (currentQIndex < totalQuestions - 1) {
+      setCurrentQIndex(prev => prev + 1);
+    }
+  };
+
+  const handlePrev = () => {
+    if (currentQIndex > 0) {
+      setCurrentQIndex(prev => prev - 1);
+    }
+  };
+
   const handleSubmit = async () => {
-    if (isSubmitting || questions.length === 0) return;
+    if (isSubmitting || totalQuestions === 0) return;
     setIsSubmitting(true);
 
     let correctCount = 0;
+    const answeredMap = { ...selectedAnswers };
+
     questions.forEach(q => {
-      const chosenOptionId = selectedAnswers[q.id];
+      const chosenOptionId = answeredMap[q.id];
       const correctOpt = q.options.find((o: any) => o.is_correct);
       if (chosenOptionId && correctOpt && chosenOptionId === correctOpt.id) {
         correctCount++;
       }
     });
 
-    const score = questions.length > 0 ? correctCount / questions.length : 0.5;
-    const res = await submitAssessmentEvidence(skill.id, score, 60, selectedAnswers);
+    const score = totalQuestions > 0 ? correctCount / totalQuestions : 0.0;
+    const res = await submitAssessmentEvidence(skill.id, score, 60, answeredMap);
 
     if (score >= 0.70) {
-      confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
+      confetti({ particleCount: 65, spread: 70, origin: { y: 0.6 } });
     }
 
-    setSubmissionResult(res);
+    setSubmissionResult({
+      ...res,
+      correctCount,
+      totalCount: totalQuestions,
+      scorePct: Math.round(score * 100),
+      recordedAnswers: answeredMap
+    });
     setIsSubmitted(true);
     setIsSubmitting(false);
   };
 
+  const getStageBadge = (stage?: number) => {
+    switch (stage) {
+      case 1:
+        return { label: '🌱 Level 1 • Foundational Concept', color: 'text-amber-600 dark:text-amber-300 bg-amber-500/10 border-amber-500/30' };
+      case 2:
+        return { label: '⚡ Level 2 • Core Syntax & Usage', color: 'text-sky-600 dark:text-sky-300 bg-sky-500/10 border-sky-500/30' };
+      case 3:
+        return { label: '🎯 Level 3 • Real-World Diagnostic', color: 'text-indigo-600 dark:text-indigo-300 bg-indigo-500/10 border-indigo-500/30' };
+      case 4:
+        return { label: '🏆 Level 4 • Advanced Mastery Challenge', color: 'text-emerald-600 dark:text-emerald-300 bg-emerald-500/10 border-emerald-500/30' };
+      default:
+        return { label: '🎯 Chapter Practice', color: 'text-brand-600 dark:text-brand-300 bg-brand-500/10 border-brand-500/30' };
+    }
+  };
+
+  const getMasteryLevelBadge = (posterior: number) => {
+    if (posterior >= 0.80) {
+      return { level: 4, name: 'Level 4: Mastered Pro', desc: 'Expert mastery achieved! Downstream topics unlocked.', color: 'text-emerald-500 bg-emerald-500/15 border-emerald-500/40' };
+    } else if (posterior >= 0.60) {
+      return { level: 3, name: 'Level 3: Competent Developer', desc: 'Solid working competency! Passed quiz standard.', color: 'text-cyan-500 bg-cyan-500/15 border-cyan-500/40' };
+    } else if (posterior >= 0.35) {
+      return { level: 2, name: 'Level 2: Basic Practitioner', desc: 'Good start. Reinforce core syntax to build mastery.', color: 'text-sky-500 bg-sky-500/15 border-sky-500/40' };
+    } else {
+      return { level: 1, name: 'Level 1: Foundational Explorer', desc: 'Focus on core building blocks with remedial practice.', color: 'text-amber-500 bg-amber-500/15 border-amber-500/40' };
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md animate-in fade-in duration-150">
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0b101b] bg-white p-6 shadow-2xl animate-modal-reveal">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0b101b] bg-white shadow-2xl flex flex-col animate-modal-reveal">
         
-        {/* Header */}
-        <div className="flex items-center justify-between border-b dark:border-white/10 border-slate-200 pb-4">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-2xl border border-brand-500/40 bg-brand-500/10 text-brand-500 shadow-sm">
-              <Activity className="h-5 w-5" />
-            </div>
-            <div>
-              <span className="text-[10px] font-bold uppercase tracking-wider text-brand-600 dark:text-brand-400">
-                Chapter Practice Quiz
-              </span>
-              <h3 className="text-base sm:text-lg font-bold dark:text-white text-slate-900 leading-tight">
-                {skill.name}
-              </h3>
-            </div>
-          </div>
-
-          <button
-            onClick={closeAssessment}
-            className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 p-1.5 dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white transition-all active:scale-[0.95]"
-          >
-            <X className="h-4 w-4" />
-          </button>
-        </div>
-
-        {/* Prior Mastery Strip */}
-        <div className="my-4 flex items-center justify-between rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 px-4 py-2.5 text-xs dark:text-slate-300 text-slate-700">
-          <span>Starting Skill Level: <strong className="font-bold dark:text-white text-slate-900">{Math.round(currentPrior * 100)}%</strong></span>
-          <span className="text-[11px] dark:text-slate-400 text-slate-500">Target to Pass: <strong>80%</strong></span>
-        </div>
-
-        {/* Questions Body */}
-        {isLoadingQuestions ? (
-          <div className="py-12 text-center text-xs dark:text-slate-400 text-slate-500">
-            <div className="mx-auto h-8 w-8 animate-spin rounded-full border-2 border-brand-500 border-t-transparent mb-2" />
-            Preparing quiz questions...
-          </div>
-        ) : !isSubmitted ? (
-          <div className="space-y-6 mt-4">
-            {questions.map((q, qIndex) => (
-              <div key={q.id} className="space-y-3">
-                <div className="flex items-start gap-2.5">
-                  <span className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-brand-500/20 text-[11px] font-mono font-bold text-brand-600 dark:text-brand-400">
-                    {qIndex + 1}
+        {/* ========================================================= */}
+        {/* Top Header & Progress                                     */}
+        {/* ========================================================= */}
+        <div className="border-b dark:border-white/10 border-slate-200 p-5 pb-4 bg-slate-50/50 dark:bg-surface-100/40">
+          <div className="flex items-center justify-between gap-4">
+            <div className="flex items-center gap-3">
+              <div className={`flex h-11 w-11 items-center justify-center rounded-2xl border shadow-sm ${
+                isRemedialNode
+                  ? 'border-amber-500/40 bg-amber-500/10 text-amber-500'
+                  : 'border-brand-500/40 bg-brand-500/10 text-brand-500'
+              }`}>
+                {isRemedialNode ? <Flame className="h-6 w-6" /> : <Activity className="h-6 w-6" />}
+              </div>
+              <div>
+                <div className="flex items-center gap-2">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                    isRemedialNode
+                      ? 'bg-amber-500/15 text-amber-600 dark:text-amber-300 border-amber-500/30'
+                      : 'bg-brand-500/15 text-brand-600 dark:text-brand-300 border-brand-500/30'
+                  }`}>
+                    {isRemedialNode ? '🌱 Foundation Reinforcement' : 'Interactive Chapter Quiz'}
                   </span>
-                  <p className="text-xs sm:text-sm font-semibold dark:text-slate-100 text-slate-900 leading-relaxed">
-                    {q.prompt || q.question}
+                  <span className="text-xs dark:text-slate-400 text-slate-500 font-medium">
+                    Starting: <strong>{Math.round(currentPrior * 100)}%</strong>
+                  </span>
+                </div>
+                <h3 className="text-base sm:text-lg font-bold dark:text-white text-slate-900 leading-tight mt-0.5">
+                  {skill.name}
+                </h3>
+              </div>
+            </div>
+
+            <button
+              onClick={closeAssessment}
+              className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 p-2 dark:text-slate-400 text-slate-600 hover:text-slate-900 dark:hover:text-white transition-all active:scale-[0.95]"
+            >
+              <X className="h-4 w-4" />
+            </button>
+          </div>
+
+          {/* Question Navigator Dots & Progress Bar */}
+          {!isLoadingQuestions && !isSubmitted && totalQuestions > 0 && (
+            <div className="mt-4 pt-3 border-t dark:border-white/5 border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+              
+              {/* Question Step Numbers (GFG / TutorialsPoint Style) */}
+              <div className="flex items-center gap-1.5 overflow-x-auto py-1">
+                {questions.map((q, idx) => {
+                  const isCurrent = idx === currentQIndex;
+                  const isAnswered = selectedAnswers[q.id] !== undefined;
+
+                  return (
+                    <button
+                      key={q.id}
+                      type="button"
+                      onClick={() => setCurrentQIndex(idx)}
+                      className={`h-7 px-2.5 rounded-lg text-xs font-bold transition-all flex items-center gap-1 ${
+                        isCurrent
+                          ? 'bg-brand-600 text-white shadow-md ring-2 ring-brand-400 scale-105'
+                          : isAnswered
+                          ? 'dark:bg-emerald-950/50 bg-emerald-50 text-emerald-600 dark:text-emerald-300 border border-emerald-500/40'
+                          : 'dark:bg-surface-50 bg-slate-100 dark:text-slate-400 text-slate-600 border dark:border-white/5 border-slate-200 hover:border-brand-500/40'
+                      }`}
+                    >
+                      <span>Q{idx + 1}</span>
+                      {isAnswered && <Check className="h-3 w-3 stroke-[3]" />}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Progress Count */}
+              <div className="text-[11px] font-semibold dark:text-slate-400 text-slate-600">
+                <span className="text-brand-500 font-bold">{answeredCount}</span> of {totalQuestions} answered
+              </div>
+            </div>
+          )}
+
+          {/* Thin Progress bar indicator */}
+          {!isLoadingQuestions && !isSubmitted && (
+            <div className="w-full bg-slate-200 dark:bg-surface-50 h-1.5 rounded-full mt-2 overflow-hidden">
+              <div
+                className="bg-brand-500 h-full transition-all duration-300 rounded-full"
+                style={{ width: `${progressPct}%` }}
+              />
+            </div>
+          )}
+        </div>
+
+        {/* ========================================================= */}
+        {/* Main Body: Question Page OR Result Page                  */}
+        {/* ========================================================= */}
+        <div className="flex-1 overflow-y-auto p-6 sm:p-7">
+          
+          {isLoadingQuestions ? (
+            <div className="py-16 text-center text-xs dark:text-slate-400 text-slate-500">
+              <div className="mx-auto h-9 w-9 animate-spin rounded-full border-3 border-brand-500 border-t-transparent mb-3" />
+              Loading multi-tier calibrated quiz questions...
+            </div>
+          ) : !isSubmitted && currentQ ? (
+            
+            /* ------------------------------------------------------- */
+            /* Active Question Card                                    */
+            /* ------------------------------------------------------- */
+            <div key={currentQ.id} className="space-y-5 animate-in fade-in duration-200">
+              
+              {/* Question Meta Badge & Difficulty Stage */}
+              <div className="flex flex-wrap items-center justify-between gap-2">
+                <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${getStageBadge(currentQ.stage).color}`}>
+                  {getStageBadge(currentQ.stage).label}
+                </span>
+
+                <span className="text-[11px] font-mono font-semibold dark:text-slate-400 text-slate-500">
+                  Question {currentQIndex + 1} of {totalQuestions}
+                </span>
+              </div>
+
+              {/* Concept Primer (Learning First before Assessment) */}
+              {currentQ.concept_primer && (
+                <div className="rounded-2xl border border-brand-500/25 dark:bg-brand-950/20 bg-indigo-50/70 p-4 text-xs">
+                  <div className="flex items-center gap-1.5 font-bold text-brand-600 dark:text-brand-300 mb-1">
+                    <Sparkles className="h-4 w-4" />
+                    <span>Concept Primer</span>
+                  </div>
+                  <p className="dark:text-slate-200 text-slate-700 leading-relaxed">
+                    {currentQ.concept_primer}
                   </p>
                 </div>
+              )}
 
-                <div className="space-y-2 pl-7">
-                  {q.options.map((opt: any) => {
-                    const isSelected = selectedAnswers[q.id] === opt.id;
+              {/* Question Prompt Title */}
+              <div className="space-y-2">
+                <h4 className="text-sm sm:text-base font-bold dark:text-white text-slate-900 leading-relaxed">
+                  {currentQ.prompt || currentQ.question}
+                </h4>
+
+                {/* Interactive Hint Dropdown */}
+                {currentQ.hint && (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() => toggleHint(currentQ.id)}
+                      className="text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline inline-flex items-center gap-1.5 transition-all"
+                    >
+                      <HelpCircle className="h-3.5 w-3.5" />
+                      <span>{visibleHints[currentQ.id] ? 'Hide Hint' : 'Need a hint?'}</span>
+                    </button>
+                    {visibleHints[currentQ.id] && (
+                      <div className="mt-2 text-xs text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-surface-100 p-3 rounded-2xl border dark:border-white/5 border-slate-200 animate-in fade-in">
+                        🔍 <strong>Hint:</strong> {currentQ.hint}
+                      </div>
+                    )}
+                  </div>
+                )}
+              </div>
+
+              {/* Option Choices */}
+              <div className="space-y-2.5 pt-1">
+                {currentQ.options.map((opt: any) => {
+                  const isSelected = selectedAnswers[currentQ.id] === opt.id;
+                  return (
+                    <button
+                      key={opt.id}
+                      type="button"
+                      onClick={() => handleSelectOption(currentQ.id, opt.id)}
+                      className={`w-full text-left rounded-2xl border p-4 text-xs sm:text-sm transition-all flex items-start gap-3.5 active:scale-[0.99] ${
+                        isSelected
+                          ? 'border-brand-500 bg-brand-500/15 dark:text-white text-slate-900 font-semibold ring-2 ring-brand-500/40 shadow-sm'
+                          : 'dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 dark:text-slate-300 text-slate-700 hover:bg-slate-100 dark:hover:bg-surface-50'
+                      }`}
+                    >
+                      <span className={`flex h-6 w-6 shrink-0 items-center justify-center rounded-xl text-xs font-bold transition-all ${
+                        isSelected
+                          ? 'bg-brand-600 text-white shadow-xs'
+                          : 'dark:bg-white/10 bg-slate-200 dark:text-slate-400 text-slate-600'
+                      }`}>
+                        {opt.id.toUpperCase()}
+                      </span>
+                      <span className="flex-1 leading-relaxed mt-0.5">{opt.text}</span>
+                    </button>
+                  );
+                })}
+              </div>
+
+            </div>
+          ) : isSubmitted && submissionResult ? (
+            
+            /* ------------------------------------------------------- */
+            /* TutorialsPoint / GFG Style Rich Score & Review Screen   */
+            /* ------------------------------------------------------- */
+            <div className="space-y-6 animate-in fade-in duration-200">
+              
+              {/* Score & Mastery Level Banner */}
+              <div className={`rounded-3xl border p-6 text-center relative overflow-hidden ${
+                submissionResult?.attempt?.is_correct
+                  ? 'border-emerald-500/40 dark:bg-emerald-950/25 bg-emerald-50/90'
+                  : 'border-amber-500/40 dark:bg-amber-950/25 bg-amber-50/90'
+              }`}>
+                <div className={`mx-auto flex h-14 w-14 items-center justify-center rounded-2xl border shadow-md ${
+                  submissionResult?.attempt?.is_correct
+                    ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-600 dark:text-emerald-300'
+                    : 'border-amber-500/50 bg-amber-500/20 text-amber-600 dark:text-amber-300'
+                }`}>
+                  {submissionResult?.attempt?.is_correct ? (
+                    <Award className="h-8 w-8" />
+                  ) : (
+                    <AlertCircle className="h-8 w-8" />
+                  )}
+                </div>
+
+                <h4 className="text-lg font-bold dark:text-white text-slate-900 mt-3">
+                  {submissionResult?.attempt?.is_correct
+                    ? '🎉 Chapter Passed! Next Concepts Unlocked'
+                    : '🌱 Foundation In-Progress • Extra Practice Scheduled'}
+                </h4>
+
+                <p className="text-xs sm:text-sm dark:text-slate-300 text-slate-600 mt-1 max-w-lg mx-auto leading-relaxed">
+                  {submissionResult?.attempt?.is_correct
+                    ? `You scored ${submissionResult.scorePct}% (${submissionResult.correctCount}/${submissionResult.totalCount} correct). You demonstrated required competency and advanced your roadmap!`
+                    : `You scored ${submissionResult.scorePct}% (${submissionResult.correctCount}/${submissionResult.totalCount} correct). We added a focused reinforcement step to help you lock down the basics.`}
+                </p>
+
+                {/* 4-Level Gauge Breakdown */}
+                {(() => {
+                  const finalPosterior = submissionResult?.bktResult?.posterior_after_transition ?? 0.50;
+                  const levelInfo = getMasteryLevelBadge(finalPosterior);
+                  return (
+                    <div className="mt-5 max-w-md mx-auto rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white p-4 text-left space-y-3">
+                      <div className="flex items-center justify-between">
+                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Mastery Classification</span>
+                        <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${levelInfo.color}`}>
+                          {levelInfo.name}
+                        </span>
+                      </div>
+                      <p className="text-xs dark:text-slate-300 text-slate-600 leading-relaxed">
+                        {levelInfo.desc}
+                      </p>
+
+                      <div className="grid grid-cols-2 gap-3 pt-1 border-t dark:border-white/5 border-slate-100">
+                        <div>
+                          <span className="text-[10px] text-slate-400 block">Starting Skill Level</span>
+                          <span className="text-base font-bold dark:text-slate-200 text-slate-800">
+                            {Math.round(currentPrior * 100)}%
+                          </span>
+                        </div>
+                        <div>
+                          <span className="text-[10px] text-slate-400 block">Updated Skill Score</span>
+                          <span className={`text-base font-bold ${
+                            submissionResult?.attempt?.is_correct ? 'text-emerald-500' : 'text-amber-500'
+                          }`}>
+                            {Math.round(finalPosterior * 100)}%
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+
+              {/* Detailed Question Review & Explanations Accordion */}
+              <div className="space-y-3">
+                <h5 className="text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-600 flex items-center gap-1.5">
+                  <BookOpen className="h-4 w-4" />
+                  Detailed Question Review & Explanations
+                </h5>
+
+                <div className="space-y-3">
+                  {questions.map((q, idx) => {
+                    const chosenId = submissionResult?.recordedAnswers?.[q.id] ?? selectedAnswers[q.id];
+                    const chosenOpt = q.options.find((o: any) => o.id === chosenId);
+                    const correctOpt = q.options.find((o: any) => o.is_correct);
+                    const isRight = chosenId && correctOpt && chosenId === correctOpt.id;
+
                     return (
-                      <button
-                        key={opt.id}
-                        type="button"
-                        onClick={() => handleSelectOption(q.id, opt.id)}
-                        className={`w-full text-left rounded-xl border p-3 text-xs transition-all flex items-start gap-3 active:scale-[0.98] ${
-                          isSelected
-                            ? 'border-brand-500 bg-brand-500/15 dark:text-white text-slate-900 shadow-xs font-semibold ring-1 ring-brand-500/40'
-                            : 'dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-slate-50 dark:text-slate-300 text-slate-700 hover:bg-slate-100 dark:hover:bg-surface-50'
+                      <div
+                        key={q.id}
+                        className={`rounded-2xl border p-4 text-xs transition-all ${
+                          isRight
+                            ? 'border-emerald-500/30 dark:bg-emerald-950/15 bg-emerald-50/50'
+                            : 'border-rose-500/30 dark:bg-rose-950/15 bg-rose-50/50'
                         }`}
                       >
-                        <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
-                          isSelected ? 'bg-brand-500 text-white' : 'dark:bg-white/10 bg-slate-200 dark:text-slate-400 text-slate-600'
-                        }`}>
-                          {opt.id.toUpperCase()}
-                        </span>
-                        <span className="flex-1 leading-relaxed">{opt.text}</span>
-                      </button>
+                        <div className="flex items-start justify-between gap-3">
+                          <div className="flex items-start gap-2.5">
+                            <span className={`flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[10px] font-bold ${
+                              isRight ? 'bg-emerald-500 text-white' : 'bg-rose-500 text-white'
+                            }`}>
+                              {isRight ? '✓' : '✗'}
+                            </span>
+                            <div>
+                              <span className="text-[10px] font-mono font-bold dark:text-slate-400 text-slate-500 block mb-0.5">
+                                Question {idx + 1} ({getStageBadge(q.stage).label})
+                              </span>
+                              <p className="font-semibold dark:text-slate-200 text-slate-800 leading-relaxed">
+                                {q.prompt || q.question}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="mt-3 pl-7 space-y-1.5 text-xs">
+                          <p className="dark:text-slate-300 text-slate-700">
+                            <strong>Your Answer:</strong> {chosenOpt?.text || 'Not answered'}
+                          </p>
+                          {!isRight && correctOpt && (
+                            <p className="text-emerald-600 dark:text-emerald-400 font-medium">
+                              <strong>Correct Answer:</strong> {correctOpt.text}
+                            </p>
+                          )}
+                          {correctOpt?.explanation && (
+                            <p className="mt-2 text-[11px] dark:text-slate-400 text-slate-600 bg-white/60 dark:bg-surface-50 p-2.5 rounded-xl border dark:border-white/5 border-slate-200">
+                              💡 <strong>Explanation:</strong> {correctOpt.explanation}
+                            </p>
+                          )}
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
               </div>
-            ))}
 
-            {/* Submit Action */}
-            <div className="mt-6 flex justify-end gap-3 border-t dark:border-white/10 border-slate-200 pt-4">
-              <button
-                onClick={closeAssessment}
-                className="rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-100 bg-slate-100 px-4 py-2 text-xs font-semibold dark:text-slate-300 text-slate-700 hover:bg-slate-200 dark:hover:text-white transition-all"
-              >
-                Cancel
-              </button>
-              <button
-                onClick={handleSubmit}
-                disabled={Object.keys(selectedAnswers).length < questions.length || isSubmitting}
-                className="flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 px-6 py-2.5 text-xs font-bold text-white shadow-sm disabled:opacity-50 transition-all btn-tactile"
-              >
-                <Zap className="h-4 w-4" />
-                <span>Submit Quiz</span>
-              </button>
             </div>
-          </div>
-        ) : (
-          /* Submission Results */
-          <div className="space-y-5 mt-4">
-            <div className={`rounded-2xl border p-5 text-center ${
-              submissionResult?.attempt?.is_correct
-                ? 'border-emerald-500/40 dark:bg-emerald-950/30 bg-emerald-50/80'
-                : 'border-rose-500/40 dark:bg-rose-950/30 bg-rose-50/80'
-            }`}>
-              <div className={`mx-auto flex h-12 w-12 items-center justify-center rounded-2xl border shadow-sm ${
-                submissionResult?.attempt?.is_correct
-                  ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-600 dark:text-emerald-300'
-                  : 'border-rose-500/50 bg-rose-500/20 text-rose-600 dark:text-rose-300'
-              }`}>
-                {submissionResult?.attempt?.is_correct ? (
-                  <CheckCircle2 className="h-6 w-6" />
+          ) : null}
+
+        </div>
+
+        {/* ========================================================= */}
+        {/* Bottom Action Bar                                         */}
+        {/* ========================================================= */}
+        <div className="border-t dark:border-white/10 border-slate-200 p-4 px-6 bg-slate-50 dark:bg-surface-100/50 flex flex-wrap items-center justify-between gap-3">
+          
+          {!isSubmitted ? (
+            <>
+              <button
+                type="button"
+                onClick={handlePrev}
+                disabled={currentQIndex === 0 || isLoadingQuestions}
+                className="flex items-center gap-1.5 rounded-xl border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-white px-4 py-2 text-xs font-bold dark:text-slate-300 text-slate-700 hover:bg-slate-100 dark:hover:text-white disabled:opacity-30 transition-all active:scale-[0.97]"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                <span>Previous</span>
+              </button>
+
+              <div className="flex items-center gap-2">
+                {currentQIndex < totalQuestions - 1 ? (
+                  <button
+                    type="button"
+                    onClick={handleNext}
+                    className="flex items-center gap-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                  >
+                    <span>Next Question</span>
+                    <ChevronRight className="h-4 w-4" />
+                  </button>
                 ) : (
-                  <AlertCircle className="h-6 w-6" />
+                  <button
+                    type="button"
+                    onClick={handleSubmit}
+                    disabled={answeredCount < totalQuestions || isSubmitting}
+                    className="flex items-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-500 px-6 py-2.5 text-xs font-bold text-white shadow-md disabled:opacity-40 transition-all btn-tactile"
+                  >
+                    <Zap className="h-4 w-4" />
+                    <span>Submit & Grade Quiz</span>
+                  </button>
                 )}
               </div>
-
-              <h4 className="text-base font-bold dark:text-white text-slate-900 mt-3">
-                {submissionResult?.attempt?.is_correct ? 'Chapter Mastered!' : 'Needs a Little More Practice'}
-              </h4>
-              <p className="text-xs dark:text-slate-300 text-slate-600 mt-1 max-w-md mx-auto leading-relaxed">
-                {submissionResult?.attempt?.is_correct
-                  ? `You scored ${Math.round(submissionResult.attempt.score * 100)}%! You have reached the 80% target and unlocked the next topics in your roadmap.`
-                  : `You scored ${Math.round(submissionResult.attempt.score * 100)}%. We added an extra practice chapter to your plan to help you build confidence.`}
-              </p>
-
-              {/* Score Transition */}
-              <div className="mt-5 grid grid-cols-2 gap-3 max-w-sm mx-auto text-left">
-                <div className="rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white p-3">
-                  <span className="text-[10px] dark:text-slate-400 text-slate-500 block">Starting Level</span>
-                  <span className="text-lg font-bold dark:text-slate-300 text-slate-800">
-                    {Math.round(currentPrior * 100)}%
-                  </span>
-                </div>
-                <div className={`rounded-xl border p-3 ${
-                  submissionResult?.attempt?.is_correct
-                    ? 'border-emerald-500/30 bg-emerald-500/10'
-                    : 'border-rose-500/30 bg-rose-500/10'
-                }`}>
-                  <span className="text-[10px] dark:text-slate-400 text-slate-500 block">Updated Skill Score</span>
-                  <span className={`text-lg font-bold ${
-                    submissionResult?.attempt?.is_correct ? 'text-emerald-500' : 'text-rose-500'
-                  }`}>
-                    {Math.round((submissionResult?.bktResult?.posterior_after_transition ?? 0) * 100)}%
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Action buttons */}
-            <div className="flex flex-wrap items-center justify-between gap-3 border-t dark:border-white/10 border-slate-200 pt-4">
+            </>
+          ) : (
+            <>
               <button
                 onClick={() => {
                   closeAssessment();
@@ -249,23 +551,25 @@ export default function AssessmentModal() {
                 }}
                 className="flex items-center gap-1.5 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
               >
-                <HelpCircle className="h-3.5 w-3.5" />
-                <span>How was my score calculated?</span>
+                <HelpCircle className="h-4 w-4" />
+                <span>Inspect BKT Mastery Calculation</span>
               </button>
 
               <button
                 onClick={() => {
                   closeAssessment();
-                  setActiveTab('repair_studio');
+                  setActiveTab('roadmap');
                 }}
-                className="flex items-center gap-1.5 rounded-xl bg-brand-600 hover:bg-brand-500 px-4 py-2 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
+                className="flex items-center gap-2 rounded-xl bg-brand-600 hover:bg-brand-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
               >
-                <GitCompare className="h-3.5 w-3.5" />
-                <span>See what changed in your plan</span>
+                <span>Continue Roadmap</span>
+                <ArrowRight className="h-4 w-4" />
               </button>
-            </div>
-          </div>
-        )}
+            </>
+          )}
+
+        </div>
+
       </div>
     </div>
   );
