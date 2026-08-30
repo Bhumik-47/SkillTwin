@@ -1,6 +1,8 @@
-# SkillTwin Backend Dependencies
+# =============================================================================
+# SkillTwin Backend Services — Python Dependencies
+# =============================================================================
 
-# Web & API Framework
+# Web Framework & ASGI Server
 fastapi>=0.115.0
 uvicorn[standard]>=0.30.0
 pydantic[email]>=2.8.0
@@ -8,30 +10,31 @@ pydantic-settings>=2.4.0
 email-validator>=2.0.0
 python-multipart>=0.0.9
 
-# Database & ORM
+# Database & Async ORM (PostgreSQL & SQLite)
 SQLAlchemy>=2.0.32
 asyncpg>=0.29.0
 psycopg2-binary>=2.9.9
 aiosqlite>=0.20.0
 greenlet>=3.0.3
 
-# Authentication & Security
+# Authentication, Security & JWT
 python-jose[cryptography]>=3.3.0
 passlib[bcrypt]>=1.7.4
 bcrypt>=4.0.1,<4.1.0
 PyJWT>=2.9.0
 
-# Graph & Data Science
+# Graph Algorithms, Math & Data Science
 networkx>=3.3
 numpy>=1.26.0
 scipy>=1.14.0
 pandas>=2.2.0
 
-# AI / LLM SDK
+# AI / Google Gemini SDK
 google-genai>=0.1.1
 
-# Utilities & Testing
+# HTTP Client, Environment & Testing
 httpx>=0.27.0
 pytest>=8.3.0
 pytest-asyncio>=0.24.0
 python-dotenv>=1.0.1
+
