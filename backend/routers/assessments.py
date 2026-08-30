@@ -14,15 +14,21 @@ from backend.schemas.assessment import (
 )
 from backend.services.assessment_service import AssessmentService
 
-router = APIRouter(prefix="/assessment", tags=["Assessments & Evidence"])
+router = APIRouter(tags=["Assessments & Evidence"])
 
 
 @router.post(
-    "/submit",
+    "/assessment/submit",
     response_model=AssessmentSubmitResponse,
     status_code=status.HTTP_200_OK,
     summary="Submit quiz, project, or exercise result",
     description="Evaluates assessment result, updates latent skill mastery via Bayesian Knowledge Tracing (BKT), and auto-triggers path adaptation if required."
+)
+@router.post(
+    "/assessments/submit",
+    response_model=AssessmentSubmitResponse,
+    status_code=status.HTTP_200_OK,
+    include_in_schema=False
 )
 async def submit_assessment(
     payload: AssessmentSubmitRequest,
@@ -55,9 +61,14 @@ async def submit_assessment(
 
 
 @router.get(
-    "/questions",
+    "/assessments/questions",
     status_code=status.HTTP_200_OK,
     summary="Fetch multi-tier questions for a skill"
+)
+@router.get(
+    "/assessment/questions",
+    status_code=status.HTTP_200_OK,
+    include_in_schema=False
 )
 async def get_assessment_questions(
     skill_id: str,

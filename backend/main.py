@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from backend.config import settings
-from backend.db.init_db import init_db
+from backend.db.init_db import init_db, seed_all_defaults
 from backend.routers.auth import router as auth_router
 from backend.routers.profile import router as profile_router
 from backend.routers.skills import router as skills_router
@@ -28,10 +28,11 @@ logger = logging.getLogger("skilltwin.app")
 async def lifespan(app: FastAPI):
     """Application startup and shutdown lifecycle handler."""
     logger.info("Starting SkillTwin Backend Service...")
-    # Initialize database tables
+    # Initialize database tables and seed domain skill graphs
     try:
         await init_db()
-        logger.info("Database initialized successfully.")
+        await seed_all_defaults()
+        logger.info("Database initialized and domain graphs seeded successfully.")
     except Exception as e:
         logger.warning(f"Database auto-init notice: {e}")
     
@@ -63,7 +64,6 @@ app.include_router(profile_router)
 app.include_router(skills_router)
 app.include_router(paths_router)
 app.include_router(assessments_router)
-app.include_router(assessments_router, prefix="/assessments")
 app.include_router(progress_router)
 app.include_router(recommendations_router)
 app.include_router(integrations_router)

@@ -64,10 +64,22 @@ class PlannerService:
         all_skills = list(skill_res.scalars().all())
         skills_by_id = {s.id: s for s in all_skills}
 
-        # Verify target skills exist
+        # Verify target skills exist or create dynamically
+        missing_created = False
         for target_id in target_skill_ids:
             if target_id not in skills_by_id:
-                raise ValueError(f"Target skill ID '{target_id}' does not exist in skill graph")
+                new_s = Skill(
+                    id=target_id,
+                    name=target_id.replace("_", " ").title(),
+                    domain="backend_engineering",
+                    difficulty="intermediate"
+                )
+                db.add(new_s)
+                all_skills.append(new_s)
+                skills_by_id[target_id] = new_s
+                missing_created = True
+        if missing_created:
+            await db.commit()
 
         dep_res = await db.execute(select(SkillDependency))
         all_deps = list(dep_res.scalars().all())

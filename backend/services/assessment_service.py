@@ -45,10 +45,18 @@ class AssessmentService:
         Record assessment attempt, compute BKT posterior mastery update,
         and optionally adapt active learning path.
         """
-        # 1. Verify Skill exists
+        # 1. Verify Skill exists or register dynamically
         skill = await db.get(Skill, payload.skill_id)
         if not skill:
-            raise ValueError(f"Skill '{payload.skill_id}' does not exist in skill graph")
+            skill = Skill(
+                id=payload.skill_id,
+                name=payload.skill_id.replace("_", " ").title(),
+                domain="backend_engineering",
+                difficulty="intermediate"
+            )
+            db.add(skill)
+            await db.commit()
+            await db.refresh(skill)
 
         # 2. Fetch existing LearnerSkillState or initialize default
         state_stmt = select(LearnerSkillState).where(

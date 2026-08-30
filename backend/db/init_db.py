@@ -1,4 +1,4 @@
-﻿"""
+"""
 Database Initialization & Seeding Script
 Creates tables and seeds initial skill graphs and resources from JSON datasets.
 """
@@ -26,6 +26,26 @@ def init_db_sync() -> None:
     """Create all database tables synchronously."""
     Base.metadata.create_all(bind=sync_engine)
     logger.info("Database tables created via sync engine.")
+
+
+async def seed_all_defaults() -> None:
+    """Seed all available domain graphs and curated resources idempotently."""
+    base_dir = Path(__file__).resolve().parent.parent.parent
+    data_dir = base_dir / "data"
+    
+    # 1. Main skill graph
+    main_graph = data_dir / "skill_graph.json"
+    resources_file = data_dir / "resources.json"
+    res_path = str(resources_file) if resources_file.exists() else None
+    
+    if main_graph.exists():
+        await seed_domain_graph(str(main_graph), res_path)
+        
+    # 2. Domain graphs in data/graphs
+    graphs_dir = data_dir / "graphs"
+    if graphs_dir.exists() and graphs_dir.is_dir():
+        for gf in graphs_dir.glob("*.json"):
+            await seed_domain_graph(str(gf), res_path)
 
 
 async def seed_domain_graph(graph_file_path: str, resources_file_path: str = None) -> None:

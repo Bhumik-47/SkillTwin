@@ -129,3 +129,50 @@ async def get_gap_analysis(
             detail=f"Gap analysis failed: {str(e)}"
         )
 
+
+from pydantic import BaseModel
+
+class GoalAnalyzePayload(BaseModel):
+    prompt: str
+    domain: Optional[str] = "backend_engineering"
+
+
+@router.post(
+    "/goals/analyze",
+    status_code=status.HTTP_200_OK,
+    summary="Analyze learner natural language learning goal",
+    description="Extracts target skills and generates goal summary."
+)
+async def analyze_goal(
+    payload: GoalAnalyzePayload,
+    db: AsyncSession = Depends(get_db)
+):
+    try:
+        from sqlalchemy import select
+        from backend.db.models import Skill
+        
+        prompt_lower = payload.prompt.lower()
+        domain = payload.domain or "backend_engineering"
+
+        # Search existing skills for this domain
+        skill_res = await db.execute(select(Skill).where(Skill.domain == domain))
+        domain_skills = list(skill_res.scalars().all())
+        domain_skill_ids = [s.id for s in domain_skills]
+
+        matched = [s.id for s in domain_skills if s.name.lower() in prompt_lower or s.id in prompt_lower]
+        if not matched:
+            matched = domain_skill_ids[:6] if domain_skill_ids else ["http_basics", "tcp_ip_sockets", "relational_data_modeling"]
+
+        return {
+            "intent_summary": f"Curriculum focused on {payload.prompt.strip()}",
+            "target_skill_ids": matched,
+            "weekly_hours_budget": 10,
+            "domain": domain
+        }
+    except Exception as e:
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Goal analysis failed: {str(e)}"
+        )
+
+
