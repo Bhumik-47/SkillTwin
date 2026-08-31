@@ -54,7 +54,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|.*\.vercel\.app|.*\.onrender\.com|.*\.ngrok-free\.(dev|app)|.*\.ngrok\.app|.*\.loca\.lt)(:[0-9]+)?",
+    allow_origin_regex=r"^https?://.*",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -72,7 +72,7 @@ app.include_router(integrations_router)
 app.include_router(ai_chat_router)
 
 
-@app.get("/", tags=["Health"])
+@app.api_route("/", methods=["GET", "HEAD"], tags=["Health"])
 async def root():
     """Service status and meta endpoint."""
     return {
@@ -84,7 +84,7 @@ async def root():
     }
 
 
-@app.get("/health", tags=["Health"])
+@app.api_route("/health", methods=["GET", "HEAD"], tags=["Health"])
 async def health_check():
     """Liveness & Database connection health probe."""
     db_status = "connected"
