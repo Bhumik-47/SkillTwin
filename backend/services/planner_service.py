@@ -68,15 +68,22 @@ class PlannerService:
         missing_created = False
         for target_id in target_skill_ids:
             if target_id not in skills_by_id:
+                s_name = target_id.replace("_", " ").title()
                 new_s = Skill(
                     id=target_id,
-                    name=target_id.replace("_", " ").title(),
+                    name=s_name,
                     domain="backend_engineering",
-                    difficulty="intermediate"
+                    description=f"Comprehensive competency and practical implementation guidelines for {s_name} in Backend Engineering.",
+                    difficulty="intermediate",
+                    estimated_duration_minutes=45,
+                    resource_ids=[]
                 )
                 db.add(new_s)
                 all_skills.append(new_s)
                 skills_by_id[target_id] = new_s
+                missing_created = True
+            elif not skills_by_id[target_id].description or not skills_by_id[target_id].description.strip():
+                skills_by_id[target_id].description = f"Comprehensive competency and practical implementation guidelines for {skills_by_id[target_id].name} in {(skills_by_id[target_id].domain or 'backend_engineering').replace('_', ' ').title()}."
                 missing_created = True
         if missing_created:
             await db.commit()

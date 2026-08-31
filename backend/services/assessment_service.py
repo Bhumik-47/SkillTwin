@@ -48,15 +48,22 @@ class AssessmentService:
         # 1. Verify Skill exists or register dynamically
         skill = await db.get(Skill, payload.skill_id)
         if not skill:
+            skill_name = payload.skill_id.replace("_", " ").title()
             skill = Skill(
                 id=payload.skill_id,
-                name=payload.skill_id.replace("_", " ").title(),
+                name=skill_name,
                 domain="backend_engineering",
-                difficulty="intermediate"
+                description=f"Comprehensive competency and practical implementation guidelines for {skill_name} in Backend Engineering.",
+                difficulty="intermediate",
+                estimated_duration_minutes=45,
+                resource_ids=[]
             )
             db.add(skill)
             await db.commit()
             await db.refresh(skill)
+        elif not skill.description or not skill.description.strip():
+            skill.description = f"Comprehensive competency and practical implementation guidelines for {skill.name} in {(skill.domain or 'backend_engineering').replace('_', ' ').title()}."
+            await db.commit()
 
         # 2. Fetch existing LearnerSkillState or initialize default
         state_stmt = select(LearnerSkillState).where(

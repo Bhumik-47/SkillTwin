@@ -47,6 +47,20 @@ async def seed_all_defaults() -> None:
         for gf in graphs_dir.glob("*.json"):
             await seed_domain_graph(str(gf), res_path)
 
+    # 3. Backfill any existing skills missing descriptions
+    async with AsyncSessionLocal() as session:
+        stmt = select(Skill).where(
+            (Skill.description.is_(None)) | (Skill.description == "")
+        )
+        res = await session.execute(stmt)
+        empty_skills = list(res.scalars().all())
+        for s in empty_skills:
+            domain_title = (s.domain or "backend_engineering").replace("_", " ").title()
+            s.description = f"Comprehensive competency and practical implementation guidelines for {s.name} in {domain_title}."
+        if empty_skills:
+            await session.commit()
+            logger.info(f"Backfilled descriptions for {len(empty_skills)} skills.")
+
 
 async def seed_domain_graph(graph_file_path: str, resources_file_path: str = None) -> None:
     """
@@ -74,18 +88,26 @@ async def seed_domain_graph(graph_file_path: str, resources_file_path: str = Non
 
         for item in skills_data:
             skill_id = item["id"]
+            name = item.get("name") or skill_id.replace("_", " ").title()
+            domain = item.get("domain") or "backend_engineering"
+            desc = item.get("description")
+            if not desc or not str(desc).strip():
+                desc = f"Comprehensive competency and practical implementation guidelines for {name} in {domain.replace('_', ' ').title()}."
+
             existing = await session.get(Skill, skill_id)
             if not existing:
                 skill = Skill(
                     id=skill_id,
-                    name=item.get("name", skill_id.replace("_", " ").title()),
-                    domain=item.get("domain", "backend_engineering"),
-                    description=item.get("description", ""),
+                    name=name,
+                    domain=domain,
+                    description=desc,
                     difficulty=item.get("difficulty", "intermediate"),
                     estimated_duration_minutes=item.get("estimated_duration_minutes", 60),
                     resource_ids=item.get("resource_ids", [])
                 )
                 session.add(skill)
+            elif not existing.description or not existing.description.strip():
+                existing.description = desc
 
         await session.commit()
 
