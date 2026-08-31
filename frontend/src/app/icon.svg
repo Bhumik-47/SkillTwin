@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="100%" height="100%">
+  <defs>
+    <linearGradient id="st-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#6366f1" />
+      <stop offset="50%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#4f46e5" flood-opacity="0.4" />
+    </filter>
+  </defs>
+  
+  <!-- Main Rounded Squircle Background -->
+  <rect x="8" y="8" width="112" height="112" rx="32" fill="url(#st-gradient)" filter="url(#glow)" />
+  
+  <!-- Subtle Inner Border Highlight -->
+  <rect x="9" y="9" width="110" height="110" rx="31" fill="none" stroke="rgba(255, 255, 255, 0.25)" stroke-width="2" />
+  
+  <!-- Sparkles Icon (Main Star & Secondary Mini Star) -->
+  <!-- Primary Sparkle -->
+  <path d="M64 28 C64 46 50 60 32 64 C50 68 64 82 64 100 C64 82 78 68 96 64 C78 60 64 46 64 28 Z" fill="#ffffff" />
+  
+  <!-- Secondary Sparkle (top-right mini sparkle) -->
+  <path d="M88 34 C88 40 83 45 77 47 C83 49 88 54 88 60 C88 54 93 49 99 47 C93 45 88 40 88 34 Z" fill="#ffffff" opacity="0.9" />
+
+  <!-- Bottom-left Mini Sparkle -->
+  <circle cx="42" cy="86" r="3" fill="#ffffff" opacity="0.8" />
+  
+  <!-- Emerald Status Dot with Contrast Border -->
+  <circle cx="106" cy="22" r="13" fill="#040711" />
+  <circle cx="106" cy="22" r="9" fill="#10b981" />
+</svg>
