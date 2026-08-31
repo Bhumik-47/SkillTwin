@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useSkillTwin } from '../../lib/state/store';
 import { SkillTwinAPI } from '../../lib/api';
 import confetti from 'canvas-confetti';
@@ -38,7 +38,8 @@ export default function AssessmentModal() {
     setActiveTab,
     currentDomain,
     activeRepairDiff,
-    currentPath
+    currentPath,
+    profile
   } = useSkillTwin();
 
   const [questions, setQuestions] = useState<AssessmentQuestion[]>([]);
@@ -50,39 +51,58 @@ export default function AssessmentModal() {
   const [isLoadingQuestions, setIsLoadingQuestions] = useState<boolean>(true);
   const [visibleHints, setVisibleHints] = useState<Record<string, boolean>>({});
   const [expandedReviewId, setExpandedReviewId] = useState<string | null>(null);
+  const [currentDifficulty, setCurrentDifficulty] = useState<'beginner' | 'intermediate' | 'advanced'>('beginner');
+  const [difficultyNote, setDifficultyNote] = useState<string | null>(null);
 
   const skill = skills.find(s => s.id === assessmentSkillId) || skills[0];
   const isRemedialNode = !!activeRepairDiff?.inserted_nodes?.some((i: any) => i.skill_id === skill?.id) ||
     !!currentPath?.nodes?.some(n => n.skill_id === skill?.id && n.is_remedial);
 
+  // Initial difficulty based on self-reported level
+  const getInitialDifficulty = useCallback((): 'beginner' | 'intermediate' | 'advanced' => {
+    const exp = (profile?.prior_experience_level || 'beginner').toLowerCase();
+    if (exp.includes('expert') || exp.includes('advanced')) return 'advanced';
+    if (exp.includes('intermediate')) return 'intermediate';
+    return 'beginner';
+  }, [profile?.prior_experience_level]);
+
+  const loadQuestions = useCallback((diff: 'beginner' | 'intermediate' | 'advanced', isRemedial: boolean = false, note?: string) => {
+    if (!skill) return;
+    setIsLoadingQuestions(true);
+    setCurrentDifficulty(diff);
+    if (note) setDifficultyNote(note);
+    else setDifficultyNote(null);
+    setCurrentQIndex(0);
+    setSelectedAnswers({});
+    setIsSubmitted(false);
+    setSubmissionResult(null);
+    setVisibleHints({});
+    setExpandedReviewId(null);
+
+    const currentMastery = masteryMap.get(skill.id) ?? 0.10;
+
+    SkillTwinAPI.getQuestionsForSkill(skill.id, {
+      skillName: skill.name,
+      domain: currentDomain,
+      difficulty: diff,
+      isRemedial,
+      masteryProb: currentMastery
+    })
+      .then(qList => {
+        setQuestions(qList);
+        setIsLoadingQuestions(false);
+      })
+      .catch(() => {
+        setIsLoadingQuestions(false);
+      });
+  }, [skill, currentDomain, masteryMap]);
+
   useEffect(() => {
     if (isAssessmentOpen && skill) {
-      setIsLoadingQuestions(true);
-      setCurrentQIndex(0);
-      setSelectedAnswers({});
-      setIsSubmitted(false);
-      setSubmissionResult(null);
-      setVisibleHints({});
-      setExpandedReviewId(null);
-
-      const currentMastery = masteryMap.get(skill.id) ?? 0.10;
-
-      SkillTwinAPI.getQuestionsForSkill(skill.id, {
-        skillName: skill.name,
-        domain: currentDomain,
-        isRemedial: isRemedialNode,
-        masteryProb: currentMastery,
-        attemptCount: isRemedialNode ? 1 : 0
-      })
-        .then(qList => {
-          setQuestions(qList);
-          setIsLoadingQuestions(false);
-        })
-        .catch(() => {
-          setIsLoadingQuestions(false);
-        });
+      const initialDiff = getInitialDifficulty();
+      loadQuestions(initialDiff, isRemedialNode);
     }
-  }, [isAssessmentOpen, assessmentSkillId, currentDomain]);
+  }, [isAssessmentOpen, assessmentSkillId, currentDomain, getInitialDifficulty, loadQuestions, isRemedialNode]);
 
   if (!isAssessmentOpen || !skill) return null;
 
@@ -129,7 +149,7 @@ export default function AssessmentModal() {
     });
 
     const score = totalQuestions > 0 ? correctCount / totalQuestions : 0.0;
-    const res = await submitAssessmentEvidence(skill.id, score, 60, answeredMap);
+    const res = await submitAssessmentEvidence(skill.id, score, 60, answeredMap, currentDifficulty);
 
     // Confetti on passing scores
     if (score >= 1.0) {
@@ -138,91 +158,71 @@ export default function AssessmentModal() {
       confetti({ particleCount: 50, spread: 60, origin: { y: 0.6 } });
     }
 
+    let nextTierAction: 'stay' | 'advance_stretch' | 'drop_tier' | 'repeat_same' = 'stay';
+    let nextTierTarget: 'beginner' | 'intermediate' | 'advanced' = currentDifficulty;
+    let nextNote: string | null = null;
+
+    if (score >= 1.0) {
+      if (currentDifficulty !== 'advanced') {
+        nextTierAction = 'advance_stretch';
+        nextTierTarget = 'advanced';
+        nextNote = "You're doing well — let's try something a bit harder.";
+      } else {
+        nextTierAction = 'stay';
+      }
+    } else if (score >= 0.75) {
+      nextTierAction = 'stay';
+    } else if (score >= 0.50) {
+      nextTierAction = 'repeat_same';
+      nextTierTarget = currentDifficulty;
+      nextNote = "Almost there! Let's review these concepts and retake the quiz to advance.";
+    } else {
+      nextTierAction = 'drop_tier';
+      if (currentDifficulty === 'advanced') {
+        nextTierTarget = 'intermediate';
+      } else {
+        nextTierTarget = 'beginner';
+      }
+      nextNote = "These questions are a bit easier since you're still building this skill.";
+    }
+
     setSubmissionResult({
       ...res,
       correctCount,
       totalCount: totalQuestions,
       scorePct: Math.round(score * 100),
-      recordedAnswers: answeredMap
+      recordedAnswers: answeredMap,
+      difficultyTier: currentDifficulty,
+      nextTierAction,
+      nextTierTarget,
+      nextNote
     });
     setIsSubmitted(true);
     setIsSubmitting(false);
   };
 
   const handleRetakeQuiz = () => {
-    setSelectedAnswers({});
-    setCurrentQIndex(0);
-    setIsSubmitted(false);
-    setSubmissionResult(null);
-    setVisibleHints({});
-    setIsLoadingQuestions(true);
-
-    const currentMastery = masteryMap.get(skill.id) ?? 0.10;
-    SkillTwinAPI.getQuestionsForSkill(skill.id, {
-      skillName: skill.name,
-      domain: currentDomain,
-      isRemedial: false,
-      masteryProb: currentMastery,
-      attemptCount: 0
-    })
-      .then(qList => {
-        setQuestions(qList);
-        setIsLoadingQuestions(false);
-      })
-      .catch(() => setIsLoadingQuestions(false));
+    loadQuestions(currentDifficulty, false);
   };
 
   const handleStartRemedialQuiz = () => {
-    setIsLoadingQuestions(true);
-    setSelectedAnswers({});
-    setCurrentQIndex(0);
-    setIsSubmitted(false);
-    setSubmissionResult(null);
-    setVisibleHints({});
-
-    SkillTwinAPI.getQuestionsForSkill(skill.id, {
-      skillName: skill.name,
-      domain: currentDomain,
-      isRemedial: false,
-      masteryProb: 0.20,
-      attemptCount: 1
-    })
-      .then(qList => {
-        setQuestions(qList);
-        setIsLoadingQuestions(false);
-      })
-      .catch(() => setIsLoadingQuestions(false));
+    const targetDiff: 'beginner' | 'intermediate' | 'advanced' = currentDifficulty === 'advanced' ? 'intermediate' : 'beginner';
+    loadQuestions(targetDiff, true, "These questions are a bit easier since you're still building this skill.");
   };
 
   const handleStartAdvancedChallenge = () => {
-    setIsLoadingQuestions(true);
-    setSelectedAnswers({});
-    setCurrentQIndex(0);
-    setIsSubmitted(false);
-    setSubmissionResult(null);
-    setVisibleHints({});
-
-    SkillTwinAPI.getQuestionsForSkill(skill.id, {
-      skillName: skill.name,
-      domain: currentDomain,
-      isAdvanced: true,
-      masteryProb: 0.95,
-      attemptCount: 1
-    })
-      .then(qList => {
-        setQuestions(qList);
-        setIsLoadingQuestions(false);
-      })
-      .catch(() => setIsLoadingQuestions(false));
+    loadQuestions('advanced', false, "You're doing well — let's try something a bit harder.");
   };
 
   const getOutcomeTier = (scorePct: number) => {
     if (scorePct >= 100) {
       return {
         tier: 'perfect',
-        title: '🏆 Perfect 100% Score! Advanced Topics Unlocked',
-        desc: 'Exceptional mastery! You answered all 4 questions correctly. Advanced challenge topics and downstream chapters have been unlocked on your roadmap.',
-        badge: '🏆 Level 4 • Mastered Pro (100%)',
+        title: '🏆 Perfect 100% Score! Chapter Mastered',
+        desc: currentDifficulty !== 'advanced'
+          ? "Exceptional mastery! You answered all 4 questions correctly. Next chapter unlocked, and you've unlocked an optional Advanced challenge for this chapter!"
+          : "Exceptional mastery! You achieved top score on the Advanced challenge. Next chapter is unlocked on your roadmap.",
+        badge: '🏆 Mastered Pro (100%)',
         badgeColor: 'text-emerald-500 bg-emerald-500/15 border-emerald-500/40',
         borderColor: 'border-emerald-500/40 dark:bg-emerald-950/25 bg-emerald-50/90',
         iconColor: 'border-emerald-500/50 bg-emerald-500/20 text-emerald-600 dark:text-emerald-300'
@@ -231,8 +231,8 @@ export default function AssessmentModal() {
       return {
         tier: 'passed',
         title: '🎉 Chapter Passed (75%)! Next Chapter Unlocked',
-        desc: 'Competency verified! You scored 75% (3/4 correct), meeting the required benchmark to advance along your active learning roadmap.',
-        badge: '🎯 Level 3 • Competent (75%)',
+        desc: 'Competency verified! You scored 75% (3/4 correct), meeting the required standard to advance along your active learning roadmap.',
+        badge: '🎯 Competent (75%)',
         badgeColor: 'text-cyan-500 bg-cyan-500/15 border-cyan-500/40',
         borderColor: 'border-cyan-500/40 dark:bg-cyan-950/25 bg-cyan-50/90',
         iconColor: 'border-cyan-500/50 bg-cyan-500/20 text-cyan-600 dark:text-cyan-300'
@@ -240,9 +240,9 @@ export default function AssessmentModal() {
     } else if (scorePct >= 50) {
       return {
         tier: 'retry',
-        title: '🔄 Needs Reinforcement (50%) • Passing Score is 75%',
-        desc: 'You scored 50% (2/4 correct). A minimum score of 75% is required to unlock the next chapter. Review the explanations below and repeat this chapter quiz to advance.',
-        badge: '⚡ Level 2 • Basic (50%)',
+        title: '🔄 Needs Practice (50%) • Passing Score is 75%',
+        desc: 'You scored 50% (2/4 correct). A minimum score of 75% is required to unlock the next chapter. Review the explanations below and repeat this quiz to advance.',
+        badge: '⚡ Basic Practitioner (50%)',
         badgeColor: 'text-amber-500 bg-amber-500/15 border-amber-500/40',
         borderColor: 'border-amber-500/40 dark:bg-amber-950/25 bg-amber-50/90',
         iconColor: 'border-amber-500/50 bg-amber-500/20 text-amber-600 dark:text-amber-300'
@@ -250,9 +250,9 @@ export default function AssessmentModal() {
     } else {
       return {
         tier: 'remedial',
-        title: '🌱 Prerequisite Gap Detected • Remedial Quiz Scheduled',
-        desc: `You scored ${scorePct}% (${Math.round((scorePct / 100) * 4)}/4 correct). A foundational prerequisite gap was detected. A focused remedial practice quiz has been scheduled to help you master the core building blocks.`,
-        badge: '🌱 Level 1 • Foundational Review',
+        title: '🌱 Foundational Gap Detected • Review Scheduled',
+        desc: `You scored ${scorePct}% (${Math.round((scorePct / 100) * 4)}/4 correct). We've scheduled foundational practice questions to help you build confidence on the core principles.`,
+        badge: '🌱 Foundational Gap',
         badgeColor: 'text-rose-500 bg-rose-500/15 border-rose-500/40',
         borderColor: 'border-rose-500/40 dark:bg-rose-950/25 bg-rose-50/90',
         iconColor: 'border-rose-500/50 bg-rose-500/20 text-rose-600 dark:text-rose-300'
@@ -288,8 +288,8 @@ export default function AssessmentModal() {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-3xl max-h-[92vh] overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0b101b] bg-white shadow-2xl flex flex-col animate-modal-reveal">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/85 p-2 sm:p-4 md:p-6 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="relative w-full max-w-4xl max-h-[96vh] sm:max-h-[94vh] overflow-hidden rounded-3xl border dark:border-white/15 border-slate-300 dark:bg-[#0b101b] bg-white shadow-2xl flex flex-col animate-modal-reveal">
         
         {/* ========================================================= */}
         {/* Top Header & Progress                                     */}
@@ -387,7 +387,7 @@ export default function AssessmentModal() {
           {isLoadingQuestions ? (
             <div className="py-16 text-center text-xs dark:text-slate-400 text-slate-500">
               <div className="mx-auto h-9 w-9 animate-spin rounded-full border-3 border-brand-500 border-t-transparent mb-3" />
-              Loading multi-tier calibrated quiz questions...
+              Loading questions...
             </div>
           ) : !isSubmitted && currentQ ? (
             
@@ -396,7 +396,15 @@ export default function AssessmentModal() {
             /* ------------------------------------------------------- */
             <div key={currentQ.id} className="space-y-5 animate-in fade-in duration-200">
               
-              {/* Question Meta Badge & Difficulty Stage */}
+              {/* Difficulty Shift Note Banner */}
+              {difficultyNote && (
+                <div className="rounded-2xl border border-brand-500/30 bg-brand-500/10 px-4 py-2.5 text-xs font-medium text-brand-700 dark:text-brand-300 flex items-center gap-2 animate-in fade-in">
+                  <Sparkles className="h-4 w-4 shrink-0 text-brand-500" />
+                  <span>{difficultyNote}</span>
+                </div>
+              )}
+
+              {/* Question Meta Badge */}
               <div className="flex flex-wrap items-center justify-between gap-2">
                 <span className={`text-[11px] font-bold px-3 py-1 rounded-full border ${getStageBadge(currentQ.stage).color}`}>
                   {getStageBadge(currentQ.stage).label}
@@ -478,11 +486,11 @@ export default function AssessmentModal() {
           ) : isSubmitted && submissionResult ? (
             
             /* ------------------------------------------------------- */
-            /* TutorialsPoint / GFG Style Rich Score & Review Screen   */
+            /* Rich Score & Review Screen                              */
             /* ------------------------------------------------------- */
             <div className="space-y-6 animate-in fade-in duration-200">
               
-              {/* Score & Mastery Level Banner (4-Tier Progression System) */}
+              {/* Score & Mastery Level Banner (4-Tier Scale) */}
               {(() => {
                 const outcome = getOutcomeTier(submissionResult.scorePct);
                 const finalPosterior = submissionResult?.bktResult?.posterior_after_transition ?? (submissionResult.scorePct >= 75 ? 0.80 : 0.40);
@@ -516,10 +524,18 @@ export default function AssessmentModal() {
                       {outcome.desc}
                     </p>
 
-                    {/* 4-Level Gauge Breakdown */}
+                    {/* Adaptive Note Banner */}
+                    {submissionResult.nextNote && (
+                      <div className="mt-4 max-w-md mx-auto rounded-2xl border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 text-xs font-semibold text-cyan-800 dark:text-cyan-200 flex items-center justify-center gap-2">
+                        <Sparkles className="h-4 w-4 shrink-0 text-cyan-500" />
+                        <span>{submissionResult.nextNote}</span>
+                      </div>
+                    )}
+
+                    {/* Mastery Level Breakdown */}
                     <div className="mt-5 max-w-md mx-auto rounded-2xl border dark:border-white/10 border-slate-200 dark:bg-surface-100 bg-white p-4 text-left space-y-3">
                       <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Mastery Classification</span>
+                        <span className="text-xs font-bold text-slate-500 dark:text-slate-400">Mastery Assessment</span>
                         <span className={`text-xs font-bold px-2.5 py-0.5 rounded-full border ${levelInfo.color}`}>
                           {levelInfo.name}
                         </span>
@@ -549,7 +565,7 @@ export default function AssessmentModal() {
                 );
               })()}
 
-              {/* Detailed Question Review & Explanations Accordion */}
+              {/* Detailed Question Review & Explanations */}
               <div className="space-y-3">
                 <h5 className="text-xs font-bold uppercase tracking-wider dark:text-slate-400 text-slate-600 flex items-center gap-1.5">
                   <BookOpen className="h-4 w-4" />
@@ -705,7 +721,7 @@ export default function AssessmentModal() {
                 className="flex items-center gap-1.5 text-xs font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
               >
                 <HelpCircle className="h-4 w-4" />
-                <span>Inspect BKT Mastery Calculation</span>
+                <span>Inspect Cognitive Mastery State</span>
               </button>
 
               <div className="flex items-center gap-2">
@@ -715,7 +731,7 @@ export default function AssessmentModal() {
                     className="flex items-center gap-2 rounded-xl bg-amber-600 hover:bg-amber-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
                   >
                     <RotateCcw className="h-4 w-4" />
-                    <span>Repeat Chapter Quiz (Target 75%+)</span>
+                    <span>Repeat Chapter Quiz</span>
                   </button>
                 ) : submissionResult.scorePct <= 25 ? (
                   <button
@@ -723,9 +739,9 @@ export default function AssessmentModal() {
                     className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-amber-600 to-rose-600 hover:from-amber-500 hover:to-rose-500 px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all btn-tactile"
                   >
                     <Flame className="h-4 w-4" />
-                    <span>Start Remedial Quiz (Level 1 Concepts)</span>
+                    <span>Start Remedial Practice</span>
                   </button>
-                ) : submissionResult.scorePct >= 100 ? (
+                ) : submissionResult.scorePct >= 100 && submissionResult.nextTierAction === 'advance_stretch' ? (
                   <div className="flex items-center gap-2">
                     <button
                       onClick={handleStartAdvancedChallenge}

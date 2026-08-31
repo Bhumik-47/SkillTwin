@@ -98,8 +98,8 @@ interface SkillTwinContextType {
   isLoading: boolean;
   recommendations: Recommendation[];
   submitQuizResult: (skillId: string, isCorrect: boolean, score: number) => Promise<void>;
-  submitAssessmentEvidence: (skillId: string, score: number, durationSeconds?: number, answers?: any) => Promise<any>;
-  triggerRepair: (triggerSkillId: string, forceRemedial?: boolean) => Promise<void>;
+  submitAssessmentEvidence: (skillId: string, score: number, durationSeconds?: number, answers?: any, difficultyTier?: string) => Promise<any>;
+  triggerRepair: (triggerSkillId: string, forceRemedial?: boolean, updatedMastery?: number, customExplanation?: string, repairMode?: 'normal' | 'repeated_failure' | 'fast_mastery') => Promise<void>;
 }
 
 const SkillTwinContext = createContext<SkillTwinContextType | undefined>(undefined);
@@ -545,15 +545,16 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
     skillId: string,
     score: number,
     durationSeconds: number = 60,
-    answers: any = {}
+    answers: any = {},
+    difficultyTier: string = 'beginner'
   ) => {
     const prior = masteryMap.get(skillId) ?? 0.20;
 
     // 4-Tier Progression Outcome Calibration:
-    // 100% (4/4 Correct) -> Mastered Pro (0.95), unlocks next chapter + advanced topics
-    // 75%  (3/4 Correct) -> Competent (0.80), unlocks next chapter
-    // 50%  (2/4 Correct) -> Basic (0.50), passing standard not met, requires quiz retake
-    // 25% or 0%          -> Foundational Gap (0.20), triggers remedial booster repair
+    // 100% (4/4 Correct) -> Mastered Pro (~0.95), unlocks next chapter + advanced stretch
+    // 75%  (3/4 Correct) -> Competent (~0.80), unlocks next chapter
+    // 50%  (2/4 Correct) -> Basic Practitioner (~0.50), passing standard not met, quiz retake
+    // 25% or 0%          -> Foundational Gap (~0.20), drops tier and triggers remedial booster repair
     const isCorrect = score >= 0.75;
     let posterior = 0.50;
 
@@ -624,18 +625,17 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
       duration_seconds: durationSeconds,
       prior_mastery: prior,
       posterior_mastery: posterior,
+      difficulty_tier: difficultyTier,
       timestamp: new Date().toISOString()
     };
 
-    setAttemptsHistory(prev => {
-      const next = [attempt, ...prev];
-      if (typeof window !== 'undefined' && profile.user_id) {
-        try {
-          localStorage.setItem(`skilltwin_attempts_${profile.user_id}`, JSON.stringify(next));
-        } catch {}
-      }
-      return next;
-    });
+    const newAttemptsHistory = [attempt, ...attemptsHistory];
+    setAttemptsHistory(newAttemptsHistory);
+    if (typeof window !== 'undefined' && profile.user_id) {
+      try {
+        localStorage.setItem(`skilltwin_attempts_${profile.user_id}`, JSON.stringify(newAttemptsHistory));
+      } catch {}
+    }
 
     // Send assessment evidence to backend database
     SkillTwinAPI.submitAssessment({
@@ -647,12 +647,22 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
       answers
     }, token).catch(() => {});
 
-    // Generate specific diagnostic explanation if failed
-    const diagnostic = (!isCorrect && posterior < 0.80)
-      ? SkillTwinAPI.generateDiagnosticFeedback(skillId, Math.round(score * 100))
-      : undefined;
+    // Adaptive Repair Engine Trigger Rules:
+    // Rule 1: Repeated Failure (2+ consecutive non-passing attempts across chapters) -> Insert prerequisite review
+    // Rule 2: Fast Mastery (2+ consecutive 100% Mastered Pro scores) -> Skip redundant material & shorten roadmap
+    const recentAttempts = newAttemptsHistory.slice(0, 3);
+    const consecutiveFailures = recentAttempts.length >= 2 && recentAttempts.every(a => a.score < 0.75);
+    const consecutiveProMastery = recentAttempts.length >= 2 && recentAttempts.every(a => a.score >= 1.0);
 
-    if (!isCorrect && posterior < 0.80) {
+    let diagnostic: string | undefined;
+    if (consecutiveFailures) {
+      diagnostic = `Diagnostic Analysis: Multiple prerequisite gaps detected across consecutive chapters. The path repair engine has inserted targeted foundational reviews into your roadmap to solidify core competencies.`;
+      await triggerRepair(skillId, true, posterior, diagnostic, 'repeated_failure');
+    } else if (consecutiveProMastery) {
+      const fastMasteryExplanation = `⚡ Fast Mastery Detected: Exceptional performance (100% scores) across consecutive chapters! Your roadmap has been streamlined by skipping redundant introductory material and fast-tracking advanced topics.`;
+      await triggerRepair(skillId, false, posterior, fastMasteryExplanation, 'fast_mastery');
+    } else if (!isCorrect && posterior < 0.80) {
+      diagnostic = SkillTwinAPI.generateDiagnosticFeedback(skillId, Math.round(score * 100));
       await triggerRepair(skillId, true, posterior, diagnostic);
     } else {
       await triggerRepair(skillId, false, posterior);
@@ -672,7 +682,8 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
     triggerSkillId: string,
     forceRemedial: boolean = false,
     updatedMastery?: number,
-    customExplanation?: string
+    customExplanation?: string,
+    repairMode: 'normal' | 'repeated_failure' | 'fast_mastery' = 'normal'
   ) => {
     if (!currentPath) return;
 
@@ -681,13 +692,44 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
     const triggerMastery = updatedMastery ?? (masteryMap.get(triggerSkillId) ?? 0.22);
 
     const inserted: LearningPathNode[] = [];
+    const removed: LearningPathNode[] = [];
     const reordered: any[] = [];
     const unchanged: any[] = [];
     const newNodes: LearningPathNode[] = [];
 
     let currentStep = 1;
 
-    if (forceRemedial && triggerIdx !== -1) {
+    if (repairMode === 'fast_mastery') {
+      // Fast Mastery: Mark trigger completed, clean up remedial nodes, and streamline next locked nodes
+      const filteredOld = oldNodes.filter(n => !(n.is_remedial && n.skill_id === triggerSkillId));
+      let nextUnlockedCount = 0;
+
+      for (let i = 0; i < filteredOld.length; i++) {
+        const node = filteredOld[i];
+        const sId = node.skill_id;
+        const nodeMastery = sId === triggerSkillId ? triggerMastery : (masteryMap.get(sId) ?? node.mastery_prob);
+        const isThisTrigger = sId === triggerSkillId;
+
+        let nextStatus = node.status;
+        if (isThisTrigger) {
+          nextStatus = 'completed';
+        } else if (nextUnlockedCount < 2 && (node.status === 'locked' || node.status === 'ready')) {
+          // Fast-track: unlock next 2 chapters immediately
+          nextStatus = 'in_progress';
+          nextUnlockedCount++;
+        }
+
+        const cleanName = (node.skill_name || '').replace(/\s*\(Remedial Reinforcement\)/gi, '').trim();
+        const updatedNode = {
+          ...node,
+          skill_name: cleanName,
+          step_order: currentStep++,
+          status: nextStatus,
+          mastery_prob: isThisTrigger ? triggerMastery : nodeMastery
+        };
+        newNodes.push(updatedNode);
+      }
+    } else if (forceRemedial && triggerIdx !== -1) {
       const originalNode = oldNodes[triggerIdx];
       const cleanSkillName = (originalNode.skill_name || '').replace(/\s*\(Remedial Reinforcement\)/gi, '').trim();
       const existingRemedialIdx = oldNodes.findIndex(n => n.is_remedial && n.skill_id === triggerSkillId);
@@ -798,14 +840,14 @@ export function SkillTwinProvider({ children }: { children: React.ReactNode }) {
       }
     }
 
-    const touchedCount = inserted.length + reordered.length;
+    const touchedCount = inserted.length + reordered.length + removed.length;
     const diff: any = {
       path_id: currentPath.id,
       previous_version: currentPath.version,
       new_version: currentPath.version + 1,
       trigger_skill_id: triggerSkillId,
       trigger_event: forceRemedial ? 'assessment_failed' : 'assessment_passed',
-      removed_nodes: [],
+      removed_nodes: removed,
       unchanged_nodes: unchanged,
       inserted_nodes: inserted,
       reordered_nodes: reordered,

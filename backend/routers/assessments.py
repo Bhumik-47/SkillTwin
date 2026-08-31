@@ -2,6 +2,7 @@
 Assessment & Evidence Submission Route Controller (/assessment/submit POST)
 Strictly adheres to /shared/schema.md Section 3.5.
 """
+from typing import Optional
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -72,12 +73,14 @@ async def submit_assessment(
 )
 async def get_assessment_questions(
     skill_id: str,
+    difficulty: Optional[str] = "beginner",
     db: AsyncSession = Depends(get_db)
 ):
     try:
         # Load resource or question bank for this skill
         return {
             "skill_id": skill_id,
+            "difficulty": difficulty or "beginner",
             "status": "ready",
             "questions": []
         }

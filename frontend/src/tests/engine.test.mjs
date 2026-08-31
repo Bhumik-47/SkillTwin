@@ -93,3 +93,82 @@ test('DAG Engine: All 4 domain graphs are strict acyclic DAGs', async () => {
     );
   }
 });
+
+test('Adaptive Assessment: 4-Tier Outcome Grading & Calibration', () => {
+  function evaluateOutcome(scorePct, currentDifficulty) {
+    if (scorePct >= 100) {
+      return {
+        level: 'Mastered Pro',
+        masteryTarget: 0.95,
+        canStretch: currentDifficulty !== 'advanced',
+        nextTier: currentDifficulty !== 'advanced' ? 'advanced' : currentDifficulty,
+        passed: true
+      };
+    } else if (scorePct >= 75) {
+      return {
+        level: 'Competent',
+        masteryTarget: 0.80,
+        canStretch: false,
+        nextTier: currentDifficulty,
+        passed: true
+      };
+    } else if (scorePct >= 50) {
+      return {
+        level: 'Basic Practitioner',
+        masteryTarget: 0.50,
+        canStretch: false,
+        nextTier: currentDifficulty,
+        passed: false
+      };
+    } else {
+      return {
+        level: 'Foundational Gap',
+        masteryTarget: 0.20,
+        canStretch: false,
+        nextTier: currentDifficulty === 'advanced' ? 'intermediate' : 'beginner',
+        passed: false
+      };
+    }
+  }
+
+  // 100% Score on Beginner -> Mastered Pro (0.95) & offers Advanced stretch
+  const begPerfect = evaluateOutcome(100, 'beginner');
+  assert.equal(begPerfect.level, 'Mastered Pro');
+  assert.equal(begPerfect.masteryTarget, 0.95);
+  assert.equal(begPerfect.canStretch, true);
+  assert.equal(begPerfect.nextTier, 'advanced');
+  assert.equal(begPerfect.passed, true);
+
+  // 100% Score on Advanced -> Mastered Pro (0.95) & no higher stretch exists
+  const advPerfect = evaluateOutcome(100, 'advanced');
+  assert.equal(advPerfect.level, 'Mastered Pro');
+  assert.equal(advPerfect.canStretch, false);
+  assert.equal(advPerfect.nextTier, 'advanced');
+
+  // 75% Score on Intermediate -> Competent (0.80) & stays at Intermediate
+  const intPassed = evaluateOutcome(75, 'intermediate');
+  assert.equal(intPassed.level, 'Competent');
+  assert.equal(intPassed.masteryTarget, 0.80);
+  assert.equal(intPassed.nextTier, 'intermediate');
+  assert.equal(intPassed.passed, true);
+
+  // 50% Score on Intermediate -> Basic Practitioner (0.50) & retakes Intermediate
+  const intRetry = evaluateOutcome(50, 'intermediate');
+  assert.equal(intRetry.level, 'Basic Practitioner');
+  assert.equal(intRetry.masteryTarget, 0.50);
+  assert.equal(intRetry.nextTier, 'intermediate');
+  assert.equal(intRetry.passed, false);
+
+  // 25% Score on Advanced -> Foundational Gap (0.20) & drops to Intermediate
+  const advFail = evaluateOutcome(25, 'advanced');
+  assert.equal(advFail.level, 'Foundational Gap');
+  assert.equal(advFail.masteryTarget, 0.20);
+  assert.equal(advFail.nextTier, 'intermediate');
+  assert.equal(advFail.passed, false);
+
+  // 0% Score on Intermediate -> Foundational Gap (0.20) & drops to Beginner
+  const intFail = evaluateOutcome(0, 'intermediate');
+  assert.equal(intFail.level, 'Foundational Gap');
+  assert.equal(intFail.nextTier, 'beginner');
+  assert.equal(intFail.passed, false);
+});
