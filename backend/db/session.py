@@ -19,11 +19,19 @@ Base = declarative_base()
 db_url = settings.DATABASE_URL
 sync_db_url = settings.SYNC_DATABASE_URL or db_url.replace("+asyncpg", "").replace("+aiosqlite", "")
 
-# Ensure SQLite URL is properly formatted for async
-if db_url.startswith("sqlite:///"):
-    db_url = db_url.replace("sqlite:///", "sqlite+aiosqlite:///")
-elif db_url.startswith("postgresql://"):
-    db_url = db_url.replace("postgresql://", "postgresql+asyncpg://")
+# Normalize SQLite paths to absolute project root to avoid CWD mismatch errors
+if "sqlite" in db_url and ("./" in db_url or "skilltwin.db" in db_url):
+    from pathlib import Path
+    project_root = Path(__file__).resolve().parent.parent.parent
+    db_file = (project_root / "skilltwin.db").as_posix()
+    db_url = f"sqlite+aiosqlite:///{db_file}"
+    sync_db_url = f"sqlite:///{db_file}"
+else:
+    # Ensure SQLite URL is properly formatted for async
+    if db_url.startswith("sqlite:///"):
+        db_url = db_url.replace("sqlite:///", "sqlite+aiosqlite:///")
+    elif db_url.startswith("postgresql://"):
+        db_url = db_url.replace("postgresql://", "postgresql+asyncpg://")
 
 # Silence raw SQL query echoing from SQLAlchemy engine
 logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)

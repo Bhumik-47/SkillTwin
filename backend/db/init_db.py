@@ -62,7 +62,16 @@ async def seed_domain_graph(graph_file_path: str, resources_file_path: str = Non
 
     async with AsyncSessionLocal() as session:
         # Seed Skills
-        skills_data = graph_data.get("skills", [])
+        if isinstance(graph_data, dict):
+            skills_data = graph_data.get("skills", [])
+            deps_data = graph_data.get("dependencies", [])
+        elif isinstance(graph_data, list):
+            skills_data = graph_data
+            deps_data = []
+        else:
+            skills_data = []
+            deps_data = []
+
         for item in skills_data:
             skill_id = item["id"]
             existing = await session.get(Skill, skill_id)
@@ -81,7 +90,6 @@ async def seed_domain_graph(graph_file_path: str, resources_file_path: str = Non
         await session.commit()
 
         # Seed Dependencies
-        deps_data = graph_data.get("dependencies", [])
         for dep in deps_data:
             source_id = dep["source_skill_id"]
             target_id = dep["target_skill_id"]
@@ -107,15 +115,21 @@ async def seed_domain_graph(graph_file_path: str, resources_file_path: str = Non
         if resources_file_path and os.path.exists(resources_file_path):
             with open(resources_file_path, "r", encoding="utf-8") as rf:
                 res_data = json.load(rf)
-                resources_list = res_data.get("resources", res_data if isinstance(res_data, list) else [])
+                if isinstance(res_data, list):
+                    resources_list = res_data
+                elif isinstance(res_data, dict):
+                    resources_list = res_data.get("resources", [])
+                else:
+                    resources_list = []
+
                 for r in resources_list:
                     r_id = r["id"]
                     existing_r = await session.get(Resource, r_id)
                     if not existing_r:
                         resource = Resource(
                             id=r_id,
-                            skill_id=r["skill_id"],
-                            title=r["title"],
+                            skill_id=r.get("skill_id") or "general",
+                            title=r.get("title", r_id),
                             type=r.get("type", "quiz"),
                             url=r.get("url"),
                             duration_minutes=r.get("duration_minutes", 30),

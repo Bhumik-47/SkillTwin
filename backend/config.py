@@ -46,7 +46,7 @@ class Settings(BaseSettings):
         default=None,
         description="Google Gemini API key for grounded agents"
     )
-    GEMINI_MODEL: str = "gemini-2.5-flash"
+    GEMINI_MODEL: str = "gemini-3.6-flash"
 
     # CORS
     CORS_ORIGINS: List[str] = [

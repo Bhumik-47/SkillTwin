@@ -43,12 +43,66 @@ CORE BEHAVIOR & GUIDELINES:
 
 
 def generate_concise_fallback_answer(query: str, skill_id: Optional[str] = None, domain: Optional[str] = None) -> str:
-    """Generate intelligent natural-language answer when Gemini API is offline."""
+    """Generate intelligent natural-language answer when Gemini API is offline or unauthenticated."""
     q = query.lower().strip()
     dom_label = (domain or "backend_engineering").replace("_", " ").title()
     active_topic = (skill_id or "").replace("_", " ").title()
 
-    # 1. Course overview / syllabus questions
+    # 1. TLS / SSL / Certificate Validation
+    if any(k in q for k in ["tls", "ssl", "certificate", "https", "handshake"]):
+        return (
+            "**TLS Certificate Validation** is the security process where a client cryptographically verifies a server's identity before establishing an encrypted tunnel. "
+            "The client inspects the server's X.509 certificate chain against trusted Root Certificate Authorities (CAs), checks expiration dates, verifies the hostname matches (Subject Alternative Names), "
+            "and inspects revocation status (OCSP/CRL) to prevent Man-in-the-Middle (MitM) attacks."
+        )
+
+    # 2. Networking (TCP, UDP, HTTP, DNS)
+    if any(k in q for k in ["tcp", "udp", "http", "dns", "socket", "three-way handshake"]):
+        if "tcp" in q and "udp" in q:
+            return (
+                "**TCP vs. UDP**: TCP is a connection-oriented, reliable protocol providing ordered byte-stream delivery with congestion control and retransmissions (ideal for HTTP, databases, and APIs). "
+                "UDP is connectionless and lightweight with no delivery guarantees or head-of-line blocking, making it ideal for real-time video streaming, DNS lookups, and gaming."
+            )
+        return (
+            f"**Networking Primitives in {dom_label}**: Layer 4 (TCP/UDP) handles packet sequencing and multiplexing over IP ports, while Layer 7 (HTTP/1.1, HTTP/2, HTTP/3) defines application communication protocols. "
+            "In modern cloud systems, optimizing socket lifecycles, connection pooling, and keep-alive headers prevents connection starvation under high throughput."
+        )
+
+    # 3. Databases & Indexing
+    if any(k in q for k in ["index", "b-tree", "sql", "postgres", "foreign key", "acid", "nosql"]):
+        return (
+            "**Database Indexing & Modeling**: Indexes (primarily B-Trees and Hash indexes) map column keys to physical disk pointers, transforming $O(N)$ full table scans into $O(\\log N)$ lookups. "
+            "Relational design enforces ACID transactional guarantees and referential integrity, while query planners use statistics to select optimal join algorithms (Nested Loop, Hash Join, Merge Join)."
+        )
+
+    # 4. Caching & Redis
+    if any(k in q for k in ["redis", "cache", "memcached", "ttl", "cache-aside"]):
+        return (
+            "**Caching with Redis**: Redis acts as an in-memory key-value data store providing sub-millisecond read/write latency. "
+            "Using patterns like **Cache-Aside**, services query Redis first and fallback to relational databases only on cache misses, setting explicit Time-to-Live (TTL) policies and LRU eviction to maintain fresh state."
+        )
+
+    # 5. Concurrency & Async
+    if any(k in q for k in ["async", "await", "thread", "process", "event loop", "concurrency", "goroutine"]):
+        return (
+            "**Concurrency & Async I/O**: Asynchronous architectures utilize non-blocking system calls (such as `epoll` or `kqueue`) coordinated by a single-threaded Event Loop. "
+            "Unlike multi-threaded models where threads incur operating system context-switching overhead and memory locks, async I/O can handle tens of thousands of concurrent client connections efficiently."
+        )
+
+    # 6. Docker & Containers
+    if any(k in q for k in ["docker", "container", "kubernetes", "k8s", "cgroups"]):
+        return (
+            "**Containerization**: Docker leverages Linux kernel features—namely **Namespaces** (for process and network isolation) and **cgroups** (for CPU/RAM resource limits)—to package code with all dependencies into lightweight, immutable images that execute consistently across all environments."
+        )
+
+    # 7. Authentication & Security (JWT, OAuth)
+    if any(k in q for k in ["jwt", "oauth", "auth", "token", "cors", "csrf", "bcrypt"]):
+        return (
+            "**Modern Authentication**: JSON Web Tokens (JWT) enable stateless user authorization using cryptographic signatures (HMAC-SHA256 or RSA). "
+            "Passwords must always be salted and hashed using adaptive algorithms like **bcrypt** or Argon2, while sensitive routes enforce OAuth scopes and strict CORS/CSRF headers."
+        )
+
+    # 8. Course overview / syllabus questions
     if any(k in q for k in ["what will i learn", "course", "syllabus", "curriculum", "what do i learn", "topics covered", "about this"]):
         domain_topics = {
             "backend_engineering": "networking fundamentals (HTTP/3, TCP/IP, DNS), relational data modeling, database indexing, Redis caching, async event loops, and containerization with Docker",
@@ -62,7 +116,7 @@ def generate_concise_fallback_answer(query: str, skill_id: Optional[str] = None,
             f"SkillTwin sequences these topics into an adaptive DAG roadmap with real-time knowledge tracing and hands-on practice quizzes."
         )
 
-    # 2. Greetings / Identity
+    # 9. Greetings / Identity
     if any(q.startswith(k) for k in ["hi", "hello", "hey", "who are you", "what can you do", "help me"]):
         return (
             f"Hello! I am your **SkillTwin AI Learning Assistant**. "
@@ -70,7 +124,7 @@ def generate_concise_fallback_answer(query: str, skill_id: Optional[str] = None,
             f"What would you like to explore today?"
         )
 
-    # 3. Next steps / roadmap progression
+    # 10. Next steps / roadmap progression
     if any(k in q for k in ["what next", "what should i study", "where to start", "next step", "what to do"]):
         topic_mention = f" on **{active_topic}**" if active_topic else ""
         return (
@@ -78,7 +132,7 @@ def generate_concise_fallback_answer(query: str, skill_id: Optional[str] = None,
             f"Take a 3-minute practice quiz to verify your competency and unlock subsequent chapters in your curriculum."
         )
 
-    # 4. Why did plan change
+    # 11. Why did plan change
     if "why" in q and any(k in q for k in ["change", "update", "repair", "adapt", "extra"]):
         return (
             f"SkillTwin continuously evaluates your quiz evidence using Bayesian Knowledge Tracing (BKT). "
@@ -86,7 +140,7 @@ def generate_concise_fallback_answer(query: str, skill_id: Optional[str] = None,
             f"keeping all your previously mastered chapters 100% preserved."
         )
 
-    # 5. General question synthesis
+    # 12. General question synthesis
     return (
         f"**{query.strip().rstrip('?')}** is an important concept in {dom_label}. "
         f"In software systems, understanding the underlying trade-offs, standard best practices, and deterministic state handling "
@@ -142,7 +196,10 @@ async def ai_chat(payload: AIChatRequest):
                     source="gemini_ai"
                 )
         except Exception as e:
-            logger.warning(f"Gemini AI invocation notice: {e}. Falling back to dynamic knowledge generator.")
+            logger.warning(
+                f"Gemini AI invocation notice: {e}. "
+                f"Ensure a valid Google AI Studio API key (AIzaSy...) is configured in .env under GEMINI_API_KEY."
+            )
 
     # 2. Dynamic Fallback Knowledge Synthesis
     fallback_reply = generate_concise_fallback_answer(query, payload.skill_id, payload.domain)
