@@ -16,9 +16,16 @@ logger = logging.getLogger("skilltwin.init_db")
 
 
 async def init_db(engine: AsyncEngine = async_engine) -> None:
-    """Create all database tables asynchronously."""
+    """Create all database tables asynchronously and apply column migrations."""
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
+        # Migrate columns in learner_skill_states if needed
+        try:
+            from sqlalchemy import text
+            await conn.execute(text("ALTER TABLE learner_skill_states ADD COLUMN IF NOT EXISTS source VARCHAR(64) DEFAULT 'self_report'"))
+            await conn.execute(text("ALTER TABLE learner_skill_states ADD COLUMN IF NOT EXISTS evidence_snippet TEXT"))
+        except Exception as e:
+            logger.debug(f"Column migration check: {e}")
     logger.info("Database tables verified / created successfully.")
 
 

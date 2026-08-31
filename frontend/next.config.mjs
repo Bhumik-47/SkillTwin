@@ -1,7 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  allowedDevOrigins: ['*.loca.lt', 'localhost:3000', '127.0.0.1:3000'],
+  allowedDevOrigins: [
+    '*.ngrok-free.dev',
+    '*.ngrok-free.app',
+    '*.ngrok.app',
+    '*.loca.lt',
+    'sterile-basics-caloric.ngrok-free.dev',
+    'localhost:3000',
+    '127.0.0.1:3000'
+  ],
   async rewrites() {
     return [
       {

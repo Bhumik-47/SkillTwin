@@ -480,7 +480,7 @@ export class SkillTwinAPI {
   static async submitAssessment(payload: any, token?: string | null) {
     try {
       const headers: Record<string, string> = { 'Content-Type': 'application/json' };
-      if (token && token !== 'demo-token-active') {
+      if (token && !token.startsWith('demo-')) {
         headers['Authorization'] = `Bearer ${token}`;
       }
       const res = await fetch(`${API_BASE_URL}/assessment/submit`, {

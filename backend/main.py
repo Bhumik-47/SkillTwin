@@ -53,7 +53,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
-    allow_origin_regex=r"http://(localhost|127\.0\.0\.1)(:[0-9]+)?",
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|.*\.ngrok-free\.(dev|app)|.*\.ngrok\.app|.*\.loca\.lt)(:[0-9]+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -85,5 +85,25 @@ async def root():
 
 @app.get("/health", tags=["Health"])
 async def health_check():
-    """Liveness probe."""
-    return {"status": "healthy"}
+    """Liveness & Database connection health probe."""
+    db_status = "connected"
+    db_dialect = "unknown"
+    error_msg = None
+    try:
+        from backend.db.session import async_engine
+        from sqlalchemy import text
+        async with async_engine.connect() as conn:
+            await conn.execute(text("SELECT 1"))
+            db_dialect = async_engine.dialect.name
+    except Exception as e:
+        db_status = "disconnected"
+        error_msg = str(e)
+
+    return {
+        "status": "healthy" if db_status == "connected" else "degraded",
+        "database": {
+            "status": db_status,
+            "dialect": db_dialect,
+            "error": error_msg
+        }
+    }
