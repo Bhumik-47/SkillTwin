@@ -381,151 +381,164 @@ export default function RoadmapView() {
             const m = masteryMap.get(d.source_skill_id) ?? 0.10;
             return { id: d.source_skill_id, name: s?.name || d.source_skill_id, mastery: m, isMastered: m >= 0.80 };
           });
+          const cardGradient = isRemedial
+            ? 'from-rose-500/30 via-rose-500/10 to-transparent hover:from-rose-500/70 hover:via-rose-400/50 hover:to-orange-500/30 hover:shadow-rose-500/10'
+            : isActive
+            ? 'from-brand-500/40 via-cyan-500/20 to-transparent hover:from-brand-500/80 hover:via-cyan-400/60 hover:to-indigo-500/40 hover:shadow-cyan-500/15 ring-1 ring-brand-500/40'
+            : isMastered
+            ? 'from-emerald-500/20 via-teal-500/10 to-transparent hover:from-emerald-500/60 hover:via-teal-400/40 hover:to-cyan-500/30 hover:shadow-emerald-500/10'
+            : 'from-slate-500/15 via-brand-500/5 to-transparent hover:from-brand-500/50 hover:via-cyan-500/30 hover:to-indigo-500/20 hover:shadow-brand-500/10';
+
+          const glowColor = isRemedial
+            ? 'bg-rose-500/15'
+            : isActive
+            ? 'bg-cyan-500/20'
+            : isMastered
+            ? 'bg-emerald-500/15'
+            : 'bg-brand-500/15';
 
           return (
             <div
               key={`roadmap_node_${node.node_id || node.skill_id}_step_${node.step_order || index}_${index}`}
-              className={`rounded-2xl border transition-all p-5 ${
-                isRemedial
-                  ? 'border-rose-500/40 dark:bg-rose-950/15 bg-rose-50/50'
-                  : isActive
-                  ? 'border-brand-500/60 dark:bg-brand-950/20 bg-indigo-50/50 ring-1 ring-brand-500/30'
-                  : isMastered
-                  ? 'dark:border-white/5 border-slate-200 dark:bg-[#090f1b]/70 bg-white'
-                  : 'dark:border-white/5 border-slate-200 dark:bg-[#060a14]/50 bg-slate-50/50'
-              }`}
+              className={`relative group rounded-3xl p-[1px] bg-gradient-to-b ${cardGradient} transition-all duration-500 hover:-translate-y-1 hover:shadow-xl`}
             >
-              <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              {/* Card Interior */}
+              <div className="relative rounded-[23px] dark:bg-[#0c1424]/95 bg-white/95 backdrop-blur-xl p-5 sm:p-6 overflow-hidden border dark:border-white/5 border-slate-200/80">
                 
-                {/* Step Marker & Title */}
-                <div className="flex items-start gap-4 flex-1 min-w-0">
+                {/* Ambient Glow Orb on hover */}
+                <div className={`absolute -top-12 -right-12 w-36 h-36 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${glowColor}`} />
+
+                <div className="relative z-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                   
-                  {/* Step Order Badge */}
-                  <div className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border text-xs font-bold font-mono ${
-                    isRemedial
-                      ? 'border-rose-500/50 bg-rose-500/20 text-rose-400'
-                      : isMastered
-                      ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-400'
-                      : isActive
-                      ? 'border-brand-500 bg-brand-600 text-white'
-                      : 'dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-slate-200 dark:text-slate-400 text-slate-600'
-                  }`}>
-                    {isMastered ? <CheckCircle2 className="h-5 w-5" /> : node.step_order}
-                  </div>
-
-                  {/* Metadata & Headline */}
-                  <div className="min-w-0 flex-1">
-                    <div className="flex flex-wrap items-center gap-2">
-                      <span className="text-xs font-semibold text-slate-400">
-                        Chapter {node.step_order}
-                      </span>
-
-                      {isRemedial && (
-                        <span className="rounded-md bg-rose-500/20 px-2 py-0.5 text-[10px] font-bold text-rose-400 border border-rose-500/40">
-                          Extra Practice Added
-                        </span>
-                      )}
-
-                      {isActive && !isRemedial && (
-                        <span className="rounded-md bg-brand-500/20 px-2 py-0.5 text-[10px] font-bold text-brand-600 dark:text-brand-300 border border-brand-500/40">
-                          Current Chapter
-                        </span>
-                      )}
-
-                      <span className="text-xs dark:text-slate-400 text-slate-500">
-                        ⏱️ ~{node.estimated_minutes || 45} mins
-                      </span>
+                  {/* Step Marker & Title */}
+                  <div className="flex items-start gap-4 flex-1 min-w-0">
+                    
+                    {/* Step Order Badge */}
+                    <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl border text-xs font-bold font-mono shadow-xs ${
+                      isRemedial
+                        ? 'border-rose-500/50 bg-rose-500/20 text-rose-400'
+                        : isMastered
+                        ? 'border-emerald-500/50 bg-emerald-500/20 text-emerald-400'
+                        : isActive
+                        ? 'border-brand-500 bg-brand-600 text-white shadow-brand-500/25'
+                        : 'dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-slate-200 dark:text-slate-400 text-slate-600'
+                    }`}>
+                      {isMastered ? <CheckCircle2 className="h-5 w-5" /> : node.step_order}
                     </div>
 
-                    <h3 className="mt-1 text-base font-bold dark:text-white text-slate-900 truncate">
-                      {node.skill_name || skill?.name || node.skill_id}
-                    </h3>
-
-                    <p className="mt-1 text-xs dark:text-slate-300 text-slate-600 line-clamp-2 leading-relaxed">
-                      {skill?.description || 'Learn and practice key concepts to progress toward your goals.'}
-                    </p>
-
-                    {/* Grounded Plain-Language Reason (Feature 2 & 4: Always visible) */}
-                    <div className="mt-2 rounded-xl border border-brand-500/20 dark:bg-brand-950/20 bg-brand-50/50 p-2.5 text-xs text-brand-700 dark:text-brand-300 flex items-start gap-2">
-                      <Sparkles className="h-3.5 w-3.5 shrink-0 mt-0.5 text-brand-500" />
-                      <span className="leading-relaxed">
-                        <strong>Why this topic:</strong> {displayReason}
-                      </span>
-                    </div>
-
-                    {/* Required Earlier Topics */}
-                    {prereqSkills.length > 0 && (
-                      <div className="mt-2.5 flex flex-wrap items-center gap-1.5">
-                        <span className="text-[10.5px] font-medium text-slate-400 mr-1">
-                          You&apos;ll need to finish first:
+                    {/* Metadata & Headline */}
+                    <div className="min-w-0 flex-1 space-y-1">
+                      <div className="flex flex-wrap items-center gap-2">
+                        <span className="text-xs font-semibold text-slate-400">
+                          Chapter {node.step_order}
                         </span>
-                        {prereqSkills.map((pr, prIdx) => (
-                          <button
-                            key={`roadmap_prereq_${node.skill_id}_${pr.id}_${prIdx}`}
-                            onClick={() => setSelectedSkillId(pr.id)}
-                            className="inline-flex items-center gap-1 rounded-lg border dark:border-white/5 border-slate-200 dark:bg-white/[0.04] bg-slate-100 px-2 py-0.5 text-[10.5px] dark:text-slate-300 text-slate-700 hover:border-brand-500/40 transition-all"
-                          >
-                            {pr.isMastered ? (
-                              <CheckCircle2 className="h-3 w-3 text-emerald-400" />
-                            ) : (
-                              <Lock className="h-3 w-3 text-slate-400" />
-                            )}
-                            <span className="truncate max-w-[120px]">{pr.name}</span>
-                          </button>
-                        ))}
+
+                        {isRemedial && (
+                          <span className="rounded-full bg-rose-500/20 px-2.5 py-0.5 text-[10px] font-bold text-rose-400 border border-rose-500/40">
+                            Extra Practice Added
+                          </span>
+                        )}
+
+                        {isActive && !isRemedial && (
+                          <span className="rounded-full bg-brand-500/20 px-2.5 py-0.5 text-[10px] font-bold text-brand-600 dark:text-brand-300 border border-brand-500/40">
+                            Current Chapter
+                          </span>
+                        )}
+
+                        <span className="text-xs dark:text-slate-400 text-slate-500">
+                          ⏱️ ~{node.estimated_minutes || 45} mins
+                        </span>
                       </div>
-                    )}
-                  </div>
-                </div>
 
-                {/* Right Progress & Action Buttons */}
-                <div className="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-3 shrink-0 border-t md:border-t-0 dark:border-white/5 border-slate-200 pt-3 md:pt-0">
-                  
-                  {/* Skill Level % */}
-                  <div className="text-left md:text-right">
-                    <div className="flex items-center gap-2 md:justify-end">
-                      <span className="text-[11px] dark:text-slate-400 text-slate-500">Skill Level</span>
-                      <strong className={`font-mono text-xs font-bold ${isMastered ? 'text-emerald-400' : 'text-brand-500'}`}>
-                        {Math.round(masteryProb * 100)}%
-                      </strong>
+                      <h3 className="text-base sm:text-lg font-extrabold dark:text-white text-slate-900 truncate group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-400 group-hover:to-cyan-400 transition-all duration-300">
+                        {node.skill_name || skill?.name || node.skill_id}
+                      </h3>
+
+                      <p className="text-xs dark:text-slate-300 text-slate-600 line-clamp-2 leading-relaxed">
+                        {skill?.description || 'Learn and practice key concepts to progress toward your goals.'}
+                      </p>
+
+                      {/* Grounded Plain-Language Reason (Feature 2 & 4: Always visible) */}
+                      <div className="mt-2 rounded-2xl border border-brand-500/20 dark:bg-brand-950/20 bg-brand-50/50 p-3 text-xs text-brand-700 dark:text-brand-300 flex items-start gap-2">
+                        <Sparkles className="h-4 w-4 shrink-0 mt-0.5 text-brand-500" />
+                        <span className="leading-relaxed">
+                          <strong>Why this topic:</strong> {displayReason}
+                        </span>
+                      </div>
+
+                      {/* Required Earlier Topics */}
+                      {prereqSkills.length > 0 && (
+                        <div className="mt-2.5 flex flex-wrap items-center gap-1.5 pt-1">
+                          <span className="text-[10.5px] font-medium text-slate-400 mr-1">
+                            Prerequisites to finish first:
+                          </span>
+                          {prereqSkills.map((pr, prIdx) => (
+                            <button
+                              key={`roadmap_prereq_${node.skill_id}_${pr.id}_${prIdx}`}
+                              onClick={() => setSelectedSkillId(pr.id)}
+                              className="inline-flex items-center gap-1 rounded-lg border dark:border-white/5 border-slate-200 dark:bg-white/[0.04] bg-slate-100 px-2 py-0.5 text-[10.5px] dark:text-slate-300 text-slate-700 hover:border-brand-500/40 transition-all"
+                            >
+                              {pr.isMastered ? (
+                                <CheckCircle2 className="h-3 w-3 text-emerald-400" />
+                              ) : (
+                                <Lock className="h-3 w-3 text-slate-400" />
+                              )}
+                              <span className="truncate max-w-[120px]">{pr.name}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
                     </div>
-                    <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full dark:bg-surface-50 bg-slate-200">
-                      <div
-                        className={`h-full rounded-full transition-all duration-300 ${
-                          isMastered ? 'bg-emerald-500' : 'bg-brand-600'
+                  </div>
+
+                  {/* Right Progress & Action Buttons */}
+                  <div className="flex flex-row md:flex-col items-center md:items-end justify-between w-full md:w-auto gap-3 shrink-0 border-t md:border-t-0 dark:border-white/5 border-slate-200 pt-3 md:pt-0">
+                    
+                    {/* Skill Level % */}
+                    <div className="text-left md:text-right">
+                      <div className="flex items-center gap-2 md:justify-end">
+                        <span className="text-[11px] dark:text-slate-400 text-slate-500">Skill Level</span>
+                        <strong className={`font-mono text-xs font-bold ${isMastered ? 'text-emerald-400' : 'text-brand-500'}`}>
+                          {Math.round(masteryProb * 100)}%
+                        </strong>
+                      </div>
+                      <div className="mt-1 h-1.5 w-28 overflow-hidden rounded-full dark:bg-surface-50 bg-slate-200">
+                        <div
+                          className={`h-full rounded-full transition-all duration-300 ${
+                            isMastered ? 'bg-emerald-500' : 'bg-brand-600'
+                          }`}
+                          style={{ width: `${Math.round(masteryProb * 100)}%` }}
+                        />
+                      </div>
+                    </div>
+
+                    {/* Actions */}
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => handleInspectGraph(node.skill_id)}
+                        title="View in Learning Map"
+                        className="flex h-9 w-9 items-center justify-center rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 hover:border-brand-500/40 dark:text-slate-300 text-slate-700 transition-all btn-tactile"
+                      >
+                        <Compass className="h-4 w-4" />
+                      </button>
+
+                      <button
+                        onClick={() => openAssessment(node.skill_id)}
+                        className={`inline-flex items-center gap-1.5 rounded-xl px-4 py-2 text-xs font-bold transition-all shadow-sm btn-tactile ${
+                          isMastered
+                            ? 'border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-white hover:border-brand-500/40 text-slate-700 dark:text-slate-200'
+                            : isRemedial
+                            ? 'bg-rose-600 hover:bg-rose-500 text-white shadow-rose-500/20'
+                            : 'bg-brand-600 hover:bg-brand-500 text-white shadow-brand-500/20'
                         }`}
-                        style={{ width: `${Math.round(masteryProb * 100)}%` }}
-                      />
+                      >
+                        <Play className="h-3.5 w-3.5 fill-current" />
+                        <span>{isMastered ? 'Retake Quiz' : isRemedial ? 'Start Practice' : 'Start Chapter'}</span>
+                      </button>
                     </div>
                   </div>
 
-                  {/* Actions */}
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => handleInspectGraph(node.skill_id)}
-                      title="View in Learning Map"
-                      className="flex h-8.5 w-8.5 items-center justify-center rounded-xl border dark:border-white/10 border-slate-200 dark:bg-surface-50 bg-slate-100 hover:border-brand-500/40 dark:text-slate-300 text-slate-700 transition-all btn-tactile"
-                    >
-                      <Compass className="h-4 w-4" />
-                    </button>
-
-                    <button
-                      onClick={() => openAssessment(node.skill_id)}
-                      className={`flex items-center gap-1.5 rounded-xl px-3.5 py-1.5 text-xs font-bold transition-all btn-tactile ${
-                        isActive
-                          ? 'bg-brand-600 text-white shadow-sm'
-                          : isMastered
-                          ? 'border border-emerald-500/30 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/20'
-                          : 'border dark:border-white/10 border-slate-300 dark:bg-surface-50 bg-slate-100 dark:text-slate-200 text-slate-800 hover:border-brand-500/40'
-                      }`}
-                    >
-                      <Zap className="h-3.5 w-3.5" />
-                      <span>{isMastered ? 'Retake Quiz' : 'Practice'}</span>
-                    </button>
-                  </div>
-
                 </div>
-
               </div>
             </div>
           );

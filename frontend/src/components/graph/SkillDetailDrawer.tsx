@@ -295,76 +295,82 @@ export default function SkillDetailDrawer() {
                   return (
                     <div
                       key={idx}
-                      className={`rounded-xl border p-3 transition-all group text-xs ${
-                        isTopPick
-                          ? 'border-brand-500/50 dark:bg-brand-950/20 bg-brand-50/50 shadow-xs'
-                          : 'dark:border-white/5 border-slate-200 dark:bg-surface-50/70 bg-slate-50 hover:border-brand-500/40'
-                      }`}
+                      className="relative group rounded-2xl p-[1px] bg-gradient-to-b from-brand-500/20 via-cyan-500/10 to-transparent hover:from-brand-500/60 hover:via-cyan-400/50 hover:to-indigo-500/40 transition-all duration-300 hover:-translate-y-1 hover:shadow-md"
                     >
-                      <div className="flex items-center justify-between mb-1.5">
-                        <div className="flex items-center gap-1.5 flex-wrap">
-                          <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${platformColor(res.platform)}`}>
-                            {res.platform}
-                          </span>
-                          <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">
-                            • {res.category}
-                          </span>
-                          {res.verified && (
-                            <span className="flex items-center gap-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-400">
-                              <ShieldCheck className="h-2.5 w-2.5" />
-                              Verified
-                            </span>
+                      {/* Card Interior */}
+                      <div className="relative rounded-[15px] dark:bg-[#0c1424]/95 bg-white/95 backdrop-blur-xl p-3.5 flex flex-col justify-between overflow-hidden border dark:border-white/5 border-slate-200/80 text-xs">
+                        
+                        {/* Ambient Glow */}
+                        <div className="absolute -top-8 -right-8 w-20 h-20 rounded-full blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none bg-cyan-500/15" />
+
+                        <div className="relative z-10 space-y-1.5">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <span className={`rounded-full px-2 py-0.5 text-[9px] font-bold ${platformColor(res.platform)}`}>
+                                {res.platform}
+                              </span>
+                              <span className="text-[9px] font-semibold text-slate-400 uppercase tracking-wider">
+                                • {res.category}
+                              </span>
+                              {res.verified && (
+                                <span className="flex items-center gap-0.5 text-[8px] font-bold text-emerald-600 dark:text-emerald-400">
+                                  <ShieldCheck className="h-2.5 w-2.5" />
+                                  Verified
+                                </span>
+                              )}
+                              {isTopPick && (
+                                <span className="text-[8px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.2 rounded-full border border-amber-500/20">
+                                  ⭐ Top Match
+                                </span>
+                              )}
+                            </div>
+                            <span className="text-[10px] text-slate-400 font-medium">{res.duration}</span>
+                          </div>
+
+                          <a
+                            href={res.url}
+                            target="_blank"
+                            rel="noreferrer"
+                            className="block font-bold dark:text-white text-slate-900 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-400 group-hover:to-cyan-400 transition-all duration-200"
+                          >
+                            {res.title}
+                          </a>
+
+                          <p className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-2 leading-relaxed">
+                            {res.summary}
+                          </p>
+
+                          {/* Key Points / Highlights */}
+                          {res.keyPoints && res.keyPoints.length > 0 && (
+                            <div className="mt-2 pt-2 border-t dark:border-white/5 border-slate-200/80 space-y-1">
+                              <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                                💡 Key Takeaways:
+                              </span>
+                              <ul className="space-y-0.5">
+                                {res.keyPoints.slice(0, 3).map((pt, pIdx) => (
+                                  <li key={pIdx} className="text-[10.5px] dark:text-slate-300 text-slate-600 flex items-start gap-1">
+                                    <span className="text-brand-500 font-bold">•</span>
+                                    <span className="leading-tight">{pt}</span>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
                           )}
-                          {isTopPick && (
-                            <span className="text-[8px] font-bold text-amber-600 dark:text-amber-400 bg-amber-500/10 px-1.5 py-0.2 rounded-full border border-amber-500/20">
-                              ⭐ Top Match
-                            </span>
-                          )}
+
+                          <div className="mt-2 pt-2 border-t dark:border-white/5 border-slate-100 flex items-center justify-between text-[10px]">
+                            <span className="text-slate-400 font-medium">Difficulty: {res.difficulty}</span>
+                            <a
+                              href={res.url}
+                              target="_blank"
+                              rel="noreferrer"
+                              className="inline-flex items-center gap-1 font-bold text-brand-600 dark:text-brand-400 hover:underline"
+                            >
+                              <span>{res.category === 'video' ? 'Watch Lecture' : res.category === 'exercise' ? 'Solve Challenge' : 'Open Article'}</span>
+                              <ExternalLink className="h-2.5 w-2.5" />
+                            </a>
+                          </div>
+
                         </div>
-                        <span className="text-[10px] text-slate-400 font-medium">{res.duration}</span>
-                      </div>
-
-                      <a
-                        href={res.url}
-                        target="_blank"
-                        rel="noreferrer"
-                        className="block font-bold dark:text-white text-slate-900 group-hover:text-brand-500 transition-colors"
-                      >
-                        {res.title}
-                      </a>
-
-                      <p className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-2 mt-1">
-                        {res.summary}
-                      </p>
-
-                      {/* Key Points / Transcript Highlights */}
-                      {res.keyPoints && res.keyPoints.length > 0 && (
-                        <div className="mt-2 pt-2 border-t dark:border-white/5 border-slate-200/80 space-y-1">
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">
-                            💡 Core Key Takeaways:
-                          </span>
-                          <ul className="space-y-0.5">
-                            {res.keyPoints.slice(0, 3).map((pt, pIdx) => (
-                              <li key={pIdx} className="text-[10.5px] dark:text-slate-300 text-slate-600 flex items-start gap-1">
-                                <span className="text-brand-500 font-bold">•</span>
-                                <span className="leading-tight">{pt}</span>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      )}
-
-                      <div className="mt-2.5 flex items-center justify-between pt-1 text-[10px]">
-                        <span className="text-slate-400 font-medium">Difficulty: {res.difficulty}</span>
-                        <a
-                          href={res.url}
-                          target="_blank"
-                          rel="noreferrer"
-                          className="inline-flex items-center gap-1 font-bold text-brand-600 dark:text-brand-400 hover:underline"
-                        >
-                          <span>{res.category === 'video' ? 'Watch Lecture' : res.category === 'exercise' ? 'Solve Challenge' : 'Open Article'}</span>
-                          <ExternalLink className="h-2.5 w-2.5" />
-                        </a>
                       </div>
                     </div>
                   );

@@ -674,7 +674,7 @@ export default function DashboardView() {
         {upcomingNodes.length === 0 ? (
           <p className="text-xs text-slate-400 italic py-4">You have completed all chapters in this path!</p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
             {upcomingNodes.map(node => {
               const skill = skills.find(s => s.id === node.skill_id);
               const isExpanded = expandedWhyId === node.skill_id;
@@ -682,42 +682,51 @@ export default function DashboardView() {
               return (
                 <div
                   key={node.skill_id}
-                  className="rounded-2xl border dark:border-white/5 border-slate-200 dark:bg-surface-50/50 bg-slate-50 p-4 flex flex-col justify-between space-y-3 hover:border-brand-500/30 transition-all"
+                  className="relative group rounded-3xl p-[1px] bg-gradient-to-b from-brand-500/20 via-cyan-500/10 to-transparent hover:from-brand-500/60 hover:via-cyan-400/50 hover:to-indigo-500/40 transition-all duration-500 hover:-translate-y-1.5 hover:shadow-xl hover:shadow-cyan-500/10"
                 >
-                  <div>
-                    <div className="flex items-center justify-between text-xs mb-1">
-                      <span className="font-mono text-[10px] text-slate-400 uppercase">
-                        Step {node.step_order}
-                      </span>
-                      <span className="text-[10px] text-slate-400 font-medium">
-                        ⏱️ {node.estimated_minutes || 45} mins
-                      </span>
+                  {/* Card Interior */}
+                  <div className="relative rounded-[23px] dark:bg-[#0c1424]/95 bg-white/95 backdrop-blur-xl p-5 flex flex-col justify-between h-full overflow-hidden border dark:border-white/5 border-slate-200/80 space-y-3">
+                    
+                    {/* Ambient Glow Orb */}
+                    <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none bg-cyan-500/15" />
+
+                    <div className="relative z-10 space-y-2">
+                      <div className="flex items-center justify-between text-xs mb-1">
+                        <span className="font-mono text-[10px] text-brand-600 dark:text-cyan-400 font-bold uppercase tracking-wider bg-brand-500/10 px-2 py-0.5 rounded-md border border-brand-500/20">
+                          Step {node.step_order}
+                        </span>
+                        <span className="text-[10.5px] text-slate-400 font-medium flex items-center gap-1">
+                          <Clock className="h-3 w-3" />
+                          {node.estimated_minutes || 45} mins
+                        </span>
+                      </div>
+
+                      <h4 className="text-sm sm:text-base font-extrabold dark:text-white text-slate-900 line-clamp-1 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-400 group-hover:to-cyan-400 transition-all duration-300">
+                        {node.skill_name || skill?.name || node.skill_id}
+                      </h4>
+
+                      <p className="text-xs dark:text-slate-400 text-slate-600 line-clamp-2 leading-relaxed">
+                        {skill?.description || 'Foundational topic sequenced for optimal learning.'}
+                      </p>
                     </div>
 
-                    <h4 className="text-sm font-bold dark:text-white text-slate-900 line-clamp-1">
-                      {node.skill_name || skill?.name || node.skill_id}
-                    </h4>
+                    {/* Why this recommendation toggle */}
+                    <div className="relative z-10 border-t dark:border-white/5 border-slate-200/80 pt-2.5 text-xs">
+                      <button
+                        onClick={() => setExpandedWhyId(isExpanded ? null : node.skill_id)}
+                        className="flex items-center gap-1.5 text-[11px] font-bold text-cyan-600 dark:text-cyan-400 hover:underline"
+                      >
+                        <HelpCircle className="h-3.5 w-3.5" />
+                        <span>{isExpanded ? 'Hide explanation' : 'Why this chapter?'}</span>
+                      </button>
 
-                    <p className="text-xs dark:text-slate-400 text-slate-600 line-clamp-2 mt-1">
-                      {skill?.description || 'Foundational topic sequenced for optimal learning.'}
-                    </p>
-                  </div>
+                      {isExpanded && (
+                        <p className="mt-2.5 rounded-2xl dark:bg-surface-100 bg-slate-50 p-3 text-[11px] dark:text-slate-300 text-slate-700 leading-relaxed border dark:border-white/5 border-slate-200 animate-in fade-in duration-150">
+                          This topic builds directly on what you learn in Chapter {node.step_order - 1} and is required for your target goal of <strong>{profile.target_role}</strong>.
+                        </p>
+                      )}
+                    </div>
 
-                  {/* Why this recommendation toggle */}
-                  <div className="border-t dark:border-white/5 border-slate-200 pt-2 text-xs">
-                    <button
-                      onClick={() => setExpandedWhyId(isExpanded ? null : node.skill_id)}
-                      className="flex items-center gap-1 text-[11px] font-semibold text-cyan-600 dark:text-cyan-400 hover:underline"
-                    >
-                      <HelpCircle className="h-3 w-3" />
-                      <span>{isExpanded ? 'Hide explanation' : 'Why this chapter?'}</span>
-                    </button>
-
-                    {isExpanded && (
-                      <p className="mt-2 rounded-xl dark:bg-surface-100 bg-white p-2.5 text-[11px] dark:text-slate-300 text-slate-700 leading-relaxed border dark:border-white/5 border-slate-200">
-                        This topic builds directly on what you learn in Chapter {node.step_order - 1} and is required for your target goal of <strong>{profile.target_role}</strong>.
-                      </p>
-                    )}
                   </div>
                 </div>
               );

@@ -449,47 +449,63 @@ export default function LearnerProfileView() {
         </div>
 
         {/* Skills Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {filteredSkills.map(skill => {
             const mastery = masteryMap.get(skill.id) ?? 0.10;
             const isMastered = mastery >= 0.80;
             const isEstimated = mastery >= 0.35 && !isMastered;
 
+            const cardGradient = isMastered
+              ? 'from-emerald-500/20 via-teal-500/10 to-transparent hover:from-emerald-500/60 hover:via-teal-400/40 hover:to-cyan-500/30 hover:shadow-emerald-500/10'
+              : isEstimated
+              ? 'from-cyan-500/20 via-brand-500/10 to-transparent hover:from-cyan-500/60 hover:via-brand-400/40 hover:to-indigo-500/30 hover:shadow-cyan-500/10'
+              : 'from-slate-500/15 via-brand-500/5 to-transparent hover:from-brand-500/50 hover:via-cyan-500/30 hover:to-indigo-500/20 hover:shadow-brand-500/10';
+
+            const glowColor = isMastered
+              ? 'bg-emerald-500/15'
+              : isEstimated
+              ? 'bg-cyan-500/15'
+              : 'bg-brand-500/10';
+
             return (
               <div
                 key={skill.id}
-                className={`rounded-2xl border p-4 text-xs space-y-2 transition-all ${
-                  isMastered
-                    ? 'border-emerald-500/30 dark:bg-emerald-950/10 bg-emerald-50/30'
-                    : isEstimated
-                    ? 'border-cyan-500/30 dark:bg-cyan-950/10 bg-cyan-50/30'
-                    : 'dark:border-white/5 border-slate-200 dark:bg-surface-100 bg-slate-50'
-                }`}
+                className={`relative group rounded-3xl p-[1px] bg-gradient-to-b ${cardGradient} transition-all duration-500 hover:-translate-y-1 hover:shadow-xl`}
               >
-                <div className="flex items-start justify-between gap-2">
-                  <span className="font-bold dark:text-white text-slate-900 leading-snug">
-                    {skill.name}
-                  </span>
-                  <span className={`text-[10px] font-bold px-2 py-0.5 rounded-full border shrink-0 ${
-                    isMastered
-                      ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
-                      : isEstimated
-                      ? 'border-cyan-500/40 bg-cyan-500/15 text-cyan-600 dark:text-cyan-400'
-                      : 'border-slate-300 dark:border-white/10 dark:text-slate-400 text-slate-500'
-                  }`}>
-                    {isMastered ? '🏆 Verified' : isEstimated ? '🌱 Estimated' : 'Not Started'}
-                  </span>
-                </div>
+                {/* Card Interior */}
+                <div className="relative rounded-[23px] dark:bg-[#0c1424]/95 bg-white/95 backdrop-blur-xl p-4 sm:p-5 flex flex-col justify-between h-full overflow-hidden border dark:border-white/5 border-slate-200/80 space-y-3">
+                  
+                  {/* Ambient Glow Orb */}
+                  <div className={`absolute -top-10 -right-10 w-28 h-28 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none ${glowColor}`} />
 
-                <p className="text-[11px] dark:text-slate-400 text-slate-500 line-clamp-2 leading-relaxed">
-                  {skill.description}
-                </p>
+                  <div className="relative z-10 space-y-2">
+                    <div className="flex items-start justify-between gap-2">
+                      <span className="font-extrabold dark:text-white text-slate-900 leading-snug group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-brand-400 group-hover:to-cyan-400 transition-all duration-300">
+                        {skill.name}
+                      </span>
+                      <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border shrink-0 ${
+                        isMastered
+                          ? 'border-emerald-500/40 bg-emerald-500/15 text-emerald-600 dark:text-emerald-400'
+                          : isEstimated
+                          ? 'border-cyan-500/40 bg-cyan-500/15 text-cyan-600 dark:text-cyan-400'
+                          : 'border-slate-300 dark:border-white/10 dark:text-slate-400 text-slate-500'
+                      }`}>
+                        {isMastered ? '🏆 Verified' : isEstimated ? '🌱 Estimated' : 'Not Started'}
+                      </span>
+                    </div>
 
-                <div className="pt-2 border-t dark:border-white/5 border-slate-100 flex items-center justify-between">
-                  <span className="text-[10px] text-slate-400">Mastery Level</span>
-                  <strong className={`font-mono text-xs font-bold ${isMastered ? 'text-emerald-500' : 'text-brand-500'}`}>
-                    {Math.round(mastery * 100)}%
-                  </strong>
+                    <p className="text-xs dark:text-slate-400 text-slate-600 line-clamp-2 leading-relaxed">
+                      {skill.description}
+                    </p>
+                  </div>
+
+                  <div className="relative z-10 pt-2.5 border-t dark:border-white/5 border-slate-100 flex items-center justify-between">
+                    <span className="text-[10.5px] text-slate-400 font-medium">Mastery Level</span>
+                    <strong className={`font-mono text-xs font-bold ${isMastered ? 'text-emerald-500' : isEstimated ? 'text-cyan-500' : 'text-brand-500'}`}>
+                      {Math.round(mastery * 100)}%
+                    </strong>
+                  </div>
+
                 </div>
               </div>
             );
