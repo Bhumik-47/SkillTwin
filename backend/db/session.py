@@ -30,8 +30,21 @@ else:
     # Ensure SQLite URL is properly formatted for async
     if db_url.startswith("sqlite:///"):
         db_url = db_url.replace("sqlite:///", "sqlite+aiosqlite:///")
-    elif db_url.startswith("postgresql://"):
-        db_url = db_url.replace("postgresql://", "postgresql+asyncpg://")
+    elif db_url.startswith("postgresql://") or db_url.startswith("postgresql+asyncpg://"):
+        if db_url.startswith("postgresql://"):
+            db_url = db_url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        from urllib.parse import urlparse, parse_qsl, urlencode, urlunparse
+        parsed = urlparse(db_url)
+        # asyncpg uses ssl=... instead of libpq's sslmode=... and does not accept channel_binding
+        filtered_queries = []
+        for k, v in parse_qsl(parsed.query):
+            if k == "sslmode" and v in ("require", "verify-ca", "verify-full"):
+                filtered_queries.append(("ssl", "require"))
+            elif k == "ssl":
+                filtered_queries.append(("ssl", v))
+            elif k not in ("channel_binding", "sslmode"):
+                filtered_queries.append((k, v))
+        db_url = urlunparse(parsed._replace(query=urlencode(filtered_queries)))
 
 # Silence raw SQL query echoing from SQLAlchemy engine
 logging.getLogger("sqlalchemy.engine").setLevel(logging.WARNING)

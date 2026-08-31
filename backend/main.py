@@ -1,5 +1,6 @@
 """
 SkillTwin FastAPI Main Application Entrypoint
+Production Ready with PostgreSQL & Neon
 """
 import logging
 from contextlib import asynccontextmanager
@@ -53,7 +54,7 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
-    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|.*\.ngrok-free\.(dev|app)|.*\.ngrok\.app|.*\.loca\.lt)(:[0-9]+)?",
+    allow_origin_regex=r"https?://(localhost|127\.0\.0\.1|.*\.vercel\.app|.*\.onrender\.com|.*\.ngrok-free\.(dev|app)|.*\.ngrok\.app|.*\.loca\.lt)(:[0-9]+)?",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
