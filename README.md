@@ -150,7 +150,7 @@ ACCESS_TOKEN_EXPIRE_MINUTES=1440
 # Google Gemini AI API (Required for AI Chat Tutor & Explanations)
 # Get a free key at: https://aistudio.google.com/app/apikey
 GEMINI_API_KEY=your_gemini_api_key_here
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.6-flash
 
 # Frontend API Base URL
 NEXT_PUBLIC_API_URL=http://localhost:8000
