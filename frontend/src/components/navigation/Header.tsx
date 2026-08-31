@@ -27,6 +27,7 @@ export default function Header() {
     switchDomain,
     backendOnline,
     openAssessment,
+    isAssessmentOpen,
     isAIChatOpen,
     setIsAIChatOpen,
     setIsProfileModalOpen,
@@ -43,7 +44,11 @@ export default function Header() {
   const activeDomainMeta = domainsList.find(d => d.id === currentDomain) || domainsList[0];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b dark:border-white/[0.08] border-slate-200 dark:bg-[#060a14] bg-white shadow-sm transition-colors">
+    <header className={`sticky top-0 z-40 w-full border-b dark:border-white/[0.08] border-slate-200 dark:bg-[#060a14] bg-white shadow-sm transition-all duration-300 ease-in-out ${
+      isAssessmentOpen
+        ? '-translate-y-full opacity-0 pointer-events-none -mb-16'
+        : 'translate-y-0 opacity-100'
+    }`}>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         
         {/* Brand Logo & Course Selector */}

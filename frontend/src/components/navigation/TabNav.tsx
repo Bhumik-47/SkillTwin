@@ -22,7 +22,7 @@ interface TabItem {
 }
 
 export default function TabNav() {
-  const { activeTab, setActiveTab, activeRepairDiff, skills } = useSkillTwin();
+  const { activeTab, setActiveTab, activeRepairDiff, skills, isAssessmentOpen } = useSkillTwin();
 
   const tabs: TabItem[] = [
     {
@@ -60,7 +60,11 @@ export default function TabNav() {
   ];
 
   return (
-    <div className="w-full my-4">
+    <div className={`w-full transition-all duration-300 ease-in-out ${
+      isAssessmentOpen
+        ? '-translate-y-10 opacity-0 pointer-events-none max-h-0 my-0 overflow-hidden'
+        : 'my-4 opacity-100 translate-y-0 max-h-40'
+    }`}>
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <nav className="flex space-x-2 overflow-x-auto rounded-2xl border dark:border-white/[0.08] border-slate-200 dark:bg-[#090f1b] bg-white p-1.5 shadow-sm no-scrollbar">
           {tabs.map(tab => {

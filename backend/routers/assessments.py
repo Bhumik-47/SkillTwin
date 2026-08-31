@@ -86,12 +86,14 @@ async def submit_assessment(
 )
 async def get_assessment_questions(
     skill_id: str,
+    difficulty: Optional[str] = "beginner",
     db: AsyncSession = Depends(get_db)
 ):
     try:
         # Load resource or question bank for this skill
         return {
             "skill_id": skill_id,
+            "difficulty": difficulty or "beginner",
             "status": "ready",
             "questions": []
         }

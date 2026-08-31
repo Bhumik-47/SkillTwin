@@ -1,6 +1,7 @@
 import domainQuestions from '../data/questions/domain_questions.json';
 import { AssessmentQuestion, LearningPath } from './types';
 import { ADVANCED_PRO_QUESTIONS_MAP } from '../data/questions/advanced_pro_questions';
+import { INTERMEDIATE_QUESTIONS_MAP } from '../data/questions/intermediate_questions';
 
 export const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || (typeof window !== 'undefined' ? '/api-backend' : 'http://127.0.0.1:8000');
 
@@ -53,10 +54,12 @@ export class SkillTwinAPI {
     optionsOrName?: {
       skillName?: string;
       domain?: string;
+      difficulty?: 'beginner' | 'intermediate' | 'advanced';
       isRemedial?: boolean;
       isAdvanced?: boolean;
       masteryProb?: number;
       attemptCount?: number;
+      chapterIndex?: number;
     } | string,
     maybeDomain?: string
   ): Promise<AssessmentQuestion[]> {
@@ -67,16 +70,39 @@ export class SkillTwinAPI {
     const skillName = opts.skillName;
     const isRemedial = !!opts.isRemedial;
     const mastery = opts.masteryProb ?? 0.10;
-    const isAdvanced = mastery >= 0.90 || !!opts.isAdvanced;
+    const requestedDiff = opts.difficulty || (opts.isAdvanced || mastery >= 0.90 ? 'advanced' : 'beginner');
     const attemptCount = opts.attemptCount ?? 0;
 
-    // If learner is at Level 4 Mastered Pro (BKT >= 0.90 / 0.95), deliver the Elite Advanced Challenge!
-    if (isAdvanced && ADVANCED_PRO_QUESTIONS_MAP[skillId] && ADVANCED_PRO_QUESTIONS_MAP[skillId].length > 0) {
-      return ADVANCED_PRO_QUESTIONS_MAP[skillId];
+    // 1. If Intermediate tier requested, check dedicated Intermediate Question Bank
+    if (requestedDiff === 'intermediate' && INTERMEDIATE_QUESTIONS_MAP[skillId] && INTERMEDIATE_QUESTIONS_MAP[skillId].length > 0) {
+      return INTERMEDIATE_QUESTIONS_MAP[skillId];
+    }
+
+    // 2. If Advanced tier requested, check Elite Advanced Challenge Bank
+    if (requestedDiff === 'advanced' && ADVANCED_PRO_QUESTIONS_MAP[skillId] && ADVANCED_PRO_QUESTIONS_MAP[skillId].length > 0) {
+      const advQuestions = ADVANCED_PRO_QUESTIONS_MAP[skillId];
+      if (advQuestions.length >= 4) {
+        return advQuestions;
+      }
+      // If fewer than 4 questions, backfill from domainQuestions to deliver exactly 4 questions
+      const allQuestions: AssessmentQuestion[] = (domainQuestions as any).questions || [];
+      const fallback = allQuestions.filter(q => q.skill_id === skillId);
+      const combined = [...advQuestions];
+      for (const q of fallback.slice().reverse()) {
+        if (combined.length >= 4) break;
+        if (!combined.some(c => c.id === q.id || c.prompt === q.prompt)) {
+          combined.push({
+            ...q,
+            difficulty: 'advanced',
+            tier: 'challenge'
+          });
+        }
+      }
+      return combined.slice(0, 4);
     }
 
     try {
-      const res = await fetch(`${API_BASE_URL}/assessments/questions?skill_id=${encodeURIComponent(skillId)}`, {
+      const res = await fetch(`${API_BASE_URL}/assessments/questions?skill_id=${encodeURIComponent(skillId)}&difficulty=${encodeURIComponent(requestedDiff)}`, {
         method: 'GET',
         cache: 'no-store'
       });
@@ -97,9 +123,9 @@ export class SkillTwinAPI {
     const matched = allQuestions.filter(q => q.skill_id === skillId);
 
     if (matched.length > 0) {
-      // Always deliver the full comprehensive question bank (all stages 1..4) so learners get complete practice on retakes
+      // Return 4 questions
       const sorted = [...matched].sort((a, b) => (a.stage || 1) - (b.stage || 1));
-      return sorted;
+      return sorted.slice(0, 4);
     }
 
     const label = skillName || skillId.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
