@@ -427,13 +427,9 @@ export default function AIChatPanel() {
             <div className="flex items-center gap-1.5 mt-1 px-1">
               <span className="text-[9px] dark:text-slate-500 text-slate-400">{msg.timestamp}</span>
               {msg.sender === 'ai' && (
-                <span className={`text-[9px] font-semibold flex items-center gap-0.5 ${
-                  msg.grounding?.source === 'gemini_ai'
-                    ? 'text-cyan-600 dark:text-cyan-400'
-                    : 'text-slate-400 dark:text-slate-500'
-                }`}>
+                <span className="text-[9px] font-semibold flex items-center gap-0.5 text-cyan-600 dark:text-cyan-400">
                   <Sparkles className="h-2.5 w-2.5" />
-                  {msg.grounding?.source === 'gemini_ai' ? 'Gemini 2.5 Flash' : 'SkillTwin Tutor'}
+                  SkillTwin Tutor
                 </span>
               )}
             </div>
